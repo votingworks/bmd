@@ -63,42 +63,42 @@ exports[`allows any candidate to be selected when no candidate is selected 1`] =
     >
       <label
         class="c3"
-        for="minnieMouse"
+        for="Minnie Mouse"
       >
         <input
           class="c4"
-          id="minnieMouse"
+          id="Minnie Mouse"
           name="president"
           type="checkbox"
-          value="minnieMouse"
+          value="Minnie Mouse"
         />
          
         Minnie Mouse
       </label>
       <label
         class="c3"
-        for="mickeyMouse"
+        for="Mickey Mouse"
       >
         <input
           class="c4"
-          id="mickeyMouse"
+          id="Mickey Mouse"
           name="president"
           type="checkbox"
-          value="mickeyMouse"
+          value="Mickey Mouse"
         />
          
         Mickey Mouse
       </label>
       <label
         class="c3"
-        for="donaldDuck"
+        for="Donald Duck"
       >
         <input
           class="c4"
-          id="donaldDuck"
+          id="Donald Duck"
           name="president"
           type="checkbox"
-          value="donaldDuck"
+          value="Donald Duck"
         />
          
         Donald Duck
@@ -190,45 +190,45 @@ exports[`doesn't allow other candidates to be selected when one candidate is sel
     >
       <label
         class="c3"
-        for="minnieMouse"
+        for="Minnie Mouse"
       >
         <input
           checked=""
           class="c4"
-          id="minnieMouse"
+          id="Minnie Mouse"
           name="president"
           type="checkbox"
-          value="minnieMouse"
+          value="Minnie Mouse"
         />
          
         Minnie Mouse
       </label>
       <label
         class="c5"
-        for="mickeyMouse"
+        for="Mickey Mouse"
       >
         <input
           class="c4"
           disabled=""
-          id="mickeyMouse"
+          id="Mickey Mouse"
           name="president"
           type="checkbox"
-          value="mickeyMouse"
+          value="Mickey Mouse"
         />
          
         Mickey Mouse
       </label>
       <label
         class="c5"
-        for="donaldDuck"
+        for="Donald Duck"
       >
         <input
           class="c4"
           disabled=""
-          id="donaldDuck"
+          id="Donald Duck"
           name="president"
           type="checkbox"
-          value="donaldDuck"
+          value="Donald Duck"
         />
          
         Donald Duck

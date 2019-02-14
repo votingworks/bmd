@@ -31,8 +31,8 @@ fit(`renders SummaryPage with votes and request New Ballot`, () => {
       resetBallot,
       route: '/summary',
       votes: {
-        president: 'minnieMouse',
-        senator: 'johnSmith',
+        president: 'Minnie Mouse',
+        senator: 'John Smith',
       },
     }
   )
@@ -50,8 +50,8 @@ it(`renders SummaryPage with votes and cancels request New Ballot`, () => {
       resetBallot,
       route: '/summary',
       votes: {
-        president: 'minnieMouse',
-        senator: 'johnSmith',
+        president: 'Minnie Mouse',
+        senator: 'John Smith',
       },
     }
   )
@@ -83,8 +83,8 @@ it(`SummaryPage with votes is accessible`, async () => {
       resetBallot,
       route: '/summary',
       votes: {
-        president: 'minnieMouse',
-        senator: 'johnSmith',
+        president: 'Minnie Mouse',
+        senator: 'John Smith',
       },
     }
   )

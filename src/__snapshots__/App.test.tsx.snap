@@ -329,42 +329,42 @@ exports[`election can be loaded and voter can vote 3`] = `
       >
         <label
           class="c4"
-          for="minnieMouse"
+          for="Minnie Mouse"
         >
           <input
             class="c5"
-            id="minnieMouse"
+            id="Minnie Mouse"
             name="president"
             type="checkbox"
-            value="minnieMouse"
+            value="Minnie Mouse"
           />
            
           Minnie Mouse
         </label>
         <label
           class="c4"
-          for="mickeyMouse"
+          for="Mickey Mouse"
         >
           <input
             class="c5"
-            id="mickeyMouse"
+            id="Mickey Mouse"
             name="president"
             type="checkbox"
-            value="mickeyMouse"
+            value="Mickey Mouse"
           />
            
           Mickey Mouse
         </label>
         <label
           class="c4"
-          for="donaldDuck"
+          for="Donald Duck"
         >
           <input
             class="c5"
-            id="donaldDuck"
+            id="Donald Duck"
             name="president"
             type="checkbox"
-            value="donaldDuck"
+            value="Donald Duck"
           />
            
           Donald Duck
@@ -451,44 +451,44 @@ exports[`election can be loaded and voter can vote 4`] = `
       >
         <label
           class="sc-htoDjs jYkaCb"
-          for="minnieMouse"
+          for="Minnie Mouse"
         >
           <input
             class="sc-dnqmqq biKTHH"
-            id="minnieMouse"
+            id="Minnie Mouse"
             name="president"
             type="checkbox"
-            value="minnieMouse"
+            value="Minnie Mouse"
           />
            
           Minnie Mouse
         </label>
         <label
           class="sc-htoDjs eivrdb"
-          for="mickeyMouse"
+          for="Mickey Mouse"
         >
           <input
             class="sc-dnqmqq biKTHH"
             disabled=""
-            id="mickeyMouse"
+            id="Mickey Mouse"
             name="president"
             type="checkbox"
-            value="mickeyMouse"
+            value="Mickey Mouse"
           />
            
           Mickey Mouse
         </label>
         <label
           class="sc-htoDjs eivrdb"
-          for="donaldDuck"
+          for="Donald Duck"
         >
           <input
             class="sc-dnqmqq biKTHH"
             disabled=""
-            id="donaldDuck"
+            id="Donald Duck"
             name="president"
             type="checkbox"
-            value="donaldDuck"
+            value="Donald Duck"
           />
            
           Donald Duck
@@ -565,14 +565,14 @@ exports[`election can be loaded and voter can vote 5`] = `
 
 <label
           class="c0"
-          for="chadHanging"
+          for="Chad Hanging"
         >
           <input
             class="c1"
-            id="chadHanging"
+            id="Chad Hanging"
             name="senator"
             type="checkbox"
-            value="chadHanging"
+            value="Chad Hanging"
           />
            
           Chad Hanging
@@ -602,14 +602,14 @@ exports[`election can be loaded and voter can vote 5`] = `
 
 <label
           class="c0"
-          for="levErmachine"
+          for="Lev Ermachine"
         >
           <input
             class="c1"
-            id="levErmachine"
+            id="Lev Ermachine"
             name="senator"
             type="checkbox"
-            value="levErmachine"
+            value="Lev Ermachine"
           />
            
           Lev Ermachine
@@ -639,14 +639,14 @@ exports[`election can be loaded and voter can vote 5`] = `
 
 <label
           class="c0"
-          for="johnSmith"
+          for="John Smith"
         >
           <input
             class="c1"
-            id="johnSmith"
+            id="John Smith"
             name="senator"
             type="checkbox"
-            value="johnSmith"
+            value="John Smith"
           />
            
           John Smith
@@ -699,45 +699,45 @@ exports[`election can be loaded and voter can vote 6`] = `
       >
         <label
           class="sc-htoDjs eivrdb"
-          for="chadHanging"
+          for="Chad Hanging"
         >
           <input
             class="sc-dnqmqq biKTHH"
             disabled=""
-            id="chadHanging"
+            id="Chad Hanging"
             name="senator"
             type="checkbox"
-            value="chadHanging"
+            value="Chad Hanging"
           />
            
           Chad Hanging
         </label>
         <label
           class="sc-htoDjs eivrdb"
-          for="levErmachine"
+          for="Lev Ermachine"
         >
           <input
             class="sc-dnqmqq biKTHH"
             disabled=""
-            id="levErmachine"
+            id="Lev Ermachine"
             name="senator"
             type="checkbox"
-            value="levErmachine"
+            value="Lev Ermachine"
           />
            
           Lev Ermachine
         </label>
         <label
           class="sc-htoDjs jYkaCb"
-          for="johnSmith"
+          for="John Smith"
         >
           <input
             autofocus=""
             class="sc-dnqmqq biKTHH"
-            id="johnSmith"
+            id="John Smith"
             name="senator"
             type="checkbox"
-            value="johnSmith"
+            value="John Smith"
           />
            
           John Smith

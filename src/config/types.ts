@@ -13,7 +13,6 @@ export type ButtonEvent = React.MouseEvent<HTMLButtonElement>
 export type Vote = string | string[] | undefined
 export type VoteDict = Dictionary<Vote>
 export interface Candidate {
-  readonly id: string
   readonly name: string
 }
 export interface Contest {

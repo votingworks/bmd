@@ -69,7 +69,7 @@ const SummaryPage = (props: RouteComponentProps) => {
           <tbody>
             {contests.map(contest => {
               const candidate = contest.candidates.find(
-                c => c.id === votes[contest.id]
+                c => c.name === votes[contest.id]
               )
               const vote = candidate ? (
                 candidate.name

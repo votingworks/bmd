@@ -27,9 +27,9 @@ class App extends React.Component<{}, State> {
     })
   }
 
-  public updateVote = (contestId: string, vote: Vote) => {
+  public updateVote = (contestId: string, name: Vote) => {
     this.setState(prevState => ({
-      votes: Object.assign({}, prevState.votes, { [contestId]: vote }),
+      votes: Object.assign({}, prevState.votes, { [contestId]: name }),
     }))
   }
 

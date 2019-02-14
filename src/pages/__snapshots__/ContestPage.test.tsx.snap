@@ -132,42 +132,42 @@ exports[`renders ContestPage 1`] = `
       >
         <label
           class="c4"
-          for="minnieMouse"
+          for="Minnie Mouse"
         >
           <input
             class="c5"
-            id="minnieMouse"
+            id="Minnie Mouse"
             name="president"
             type="checkbox"
-            value="minnieMouse"
+            value="Minnie Mouse"
           />
            
           Minnie Mouse
         </label>
         <label
           class="c4"
-          for="mickeyMouse"
+          for="Mickey Mouse"
         >
           <input
             class="c5"
-            id="mickeyMouse"
+            id="Mickey Mouse"
             name="president"
             type="checkbox"
-            value="mickeyMouse"
+            value="Mickey Mouse"
           />
            
           Mickey Mouse
         </label>
         <label
           class="c4"
-          for="donaldDuck"
+          for="Donald Duck"
         >
           <input
             class="c5"
-            id="donaldDuck"
+            id="Donald Duck"
             name="president"
             type="checkbox"
-            value="donaldDuck"
+            value="Donald Duck"
           />
            
           Donald Duck

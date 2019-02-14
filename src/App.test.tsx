@@ -36,7 +36,9 @@ it('election can be loaded and voter can vote', async () => {
   fireEvent.click(getByText('Minnie Mouse'))
   fireEvent.click(getByText('Mickey Mouse'))
   expect(container.firstChild).toMatchSnapshot()
-  getByText('To vote for Mickey Mouse, first uncheck the vote for minnieMouse.')
+  getByText(
+    'To vote for Mickey Mouse, first uncheck the vote for Minnie Mouse.'
+  )
   fireEvent.click(getByText('Okay'))
   expect(
     (getByLabelText('Minnie Mouse') as HTMLInputElement).checked
@@ -47,7 +49,7 @@ it('election can be loaded and voter can vote', async () => {
   fireEvent.click(getByText('John Smith'))
   fireEvent.click(getByText('Chad Hanging'))
   expect(container.firstChild).toMatchSnapshot()
-  getByText('To vote for Chad Hanging, first uncheck the vote for johnSmith.')
+  getByText('To vote for Chad Hanging, first uncheck the vote for John Smith.')
   fireEvent.click(getByText('Okay'))
   expect(
     (getByLabelText('John Smith') as HTMLInputElement).checked

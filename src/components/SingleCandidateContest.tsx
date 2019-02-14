@@ -85,7 +85,7 @@ class SingleCandidateContest extends React.Component<Props, State> {
           <p>Vote for one</p>
           <Choices>
             {contest.candidates.map((candidate, index) => {
-              const isChecked = candidate.id === vote
+              const isChecked = candidate.name === vote
               const handleDisabledClick = () => {
                 if (vote && !isChecked) {
                   this.handleChangeVoteAlert(candidate.name)
@@ -93,16 +93,16 @@ class SingleCandidateContest extends React.Component<Props, State> {
               }
               return (
                 <Choice
-                  key={candidate.id}
-                  htmlFor={candidate.id}
+                  key={candidate.name}
+                  htmlFor={candidate.name}
                   isSelected={isChecked}
                   onClick={handleDisabledClick}
                 >
                   <ChoiceInput
                     autoFocus={isChecked || (index === 0 && !vote)}
-                    id={candidate.id}
+                    id={candidate.name}
                     name={contest.id}
-                    value={candidate.id}
+                    value={candidate.name}
                     onChange={this.updateSelection}
                     checked={isChecked}
                     disabled={!!vote && !isChecked}
