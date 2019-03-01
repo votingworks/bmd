@@ -74,6 +74,7 @@ const Choice = styled('label')<{ isSelected: boolean }>`
   }
 `
 const ChoiceInput = styled.input.attrs({
+  ariaHidden: true,
   type: 'checkbox',
 })`
   margin-right: 0.5rem;

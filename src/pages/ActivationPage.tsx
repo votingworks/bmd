@@ -7,6 +7,7 @@ import BallotContext from '../contexts/ballotContext'
 import { MyVoiceIsMyPassword } from '../assets/BarCodes'
 import Main, { MainChild } from '../components/Main'
 import Prose from '../components/Prose'
+import Screen from '../components/Screen'
 
 const Legend = styled.legend`
   margin: auto;
@@ -63,43 +64,45 @@ const StartPage = (props: RouteComponentProps) => {
   }
 
   return (
-    <Main>
-      <MainChild center>
-        <form onSubmit={onSubmit}>
-          <fieldset>
-            <Legend>
-              <label htmlFor="BallotCode">
-                <Prose textCenter>
-                  <h1>Scan Your Activation Code</h1>
-                  <p>Your ballot will be displayed after scan is complete.</p>
-                  <CodeBox onClick={takeShortcut}>
-                    <MyVoiceIsMyPassword />
-                  </CodeBox>
-                </Prose>
-              </label>
-            </Legend>
-            <input
-              data-testid="activation-code"
-              type="text"
-              id="BallotCode"
-              autoFocus
-              className="visually-hidden"
-              onBlur={onBlur}
-              onChange={onChange}
-              value={ballotCode}
-              aria-hidden="true"
-            />
-            <button
-              type="submit"
-              className="visually-hidden"
-              aria-hidden="true"
-            >
-              Submit
-            </button>
-          </fieldset>
-        </form>
-      </MainChild>
-    </Main>
+    <Screen>
+      <Main>
+        <MainChild center>
+          <form onSubmit={onSubmit}>
+            <fieldset>
+              <Legend>
+                <label htmlFor="BallotCode">
+                  <Prose textCenter>
+                    <h1>Scan Your Activation Code</h1>
+                    <p>Your ballot will be displayed after scan is complete.</p>
+                    <CodeBox onClick={takeShortcut}>
+                      <MyVoiceIsMyPassword />
+                    </CodeBox>
+                  </Prose>
+                </label>
+              </Legend>
+              <input
+                data-testid="activation-code"
+                type="text"
+                id="BallotCode"
+                autoFocus
+                className="visually-hidden"
+                onBlur={onBlur}
+                onChange={onChange}
+                value={ballotCode}
+                aria-hidden="true"
+              />
+              <button
+                type="submit"
+                className="visually-hidden"
+                aria-hidden="true"
+              >
+                Submit
+              </button>
+            </fieldset>
+          </form>
+        </MainChild>
+      </Main>
+    </Screen>
   )
 }
 

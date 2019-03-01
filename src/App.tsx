@@ -79,7 +79,7 @@ class App extends React.Component<RouteComponentProps, State> {
     // - setting this to 500 (for example) causes chromevox to start speaking the focused item, which is not what we want.
     this.props.history.listen(() => {
       window.setTimeout(() => {
-        clickContainerRef.current!.click()
+        // clickContainerRef.current!.click()
       }, 50)
     })
   }
