@@ -5,6 +5,7 @@ const ballot: BallotContextInterface = {
   election: undefined,
   resetBallot: () => undefined,
   setBallotKey: () => undefined,
+  toggleChromeVoxUI: () => undefined,
   updateVote: () => undefined,
   votes: {},
 }

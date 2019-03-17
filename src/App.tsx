@@ -136,6 +136,16 @@ class App extends React.Component<RouteComponentProps, State> {
     })
   }
 
+  public toggleChromeVoxUI = (enable: boolean) => {
+    const disableClass = 'disable-chrome-vox-ui'
+    const bodyClassList = document.getElementsByTagName('body')[0].classList
+    if (enable) {
+      bodyClassList.remove(disableClass)
+    } else {
+      bodyClassList.add(disableClass)
+    }
+  }
+
   public render() {
     const { election } = this.state
     if (!election) {
@@ -147,6 +157,7 @@ class App extends React.Component<RouteComponentProps, State> {
             election,
             resetBallot: this.resetBallot,
             setBallotKey: this.setBallotKey,
+            toggleChromeVoxUI: this.toggleChromeVoxUI,
             updateVote: this.updateVote,
             votes: this.state.votes,
           }}

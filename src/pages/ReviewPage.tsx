@@ -123,7 +123,12 @@ class SummaryPage extends React.Component<RouteComponentProps, State> {
   public componentWillUnmount = () => {
     window.removeEventListener('afterprint', this.resetBallot)
   }
+  public print = () => {
+    this.context.toggleChromeVoxUI(false)
+    window.print()
+  }
   public resetBallot = () => {
+    this.context.toggleChromeVoxUI(true)
     this.context.resetBallot('/cast')
   }
   public hideConfirm = () => {
@@ -245,7 +250,7 @@ class SummaryPage extends React.Component<RouteComponentProps, State> {
           }
           actions={
             <>
-              <Button primary onClick={window.print}>
+              <Button primary onClick={this.print}>
                 Yes, I‘m finished. Print ballot.
               </Button>
               <Button onClick={this.hideConfirm}>No. Go Back.</Button>

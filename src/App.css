@@ -128,3 +128,7 @@ html {
     margin-right: 0;
   }
 }
+
+.disable-chrome-vox-ui .cvox_indicator_container {
+  display: none;
+}

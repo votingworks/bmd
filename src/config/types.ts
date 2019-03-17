@@ -73,6 +73,7 @@ export interface BallotContextInterface {
   readonly election: Election | undefined
   resetBallot: (path?: string) => void
   setBallotKey: (activationCode: string) => void
+  toggleChromeVoxUI: (enable: boolean) => void
   updateVote: UpdateVoteFunction
   votes: VotesDict
 }

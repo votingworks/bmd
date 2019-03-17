@@ -17,6 +17,7 @@ export function render(
     history = createMemoryHistory({ initialEntries: [route] }),
     resetBallot = jest.fn(),
     setBallotKey = jest.fn(),
+    toggleChromeVoxUI = jest.fn(),
     updateVote = jest.fn(),
     votes = {},
     election = electionSample,
@@ -29,6 +30,7 @@ export function render(
           election: mergeWithDefaults(election as Election),
           resetBallot,
           setBallotKey,
+          toggleChromeVoxUI,
           updateVote,
           votes,
         }}
