@@ -54,7 +54,7 @@ const StartPage = (props: RouteComponentProps) => {
     setBallotCode(event.target.value)
     resetBallotCode = window.setTimeout(() => {
       setBallotCode('')
-    }, 1000)
+    }, 500)
   }
   // TODO: testing for onBlur causes stack overflow error
   /* istanbul ignore next */
