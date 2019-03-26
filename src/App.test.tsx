@@ -7,9 +7,13 @@ import electionSample from './data/electionSample.json'
 import App, { electionKey, mergeWithDefaults } from './App'
 import { CandidateContest, Election } from './config/types'
 
+import * as accessibility from './accessibility'
+
 const contest0 = electionSample.contests[0] as CandidateContest
+const contest1 = electionSample.contests[1] as CandidateContest
 const contest0candidate0 = contest0.candidates[0]
 const contest0candidate1 = contest0.candidates[1]
+const contest1candidate0 = contest1.candidates[0]
 
 const electionSampleAsString = JSON.stringify(
   mergeWithDefaults(electionSample as Election)
@@ -95,6 +99,10 @@ describe('loads election', () => {
   })
 })
 
+function getActiveInputElement(): HTMLInputElement {
+  return document.activeElement! as HTMLInputElement
+}
+
 it(`end to end: election can be uploaded, voter can vote and print`, async () => {
   /* tslint:disable-next-line */
   const eventListenerCallbacksDictionary: any = {}
@@ -120,6 +128,10 @@ it(`end to end: election can be uploaded, voter can vote and print`, async () =>
   })
   await waitForElement(() => getByText('Scan Your Activation Code'))
   expect(container).toMatchSnapshot()
+
+  // for test coverage, we test pressing left and right on gamepad here, should do nothing
+  accessibility.gamepadButtonDown('DPadLeft')
+  accessibility.gamepadButtonDown('DPadRight')
 
   // Activation Page
   // TODO: onBlur causes stack overflow error
@@ -147,6 +159,36 @@ it(`end to end: election can be uploaded, voter can vote and print`, async () =>
   // First Contest Page
   getByText(contest0.title)
   expect(contest0.seats).toEqual(1)
+
+  // Test navigation by gamepad
+  accessibility.gamepadButtonDown('DPadDown')
+  expect(getActiveInputElement().value).toEqual(contest0candidate0.id)
+  accessibility.gamepadButtonDown('DPadDown')
+  expect(getActiveInputElement().value).toEqual(contest0candidate1.id)
+  accessibility.gamepadButtonDown('DPadUp')
+  expect(getActiveInputElement().value).toEqual(contest0candidate0.id)
+
+  // test the edge case of rolling over
+  accessibility.gamepadButtonDown('DPadUp')
+  expect(document.activeElement!.textContent).toEqual('Settings')
+  accessibility.gamepadButtonDown('DPadDown')
+  expect(getActiveInputElement().value).toEqual(contest0candidate0.id)
+
+  accessibility.gamepadButtonDown('DPadRight')
+  // go up first without focus, then down once, should be same as down once.
+  accessibility.gamepadButtonDown('DPadUp')
+  accessibility.gamepadButtonDown('DPadDown')
+  expect(getActiveInputElement().value).toEqual(contest1candidate0.id)
+  accessibility.gamepadButtonDown('DPadLeft')
+  // A is same as down
+  accessibility.gamepadButtonDown('A')
+  expect(getActiveInputElement().value).toEqual(contest0candidate0.id)
+
+  // select and unselect
+  accessibility.gamepadButtonDown('B')
+  expect(getActiveInputElement().checked).toBe(true)
+  accessibility.gamepadButtonDown('B')
+  expect(getActiveInputElement().checked).toBe(false)
 
   // Test overvote modal
   fireEvent.click(getByText(contest0candidate0.name).closest('label')!)
