@@ -16,6 +16,12 @@ import Prose from '../components/Prose'
 import RangeInput from '../components/RangeInput'
 import { Text } from '../components/Typography'
 
+const DebugBlock = styled.details`
+  margin: 1rem 0;
+  background: pink;
+  padding: 1rem;
+`
+
 const SettingLabel = styled.label`
   display: block;
   margin: 1.5rem 0 1rem;
@@ -99,6 +105,17 @@ const SettingsPage = () => {
                 +
               </Button>
             </FontSizeControlsContainer>
+            <DebugBlock open>
+              <summary>Debuging Information</summary>
+              Uppercase i: 👉🏽 I 👈🏽 📏{' '}
+              <small>(for measuring in millimeters)</small>
+              <br />
+              Current font-size:{' '}
+              <code>
+                &lt;html style="font-size:{' '}
+                {GLOBALS.FONT_SIZES[userSettings.textSize]}px;"&gt;
+              </code>
+            </DebugBlock>
             <h2>Clear Selections</h2>
             <p>Clear all selections and start over.</p>
             <Button onClick={requestNewBallot}>Start Over</Button>
