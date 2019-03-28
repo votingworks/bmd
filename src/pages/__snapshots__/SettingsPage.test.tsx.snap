@@ -113,6 +113,12 @@ exports[`renders SettingsPage 1`] = `
   outline: -webkit-focus-ring-color auto 5px;
 }
 
+.c7 {
+  margin: 1rem 0;
+  background: pink;
+  padding: 1rem;
+}
+
 .c3 {
   display: block;
   margin: 1.5rem 0 1rem;
@@ -223,6 +229,28 @@ exports[`renders SettingsPage 1`] = `
           +
         </button>
       </div>
+      <details
+        class="c7"
+        open=""
+      >
+        <summary>
+          Debuging Information
+        </summary>
+        Uppercase i: 👉🏽 I 👈🏽 📏
+         
+        <small>
+          (for measuring in millimeters)
+        </small>
+        <br />
+        Current font-size:
+         
+        <code>
+          &lt;html style="font-size:
+           
+          24
+          px;"&gt;
+        </code>
+      </details>
       <h2>
         Clear Selections
       </h2>
