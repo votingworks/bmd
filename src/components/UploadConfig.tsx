@@ -38,10 +38,7 @@ const initialState = {
 }
 
 class UploadConfig extends React.Component<Props, State> {
-  constructor(props: Props) {
-    super(props)
-    this.state = initialState
-  }
+  public state: State = initialState
 
   public setErrorMessage = (
     errorMessage: string = 'Only files that end in ".json" are accepted. Try again.'

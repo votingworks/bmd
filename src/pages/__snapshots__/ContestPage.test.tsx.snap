@@ -191,9 +191,9 @@ exports[`displays accessible error if no id match 1`] = `
       <p>
         no contest exists for id 
         <code>
-          "
+          “
           foobar
-          "
+          ”
         </code>
       </p>
       <button
@@ -1579,9 +1579,9 @@ exports[`renders error if no id match 1`] = `
       <p>
         no contest exists for id 
         <code>
-          "
+          “
           foobar
-          "
+          ”
         </code>
       </p>
       <button

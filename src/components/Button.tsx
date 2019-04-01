@@ -11,11 +11,11 @@ export interface ButtonInterface<T> {
 }
 
 interface Props
-  extends React.PropsWithoutRef<JSX.IntrinsicElements['button']> {}
-interface Props extends ButtonInterface<{}> {}
+  extends ButtonInterface<{}>,
+    React.PropsWithoutRef<JSX.IntrinsicElements['button']> {}
 
-const Button = styled('button').attrs((props: Attrs) => ({
-  type: props.type || 'button',
+const Button = styled('button').attrs((attrs: Attrs) => ({
+  type: attrs.type || 'button',
 }))<Props>`
   box-sizing: border-box;
   cursor: pointer;

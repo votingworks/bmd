@@ -5,9 +5,9 @@ import Button, { ButtonInterface } from '../components/Button'
 import { ButtonEvent } from '../config/types'
 
 interface Props
-  extends React.PropsWithoutRef<JSX.IntrinsicElements['button']> {}
-interface Props extends RouteComponentProps<{}> {}
-interface Props extends ButtonInterface<{}> {}
+  extends ButtonInterface<{}>,
+    RouteComponentProps<{}>,
+    React.PropsWithoutRef<JSX.IntrinsicElements['button']> {}
 
 interface Props {
   goBack?: boolean
@@ -19,10 +19,10 @@ const LinkButton = (props: Props) => {
   const {
     goBack,
     history,
-    location,
-    match,
+    location, // eslint-disable-line @typescript-eslint/no-unused-vars
+    match, // eslint-disable-line @typescript-eslint/no-unused-vars
     onClick,
-    staticContext,
+    staticContext, // eslint-disable-line @typescript-eslint/no-unused-vars
     to,
     // ⬆ filtering out props that `button` doesn’t know what to do with.
     ...rest

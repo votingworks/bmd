@@ -15,9 +15,7 @@ interface ContestParams {
   id: string
 }
 
-interface Props extends RouteComponentProps<ContestParams> {}
-
-const ContestPage = (props: Props) => {
+const ContestPage = (props: RouteComponentProps<ContestParams>) => {
   const { id } = props.match.params
   const { election, updateVote, votes } = useContext(BallotContext)
   const { contests, bmdConfig } = election!
@@ -47,7 +45,7 @@ const ContestPage = (props: Props) => {
           <MainChild>
             <h1>Error</h1>
             <p>
-              no contest exists for id <code>"{id}"</code>
+              no contest exists for id <code>“{id}”</code>
             </p>
             <LinkButton to="/">Start Over</LinkButton>
           </MainChild>

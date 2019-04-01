@@ -219,14 +219,9 @@ const initialState = {
 
 class CandidateContest extends React.Component<Props, State> {
   public static contextType = BallotContext
-  private keyboard: React.RefObject<Keyboard>
-  private contestChoices: React.RefObject<HTMLDivElement>
-  constructor(props: Props) {
-    super(props)
-    this.state = initialState
-    this.keyboard = React.createRef()
-    this.contestChoices = React.createRef()
-  }
+  private keyboard = React.createRef<Keyboard>()
+  private contestChoices = React.createRef<HTMLDivElement>()
+  public state: State = initialState
 
   public componentDidMount() {
     this.updateContestChoicesScrollStates()
@@ -263,7 +258,7 @@ class CandidateContest extends React.Component<Props, State> {
     const { vote } = this.props
     const id = (event.target as HTMLInputElement).value
     const candidate = this.findCandidateById(vote, id)
-    if (!!candidate) {
+    if (candidate) {
       if (candidate.isWriteIn) {
         this.setState({ candidatePendingRemoval: candidate })
       } else {

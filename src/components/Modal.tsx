@@ -24,22 +24,22 @@ const ModalContent = styled('div')<ModalContentInterface>`
 `
 
 interface Props {
-  isOpen: boolean
-  ariaLabel?: string
-  content?: ReactNode
-  centerContent?: boolean
   actions?: ReactNode
+  ariaLabel?: string
+  centerContent?: boolean
+  content?: ReactNode
+  isOpen: boolean
   onAfterOpen?: () => void
 }
 
 const Modal: React.FC<Props> = ({
   actions,
-  content,
-  centerContent,
   ariaLabel = 'Alert Modal',
+  centerContent,
+  content,
   isOpen,
   onAfterOpen,
-}) => (
+}: Props) => (
   <ReactModal
     appElement={document.getElementById('root')!}
     ariaHideApp={process.env.NODE_ENV !== 'test'}

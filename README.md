@@ -91,21 +91,19 @@ help you contribute.
 1. Add features, fix bugs, etc. and then use `git` to commit your changes in
    logical commits.
 
-   There is a pre-commit hook which will run linting and code formatting
-   scripts. You can run these manually with these three commands which are found
-   in the `package.json` scripts:
+   There is a pre-commit hook (see `.lintstangedrc` file) which will run linting
+   and code formatting scripts. You can run these manually with these three
+   commands which are found in the `package.json` scripts:
 
    ```
    yarn eslint:base
-   tslint:base
    yarn prettier:write
    ```
 
    **Using Visual Studio Code?** Autorun linting and code formatting by
-   installing/enabling the following plugins (which will pick up their
-   respective config files in this project):
+   installing/enabling the following plugins (which will pick up the respective
+   config files in this project):
 
-   - `TSLint` for TypeScript linting
    - `ESLint` for (ECMAScript) JavaScript linting
    - `Prettier - Code formatter` for code formatting
 
@@ -140,9 +138,10 @@ See `package.json` for all available scripts.
 This project was bootstrapped with
 [Create React App](https://github.com/facebook/create-react-app) for TypeScript.
 It uses [Styled Components](https://www.styled-components.com/docs/) for styles
-(and some `css` files too). [ESLint](https://eslint.org/),
-[TSLint](https://palantir.github.io/tslint/), and
-[Prettier](https://prettier.io/) are used to maintain clean code.
-[Jest](https://jestjs.io/), [dom-testing-library](https://testing-library.com)
-and [react-testing-library](https://github.com/kentcdodds/react-testing-library)
-are used to test components and end-to-end user flows.
+(and some `css` files too). [ESLint](https://eslint.org/) is configured to lint
+Javascript and TypeScript files, and format code using
+[Prettier](https://prettier.io/). [Jest](https://jestjs.io/),
+[dom-testing-library](https://testing-library.com),
+[react-testing-library](https://github.com/kentcdodds/react-testing-library),
+and [Cypress](https://www.cypress.io/) are used to test components and
+end-to-end user flows.

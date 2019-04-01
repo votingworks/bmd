@@ -55,7 +55,7 @@ export interface ElectionDefaults {
   readonly bmdConfig: BMDConfig
 }
 export interface Election {
-  readonly contests: Array<CandidateContest | YesNoContest>
+  readonly contests: (CandidateContest | YesNoContest)[]
   readonly county: string
   readonly date: string
   readonly seal: string

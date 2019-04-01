@@ -5,7 +5,7 @@ import { CandidateContest as CandidateContestInterface } from '../config/types'
 
 import CandidateContest from './CandidateContest'
 
-const contest = {
+const contest: CandidateContestInterface = {
   allowWriteIns: false,
   candidates: [0, 1, 2].map(i => ({
     id: `name-${i}`,
@@ -17,7 +17,7 @@ const contest = {
   section: 'City',
   title: 'Mayor',
   type: 'candidate',
-} as CandidateContestInterface
+}
 const candidate0 = contest.candidates[0]
 const candidate1 = contest.candidates[1]
 const candidate2 = contest.candidates[2]

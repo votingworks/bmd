@@ -58,7 +58,7 @@ describe('loads election', () => {
 })
 
 it(`end to end: election can be uploaded, voter can vote and print`, async () => {
-  /* tslint:disable-next-line */
+  /* eslint-disable-next-line */
   const eventListenerCallbacksDictionary: any = {}
   window.addEventListener = jest.fn((event, cb) => {
     eventListenerCallbacksDictionary[event] = cb

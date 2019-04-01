@@ -1,5 +1,3 @@
-/* tslint:disable:no-null-keyword */
-
 // Ported to TypeScript from:
 // https://github.com/joaquimserafim/is-json/blob/master/test/index.js
 
@@ -7,7 +5,7 @@ import { isJSON, isJSONStrict } from './is-json'
 
 it(`perform isJSON verifications`, () => {
   expect(isJSON('asdada[]asdadada sd asdasda das das')).toBeFalsy()
-  expect(isJSON(null)).toBeFalsy()
+  expect(isJSON(null)).toBeFalsy() // eslint-disable-line no-null/no-null
   expect(isJSON(false)).toBeFalsy()
   expect(isJSON('')).toBeFalsy()
   expect(isJSON('normal string')).toBeFalsy()

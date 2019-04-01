@@ -31,7 +31,7 @@ import electionSample from './data/electionSample.json'
 export const mergeWithDefaults = (
   election: Election,
   defaults: ElectionDefaults = electionDefaults
-) => ({ ...defaults, ...election })
+): Election => ({ ...defaults, ...election })
 
 import Ballot from './components/Ballot'
 import Screen from './components/Screen'
