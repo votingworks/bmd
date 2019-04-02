@@ -1,5 +1,6 @@
 import Mousetrap from 'mousetrap'
 import React from 'react'
+// @ts-ignore - @types/react-gamepad doesn't exist
 import Gamepad from 'react-gamepad'
 import { RouteComponentProps } from 'react-router-dom'
 import { BrowserRouter, Route } from 'react-router-dom'
@@ -9,8 +10,10 @@ import GLOBALS from './config/globals'
 import 'normalize.css'
 import './App.css'
 
-import * as accessibility from './accessibility'
-accessibility.registerEventListeners()
+import {
+  handleGamepadButtonDown,
+  handleGamepadKeyboardEvent,
+} from './lib/gamepad'
 
 import {
   Election,
@@ -74,12 +77,14 @@ class App extends React.Component<RouteComponentProps, State> {
       })
     }
     Mousetrap.bind(removeElectionShortcuts, this.reset)
+    document.addEventListener('keydown', handleGamepadKeyboardEvent)
     document.documentElement.setAttribute('data-useragent', navigator.userAgent)
     this.setDocumentFontSize()
   }
 
   public componentWillUnount = /* istanbul ignore next */ () => {
     Mousetrap.unbind(removeElectionShortcuts)
+    document.removeEventListener('keydown', handleGamepadKeyboardEvent)
   }
 
   public getElection = (): OptionalElection => {
@@ -155,15 +160,15 @@ class App extends React.Component<RouteComponentProps, State> {
       return <UploadConfig setElection={this.setElection} />
     } else {
       return (
-        <Gamepad onButtonDown={accessibility.gamepadButtonDown}>
+        <Gamepad onButtonDown={handleGamepadButtonDown}>
           <BallotContext.Provider
             value={{
               election,
               resetBallot: this.resetBallot,
               setBallotKey: this.setBallotKey,
-            setUserSettings: this.setUserSettings,
+              setUserSettings: this.setUserSettings,
               updateVote: this.updateVote,
-            userSettings: this.state.userSettings,
+              userSettings: this.state.userSettings,
               votes: this.state.votes,
             }}
           >
