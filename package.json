@@ -76,7 +76,8 @@
     "react-scripts": "2.1.8",
     "react-simple-keyboard": "^1.21.3",
     "styled-components": "^4.2.0",
-    "typescript": "3.2.2"
+    "typescript": "3.2.2",
+    "typescript-eslint-parser": "^22.0.0"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^1.5.0",

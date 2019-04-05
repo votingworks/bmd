@@ -3,7 +3,11 @@ import GLOBALS from '../config/globals'
 import React, { useContext, useState } from 'react'
 import styled from 'styled-components'
 
-import { ButtonEvent, InputEvent, TextSizeSetting } from '../config/types'
+import {
+  ButtonEvent, // eslint-disable-line import/named
+  InputEvent, // eslint-disable-line import/named
+  TextSizeSetting, // eslint-disable-line import/named
+} from '../config/types'
 
 import BallotContext from '../contexts/ballotContext'
 
@@ -14,7 +18,7 @@ import Main, { MainChild } from '../components/Main'
 import Modal from '../components/Modal'
 import Prose from '../components/Prose'
 import RangeInput from '../components/RangeInput'
-import { Text } from '../components/Typography'
+import Text from '../components/Text'
 
 const SettingLabel = styled.label`
   display: block;

@@ -3,11 +3,11 @@ import Dropzone from 'react-dropzone'
 import styled from 'styled-components'
 
 import electionSample from '../data/electionSample.json'
-import isJSON from '../utils/is-json'
+import isJSON from '../utils/isJSON'
 
 import Button from '../components/Button'
 import Prose from '../components/Prose'
-import { Text } from '../components/Typography'
+import Text from './Text'
 import { Election } from '../config/types'
 import Main, { MainChild } from './Main'
 

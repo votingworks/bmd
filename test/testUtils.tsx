@@ -7,7 +7,10 @@ import GLOBALS from '../src/config/globals'
 
 import electionSample from '../src/data/electionSample.json'
 
-import { Election, TextSizeSetting } from '../src/config/types'
+import {
+  Election,
+  TextSizeSetting, // eslint-disable-line import/named
+} from '../src/config/types'
 
 import { mergeWithDefaults } from '../src/App'
 import BallotContext from '../src/contexts/ballotContext'

@@ -1,3 +1,7 @@
+const jsExtensions = ['.js', '.jsx']
+const tsExtensions = ['.ts', '.tsx']
+const allExtensions = jsExtensions.concat(tsExtensions)
+
 module.exports = {
   env: {
     browser: true,
@@ -7,6 +11,9 @@ module.exports = {
   },
   parser: '@typescript-eslint/parser', // Specifies the ESLint parser
   extends: [
+    'plugin:import/errors',
+    'plugin:import/warnings',
+    'plugin:import/typescript',
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended', // Uses the recommended rules from @typescript-eslint/eslint-plugin
     'plugin:cypress/recommended',
@@ -33,6 +40,15 @@ module.exports = {
   settings: {
     react: {
       version: 'detect', // Tells eslint-plugin-react to automatically detect the version of React to use
+    },
+    'import/extensions': allExtensions,
+    'import/parsers': {
+      '@typescript-eslint/parser': tsExtensions,
+    },
+    'import/resolver': {
+      node: {
+        extensions: allExtensions,
+      },
     },
   },
   rules: {

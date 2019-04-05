@@ -2,7 +2,9 @@ import React from 'react'
 import { RouteComponentProps, withRouter } from 'react-router-dom'
 
 import Button, { ButtonInterface } from '../components/Button'
-import { ButtonEvent } from '../config/types'
+import {
+  ButtonEvent, // eslint-disable-line import/named
+} from '../config/types'
 
 interface Props
   extends ButtonInterface<{}>,

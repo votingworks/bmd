@@ -2,7 +2,9 @@ import React from 'react'
 import { RouteComponentProps } from 'react-router-dom'
 import styled from 'styled-components'
 
-import { CandidateVote } from '../config/types'
+import {
+  CandidateVote, // eslint-disable-line import/named
+} from '../config/types'
 
 import { Barcode } from '../assets/BarCodes'
 import Button from '../components/Button'
@@ -11,7 +13,7 @@ import LinkButton from '../components/LinkButton'
 import Main, { MainChild } from '../components/Main'
 import Modal from '../components/Modal'
 import Prose from '../components/Prose'
-import { Text } from '../components/Typography'
+import Text from '../components/Text'
 import BallotContext from '../contexts/ballotContext'
 
 const tabletMinWidth = 768

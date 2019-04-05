@@ -5,14 +5,14 @@ import 'react-simple-keyboard/build/css/index.css'
 import styled from 'styled-components'
 
 import {
-  ButtonEvent,
+  ButtonEvent, // eslint-disable-line import/named
   Candidate,
   CandidateContest as CandidateContestInterface,
-  CandidateVote,
-  InputEvent,
-  OptionalCandidate,
-  ScrollDirections,
-  UpdateVoteFunction,
+  CandidateVote, // eslint-disable-line import/named
+  InputEvent, // eslint-disable-line import/named
+  OptionalCandidate, // eslint-disable-line import/named
+  ScrollDirections, // eslint-disable-line import/named
+  UpdateVoteFunction, // eslint-disable-line import/named
 } from '../config/types'
 
 import BallotContext from '../contexts/ballotContext'
@@ -21,7 +21,7 @@ import GLOBALS from '../config/globals'
 import Button from './Button'
 import Modal from './Modal'
 import Prose from './Prose'
-import { Text } from './Typography'
+import Text from './Text'
 
 const tabletMinWidth = 720
 

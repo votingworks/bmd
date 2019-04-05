@@ -1,7 +1,9 @@
 import React, { useContext } from 'react'
 import { RouteComponentProps } from 'react-router-dom'
 
-import { CandidateVote } from '../config/types'
+import {
+  CandidateVote, // eslint-disable-line import/named
+} from '../config/types'
 
 import BallotContext from '../contexts/ballotContext'
 
@@ -9,7 +11,7 @@ import ButtonBar from '../components/ButtonBar'
 import CandidateContest from '../components/CandidateContest'
 import LinkButton from '../components/LinkButton'
 import Main, { MainChild } from '../components/Main'
-import Text from '../components/Typography'
+import Text from '../components/Text'
 
 interface ContestParams {
   id: string

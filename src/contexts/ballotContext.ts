@@ -1,7 +1,10 @@
 import GLOBALS from '../config/globals'
 
 import { createContext } from 'react'
-import { BallotContextInterface, TextSizeSetting } from '../config/types'
+import {
+  BallotContextInterface,
+  TextSizeSetting, // eslint-disable-line import/named
+} from '../config/types'
 
 const ballot: BallotContextInterface = {
   election: undefined,

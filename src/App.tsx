@@ -17,12 +17,12 @@ import {
 import {
   Election,
   ElectionDefaults,
-  OptionalElection,
-  PartialUserSettings,
-  TextSizeSetting,
+  OptionalElection, // eslint-disable-line import/named
+  PartialUserSettings, // eslint-disable-line import/named
+  TextSizeSetting, // eslint-disable-line import/named
   UserSettings,
-  Vote,
-  VotesDict,
+  Vote, // eslint-disable-line import/named
+  VotesDict, // eslint-disable-line import/named
 } from './config/types'
 
 import electionDefaults from './data/electionDefaults.json'

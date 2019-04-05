@@ -8,7 +8,7 @@ interface Props {
   small?: boolean
   white?: boolean
 }
-export const Text = styled('p')<Props>`
+const Text = styled('p')<Props>`
   color: ${({ error, muted, white }) =>
     (error && 'red') || (white && 'white') || (muted && 'gray') || undefined};
   text-align: ${({ center }) => (center ? 'center' : undefined)};
@@ -22,5 +22,4 @@ export const Text = styled('p')<Props>`
       undefined};
   }
 `
-
 export default Text
