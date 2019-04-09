@@ -1327,10 +1327,10 @@
     "@types/history" "*"
     "@types/react" "*"
 
-"@types/react-transition-group@^2.0.16":
-  version "2.0.16"
-  resolved "https://registry.yarnpkg.com/@types/react-transition-group/-/react-transition-group-2.0.16.tgz#2dcb9e396ab385ee19c4af1c9caa469a14cd042f"
-  integrity sha512-FUJEx2BGJPU1qVQoWd9v7wpOwnCPTWhcE4iTaU5prry9SvwiI11lCXOci8Nz9cM/Fuf650l7Skg6nlVeCYjPFA==
+"@types/react-transition-group@^2.8.0":
+  version "2.8.0"
+  resolved "https://registry.yarnpkg.com/@types/react-transition-group/-/react-transition-group-2.8.0.tgz#0e30ced3ad695ac053f715675467162b19bbe539"
+  integrity sha512-DHZrY4UBypeT/bD2WakC3MkdBHMOkhqWnRRCMqrtNknyhfkCfKmRlpKdxGlPkDKvNl2uDSHcdvmKy8JW0aNETA==
   dependencies:
     "@types/react" "*"
 
