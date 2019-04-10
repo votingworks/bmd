@@ -145,7 +145,7 @@ exports[`basic end-to-end flow 1`] = `
     <main
       class="c1"
     >
-      <div
+      <label
         class="c2"
         data-testid="dropzone"
         for="election-file-upload"
@@ -179,7 +179,7 @@ exports[`basic end-to-end flow 1`] = `
             
           </div>
         </div>
-      </div>
+      </label>
     </main>
     <footer
       class="c5"
