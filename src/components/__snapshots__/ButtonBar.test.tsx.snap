@@ -2,14 +2,11 @@
 
 exports[`renders ButtonBar 1`] = `
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: wrap-reverse;
-  -ms-flex-wrap: wrap-reverse;
-  flex-wrap: wrap-reverse;
-  padding: 0.5rem;
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  grid-auto-rows: 2.5rem;
+  grid-gap: 1rem;
+  padding: 1rem;
   background: #455a64;
   border-bottom: 1px solid darkgrey;
   -webkit-box-pack: justify;
@@ -22,14 +19,7 @@ exports[`renders ButtonBar 1`] = `
   align-items: center;
 }
 
-.c0 > *:first-child {
-  -webkit-order: 2;
-  -ms-flex-order: 2;
-  order: 2;
-}
-
 .c0 > * {
-  margin: 0.25rem;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;

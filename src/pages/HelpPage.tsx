@@ -17,8 +17,8 @@ const HelpPage = () => {
         </MainChild>
       </Main>
       <ButtonBar secondary>
-        <div />
         <LinkButton goBack>Back</LinkButton>
+        <div />
       </ButtonBar>
     </>
   )

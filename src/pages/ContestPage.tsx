@@ -62,6 +62,22 @@ const ContestPage = (props: Props) => {
         />
       )}
       <ButtonBar>
+        {prevContest ? (
+          <LinkButton
+            id="previous"
+            to={`/contests/${prevContest && prevContest.id}`}
+            key="previous"
+          >
+            Back
+          </LinkButton>
+        ) : (
+          <LinkButton key="backtostart" to="/start" id="previous">
+            Back
+          </LinkButton>
+        )}
+        <Text center white bold>
+          {currentContestIndex + 1} of {contests.length}
+        </Text>
         {nextContest ? (
           <LinkButton
             id="next"
@@ -76,31 +92,15 @@ const ContestPage = (props: Props) => {
             Review
           </LinkButton>
         )}
-        {prevContest ? (
-          <LinkButton
-            id="previous"
-            to={`/contests/${prevContest && prevContest.id}`}
-            key="previous"
-          >
-            Previous
-          </LinkButton>
-        ) : (
-          <LinkButton key="backtostart" to="/start" id="previous">
-            Previous
-          </LinkButton>
-        )}
-        <Text center white>
-          {currentContestIndex + 1} of {contests.length}
-        </Text>
       </ButtonBar>
       <ButtonBar
         secondary
         separatePrimaryButton
         centerOnlyChild={!showHelpPage && !showSettingsPage && false}
       >
-        <LinkButton to="/review">Review</LinkButton>
         {showHelpPage && <LinkButton to="/help">Help</LinkButton>}
         {showSettingsPage && <LinkButton to="/settings">Settings</LinkButton>}
+        <LinkButton to="/review">Review</LinkButton>
       </ButtonBar>
     </React.Fragment>
   )

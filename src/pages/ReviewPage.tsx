@@ -263,12 +263,14 @@ class SummaryPage extends React.Component<RouteComponentProps, State> {
           </MainChild>
         </Main>
         <ButtonBar separatePrimaryButton>
-          <Button primary onClick={this.showConfirm}>
-            Print Ballot
-          </Button>
           <LinkButton goBack id="previous">
             Back
           </LinkButton>
+
+          <div />
+          <Button primary onClick={this.showConfirm}>
+            Print Ballot
+          </Button>
         </ButtonBar>
         <Modal
           isOpen={this.state.showConfirmModal}

@@ -30,7 +30,9 @@ const Button = styled('button').attrs((props: Attrs) => ({
     (primary && 'white') ||
     'black'};
   line-height: 1;
+  height: 100%;
   white-space: nowrap;
+  font-weight: bold;
 `
 
 export default Button

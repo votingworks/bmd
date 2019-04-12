@@ -10,7 +10,9 @@ exports[`navigates back 1`] = `
   padding: 0.4rem 0.7rem;
   color: black;
   line-height: 1;
+  height: 100%;
   white-space: nowrap;
+  font-weight: bold;
 }
 
 <button
@@ -31,7 +33,9 @@ exports[`navigates to page 1`] = `
   padding: 0.4rem 0.7rem;
   color: black;
   line-height: 1;
+  height: 100%;
   white-space: nowrap;
+  font-weight: bold;
 }
 
 <button
@@ -52,7 +56,9 @@ exports[`renders LinkButton with onClick and disabled props 1`] = `
   padding: 0.4rem 0.7rem;
   color: darkgrey;
   line-height: 1;
+  height: 100%;
   white-space: nowrap;
+  font-weight: bold;
 }
 
 <button
@@ -74,7 +80,9 @@ exports[`renders LinkButton with onClick prop 1`] = `
   padding: 0.4rem 0.7rem;
   color: black;
   line-height: 1;
+  height: 100%;
   white-space: nowrap;
+  font-weight: bold;
 }
 
 <button

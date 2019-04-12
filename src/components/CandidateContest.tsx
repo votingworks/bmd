@@ -32,24 +32,24 @@ const ContestMain = styled.main`
 `
 const ContestHeader = styled.div`
   width: 100%;
-  max-width: 35rem;
+  max-width: 43rem;
   margin: 0px auto;
-  padding: 1rem 0.75rem 0.5rem;
+  padding: 1rem 0.5rem 0.5rem;
   @media (min-width: ${tabletMinWidth}px) {
-    padding: 1rem 1.5rem 0.5rem;
-    padding-left: 5rem;
+    padding: 1rem 1rem 0.5rem;
   }
 `
 const ContestSection = styled.div`
-  font-size: 0.85rem;
+  font-size: 1rem;
   font-weight: 600;
   text-transform: uppercase;
+  padding-bottom: 1rem;
 `
 const VariableContentContainer = styled.div<{
   showBottomShadow?: boolean
   showTopShadow?: boolean
 }>`
-  display: flex;
+  display: grid;
   flex: 1;
   position: relative;
   overflow: auto;
@@ -60,81 +60,72 @@ const VariableContentContainer = styled.div<{
     transition: opacity 0.25s ease;
     position: absolute;
     height: 0.25rem;
+    height: 0;
     width: 100%;
   }
   &:before {
-    top: 0;
-    opacity: ${({ showTopShadow }) =>
-      showTopShadow ? /* istanbul ignore next: Tested by Cypress */ 1 : 0};
-    background: linear-gradient(
-      to bottom,
-      rgb(177, 186, 190) 0%,
-      transparent 100%
-    );
   }
   &:after {
-    bottom: 0;
-    opacity: ${({ showBottomShadow }) =>
-      showBottomShadow ? /* istanbul ignore next: Tested by Cypress */ 1 : 0};
-    background: linear-gradient(
-      to bottom,
-      transparent 0%,
-      rgb(177, 186, 190) 100%
-    );
   }
 `
 const ScrollControls = styled.div`
   display: none;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  flex-direction: column;
-  justify-content: space-between;
+  height: 5.5rem;
   width: 100%;
-  max-width: 35rem;
-  padding: 0.5rem 0.75rem 0.5rem 0;
-  padding-left: calc(100% - 7rem);
-  pointer-events: none;
-  & > * {
-    pointer-events: auto;
+  z-index: 1;
+  &:first-of-type {
+    height: 4rem;
+    border-bottom: 1px solid #263238;
+    box-shadow: 0 0.25rem 1.25rem 0 rgba(0, 0, 0, 0.14),
+      0 0.1875rem 0.0625rem -0.125rem rgba(0, 0, 0, 0.12),
+      0 0.0625rem 0.3125rem 0 rgba(0, 0, 0, 0.2);
   }
-  html[data-useragent*='Windows'] & {
-    margin-left: -17px; /* Windows Chrome scrollbar width */
+  & button {
+    width: 100%;
+    max-width: 43rem;
+    padding: 0.4rem 0.7rem;
+    height: 2.5rem;
+    margin: 0.5rem auto 1rem;
+  }
+  &:last-of-type {
+    border-top: 1px solid #263238;
+    box-shadow: 0 -0.25rem 1.25rem 0 rgba(0, 0, 0, 0.14),
+      0 0.1875rem 0.0625rem -0.125rem rgba(0, 0, 0, 0.12),
+      0 0.0625rem 0.3125rem 0 rgba(0, 0, 0, 0.2);
+    & button {
+      margin-top: 1rem;
+    }
   }
   @media (min-width: ${tabletMinWidth}px) {
     display: flex;
-  }
-  @media (min-width: 840px) {
-    left: 50%;
-    margin-left: -420px;
-    padding-left: calc(840px - 7rem);
-    html[data-useragent*='Windows'] & {
-      margin-left: calc(-420px + -17px); /* Windows Chrome scrollbar width */
-    }
   }
 `
 const ScrollContainer = styled.div`
   flex: 1;
   overflow: auto;
+  grid-row: auto;
 `
 const ScrollableContentWrapper = styled.div<{ isScrollable: boolean }>`
   width: 100%;
-  max-width: 35rem;
+  max-width: 43rem;
   margin: 0 auto;
   padding: 0.5rem 0.5rem 1rem;
   @media (min-width: ${tabletMinWidth}px) {
+    padding-top: ${({ isScrollable }) =>
+      isScrollable
+        ? /* istanbul ignore next: Tested by Cypress */ '2rem'
+        : '1rem'};
     padding-right: ${({ isScrollable }) =>
       isScrollable
-        ? /* istanbul ignore next: Tested by Cypress */ '8rem'
+        ? /* istanbul ignore next: Tested by Cypress */ '1rem'
         : '1rem'};
     padding-left: 1rem;
   }
 `
 const ChoicesGrid = styled.div`
   display: grid;
-  grid-auto-rows: minmax(auto, 1fr);
-  grid-gap: 0.75rem;
+  grid-auto-rows: minmax(4rem, 1fr);
+  grid-gap: 1rem;
 `
 const Choice = styled('label')<{ isSelected: boolean }>`
   cursor: pointer;
@@ -142,7 +133,7 @@ const Choice = styled('label')<{ isSelected: boolean }>`
   display: grid;
   align-items: center;
   border-radius: 0.125rem;
-  background: ${({ isSelected }) => (isSelected ? '#028099' : 'white')};
+  background-color: ${({ isSelected }) => (isSelected ? '#028099' : 'white')};
   color: ${({ isSelected }) => (isSelected ? 'white' : undefined)};
   box-shadow: 0 0.125rem 0.125rem 0 rgba(0, 0, 0, 0.14),
     0 0.1875rem 0.0625rem -0.125rem rgba(0, 0, 0, 0.12),
@@ -155,7 +146,7 @@ const Choice = styled('label')<{ isSelected: boolean }>`
     outline: -webkit-focus-ring-color auto 5px;
   }
   :before {
-    content: '${({ isSelected }) => (isSelected ? '✓' : '')}';
+    content: '${({ isSelected }) => (isSelected ? '✓' : '')} ';
     position: absolute;
     left: 0;
     top: 0;
@@ -163,7 +154,7 @@ const Choice = styled('label')<{ isSelected: boolean }>`
     background: white;
     border-right: 1px solid;
     border-color: ${({ isSelected }) => (isSelected ? '#028099' : 'lightgrey')};
-    width: 3rem;
+    width: 4rem;
     text-align: center;
     display: flex;
     justify-content: center;
@@ -174,9 +165,12 @@ const Choice = styled('label')<{ isSelected: boolean }>`
   }
   & > div {
     word-break: break-word;
-    padding: 0.5rem 0.5rem 0.5rem 4rem;
+    padding: 1rem 0.5rem 1rem 5rem;
     @media (min-width: 480px) {
       padding: 1rem 1rem 1rem inherit;
+    }
+    & > div {
+      grid-template-columns: auto 9.5rem;
     }
   }
 `
@@ -429,6 +423,18 @@ class CandidateContest extends React.Component<Props, State> {
             showTopShadow={!isScrollAtTop}
             showBottomShadow={!isScrollAtBottom}
           >
+            {isScrollable /* istanbul ignore next: Tested by Cypress */ && (
+              <ScrollControls aria-hidden="true">
+                <Button
+                  data-direction="up"
+                  disabled={isScrollAtTop}
+                  onClick={this.scrollContestChoices}
+                  tabIndex={-1}
+                >
+                  ↑ See more
+                </Button>
+              </ScrollControls>
+            )}
             <ScrollContainer
               ref={this.scrollContainer}
               onScroll={this.updateContestChoicesScrollStates}
@@ -463,15 +469,16 @@ class CandidateContest extends React.Component<Props, State> {
                           className="visually-hidden"
                         />
                         <Prose>
-                          <p
+                          <div
                             aria-label={`${candidate.name}, ${
                               candidate.party
                             }.`}
                           >
-                            <strong>{candidate.name}</strong>
-                            <br />
-                            {candidate.party}
-                          </p>
+                            <p>
+                              <strong>{candidate.name}</strong>
+                            </p>
+                            <p>{candidate.party}</p>
+                          </div>
                         </Prose>
                       </Choice>
                     )
@@ -519,22 +526,14 @@ class CandidateContest extends React.Component<Props, State> {
               </ScrollableContentWrapper>
             </ScrollContainer>
             {isScrollable /* istanbul ignore next: Tested by Cypress */ && (
-              <ScrollControls aria-hidden="true">
-                <Button
-                  data-direction="up"
-                  disabled={isScrollAtTop}
-                  onClick={this.scrollContestChoices}
-                  tabIndex={-1}
-                >
-                  ↑ See More
-                </Button>
+              <ScrollControls>
                 <Button
                   data-direction="down"
                   disabled={isScrollAtBottom}
                   onClick={this.scrollContestChoices}
                   tabIndex={-1}
                 >
-                  ↓ See More
+                  ↓ See more
                 </Button>
               </ScrollControls>
             )}

@@ -24,14 +24,15 @@ exports[`can navigate all ballot pages 1`] = `
 
 .c3 {
   line-height: 1.2;
-  max-width: 66ch;
+  max-width: 41rem;
+  padding: 1rem 0;
   text-align: center;
   margin: auto;
 }
 
 .c3 h1 {
-  line-height: 1.1;
   margin: 2rem 0 1rem;
+  padding: 0 0 1rem;
 }
 
 .c3 h2 {
@@ -59,6 +60,20 @@ exports[`can navigate all ballot pages 1`] = `
 
 .c3 :last-child {
   margin-bottom: 0;
+}
+
+.c3 div {
+  display: grid;
+  grid-auto-rows: 1fr;
+  grid-gap: 0.5rem;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c3 div p {
+  margin: 0;
 }
 
 .c2 {
@@ -90,12 +105,6 @@ exports[`can navigate all ballot pages 1`] = `
   .c1 {
     max-width: 100%;
     margin: 0;
-  }
-}
-
-@media (min-width:480px) {
-  .c3 {
-    line-height: 1.3;
   }
 }
 

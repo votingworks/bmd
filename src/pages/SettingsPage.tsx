@@ -23,11 +23,12 @@ const SettingLabel = styled.label`
   font-weight: bold;
 `
 const FontSizeControlsContainer = styled.div`
-  display: flex;
+  grid-template-columns: 2.5rem auto 2.5rem;
   & input {
     flex: 1;
     margin-right: 0.5rem;
     margin-left: 0.5rem;
+    width: 100%;
   }
   button {
     border-radius: 50%;

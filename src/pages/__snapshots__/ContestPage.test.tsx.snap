@@ -31,23 +31,23 @@ exports[`displays accessible error if no id match 1`] = `
   padding: 0.4rem 0.7rem;
   color: black;
   line-height: 1;
+  height: 100%;
   white-space: nowrap;
+  font-weight: bold;
 }
 
 .c4 {
   color: white;
   text-align: center;
+  font-weight: 600;
 }
 
 .c3 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: wrap-reverse;
-  -ms-flex-wrap: wrap-reverse;
-  flex-wrap: wrap-reverse;
-  padding: 0.5rem;
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  grid-auto-rows: 2.5rem;
+  grid-gap: 1rem;
+  padding: 1rem;
   background: #455a64;
   border-bottom: 1px solid darkgrey;
   -webkit-box-pack: justify;
@@ -60,14 +60,7 @@ exports[`displays accessible error if no id match 1`] = `
   align-items: center;
 }
 
-.c3 > *:first-child {
-  -webkit-order: 2;
-  -ms-flex-order: 2;
-  order: 2;
-}
-
 .c3 > * {
-  margin: 0.25rem;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -77,14 +70,12 @@ exports[`displays accessible error if no id match 1`] = `
   -webkit-order: -1;
   -ms-flex-order: -1;
   order: -1;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: wrap-reverse;
-  -ms-flex-wrap: wrap-reverse;
-  flex-wrap: wrap-reverse;
-  padding: 0.5rem;
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  grid-template-columns: repeat(4,1fr);
+  grid-auto-rows: 2.5rem;
+  grid-gap: 1rem;
+  padding: 1rem;
   background: #455a64;
   border-bottom: 1px solid darkgrey;
   -webkit-box-pack: justify;
@@ -97,14 +88,7 @@ exports[`displays accessible error if no id match 1`] = `
   align-items: center;
 }
 
-.c5 > *:first-child {
-  -webkit-order: 2;
-  -ms-flex-order: 2;
-  order: 2;
-}
-
 .c5 > * {
-  margin: 0.25rem;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -149,12 +133,6 @@ exports[`displays accessible error if no id match 1`] = `
 @media print {
   .c3 {
     display: none;
-  }
-}
-
-@media (min-width:480px) {
-  .c5 > *:first-child {
-    margin-left: auto;
   }
 }
 
@@ -209,17 +187,10 @@ exports[`displays accessible error if no id match 1`] = `
   >
     <button
       class="c2"
-      id="next"
-      type="button"
-    >
-      Next
-    </button>
-    <button
-      class="c2"
       id="previous"
       type="button"
     >
-      Previous
+      Back
     </button>
     <p
       class="c4"
@@ -228,16 +199,17 @@ exports[`displays accessible error if no id match 1`] = `
        of 
       20
     </p>
+    <button
+      class="c2"
+      id="next"
+      type="button"
+    >
+      Next
+    </button>
   </nav>
   <nav
     class="c5"
   >
-    <button
-      class="c2"
-      type="button"
-    >
-      Review
-    </button>
     <button
       class="c2"
       type="button"
@@ -250,6 +222,12 @@ exports[`displays accessible error if no id match 1`] = `
     >
       Settings
     </button>
+    <button
+      class="c2"
+      type="button"
+    >
+      Review
+    </button>
   </nav>
 </div>
 `;
@@ -257,12 +235,13 @@ exports[`displays accessible error if no id match 1`] = `
 exports[`doesn't display help and settings pages if disabled 1`] = `
 .c2 {
   line-height: 1.2;
-  max-width: 66ch;
+  max-width: 41rem;
+  padding: 1rem 0;
 }
 
 .c2 h1 {
-  line-height: 1.1;
   margin: 2rem 0 1rem;
+  padding: 0 0 1rem;
 }
 
 .c2 h2 {
@@ -292,6 +271,20 @@ exports[`doesn't display help and settings pages if disabled 1`] = `
   margin-bottom: 0;
 }
 
+.c2 div {
+  display: grid;
+  grid-auto-rows: 1fr;
+  grid-gap: 0.5rem;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c2 div p {
+  margin: 0;
+}
+
 .c11 {
   box-sizing: border-box;
   cursor: pointer;
@@ -301,23 +294,23 @@ exports[`doesn't display help and settings pages if disabled 1`] = `
   padding: 0.4rem 0.7rem;
   color: black;
   line-height: 1;
+  height: 100%;
   white-space: nowrap;
+  font-weight: bold;
 }
 
 .c12 {
   color: white;
   text-align: center;
+  font-weight: 600;
 }
 
 .c10 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: wrap-reverse;
-  -ms-flex-wrap: wrap-reverse;
-  flex-wrap: wrap-reverse;
-  padding: 0.5rem;
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  grid-auto-rows: 2.5rem;
+  grid-gap: 1rem;
+  padding: 1rem;
   background: #455a64;
   border-bottom: 1px solid darkgrey;
   -webkit-box-pack: justify;
@@ -330,14 +323,7 @@ exports[`doesn't display help and settings pages if disabled 1`] = `
   align-items: center;
 }
 
-.c10 > *:first-child {
-  -webkit-order: 2;
-  -ms-flex-order: 2;
-  order: 2;
-}
-
 .c10 > * {
-  margin: 0.25rem;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -347,14 +333,12 @@ exports[`doesn't display help and settings pages if disabled 1`] = `
   -webkit-order: -1;
   -ms-flex-order: -1;
   order: -1;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: wrap-reverse;
-  -ms-flex-wrap: wrap-reverse;
-  flex-wrap: wrap-reverse;
-  padding: 0.5rem;
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  grid-template-columns: repeat(4,1fr);
+  grid-auto-rows: 2.5rem;
+  grid-gap: 1rem;
+  padding: 1rem;
   background: #455a64;
   border-bottom: 1px solid darkgrey;
   -webkit-box-pack: justify;
@@ -367,14 +351,7 @@ exports[`doesn't display help and settings pages if disabled 1`] = `
   align-items: center;
 }
 
-.c13 > *:first-child {
-  -webkit-order: 2;
-  -ms-flex-order: 2;
-  order: 2;
-}
-
 .c13 > * {
-  margin: 0.25rem;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -395,22 +372,20 @@ exports[`doesn't display help and settings pages if disabled 1`] = `
 
 .c1 {
   width: 100%;
-  max-width: 35rem;
+  max-width: 43rem;
   margin: 0px auto;
-  padding: 1rem 0.75rem 0.5rem;
+  padding: 1rem 0.5rem 0.5rem;
 }
 
 .c3 {
-  font-size: 0.85rem;
+  font-size: 1rem;
   font-weight: 600;
   text-transform: uppercase;
+  padding-bottom: 1rem;
 }
 
 .c4 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: grid;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -426,19 +401,8 @@ exports[`doesn't display help and settings pages if disabled 1`] = `
   transition: opacity 0.25s ease;
   position: absolute;
   height: 0.25rem;
+  height: 0;
   width: 100%;
-}
-
-.c4:before {
-  top: 0;
-  opacity: 0;
-  background: linear-gradient( to bottom, rgb(177,186,190) 0%, transparent 100% );
-}
-
-.c4:after {
-  bottom: 0;
-  opacity: 0;
-  background: linear-gradient( to bottom, transparent 0%, rgb(177,186,190) 100% );
 }
 
 .c5 {
@@ -446,19 +410,20 @@ exports[`doesn't display help and settings pages if disabled 1`] = `
   -ms-flex: 1;
   flex: 1;
   overflow: auto;
+  grid-row: auto;
 }
 
 .c6 {
   width: 100%;
-  max-width: 35rem;
+  max-width: 43rem;
   margin: 0 auto;
   padding: 0.5rem 0.5rem 1rem;
 }
 
 .c7 {
   display: grid;
-  grid-auto-rows: minmax(auto,1fr);
-  grid-gap: 0.75rem;
+  grid-auto-rows: minmax(4rem,1fr);
+  grid-gap: 1rem;
 }
 
 .c8 {
@@ -470,7 +435,7 @@ exports[`doesn't display help and settings pages if disabled 1`] = `
   -ms-flex-align: center;
   align-items: center;
   border-radius: 0.125rem;
-  background: white;
+  background-color: white;
   box-shadow: 0 0.125rem 0.125rem 0 rgba(0,0,0,0.14), 0 0.1875rem 0.0625rem -0.125rem rgba(0,0,0,0.12), 0 0.0625rem 0.3125rem 0 rgba(0,0,0,0.2);
   -webkit-transition: background 0.25s,color 0.25s;
   transition: background 0.25s,color 0.25s;
@@ -485,7 +450,7 @@ button.c8 {
 }
 
 .c8:before {
-  content: '';
+  content: ' ';
   position: absolute;
   left: 0;
   top: 0;
@@ -493,7 +458,7 @@ button.c8 {
   background: white;
   border-right: 1px solid;
   border-color: lightgrey;
-  width: 3rem;
+  width: 4rem;
   text-align: center;
   display: -webkit-box;
   display: -webkit-flex;
@@ -514,17 +479,15 @@ button.c8 {
 
 .c8 > div {
   word-break: break-word;
-  padding: 0.5rem 0.5rem 0.5rem 4rem;
+  padding: 1rem 0.5rem 1rem 5rem;
+}
+
+.c8 > div > div {
+  grid-template-columns: auto 9.5rem;
 }
 
 .c9 {
   margin-right: 0.5rem;
-}
-
-@media (min-width:480px) {
-  .c2 {
-    line-height: 1.3;
-  }
 }
 
 @media print {
@@ -543,12 +506,6 @@ button.c8 {
 @media print {
   .c10 {
     display: none;
-  }
-}
-
-@media (min-width:480px) {
-  .c13 > *:first-child {
-    margin-left: auto;
   }
 }
 
@@ -574,13 +531,13 @@ button.c8 {
 
 @media (min-width:720px) {
   .c1 {
-    padding: 1rem 1.5rem 0.5rem;
-    padding-left: 5rem;
+    padding: 1rem 1rem 0.5rem;
   }
 }
 
 @media (min-width:720px) {
   .c6 {
+    padding-top: 1rem;
     padding-right: 1rem;
     padding-left: 1rem;
   }
@@ -654,15 +611,18 @@ button.c8 {
               <div
                 class="c2"
               >
-                <p
+                <div
                   aria-label="Joseph Barchi and Joseph Hallaren, Federalist."
                 >
-                  <strong>
-                    Joseph Barchi and Joseph Hallaren
-                  </strong>
-                  <br />
-                  Federalist
-                </p>
+                  <p>
+                    <strong>
+                      Joseph Barchi and Joseph Hallaren
+                    </strong>
+                  </p>
+                  <p>
+                    Federalist
+                  </p>
+                </div>
               </div>
             </label>
             <label
@@ -679,15 +639,18 @@ button.c8 {
               <div
                 class="c2"
               >
-                <p
+                <div
                   aria-label="Adam Cramer and Greg Vuocolo, People's."
                 >
-                  <strong>
-                    Adam Cramer and Greg Vuocolo
-                  </strong>
-                  <br />
-                  People's
-                </p>
+                  <p>
+                    <strong>
+                      Adam Cramer and Greg Vuocolo
+                    </strong>
+                  </p>
+                  <p>
+                    People's
+                  </p>
+                </div>
               </div>
             </label>
             <label
@@ -704,15 +667,18 @@ button.c8 {
               <div
                 class="c2"
               >
-                <p
+                <div
                   aria-label="Daniel Court and Amy Blumhardt, Liberty."
                 >
-                  <strong>
-                    Daniel Court and Amy Blumhardt
-                  </strong>
-                  <br />
-                  Liberty
-                </p>
+                  <p>
+                    <strong>
+                      Daniel Court and Amy Blumhardt
+                    </strong>
+                  </p>
+                  <p>
+                    Liberty
+                  </p>
+                </div>
               </div>
             </label>
             <label
@@ -729,15 +695,18 @@ button.c8 {
               <div
                 class="c2"
               >
-                <p
+                <div
                   aria-label="Alvin Boone and James Lian, Constitution."
                 >
-                  <strong>
-                    Alvin Boone and James Lian
-                  </strong>
-                  <br />
-                  Constitution
-                </p>
+                  <p>
+                    <strong>
+                      Alvin Boone and James Lian
+                    </strong>
+                  </p>
+                  <p>
+                    Constitution
+                  </p>
+                </div>
               </div>
             </label>
             <label
@@ -754,15 +723,18 @@ button.c8 {
               <div
                 class="c2"
               >
-                <p
+                <div
                   aria-label="Ashley Hildebrand-MacDougall and James Garritty, Whig."
                 >
-                  <strong>
-                    Ashley Hildebrand-MacDougall and James Garritty
-                  </strong>
-                  <br />
-                  Whig
-                </p>
+                  <p>
+                    <strong>
+                      Ashley Hildebrand-MacDougall and James Garritty
+                    </strong>
+                  </p>
+                  <p>
+                    Whig
+                  </p>
+                </div>
               </div>
             </label>
             <label
@@ -779,15 +751,18 @@ button.c8 {
               <div
                 class="c2"
               >
-                <p
+                <div
                   aria-label="Martin Patterson and Clay Lariviere, Labor."
                 >
-                  <strong>
-                    Martin Patterson and Clay Lariviere
-                  </strong>
-                  <br />
-                  Labor
-                </p>
+                  <p>
+                    <strong>
+                      Martin Patterson and Clay Lariviere
+                    </strong>
+                  </p>
+                  <p>
+                    Labor
+                  </p>
+                </div>
               </div>
             </label>
           </div>
@@ -800,17 +775,10 @@ button.c8 {
   >
     <button
       class="c11"
-      id="next"
-      type="button"
-    >
-      Next
-    </button>
-    <button
-      class="c11"
       id="previous"
       type="button"
     >
-      Previous
+      Back
     </button>
     <p
       class="c12"
@@ -819,6 +787,13 @@ button.c8 {
        of 
       20
     </p>
+    <button
+      class="c11"
+      id="next"
+      type="button"
+    >
+      Next
+    </button>
   </nav>
   <nav
     class="c13"
@@ -836,12 +811,13 @@ button.c8 {
 exports[`renders ContestPage 1`] = `
 .c2 {
   line-height: 1.2;
-  max-width: 66ch;
+  max-width: 41rem;
+  padding: 1rem 0;
 }
 
 .c2 h1 {
-  line-height: 1.1;
   margin: 2rem 0 1rem;
+  padding: 0 0 1rem;
 }
 
 .c2 h2 {
@@ -871,6 +847,20 @@ exports[`renders ContestPage 1`] = `
   margin-bottom: 0;
 }
 
+.c2 div {
+  display: grid;
+  grid-auto-rows: 1fr;
+  grid-gap: 0.5rem;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c2 div p {
+  margin: 0;
+}
+
 .c11 {
   box-sizing: border-box;
   cursor: pointer;
@@ -880,23 +870,23 @@ exports[`renders ContestPage 1`] = `
   padding: 0.4rem 0.7rem;
   color: black;
   line-height: 1;
+  height: 100%;
   white-space: nowrap;
+  font-weight: bold;
 }
 
 .c12 {
   color: white;
   text-align: center;
+  font-weight: 600;
 }
 
 .c10 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: wrap-reverse;
-  -ms-flex-wrap: wrap-reverse;
-  flex-wrap: wrap-reverse;
-  padding: 0.5rem;
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  grid-auto-rows: 2.5rem;
+  grid-gap: 1rem;
+  padding: 1rem;
   background: #455a64;
   border-bottom: 1px solid darkgrey;
   -webkit-box-pack: justify;
@@ -909,14 +899,7 @@ exports[`renders ContestPage 1`] = `
   align-items: center;
 }
 
-.c10 > *:first-child {
-  -webkit-order: 2;
-  -ms-flex-order: 2;
-  order: 2;
-}
-
 .c10 > * {
-  margin: 0.25rem;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -926,14 +909,12 @@ exports[`renders ContestPage 1`] = `
   -webkit-order: -1;
   -ms-flex-order: -1;
   order: -1;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: wrap-reverse;
-  -ms-flex-wrap: wrap-reverse;
-  flex-wrap: wrap-reverse;
-  padding: 0.5rem;
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  grid-template-columns: repeat(4,1fr);
+  grid-auto-rows: 2.5rem;
+  grid-gap: 1rem;
+  padding: 1rem;
   background: #455a64;
   border-bottom: 1px solid darkgrey;
   -webkit-box-pack: justify;
@@ -946,14 +927,7 @@ exports[`renders ContestPage 1`] = `
   align-items: center;
 }
 
-.c13 > *:first-child {
-  -webkit-order: 2;
-  -ms-flex-order: 2;
-  order: 2;
-}
-
 .c13 > * {
-  margin: 0.25rem;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -974,22 +948,20 @@ exports[`renders ContestPage 1`] = `
 
 .c1 {
   width: 100%;
-  max-width: 35rem;
+  max-width: 43rem;
   margin: 0px auto;
-  padding: 1rem 0.75rem 0.5rem;
+  padding: 1rem 0.5rem 0.5rem;
 }
 
 .c3 {
-  font-size: 0.85rem;
+  font-size: 1rem;
   font-weight: 600;
   text-transform: uppercase;
+  padding-bottom: 1rem;
 }
 
 .c4 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: grid;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -1005,19 +977,8 @@ exports[`renders ContestPage 1`] = `
   transition: opacity 0.25s ease;
   position: absolute;
   height: 0.25rem;
+  height: 0;
   width: 100%;
-}
-
-.c4:before {
-  top: 0;
-  opacity: 0;
-  background: linear-gradient( to bottom, rgb(177,186,190) 0%, transparent 100% );
-}
-
-.c4:after {
-  bottom: 0;
-  opacity: 0;
-  background: linear-gradient( to bottom, transparent 0%, rgb(177,186,190) 100% );
 }
 
 .c5 {
@@ -1025,19 +986,20 @@ exports[`renders ContestPage 1`] = `
   -ms-flex: 1;
   flex: 1;
   overflow: auto;
+  grid-row: auto;
 }
 
 .c6 {
   width: 100%;
-  max-width: 35rem;
+  max-width: 43rem;
   margin: 0 auto;
   padding: 0.5rem 0.5rem 1rem;
 }
 
 .c7 {
   display: grid;
-  grid-auto-rows: minmax(auto,1fr);
-  grid-gap: 0.75rem;
+  grid-auto-rows: minmax(4rem,1fr);
+  grid-gap: 1rem;
 }
 
 .c8 {
@@ -1049,7 +1011,7 @@ exports[`renders ContestPage 1`] = `
   -ms-flex-align: center;
   align-items: center;
   border-radius: 0.125rem;
-  background: white;
+  background-color: white;
   box-shadow: 0 0.125rem 0.125rem 0 rgba(0,0,0,0.14), 0 0.1875rem 0.0625rem -0.125rem rgba(0,0,0,0.12), 0 0.0625rem 0.3125rem 0 rgba(0,0,0,0.2);
   -webkit-transition: background 0.25s,color 0.25s;
   transition: background 0.25s,color 0.25s;
@@ -1064,7 +1026,7 @@ button.c8 {
 }
 
 .c8:before {
-  content: '';
+  content: ' ';
   position: absolute;
   left: 0;
   top: 0;
@@ -1072,7 +1034,7 @@ button.c8 {
   background: white;
   border-right: 1px solid;
   border-color: lightgrey;
-  width: 3rem;
+  width: 4rem;
   text-align: center;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1093,17 +1055,15 @@ button.c8 {
 
 .c8 > div {
   word-break: break-word;
-  padding: 0.5rem 0.5rem 0.5rem 4rem;
+  padding: 1rem 0.5rem 1rem 5rem;
+}
+
+.c8 > div > div {
+  grid-template-columns: auto 9.5rem;
 }
 
 .c9 {
   margin-right: 0.5rem;
-}
-
-@media (min-width:480px) {
-  .c2 {
-    line-height: 1.3;
-  }
 }
 
 @media print {
@@ -1122,12 +1082,6 @@ button.c8 {
 @media print {
   .c10 {
     display: none;
-  }
-}
-
-@media (min-width:480px) {
-  .c13 > *:first-child {
-    margin-left: auto;
   }
 }
 
@@ -1153,13 +1107,13 @@ button.c8 {
 
 @media (min-width:720px) {
   .c1 {
-    padding: 1rem 1.5rem 0.5rem;
-    padding-left: 5rem;
+    padding: 1rem 1rem 0.5rem;
   }
 }
 
 @media (min-width:720px) {
   .c6 {
+    padding-top: 1rem;
     padding-right: 1rem;
     padding-left: 1rem;
   }
@@ -1233,15 +1187,18 @@ button.c8 {
               <div
                 class="c2"
               >
-                <p
+                <div
                   aria-label="Joseph Barchi and Joseph Hallaren, Federalist."
                 >
-                  <strong>
-                    Joseph Barchi and Joseph Hallaren
-                  </strong>
-                  <br />
-                  Federalist
-                </p>
+                  <p>
+                    <strong>
+                      Joseph Barchi and Joseph Hallaren
+                    </strong>
+                  </p>
+                  <p>
+                    Federalist
+                  </p>
+                </div>
               </div>
             </label>
             <label
@@ -1258,15 +1215,18 @@ button.c8 {
               <div
                 class="c2"
               >
-                <p
+                <div
                   aria-label="Adam Cramer and Greg Vuocolo, People's."
                 >
-                  <strong>
-                    Adam Cramer and Greg Vuocolo
-                  </strong>
-                  <br />
-                  People's
-                </p>
+                  <p>
+                    <strong>
+                      Adam Cramer and Greg Vuocolo
+                    </strong>
+                  </p>
+                  <p>
+                    People's
+                  </p>
+                </div>
               </div>
             </label>
             <label
@@ -1283,15 +1243,18 @@ button.c8 {
               <div
                 class="c2"
               >
-                <p
+                <div
                   aria-label="Daniel Court and Amy Blumhardt, Liberty."
                 >
-                  <strong>
-                    Daniel Court and Amy Blumhardt
-                  </strong>
-                  <br />
-                  Liberty
-                </p>
+                  <p>
+                    <strong>
+                      Daniel Court and Amy Blumhardt
+                    </strong>
+                  </p>
+                  <p>
+                    Liberty
+                  </p>
+                </div>
               </div>
             </label>
             <label
@@ -1308,15 +1271,18 @@ button.c8 {
               <div
                 class="c2"
               >
-                <p
+                <div
                   aria-label="Alvin Boone and James Lian, Constitution."
                 >
-                  <strong>
-                    Alvin Boone and James Lian
-                  </strong>
-                  <br />
-                  Constitution
-                </p>
+                  <p>
+                    <strong>
+                      Alvin Boone and James Lian
+                    </strong>
+                  </p>
+                  <p>
+                    Constitution
+                  </p>
+                </div>
               </div>
             </label>
             <label
@@ -1333,15 +1299,18 @@ button.c8 {
               <div
                 class="c2"
               >
-                <p
+                <div
                   aria-label="Ashley Hildebrand-MacDougall and James Garritty, Whig."
                 >
-                  <strong>
-                    Ashley Hildebrand-MacDougall and James Garritty
-                  </strong>
-                  <br />
-                  Whig
-                </p>
+                  <p>
+                    <strong>
+                      Ashley Hildebrand-MacDougall and James Garritty
+                    </strong>
+                  </p>
+                  <p>
+                    Whig
+                  </p>
+                </div>
               </div>
             </label>
             <label
@@ -1358,15 +1327,18 @@ button.c8 {
               <div
                 class="c2"
               >
-                <p
+                <div
                   aria-label="Martin Patterson and Clay Lariviere, Labor."
                 >
-                  <strong>
-                    Martin Patterson and Clay Lariviere
-                  </strong>
-                  <br />
-                  Labor
-                </p>
+                  <p>
+                    <strong>
+                      Martin Patterson and Clay Lariviere
+                    </strong>
+                  </p>
+                  <p>
+                    Labor
+                  </p>
+                </div>
               </div>
             </label>
           </div>
@@ -1379,17 +1351,10 @@ button.c8 {
   >
     <button
       class="c11"
-      id="next"
-      type="button"
-    >
-      Next
-    </button>
-    <button
-      class="c11"
       id="previous"
       type="button"
     >
-      Previous
+      Back
     </button>
     <p
       class="c12"
@@ -1398,16 +1363,17 @@ button.c8 {
        of 
       20
     </p>
+    <button
+      class="c11"
+      id="next"
+      type="button"
+    >
+      Next
+    </button>
   </nav>
   <nav
     class="c13"
   >
-    <button
-      class="c11"
-      type="button"
-    >
-      Review
-    </button>
     <button
       class="c11"
       type="button"
@@ -1419,6 +1385,12 @@ button.c8 {
       type="button"
     >
       Settings
+    </button>
+    <button
+      class="c11"
+      type="button"
+    >
+      Review
     </button>
   </nav>
 </div>
@@ -1455,23 +1427,23 @@ exports[`renders error if no id match 1`] = `
   padding: 0.4rem 0.7rem;
   color: black;
   line-height: 1;
+  height: 100%;
   white-space: nowrap;
+  font-weight: bold;
 }
 
 .c4 {
   color: white;
   text-align: center;
+  font-weight: 600;
 }
 
 .c3 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: wrap-reverse;
-  -ms-flex-wrap: wrap-reverse;
-  flex-wrap: wrap-reverse;
-  padding: 0.5rem;
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  grid-auto-rows: 2.5rem;
+  grid-gap: 1rem;
+  padding: 1rem;
   background: #455a64;
   border-bottom: 1px solid darkgrey;
   -webkit-box-pack: justify;
@@ -1484,14 +1456,7 @@ exports[`renders error if no id match 1`] = `
   align-items: center;
 }
 
-.c3 > *:first-child {
-  -webkit-order: 2;
-  -ms-flex-order: 2;
-  order: 2;
-}
-
 .c3 > * {
-  margin: 0.25rem;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -1501,14 +1466,12 @@ exports[`renders error if no id match 1`] = `
   -webkit-order: -1;
   -ms-flex-order: -1;
   order: -1;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: wrap-reverse;
-  -ms-flex-wrap: wrap-reverse;
-  flex-wrap: wrap-reverse;
-  padding: 0.5rem;
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  grid-template-columns: repeat(4,1fr);
+  grid-auto-rows: 2.5rem;
+  grid-gap: 1rem;
+  padding: 1rem;
   background: #455a64;
   border-bottom: 1px solid darkgrey;
   -webkit-box-pack: justify;
@@ -1521,14 +1484,7 @@ exports[`renders error if no id match 1`] = `
   align-items: center;
 }
 
-.c5 > *:first-child {
-  -webkit-order: 2;
-  -ms-flex-order: 2;
-  order: 2;
-}
-
 .c5 > * {
-  margin: 0.25rem;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -1573,12 +1529,6 @@ exports[`renders error if no id match 1`] = `
 @media print {
   .c3 {
     display: none;
-  }
-}
-
-@media (min-width:480px) {
-  .c5 > *:first-child {
-    margin-left: auto;
   }
 }
 
@@ -1633,17 +1583,10 @@ exports[`renders error if no id match 1`] = `
   >
     <button
       class="c2"
-      id="next"
-      type="button"
-    >
-      Next
-    </button>
-    <button
-      class="c2"
       id="previous"
       type="button"
     >
-      Previous
+      Back
     </button>
     <p
       class="c4"
@@ -1652,16 +1595,17 @@ exports[`renders error if no id match 1`] = `
        of 
       20
     </p>
+    <button
+      class="c2"
+      id="next"
+      type="button"
+    >
+      Next
+    </button>
   </nav>
   <nav
     class="c5"
   >
-    <button
-      class="c2"
-      type="button"
-    >
-      Review
-    </button>
     <button
       class="c2"
       type="button"
@@ -1673,6 +1617,12 @@ exports[`renders error if no id match 1`] = `
       type="button"
     >
       Settings
+    </button>
+    <button
+      class="c2"
+      type="button"
+    >
+      Review
     </button>
   </nav>
 </div>

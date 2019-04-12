@@ -3,12 +3,13 @@
 exports[`supports multi-seat contests allows a second candidate to be selected when one is selected 1`] = `
 .c2 {
   line-height: 1.2;
-  max-width: 66ch;
+  max-width: 41rem;
+  padding: 1rem 0;
 }
 
 .c2 h1 {
-  line-height: 1.1;
   margin: 2rem 0 1rem;
+  padding: 0 0 1rem;
 }
 
 .c2 h2 {
@@ -38,6 +39,20 @@ exports[`supports multi-seat contests allows a second candidate to be selected w
   margin-bottom: 0;
 }
 
+.c2 div {
+  display: grid;
+  grid-auto-rows: 1fr;
+  grid-gap: 0.5rem;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c2 div p {
+  margin: 0;
+}
+
 .c0 {
   -webkit-flex: 1;
   -ms-flex: 1;
@@ -53,22 +68,20 @@ exports[`supports multi-seat contests allows a second candidate to be selected w
 
 .c1 {
   width: 100%;
-  max-width: 35rem;
+  max-width: 43rem;
   margin: 0px auto;
-  padding: 1rem 0.75rem 0.5rem;
+  padding: 1rem 0.5rem 0.5rem;
 }
 
 .c3 {
-  font-size: 0.85rem;
+  font-size: 1rem;
   font-weight: 600;
   text-transform: uppercase;
+  padding-bottom: 1rem;
 }
 
 .c4 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: grid;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -84,19 +97,8 @@ exports[`supports multi-seat contests allows a second candidate to be selected w
   transition: opacity 0.25s ease;
   position: absolute;
   height: 0.25rem;
+  height: 0;
   width: 100%;
-}
-
-.c4:before {
-  top: 0;
-  opacity: 0;
-  background: linear-gradient( to bottom, rgb(177,186,190) 0%, transparent 100% );
-}
-
-.c4:after {
-  bottom: 0;
-  opacity: 0;
-  background: linear-gradient( to bottom, transparent 0%, rgb(177,186,190) 100% );
 }
 
 .c5 {
@@ -104,19 +106,20 @@ exports[`supports multi-seat contests allows a second candidate to be selected w
   -ms-flex: 1;
   flex: 1;
   overflow: auto;
+  grid-row: auto;
 }
 
 .c6 {
   width: 100%;
-  max-width: 35rem;
+  max-width: 43rem;
   margin: 0 auto;
   padding: 0.5rem 0.5rem 1rem;
 }
 
 .c7 {
   display: grid;
-  grid-auto-rows: minmax(auto,1fr);
-  grid-gap: 0.75rem;
+  grid-auto-rows: minmax(4rem,1fr);
+  grid-gap: 1rem;
 }
 
 .c10 {
@@ -128,7 +131,7 @@ exports[`supports multi-seat contests allows a second candidate to be selected w
   -ms-flex-align: center;
   align-items: center;
   border-radius: 0.125rem;
-  background: white;
+  background-color: white;
   box-shadow: 0 0.125rem 0.125rem 0 rgba(0,0,0,0.14), 0 0.1875rem 0.0625rem -0.125rem rgba(0,0,0,0.12), 0 0.0625rem 0.3125rem 0 rgba(0,0,0,0.2);
   -webkit-transition: background 0.25s,color 0.25s;
   transition: background 0.25s,color 0.25s;
@@ -143,7 +146,7 @@ button.c10 {
 }
 
 .c10:before {
-  content: '';
+  content: ' ';
   position: absolute;
   left: 0;
   top: 0;
@@ -151,7 +154,7 @@ button.c10 {
   background: white;
   border-right: 1px solid;
   border-color: lightgrey;
-  width: 3rem;
+  width: 4rem;
   text-align: center;
   display: -webkit-box;
   display: -webkit-flex;
@@ -172,7 +175,11 @@ button.c10 {
 
 .c10 > div {
   word-break: break-word;
-  padding: 0.5rem 0.5rem 0.5rem 4rem;
+  padding: 1rem 0.5rem 1rem 5rem;
+}
+
+.c10 > div > div {
+  grid-template-columns: auto 9.5rem;
 }
 
 .c8 {
@@ -184,7 +191,7 @@ button.c10 {
   -ms-flex-align: center;
   align-items: center;
   border-radius: 0.125rem;
-  background: #028099;
+  background-color: #028099;
   color: white;
   box-shadow: 0 0.125rem 0.125rem 0 rgba(0,0,0,0.14), 0 0.1875rem 0.0625rem -0.125rem rgba(0,0,0,0.12), 0 0.0625rem 0.3125rem 0 rgba(0,0,0,0.2);
   -webkit-transition: background 0.25s,color 0.25s;
@@ -200,7 +207,7 @@ button.c8 {
 }
 
 .c8:before {
-  content: '✓';
+  content: '✓ ';
   position: absolute;
   left: 0;
   top: 0;
@@ -208,7 +215,7 @@ button.c8 {
   background: white;
   border-right: 1px solid;
   border-color: #028099;
-  width: 3rem;
+  width: 4rem;
   text-align: center;
   display: -webkit-box;
   display: -webkit-flex;
@@ -229,28 +236,26 @@ button.c8 {
 
 .c8 > div {
   word-break: break-word;
-  padding: 0.5rem 0.5rem 0.5rem 4rem;
+  padding: 1rem 0.5rem 1rem 5rem;
+}
+
+.c8 > div > div {
+  grid-template-columns: auto 9.5rem;
 }
 
 .c9 {
   margin-right: 0.5rem;
 }
 
-@media (min-width:480px) {
-  .c2 {
-    line-height: 1.3;
-  }
-}
-
 @media (min-width:720px) {
   .c1 {
-    padding: 1rem 1.5rem 0.5rem;
-    padding-left: 5rem;
+    padding: 1rem 1rem 0.5rem;
   }
 }
 
 @media (min-width:720px) {
   .c6 {
+    padding-top: 1rem;
     padding-right: 1rem;
     padding-left: 1rem;
   }
@@ -331,15 +336,18 @@ button.c8 {
               <div
                 class="c2"
               >
-                <p
+                <div
                   aria-label="Name 0, Party 0."
                 >
-                  <strong>
-                    Name 0
-                  </strong>
-                  <br />
-                  Party 0
-                </p>
+                  <p>
+                    <strong>
+                      Name 0
+                    </strong>
+                  </p>
+                  <p>
+                    Party 0
+                  </p>
+                </div>
               </div>
             </label>
             <label
@@ -356,15 +364,18 @@ button.c8 {
               <div
                 class="c2"
               >
-                <p
+                <div
                   aria-label="Name 1, Party 1."
                 >
-                  <strong>
-                    Name 1
-                  </strong>
-                  <br />
-                  Party 1
-                </p>
+                  <p>
+                    <strong>
+                      Name 1
+                    </strong>
+                  </p>
+                  <p>
+                    Party 1
+                  </p>
+                </div>
               </div>
             </label>
             <label
@@ -381,15 +392,18 @@ button.c8 {
               <div
                 class="c2"
               >
-                <p
+                <div
                   aria-label="Name 2, Party 0."
                 >
-                  <strong>
-                    Name 2
-                  </strong>
-                  <br />
-                  Party 0
-                </p>
+                  <p>
+                    <strong>
+                      Name 2
+                    </strong>
+                  </p>
+                  <p>
+                    Party 0
+                  </p>
+                </div>
               </div>
             </label>
           </div>
@@ -403,12 +417,13 @@ button.c8 {
 exports[`supports single-seat contest allows any candidate to be selected when no candidate is selected 1`] = `
 .c2 {
   line-height: 1.2;
-  max-width: 66ch;
+  max-width: 41rem;
+  padding: 1rem 0;
 }
 
 .c2 h1 {
-  line-height: 1.1;
   margin: 2rem 0 1rem;
+  padding: 0 0 1rem;
 }
 
 .c2 h2 {
@@ -438,6 +453,20 @@ exports[`supports single-seat contest allows any candidate to be selected when n
   margin-bottom: 0;
 }
 
+.c2 div {
+  display: grid;
+  grid-auto-rows: 1fr;
+  grid-gap: 0.5rem;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c2 div p {
+  margin: 0;
+}
+
 .c0 {
   -webkit-flex: 1;
   -ms-flex: 1;
@@ -453,22 +482,20 @@ exports[`supports single-seat contest allows any candidate to be selected when n
 
 .c1 {
   width: 100%;
-  max-width: 35rem;
+  max-width: 43rem;
   margin: 0px auto;
-  padding: 1rem 0.75rem 0.5rem;
+  padding: 1rem 0.5rem 0.5rem;
 }
 
 .c3 {
-  font-size: 0.85rem;
+  font-size: 1rem;
   font-weight: 600;
   text-transform: uppercase;
+  padding-bottom: 1rem;
 }
 
 .c4 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: grid;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -484,19 +511,8 @@ exports[`supports single-seat contest allows any candidate to be selected when n
   transition: opacity 0.25s ease;
   position: absolute;
   height: 0.25rem;
+  height: 0;
   width: 100%;
-}
-
-.c4:before {
-  top: 0;
-  opacity: 0;
-  background: linear-gradient( to bottom, rgb(177,186,190) 0%, transparent 100% );
-}
-
-.c4:after {
-  bottom: 0;
-  opacity: 0;
-  background: linear-gradient( to bottom, transparent 0%, rgb(177,186,190) 100% );
 }
 
 .c5 {
@@ -504,19 +520,20 @@ exports[`supports single-seat contest allows any candidate to be selected when n
   -ms-flex: 1;
   flex: 1;
   overflow: auto;
+  grid-row: auto;
 }
 
 .c6 {
   width: 100%;
-  max-width: 35rem;
+  max-width: 43rem;
   margin: 0 auto;
   padding: 0.5rem 0.5rem 1rem;
 }
 
 .c7 {
   display: grid;
-  grid-auto-rows: minmax(auto,1fr);
-  grid-gap: 0.75rem;
+  grid-auto-rows: minmax(4rem,1fr);
+  grid-gap: 1rem;
 }
 
 .c8 {
@@ -528,7 +545,7 @@ exports[`supports single-seat contest allows any candidate to be selected when n
   -ms-flex-align: center;
   align-items: center;
   border-radius: 0.125rem;
-  background: white;
+  background-color: white;
   box-shadow: 0 0.125rem 0.125rem 0 rgba(0,0,0,0.14), 0 0.1875rem 0.0625rem -0.125rem rgba(0,0,0,0.12), 0 0.0625rem 0.3125rem 0 rgba(0,0,0,0.2);
   -webkit-transition: background 0.25s,color 0.25s;
   transition: background 0.25s,color 0.25s;
@@ -543,7 +560,7 @@ button.c8 {
 }
 
 .c8:before {
-  content: '';
+  content: ' ';
   position: absolute;
   left: 0;
   top: 0;
@@ -551,7 +568,7 @@ button.c8 {
   background: white;
   border-right: 1px solid;
   border-color: lightgrey;
-  width: 3rem;
+  width: 4rem;
   text-align: center;
   display: -webkit-box;
   display: -webkit-flex;
@@ -572,28 +589,26 @@ button.c8 {
 
 .c8 > div {
   word-break: break-word;
-  padding: 0.5rem 0.5rem 0.5rem 4rem;
+  padding: 1rem 0.5rem 1rem 5rem;
+}
+
+.c8 > div > div {
+  grid-template-columns: auto 9.5rem;
 }
 
 .c9 {
   margin-right: 0.5rem;
 }
 
-@media (min-width:480px) {
-  .c2 {
-    line-height: 1.3;
-  }
-}
-
 @media (min-width:720px) {
   .c1 {
-    padding: 1rem 1.5rem 0.5rem;
-    padding-left: 5rem;
+    padding: 1rem 1rem 0.5rem;
   }
 }
 
 @media (min-width:720px) {
   .c6 {
+    padding-top: 1rem;
     padding-right: 1rem;
     padding-left: 1rem;
   }
@@ -667,15 +682,18 @@ button.c8 {
               <div
                 class="c2"
               >
-                <p
+                <div
                   aria-label="Name 0, Party 0."
                 >
-                  <strong>
-                    Name 0
-                  </strong>
-                  <br />
-                  Party 0
-                </p>
+                  <p>
+                    <strong>
+                      Name 0
+                    </strong>
+                  </p>
+                  <p>
+                    Party 0
+                  </p>
+                </div>
               </div>
             </label>
             <label
@@ -692,15 +710,18 @@ button.c8 {
               <div
                 class="c2"
               >
-                <p
+                <div
                   aria-label="Name 1, Party 1."
                 >
-                  <strong>
-                    Name 1
-                  </strong>
-                  <br />
-                  Party 1
-                </p>
+                  <p>
+                    <strong>
+                      Name 1
+                    </strong>
+                  </p>
+                  <p>
+                    Party 1
+                  </p>
+                </div>
               </div>
             </label>
             <label
@@ -717,15 +738,18 @@ button.c8 {
               <div
                 class="c2"
               >
-                <p
+                <div
                   aria-label="Name 2, Party 0."
                 >
-                  <strong>
-                    Name 2
-                  </strong>
-                  <br />
-                  Party 0
-                </p>
+                  <p>
+                    <strong>
+                      Name 2
+                    </strong>
+                  </p>
+                  <p>
+                    Party 0
+                  </p>
+                </div>
               </div>
             </label>
           </div>
@@ -739,12 +763,13 @@ button.c8 {
 exports[`supports single-seat contest doesn't allow other candidates to be selected when a candidate is selected 1`] = `
 .c2 {
   line-height: 1.2;
-  max-width: 66ch;
+  max-width: 41rem;
+  padding: 1rem 0;
 }
 
 .c2 h1 {
-  line-height: 1.1;
   margin: 2rem 0 1rem;
+  padding: 0 0 1rem;
 }
 
 .c2 h2 {
@@ -774,6 +799,20 @@ exports[`supports single-seat contest doesn't allow other candidates to be selec
   margin-bottom: 0;
 }
 
+.c2 div {
+  display: grid;
+  grid-auto-rows: 1fr;
+  grid-gap: 0.5rem;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c2 div p {
+  margin: 0;
+}
+
 .c0 {
   -webkit-flex: 1;
   -ms-flex: 1;
@@ -789,22 +828,20 @@ exports[`supports single-seat contest doesn't allow other candidates to be selec
 
 .c1 {
   width: 100%;
-  max-width: 35rem;
+  max-width: 43rem;
   margin: 0px auto;
-  padding: 1rem 0.75rem 0.5rem;
+  padding: 1rem 0.5rem 0.5rem;
 }
 
 .c3 {
-  font-size: 0.85rem;
+  font-size: 1rem;
   font-weight: 600;
   text-transform: uppercase;
+  padding-bottom: 1rem;
 }
 
 .c4 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: grid;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -820,19 +857,8 @@ exports[`supports single-seat contest doesn't allow other candidates to be selec
   transition: opacity 0.25s ease;
   position: absolute;
   height: 0.25rem;
+  height: 0;
   width: 100%;
-}
-
-.c4:before {
-  top: 0;
-  opacity: 0;
-  background: linear-gradient( to bottom, rgb(177,186,190) 0%, transparent 100% );
-}
-
-.c4:after {
-  bottom: 0;
-  opacity: 0;
-  background: linear-gradient( to bottom, transparent 0%, rgb(177,186,190) 100% );
 }
 
 .c5 {
@@ -840,19 +866,20 @@ exports[`supports single-seat contest doesn't allow other candidates to be selec
   -ms-flex: 1;
   flex: 1;
   overflow: auto;
+  grid-row: auto;
 }
 
 .c6 {
   width: 100%;
-  max-width: 35rem;
+  max-width: 43rem;
   margin: 0 auto;
   padding: 0.5rem 0.5rem 1rem;
 }
 
 .c7 {
   display: grid;
-  grid-auto-rows: minmax(auto,1fr);
-  grid-gap: 0.75rem;
+  grid-auto-rows: minmax(4rem,1fr);
+  grid-gap: 1rem;
 }
 
 .c10 {
@@ -864,7 +891,7 @@ exports[`supports single-seat contest doesn't allow other candidates to be selec
   -ms-flex-align: center;
   align-items: center;
   border-radius: 0.125rem;
-  background: white;
+  background-color: white;
   box-shadow: 0 0.125rem 0.125rem 0 rgba(0,0,0,0.14), 0 0.1875rem 0.0625rem -0.125rem rgba(0,0,0,0.12), 0 0.0625rem 0.3125rem 0 rgba(0,0,0,0.2);
   -webkit-transition: background 0.25s,color 0.25s;
   transition: background 0.25s,color 0.25s;
@@ -879,7 +906,7 @@ button.c10 {
 }
 
 .c10:before {
-  content: '';
+  content: ' ';
   position: absolute;
   left: 0;
   top: 0;
@@ -887,7 +914,7 @@ button.c10 {
   background: white;
   border-right: 1px solid;
   border-color: lightgrey;
-  width: 3rem;
+  width: 4rem;
   text-align: center;
   display: -webkit-box;
   display: -webkit-flex;
@@ -908,7 +935,11 @@ button.c10 {
 
 .c10 > div {
   word-break: break-word;
-  padding: 0.5rem 0.5rem 0.5rem 4rem;
+  padding: 1rem 0.5rem 1rem 5rem;
+}
+
+.c10 > div > div {
+  grid-template-columns: auto 9.5rem;
 }
 
 .c8 {
@@ -920,7 +951,7 @@ button.c10 {
   -ms-flex-align: center;
   align-items: center;
   border-radius: 0.125rem;
-  background: #028099;
+  background-color: #028099;
   color: white;
   box-shadow: 0 0.125rem 0.125rem 0 rgba(0,0,0,0.14), 0 0.1875rem 0.0625rem -0.125rem rgba(0,0,0,0.12), 0 0.0625rem 0.3125rem 0 rgba(0,0,0,0.2);
   -webkit-transition: background 0.25s,color 0.25s;
@@ -936,7 +967,7 @@ button.c8 {
 }
 
 .c8:before {
-  content: '✓';
+  content: '✓ ';
   position: absolute;
   left: 0;
   top: 0;
@@ -944,7 +975,7 @@ button.c8 {
   background: white;
   border-right: 1px solid;
   border-color: #028099;
-  width: 3rem;
+  width: 4rem;
   text-align: center;
   display: -webkit-box;
   display: -webkit-flex;
@@ -965,28 +996,26 @@ button.c8 {
 
 .c8 > div {
   word-break: break-word;
-  padding: 0.5rem 0.5rem 0.5rem 4rem;
+  padding: 1rem 0.5rem 1rem 5rem;
+}
+
+.c8 > div > div {
+  grid-template-columns: auto 9.5rem;
 }
 
 .c9 {
   margin-right: 0.5rem;
 }
 
-@media (min-width:480px) {
-  .c2 {
-    line-height: 1.3;
-  }
-}
-
 @media (min-width:720px) {
   .c1 {
-    padding: 1rem 1.5rem 0.5rem;
-    padding-left: 5rem;
+    padding: 1rem 1rem 0.5rem;
   }
 }
 
 @media (min-width:720px) {
   .c6 {
+    padding-top: 1rem;
     padding-right: 1rem;
     padding-left: 1rem;
   }
@@ -1067,15 +1096,18 @@ button.c8 {
               <div
                 class="c2"
               >
-                <p
+                <div
                   aria-label="Name 0, Party 0."
                 >
-                  <strong>
-                    Name 0
-                  </strong>
-                  <br />
-                  Party 0
-                </p>
+                  <p>
+                    <strong>
+                      Name 0
+                    </strong>
+                  </p>
+                  <p>
+                    Party 0
+                  </p>
+                </div>
               </div>
             </label>
             <label
@@ -1093,15 +1125,18 @@ button.c8 {
               <div
                 class="c2"
               >
-                <p
+                <div
                   aria-label="Name 1, Party 1."
                 >
-                  <strong>
-                    Name 1
-                  </strong>
-                  <br />
-                  Party 1
-                </p>
+                  <p>
+                    <strong>
+                      Name 1
+                    </strong>
+                  </p>
+                  <p>
+                    Party 1
+                  </p>
+                </div>
               </div>
             </label>
             <label
@@ -1119,15 +1154,18 @@ button.c8 {
               <div
                 class="c2"
               >
-                <p
+                <div
                   aria-label="Name 2, Party 0."
                 >
-                  <strong>
-                    Name 2
-                  </strong>
-                  <br />
-                  Party 0
-                </p>
+                  <p>
+                    <strong>
+                      Name 2
+                    </strong>
+                  </p>
+                  <p>
+                    Party 0
+                  </p>
+                </div>
               </div>
             </label>
           </div>
@@ -1141,12 +1179,13 @@ button.c8 {
 exports[`supports write-in candidates displays warning if write-in candidate name is too long 1`] = `
 .c2 {
   line-height: 1.2;
-  max-width: 66ch;
+  max-width: 41rem;
+  padding: 1rem 0;
 }
 
 .c2 h1 {
-  line-height: 1.1;
   margin: 2rem 0 1rem;
+  padding: 0 0 1rem;
 }
 
 .c2 h2 {
@@ -1176,6 +1215,20 @@ exports[`supports write-in candidates displays warning if write-in candidate nam
   margin-bottom: 0;
 }
 
+.c2 div {
+  display: grid;
+  grid-auto-rows: 1fr;
+  grid-gap: 0.5rem;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c2 div p {
+  margin: 0;
+}
+
 .c0 {
   -webkit-flex: 1;
   -ms-flex: 1;
@@ -1191,22 +1244,20 @@ exports[`supports write-in candidates displays warning if write-in candidate nam
 
 .c1 {
   width: 100%;
-  max-width: 35rem;
+  max-width: 43rem;
   margin: 0px auto;
-  padding: 1rem 0.75rem 0.5rem;
+  padding: 1rem 0.5rem 0.5rem;
 }
 
 .c3 {
-  font-size: 0.85rem;
+  font-size: 1rem;
   font-weight: 600;
   text-transform: uppercase;
+  padding-bottom: 1rem;
 }
 
 .c4 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: grid;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -1222,19 +1273,8 @@ exports[`supports write-in candidates displays warning if write-in candidate nam
   transition: opacity 0.25s ease;
   position: absolute;
   height: 0.25rem;
+  height: 0;
   width: 100%;
-}
-
-.c4:before {
-  top: 0;
-  opacity: 0;
-  background: linear-gradient( to bottom, rgb(177,186,190) 0%, transparent 100% );
-}
-
-.c4:after {
-  bottom: 0;
-  opacity: 0;
-  background: linear-gradient( to bottom, transparent 0%, rgb(177,186,190) 100% );
 }
 
 .c5 {
@@ -1242,19 +1282,20 @@ exports[`supports write-in candidates displays warning if write-in candidate nam
   -ms-flex: 1;
   flex: 1;
   overflow: auto;
+  grid-row: auto;
 }
 
 .c6 {
   width: 100%;
-  max-width: 35rem;
+  max-width: 43rem;
   margin: 0 auto;
   padding: 0.5rem 0.5rem 1rem;
 }
 
 .c7 {
   display: grid;
-  grid-auto-rows: minmax(auto,1fr);
-  grid-gap: 0.75rem;
+  grid-auto-rows: minmax(4rem,1fr);
+  grid-gap: 1rem;
 }
 
 .c8 {
@@ -1266,7 +1307,7 @@ exports[`supports write-in candidates displays warning if write-in candidate nam
   -ms-flex-align: center;
   align-items: center;
   border-radius: 0.125rem;
-  background: white;
+  background-color: white;
   box-shadow: 0 0.125rem 0.125rem 0 rgba(0,0,0,0.14), 0 0.1875rem 0.0625rem -0.125rem rgba(0,0,0,0.12), 0 0.0625rem 0.3125rem 0 rgba(0,0,0,0.2);
   -webkit-transition: background 0.25s,color 0.25s;
   transition: background 0.25s,color 0.25s;
@@ -1281,7 +1322,7 @@ button.c8 {
 }
 
 .c8:before {
-  content: '';
+  content: ' ';
   position: absolute;
   left: 0;
   top: 0;
@@ -1289,7 +1330,7 @@ button.c8 {
   background: white;
   border-right: 1px solid;
   border-color: lightgrey;
-  width: 3rem;
+  width: 4rem;
   text-align: center;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1310,28 +1351,26 @@ button.c8 {
 
 .c8 > div {
   word-break: break-word;
-  padding: 0.5rem 0.5rem 0.5rem 4rem;
+  padding: 1rem 0.5rem 1rem 5rem;
+}
+
+.c8 > div > div {
+  grid-template-columns: auto 9.5rem;
 }
 
 .c9 {
   margin-right: 0.5rem;
 }
 
-@media (min-width:480px) {
-  .c2 {
-    line-height: 1.3;
-  }
-}
-
 @media (min-width:720px) {
   .c1 {
-    padding: 1rem 1.5rem 0.5rem;
-    padding-left: 5rem;
+    padding: 1rem 1rem 0.5rem;
   }
 }
 
 @media (min-width:720px) {
   .c6 {
+    padding-top: 1rem;
     padding-right: 1rem;
     padding-left: 1rem;
   }
@@ -1405,15 +1444,18 @@ button.c8 {
               <div
                 class="c2"
               >
-                <p
+                <div
                   aria-label="Name 0, Party 0."
                 >
-                  <strong>
-                    Name 0
-                  </strong>
-                  <br />
-                  Party 0
-                </p>
+                  <p>
+                    <strong>
+                      Name 0
+                    </strong>
+                  </p>
+                  <p>
+                    Party 0
+                  </p>
+                </div>
               </div>
             </label>
             <label
@@ -1430,15 +1472,18 @@ button.c8 {
               <div
                 class="c2"
               >
-                <p
+                <div
                   aria-label="Name 1, Party 1."
                 >
-                  <strong>
-                    Name 1
-                  </strong>
-                  <br />
-                  Party 1
-                </p>
+                  <p>
+                    <strong>
+                      Name 1
+                    </strong>
+                  </p>
+                  <p>
+                    Party 1
+                  </p>
+                </div>
               </div>
             </label>
             <label
@@ -1455,15 +1500,18 @@ button.c8 {
               <div
                 class="c2"
               >
-                <p
+                <div
                   aria-label="Name 2, Party 0."
                 >
-                  <strong>
-                    Name 2
-                  </strong>
-                  <br />
-                  Party 0
-                </p>
+                  <p>
+                    <strong>
+                      Name 2
+                    </strong>
+                  </p>
+                  <p>
+                    Party 0
+                  </p>
+                </div>
               </div>
             </label>
             <button

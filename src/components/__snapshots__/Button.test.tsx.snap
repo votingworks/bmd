@@ -10,7 +10,9 @@ exports[`renders Button 1`] = `
   padding: 0.4rem 0.7rem;
   color: black;
   line-height: 1;
+  height: 100%;
   white-space: nowrap;
+  font-weight: bold;
 }
 
 <button
@@ -31,7 +33,9 @@ exports[`renders danger Button 1`] = `
   padding: 0.4rem 0.7rem;
   color: white;
   line-height: 1;
+  height: 100%;
   white-space: nowrap;
+  font-weight: bold;
 }
 
 <button
@@ -52,7 +56,9 @@ exports[`renders primary Button 1`] = `
   padding: 0.4rem 0.7rem;
   color: white;
   line-height: 1;
+  height: 100%;
   white-space: nowrap;
+  font-weight: bold;
 }
 
 <button

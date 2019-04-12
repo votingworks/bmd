@@ -24,12 +24,13 @@ exports[`renders ReviewPage with votes 1`] = `
 
 .c2 {
   line-height: 1.2;
-  max-width: 66ch;
+  max-width: 41rem;
+  padding: 1rem 0;
 }
 
 .c2 h1 {
-  line-height: 1.1;
   margin: 2rem 0 1rem;
+  padding: 0 0 1rem;
 }
 
 .c2 h2 {
@@ -59,6 +60,20 @@ exports[`renders ReviewPage with votes 1`] = `
   margin-bottom: 0;
 }
 
+.c2 div {
+  display: grid;
+  grid-auto-rows: 1fr;
+  grid-gap: 0.5rem;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c2 div p {
+  margin: 0;
+}
+
 .c9 {
   box-sizing: border-box;
   cursor: pointer;
@@ -68,7 +83,9 @@ exports[`renders ReviewPage with votes 1`] = `
   padding: 0.4rem 0.7rem;
   color: black;
   line-height: 1;
+  height: 100%;
   white-space: nowrap;
+  font-weight: bold;
 }
 
 .c11 {
@@ -180,12 +197,6 @@ exports[`renders ReviewPage with votes 1`] = `
   .c1 {
     max-width: 100%;
     margin: 0;
-  }
-}
-
-@media (min-width:480px) {
-  .c2 {
-    line-height: 1.3;
   }
 }
 
@@ -1073,12 +1084,13 @@ exports[`renders ReviewPage without votes 1`] = `
 
 .c2 {
   line-height: 1.2;
-  max-width: 66ch;
+  max-width: 41rem;
+  padding: 1rem 0;
 }
 
 .c2 h1 {
-  line-height: 1.1;
   margin: 2rem 0 1rem;
+  padding: 0 0 1rem;
 }
 
 .c2 h2 {
@@ -1108,6 +1120,20 @@ exports[`renders ReviewPage without votes 1`] = `
   margin-bottom: 0;
 }
 
+.c2 div {
+  display: grid;
+  grid-auto-rows: 1fr;
+  grid-gap: 0.5rem;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c2 div p {
+  margin: 0;
+}
+
 .c9 {
   box-sizing: border-box;
   cursor: pointer;
@@ -1117,7 +1143,9 @@ exports[`renders ReviewPage without votes 1`] = `
   padding: 0.4rem 0.7rem;
   color: black;
   line-height: 1;
+  height: 100%;
   white-space: nowrap;
+  font-weight: bold;
 }
 
 .c11 {
@@ -1229,12 +1257,6 @@ exports[`renders ReviewPage without votes 1`] = `
   .c1 {
     max-width: 100%;
     margin: 0;
-  }
-}
-
-@media (min-width:480px) {
-  .c2 {
-    line-height: 1.3;
   }
 }
 
