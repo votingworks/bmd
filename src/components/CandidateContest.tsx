@@ -438,7 +438,7 @@ class CandidateContest extends React.Component<Props, State> {
               onScroll={this.updateContestChoicesScrollStates}
             >
               <ScrollableContentWrapper isScrollable={isScrollable}>
-                <ChoicesGrid role="group" aria-labelledby="contest-header">
+                <ChoicesGrid role="group">
                   {contest.candidates.map(candidate => {
                     const isChecked = !!this.findCandidateById(
                       vote,
