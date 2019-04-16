@@ -151,7 +151,7 @@ const Choice = styled('label')<{ isSelected: boolean }>`
     outline: -webkit-focus-ring-color auto 5px;
   }
   :before {
-    content: '${({ isSelected }) => (isSelected ? '✓' : '')}';
+    content: '${({ isSelected }) => (isSelected ? GLOBALS.CHECK_ICON : '')}';
     position: absolute;
     left: 0;
     top: 0;
@@ -165,6 +165,7 @@ const Choice = styled('label')<{ isSelected: boolean }>`
     justify-content: center;
     align-items: center;
     font-size: 2rem;
+    font-weight: 700;
     border-radius: 0.125rem 0 0 0.125rem;
     color: #028099;
   }

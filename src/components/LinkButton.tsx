@@ -11,6 +11,7 @@ interface Props extends ButtonInterface<{}> {}
 
 interface Props {
   goBack?: boolean
+  preventDefault?: boolean
   primary?: boolean
   to?: string
 }
@@ -21,6 +22,7 @@ const LinkButton = (props: Props) => {
     history,
     location,
     match,
+    preventDefault,
     onClick,
     staticContext,
     to,
@@ -28,6 +30,9 @@ const LinkButton = (props: Props) => {
     ...rest
   } = props
   const handleOnClick = (event: ButtonEvent) => {
+    if (preventDefault) {
+      event.preventDefault()
+    }
     if (onClick) {
       onClick(event)
     }

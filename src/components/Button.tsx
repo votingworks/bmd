@@ -8,6 +8,7 @@ interface Attrs extends HTMLButtonElement {
 export interface ButtonInterface<T> {
   readonly danger?: boolean
   readonly primary?: boolean
+  readonly fullWidth?: boolean
 }
 
 interface Props
@@ -31,6 +32,7 @@ const Button = styled('button').attrs((props: Attrs) => ({
     'black'};
   line-height: 1;
   white-space: nowrap;
+  width: ${({ fullWidth = false }) => (fullWidth ? '100%' : undefined)};
 `
 
 export default Button

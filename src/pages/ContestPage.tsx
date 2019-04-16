@@ -33,7 +33,11 @@ const ContestPage = (props: Props) => {
   const prevContest = contests[currentContestIndex - 1]
   const nextContest = contests[currentContestIndex + 1]
   const vote = contest && votes[contest.id]
-
+  let isVoteComplete = !!vote
+  if (contest.type === 'candidate') {
+    isVoteComplete = contest.seats === ((vote as CandidateVote) || []).length
+  }
+  const isReviewMode = location.hash === '#review'
   // TODO:
   // - confirm intent when navigating away without selecting a candidate
 
@@ -67,30 +71,40 @@ const ContestPage = (props: Props) => {
         />
       )}
       <ButtonBar>
-        {nextContest ? (
+        {isReviewMode ? (
           <LinkButton
+            primary={isVoteComplete}
+            to={`/review#${contest.id}`}
             id="next"
-            key="next"
-            primary={!!vote}
-            to={`/contests/${nextContest && nextContest.id}`}
           >
-            Next
+            Review
           </LinkButton>
         ) : (
-          <LinkButton primary={!!vote} to="/review" key="review" id="next">
+          <LinkButton
+            id="next"
+            primary={isVoteComplete}
+            to={
+              nextContest
+                ? `/contests/${nextContest && nextContest.id}`
+                : '/pre-review'
+            }
+          >
             Next
           </LinkButton>
         )}
-        {prevContest ? (
-          <LinkButton
-            id="previous"
-            to={`/contests/${prevContest && prevContest.id}`}
-            key="previous"
-          >
+        {isReviewMode ? (
+          <LinkButton goBack id="previous">
             Back
           </LinkButton>
         ) : (
-          <LinkButton key="backtostart" to="/start" id="previous">
+          <LinkButton
+            id="previous"
+            to={
+              prevContest
+                ? `/contests/${prevContest && prevContest.id}`
+                : '/start'
+            }
+          >
             Back
           </LinkButton>
         )}
@@ -103,7 +117,7 @@ const ContestPage = (props: Props) => {
         separatePrimaryButton
         centerOnlyChild={!showHelpPage && !showSettingsPage && false}
       >
-        <LinkButton to="/review">Review</LinkButton>
+        <div />
         {showHelpPage && <LinkButton to="/help">Help</LinkButton>}
         {showSettingsPage && <LinkButton to="/settings">Settings</LinkButton>}
       </ButtonBar>

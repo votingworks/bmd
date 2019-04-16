@@ -39,7 +39,7 @@ const Instructions = styled.ol`
     top: 0;
     left: 0;
     font-weight: bold;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
   }
 `
 
