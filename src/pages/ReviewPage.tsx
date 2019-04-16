@@ -102,13 +102,10 @@ const ContestHeader = styled.dt`
   margin-top: 0.5rem;
   border-top: 1px solid lightgrey;
   padding-top: 0.5rem;
+  font-size: 0.8rem;
   & > .change-button {
     float: right;
   }
-`
-
-const ContestHeading = styled.span`
-  font-size: 0.8rem;
 `
 
 const ContestSelection = styled.dd`
@@ -224,17 +221,8 @@ class SummaryPage extends React.Component<RouteComponentProps, State> {
                       election!.contests.map(contest => {
                         return (
                           <React.Fragment key={contest.id}>
-                            <ContestHeader>
-                              <ContestHeading aria-label={`${contest.title},`}>
-                                {contest.title}
-                              </ContestHeading>
-                              <LinkButton
-                                to={`/contests/${contest.id}`}
-                                className="no-print change-button"
-                                aria-label={`Change ${contest.title}.`}
-                              >
-                                Change
-                              </LinkButton>
+                            <ContestHeader aria-label={`${contest.title},`}>
+                              {contest.title}
                             </ContestHeader>
 
                             {contest.type === 'candidate' && (
@@ -249,6 +237,13 @@ class SummaryPage extends React.Component<RouteComponentProps, State> {
                                 vote={votes[contest.id] as YesNoVote}
                               />
                             )}
+                            <LinkButton
+                              to={`/contests/${contest.id}`}
+                              className="no-print change-button"
+                              aria-label={`Change ${contest.title}.`}
+                            >
+                              Change
+                            </LinkButton>
                           </React.Fragment>
                         )
                       })
