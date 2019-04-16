@@ -23,8 +23,10 @@ class Screen extends React.Component<RouteComponentProps> {
   }
   public focus = () => {
     const screen = this.screen.current!
-    screen.focus()
-    screen.click()
+    window.setTimeout(() => {
+      screen.focus()
+      screen.click()
+    }, 100)
   }
   public render() {
     return (
