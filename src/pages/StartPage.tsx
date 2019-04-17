@@ -20,8 +20,8 @@ const StartPage = () => {
       <MainChild center>
         <Seal dangerouslySetInnerHTML={{ __html: seal }} />
         <Prose textCenter>
-          <h1 aria-label={`${title}.`}>{title}</h1>
-          <p aria-label={`${date}. ${county}, ${state}.`}>
+          <h1 aria-label={`${title},`}>{title}</h1>
+          <p aria-label={`${date}, ${county}, ${state}.`}>
             {date}
             <br />
             {county}, {state}

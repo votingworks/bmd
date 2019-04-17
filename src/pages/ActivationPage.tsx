@@ -70,8 +70,12 @@ const StartPage = (props: RouteComponentProps) => {
             <Legend>
               <label htmlFor="BallotCode">
                 <Prose textCenter>
-                  <h1>Scan Your Activation Code</h1>
-                  <p>Your ballot will be displayed after scan is complete.</p>
+                  <h1 aria-label="Scan Your Activation Code.">
+                    Scan Your Activation Code
+                  </h1>
+                  <p>
+                    Your ballot will be displayed after the scan is complete.
+                  </p>
                   <CodeBox onClick={takeShortcut}>
                     <MyVoiceIsMyPassword />
                   </CodeBox>
