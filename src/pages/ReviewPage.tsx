@@ -1,6 +1,6 @@
 import pluralize from 'pluralize'
 import React from 'react'
-import { Link, RouteComponentProps } from 'react-router-dom'
+import { Link, Redirect, RouteComponentProps } from 'react-router-dom'
 import styled from 'styled-components'
 
 import {
@@ -280,6 +280,13 @@ class ReviewPage extends React.Component<RouteComponentProps, State> {
     const { bmdConfig } = this.context.election
     const { showHelpPage, showSettingsPage } = bmdConfig
     const { isScrollable, isScrollAtBottom, isScrollAtTop } = this.state
+    const contests: Array<CandidateContest | YesNoContest> = this.context
+      .contests
+
+    if (!contests.length) {
+      this.context.resetBallot()
+      return <Redirect to="/" />
+    }
 
     return (
       <React.Fragment>
@@ -308,14 +315,14 @@ class ReviewPage extends React.Component<RouteComponentProps, State> {
             >
               <ScrollableContentWrapper isScrollable={isScrollable}>
                 <BallotContext.Consumer>
-                  {({ election, votes }) =>
-                    election!.contests.map(contest => {
+                  {({ votes }) =>
+                    contests.map((contest, contestNum) => {
                       return (
                         <Contest
                           id={contest.id}
                           key={contest.id}
                           tabIndex={0}
-                          to={`/contests/${contest.id}#review`}
+                          to={`/contests/${contestNum}#review`}
                         >
                           <ContestProse compact>
                             <h3

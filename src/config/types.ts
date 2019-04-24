@@ -31,6 +31,7 @@ export type VotesDict = Dictionary<Vote>
 export type ContestTypes = 'candidate' | 'yesno'
 export interface Contest {
   readonly id: string
+  readonly district_id: string
   readonly section: string
   readonly title: string
   readonly type: ContestTypes
@@ -56,7 +57,23 @@ export interface BMDConfig {
 export interface ElectionDefaults {
   readonly bmdConfig: BMDConfig
 }
+export interface BallotStyle {
+  readonly id: string
+  readonly precincts: string[]
+  readonly districts: string[]
+}
+export interface Precinct {
+  readonly id: string
+  readonly name: string
+}
+export interface District {
+  readonly id: string
+  readonly name: string
+}
 export interface Election {
+  readonly ballotStyles: BallotStyle[]
+  readonly precincts: Precinct[]
+  readonly districts: District[]
   readonly contests: Array<CandidateContest | YesNoContest>
   readonly county: string
   readonly date: string
@@ -77,11 +94,14 @@ export type PartialUserSettings = Partial<UserSettings>
 // Ballot
 export type UpdateVoteFunction = (contestId: string, vote: OptionalVote) => void
 export interface BallotContextInterface {
+  contests: Array<CandidateContest | YesNoContest>
   readonly election: Election | undefined
   resetBallot: (path?: string) => void
   setBallotKey: (activationCode: string) => void
   updateVote: UpdateVoteFunction
   votes: VotesDict
+  precinct: string | undefined
+  ballotStyle: string | undefined
   setUserSettings: (partial: PartialUserSettings) => void
   userSettings: UserSettings
 }

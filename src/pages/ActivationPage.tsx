@@ -18,6 +18,7 @@ const CodeBox = styled.div`
 
 // TODO: Codes will eventually be derived from the election file.
 const validBallotCodes = [
+  'VX.precinct-23.12D',
   'MyVoiceIsMyPassword',
   'Foo',
   'Password',

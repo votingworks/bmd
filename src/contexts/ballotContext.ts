@@ -4,7 +4,10 @@ import { createContext } from 'react'
 import { BallotContextInterface, TextSizeSetting } from '../config/types'
 
 const ballot: BallotContextInterface = {
+  ballotStyle: undefined,
+  contests: [],
   election: undefined,
+  precinct: undefined,
   resetBallot: () => undefined,
   setBallotKey: () => undefined,
   setUserSettings: () => undefined,

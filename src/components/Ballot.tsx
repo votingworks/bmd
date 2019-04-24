@@ -15,9 +15,11 @@ import SettingsPage from '../pages/SettingsPage'
 import StartPage from '../pages/StartPage'
 
 const Ballot = () => {
-  const { election } = useContext(BallotContext)
-  const { bmdConfig, contests } = election!
+  const { election, contests } = useContext(BallotContext)
+
+  const { bmdConfig } = election!
   const { requireActivation, showHelpPage, showSettingsPage } = bmdConfig!
+
   return (
     <Switch>
       {requireActivation ? (
@@ -29,9 +31,10 @@ const Ballot = () => {
       <Route path="/cast" component={CastBallotPage} />
       <Route path="/start" exact component={StartPage} />
       {contests.length && (
-        <Redirect exact from="/contests" to={`/contests/${contests[0].id}`} />
+        <Redirect exact from="/contests" to={`/contests/0`} />
       )}
-      <Route path="/contests/:id" component={ContestPage} />
+
+      <Route path="/contests/:contestNumber" component={ContestPage} />
       <Route path="/pre-review" component={PreReviewPage} />
       <Route path="/review" component={ReviewPage} />
       <Route path="/print" component={PrintPage} />

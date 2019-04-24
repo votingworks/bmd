@@ -1,5 +1,5 @@
 import React from 'react'
-import { RouteComponentProps } from 'react-router-dom'
+import { Redirect, RouteComponentProps } from 'react-router-dom'
 import styled from 'styled-components'
 
 import {
@@ -163,6 +163,15 @@ class SummaryPage extends React.Component<RouteComponentProps, State> {
       bmdConfig,
     } = this.context.election
     const { showHelpPage, showSettingsPage } = bmdConfig
+
+    const contests: Array<CandidateContest | YesNoContest> = this.context
+      .contests
+
+    if (!contests.length) {
+      this.resetBallot()
+      return <Redirect to="/" />
+    }
+
     return (
       <React.Fragment>
         <Main>
@@ -190,8 +199,8 @@ class SummaryPage extends React.Component<RouteComponentProps, State> {
               <Content>
                 <BallotSelections>
                   <BallotContext.Consumer>
-                    {({ election, votes }) =>
-                      election!.contests.map(contest => (
+                    {({ votes }) =>
+                      contests.map(contest => (
                         <Contest key={contest.id}>
                           <ContestProse compact>
                             <h3>

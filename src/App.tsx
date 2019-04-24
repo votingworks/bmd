@@ -15,6 +15,7 @@ import {
 } from './lib/gamepad'
 
 import {
+  CandidateContest,
   Election,
   ElectionDefaults,
   OptionalElection,
@@ -23,6 +24,7 @@ import {
   TextSizeSetting,
   UserSettings,
   VotesDict,
+  YesNoContest,
 } from './config/types'
 
 import electionDefaults from './data/electionDefaults.json'
@@ -40,6 +42,9 @@ import BallotContext from './contexts/ballotContext'
 
 interface State {
   ballotKey: string
+  contests: Array<CandidateContest | YesNoContest>
+  precinct: string
+  ballotStyle: string
   election: OptionalElection
   userSettings: UserSettings
   votes: VotesDict
@@ -50,11 +55,45 @@ const removeElectionShortcuts = ['mod+k']
 
 const initialState = {
   ballotKey: '',
+  ballotStyle: '',
+  contests: [],
   election: undefined,
+  precinct: '',
   userSettings: {
     textSize: GLOBALS.TEXT_SIZE as TextSizeSetting,
   },
   votes: {},
+}
+
+function filterContests(election: Election, ballotStyle: string) {
+  const { ballotStyles, contests, districts } = election!
+  const ballotStyleDetails = ballotStyles!.find(x => x.id === ballotStyle)!
+  if (!ballotStyleDetails) {
+    return contests
+  }
+
+  const relevantDistrictIds = districts
+    .filter(district => ballotStyleDetails.districts.includes(district.id))
+    .map(district => district.id)
+  const availableContests = contests.filter(contest =>
+    relevantDistrictIds.includes(contest.district_id)
+  )
+
+  return availableContests
+}
+
+function parseBallotKey(ballotKey: string) {
+  const ballotKeyComponents = ballotKey.split('.')
+  if (ballotKeyComponents.length !== 3 || ballotKeyComponents[0] !== 'VX') {
+    return { precinct: '', ballotStyle: '' }
+  }
+
+  const [precinct, ballotStyle] = ballotKeyComponents.slice(1)
+
+  return {
+    ballotStyle,
+    precinct,
+  }
 }
 
 class App extends React.Component<RouteComponentProps, State> {
@@ -122,8 +161,14 @@ class App extends React.Component<RouteComponentProps, State> {
   }
 
   public setBallotKey = (ballotKey: string) => {
+    const { precinct, ballotStyle } = parseBallotKey(ballotKey)
+    const contests = filterContests(this.state.election!, ballotStyle)
+
     this.setState({
       ballotKey,
+      ballotStyle,
+      contests,
+      precinct,
     })
   }
 
@@ -162,7 +207,10 @@ class App extends React.Component<RouteComponentProps, State> {
         <Gamepad onButtonDown={handleGamepadButtonDown}>
           <BallotContext.Provider
             value={{
+              ballotStyle: this.state.ballotStyle,
+              contests: this.state.contests,
               election,
+              precinct: this.state.precinct,
               resetBallot: this.resetBallot,
               setBallotKey: this.setBallotKey,
               setUserSettings: this.setUserSettings,

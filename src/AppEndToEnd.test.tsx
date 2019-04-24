@@ -41,7 +41,7 @@ it(`basic end-to-end flow`, async () => {
   window.localStorage.setItem(electionKey, electionSampleAsString)
   const { container, getByText, getByTestId, queryByText } = render(<App />)
   fireEvent.change(getByTestId('activation-code'), {
-    target: { value: 'MyVoiceIsMyPassword' },
+    target: { value: 'VX.precinct-23.12D' },
   })
 
   // TODO: replace next line with "Enter" keyDown on activation code input
@@ -56,7 +56,6 @@ it(`basic end-to-end flow`, async () => {
   fireEvent.click(
     getByText(presidentContest.candidates[0].name).closest('label')!
   )
-
   // Vote for Measure 102 contest
   while (!queryByText(measure102Contest.title)) {
     fireEvent.click(getByText('Next'))
