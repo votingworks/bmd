@@ -15,22 +15,19 @@ const contest1candidate0 = contest1.candidates[0]
 import ReviewPage from './ReviewPage'
 
 it(`if no contests, redirect to / and reset ballot`, () => {
-  const resetBallot = jest.fn()
-  const homeMock = () => <div>Home Mock</div>
+  const resetMock = () => <div>Reset Mock</div>
   const { getByText } = render(
     <>
       <Route path="/review" component={ReviewPage} />
-      <Route exact path="/" render={homeMock} />
+      <Route exact path="/reset" render={resetMock} />
     </>,
     {
       contests: [],
-      resetBallot,
       route: '/review',
     }
   )
 
-  expect(resetBallot).toBeCalled()
-  expect(getByText('Home Mock')).toBeTruthy()
+  expect(getByText('Reset Mock')).toBeTruthy()
 })
 
 it(`renders ReviewPage without votes`, () => {

@@ -10,6 +10,7 @@ import HelpPage from '../pages/HelpPage'
 import NotFoundPage from '../pages/NotFoundPage'
 import PreReviewPage from '../pages/PreReviewPage'
 import PrintPage from '../pages/PrintPage'
+import ResetPage from '../pages/ResetPage'
 import ReviewPage from '../pages/ReviewPage'
 import SettingsPage from '../pages/SettingsPage'
 import StartPage from '../pages/StartPage'
@@ -27,6 +28,7 @@ const Ballot = () => {
       ) : (
         <Redirect exact path="/" to="/start" />
       )}
+      <Route exact path="/reset" component={ResetPage} />
       <Route exact path="/activate" component={ActivationPage} />
       <Route path="/cast" component={CastBallotPage} />
       <Route path="/start" exact component={StartPage} />

@@ -168,8 +168,7 @@ class SummaryPage extends React.Component<RouteComponentProps, State> {
       .contests
 
     if (!contests.length) {
-      this.resetBallot()
-      return <Redirect to="/" />
+      return <Redirect to="/reset" />
     }
 
     return (

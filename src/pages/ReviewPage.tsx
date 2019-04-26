@@ -284,8 +284,7 @@ class ReviewPage extends React.Component<RouteComponentProps, State> {
       .contests
 
     if (!contests.length) {
-      this.context.resetBallot()
-      return <Redirect to="/" />
+      return <Redirect to="/reset" />
     }
 
     return (

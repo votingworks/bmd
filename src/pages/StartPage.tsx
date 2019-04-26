@@ -15,6 +15,7 @@ const Seal = styled.div`
 const StartPage = () => {
   const { election } = useContext(BallotContext)
   const { title, state, county, date, seal } = election!
+
   return (
     <Main>
       <MainChild center>

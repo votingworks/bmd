@@ -5,21 +5,18 @@ import { render } from '../../test/testUtils'
 
 import PrintPage from './PrintPage'
 
-it(`if no contests, redirect to / and reset ballot`, () => {
-  const resetBallot = jest.fn()
-  const homeMock = () => <div>Home Mock</div>
+it(`if no contests, redirect to /reset`, () => {
+  const resetMock = () => <div>Reset Mock</div>
   const { getByText } = render(
     <>
       <Route path="/print" component={PrintPage} />
-      <Route exact path="/" render={homeMock} />
+      <Route exact path="/reset" render={resetMock} />
     </>,
     {
       contests: [],
-      resetBallot,
       route: '/print',
     }
   )
 
-  expect(resetBallot).toBeCalled()
-  expect(getByText('Home Mock')).toBeTruthy()
+  expect(getByText('Reset Mock')).toBeTruthy()
 })
