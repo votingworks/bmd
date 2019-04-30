@@ -1,6 +1,6 @@
 import pluralize from 'pluralize'
 import React from 'react'
-import { Link, Redirect, RouteComponentProps } from 'react-router-dom'
+import { Link, RouteComponentProps } from 'react-router-dom'
 import styled from 'styled-components'
 
 import {
@@ -8,6 +8,7 @@ import {
   Candidate,
   CandidateContest,
   CandidateVote,
+  Contests,
   OptionalYesNoVote,
   ScrollDirections,
   YesNoContest,
@@ -177,7 +178,7 @@ const CandidateContestResult = ({
       {!!remainingChoices && (
         <Text bold warning warningIcon wordBreak>
           You may select {remainingChoices} more{' '}
-          {pluralize('candidates', remainingChoices)}.
+          {pluralize('candidate', remainingChoices)}.
         </Text>
       )}
     </React.Fragment>
@@ -277,15 +278,14 @@ class ReviewPage extends React.Component<RouteComponentProps, State> {
   }
 
   public render() {
-    const { bmdConfig } = this.context.election
-    const { showHelpPage, showSettingsPage } = bmdConfig
+    const {
+      contests,
+      election: {
+        bmdConfig: { showHelpPage, showSettingsPage },
+      },
+      votes,
+    } = this.context
     const { isScrollable, isScrollAtBottom, isScrollAtTop } = this.state
-    const contests: Array<CandidateContest | YesNoContest> = this.context
-      .contests
-
-    if (!contests.length) {
-      return <Redirect to="/reset" />
-    }
 
     return (
       <React.Fragment>
@@ -313,46 +313,36 @@ class ReviewPage extends React.Component<RouteComponentProps, State> {
               onScroll={this.updateContestChoicesScrollStates}
             >
               <ScrollableContentWrapper isScrollable={isScrollable}>
-                <BallotContext.Consumer>
-                  {({ votes }) =>
-                    contests.map((contest, contestNum) => {
-                      return (
-                        <Contest
-                          id={contest.id}
-                          key={contest.id}
-                          tabIndex={0}
-                          to={`/contests/${contestNum}#review`}
-                        >
-                          <ContestProse compact>
-                            <h3
-                              aria-label={`${contest.section}, ${
-                                contest.title
-                              },`}
-                            >
-                              {contest.section}, {contest.title}
-                            </h3>
+                {(contests as Contests).map((contest, i) => (
+                  <Contest
+                    id={contest.id}
+                    key={contest.id}
+                    tabIndex={0}
+                    to={`/contests/${i}#review`}
+                  >
+                    <ContestProse compact>
+                      <h3 aria-label={`${contest.section}, ${contest.title},`}>
+                        {contest.section}, {contest.title}
+                      </h3>
 
-                            {contest.type === 'candidate' && (
-                              <CandidateContestResult
-                                contest={contest}
-                                vote={votes[contest.id] as CandidateVote}
-                              />
-                            )}
-                            {contest.type === 'yesno' && (
-                              <YesNoContestResult
-                                contest={contest}
-                                vote={votes[contest.id] as YesNoVote}
-                              />
-                            )}
-                          </ContestProse>
-                          <ContestActions>
-                            <DecoyButton>Change</DecoyButton>
-                          </ContestActions>
-                        </Contest>
-                      )
-                    })
-                  }
-                </BallotContext.Consumer>
+                      {contest.type === 'candidate' && (
+                        <CandidateContestResult
+                          contest={contest}
+                          vote={votes[contest.id] as CandidateVote}
+                        />
+                      )}
+                      {contest.type === 'yesno' && (
+                        <YesNoContestResult
+                          contest={contest}
+                          vote={votes[contest.id] as YesNoVote}
+                        />
+                      )}
+                    </ContestProse>
+                    <ContestActions>
+                      <DecoyButton>Change</DecoyButton>
+                    </ContestActions>
+                  </Contest>
+                ))}
               </ScrollableContentWrapper>
             </ScrollContainer>
           </VariableContentContainer>

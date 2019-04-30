@@ -2,6 +2,8 @@ import React, { useContext, useState } from 'react'
 import { RouteComponentProps } from 'react-router-dom'
 import styled from 'styled-components'
 
+import { ActivationData, Election } from '../config/types'
+
 import BallotContext from '../contexts/ballotContext'
 
 import { MyVoiceIsMyPassword } from '../assets/BarCodes'
@@ -16,37 +18,45 @@ const CodeBox = styled.div`
   margin: auto;
 `
 
-// TODO: Codes will eventually be derived from the election file.
-const validBallotCodes = [
-  'VX.precinct-23.12D',
-  'VX.precinct-21.5R',
-  'MyVoiceIsMyPassword',
-  'Foo',
-  'Password',
-  'VotingWorks',
-]
-
 let resetBallotCode: number
 
 const StartPage = (props: RouteComponentProps) => {
-  const { setBallotKey } = useContext(BallotContext)
+  const { election: contextElection, activateBallot } = useContext(
+    BallotContext
+  )
+  const election = contextElection as Election
   const [ballotCode, setBallotCode] = useState('')
-  const setBallot = (code: string) => {
+  const setBallot = (activationData: ActivationData) => {
     clearTimeout(resetBallotCode)
-    setBallotKey(code)
+    activateBallot(activationData)
     props.history.push('/start')
   }
 
-  /* istanbul ignore next */
+  /* istanbul ignore next - shortcut will not exist in official release */
   const takeShortcut = () => {
-    setBallot(validBallotCodes[0])
+    const ballotStyle = election.ballotStyles[0]
+    setBallot({
+      ballotStyle,
+      precinct: election.precincts[0],
+    })
   }
   const onSubmit = (event: React.FormEvent) => {
     event.preventDefault()
+    const [brand, precinctId, ballotStyleId] = ballotCode.split('.')
+    const ballotStyle = election.ballotStyles.find(b => b.id === ballotStyleId)
+    const precinct = election.precincts.find(p => p.id === precinctId)
     // TODO: add invalid code state?
     /* istanbul ignore else */
-    if (validBallotCodes.includes(ballotCode)) {
-      setBallot(ballotCode)
+    if (
+      brand === 'VX' &&
+      !!precinct &&
+      !!ballotStyle &&
+      ballotStyle.precincts.includes(precinct.id)
+    ) {
+      setBallot({
+        ballotStyle,
+        precinct,
+      })
     }
   }
   // TODO: Mock jest timers

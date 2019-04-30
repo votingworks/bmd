@@ -4,17 +4,15 @@ import { createContext } from 'react'
 import { BallotContextInterface, TextSizeSetting } from '../config/types'
 
 const ballot: BallotContextInterface = {
-  ballotStyle: undefined,
+  activateBallot: () => undefined,
+  ballotStyleId: '',
   contests: [],
   election: undefined,
-  precinct: undefined,
+  precinctId: '',
   resetBallot: () => undefined,
-  setBallotKey: () => undefined,
   setUserSettings: () => undefined,
   updateVote: () => undefined,
-  userSettings: {
-    textSize: GLOBALS.TEXT_SIZE as TextSizeSetting,
-  },
+  userSettings: { textSize: GLOBALS.TEXT_SIZE as TextSizeSetting },
   votes: {},
 }
 

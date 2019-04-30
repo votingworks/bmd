@@ -1,22 +1,33 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
 
+import { CandidateContest } from '../config/types'
+
 import { render } from '../../test/testUtils'
+
+import electionSample from '../data/electionSample.json'
+
+const contest0 = electionSample.contests[0] as CandidateContest
+const contest1 = electionSample.contests[1] as CandidateContest
+const contest0candidate0 = contest0.candidates[0]
+const contest1candidate0 = contest1.candidates[0]
 
 import PrintPage from './PrintPage'
 
-it(`if no contests, redirect to /reset`, () => {
-  const resetMock = () => <div>Reset Mock</div>
-  const { getByText } = render(
-    <>
-      <Route path="/print" component={PrintPage} />
-      <Route exact path="/reset" render={resetMock} />
-    </>,
-    {
-      contests: [],
-      route: '/print',
-    }
-  )
+it(`renders PrintPage without votes`, () => {
+  const { container } = render(<Route path="/review" component={PrintPage} />, {
+    route: '/print',
+  })
+  expect(container.firstChild).toMatchSnapshot()
+})
 
-  expect(getByText('Reset Mock')).toBeTruthy()
+it(`renders PrintPage with votes`, () => {
+  const { container } = render(<Route path="/print" component={PrintPage} />, {
+    route: '/print',
+    votes: {
+      president: [contest0candidate0],
+      senator: [contest1candidate0],
+    },
+  })
+  expect(container.firstChild).toMatchSnapshot()
 })

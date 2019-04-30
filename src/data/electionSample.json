@@ -20,7 +20,7 @@
   "contests": [
     {
       "id": "president",
-      "district_id": "district-1",
+      "districtId": "district-1",
       "type": "candidate",
       "section": "United States",
       "title": "President and Vice-President",
@@ -61,7 +61,7 @@
     },
     {
       "id": "senator",
-      "district_id": "district-2",
+      "districtId": "district-2",
       "type": "candidate",
       "section": "United States",
       "title": "Senator",
@@ -107,7 +107,7 @@
     },
     {
       "id": "representative-district-6",
-      "district_id": "district-1",
+      "districtId": "district-1",
       "type": "candidate",
       "section": "United States",
       "title": "Representative, District 6",
@@ -143,7 +143,7 @@
     },
     {
       "id": "governor",
-      "district_id": "district-2",
+      "districtId": "district-2",
       "type": "candidate",
       "section": "State of Hamilton",
       "title": "Governor",
@@ -284,7 +284,7 @@
     },
     {
       "id": "lieutenant-governor",
-      "district_id": "district-1",
+      "districtId": "district-1",
       "type": "candidate",
       "section": "State of Hamilton",
       "title": "Lieutenant Governor",
@@ -340,7 +340,7 @@
     },
     {
       "id": "secretary-of-state",
-      "district_id": "district-2",
+      "districtId": "district-2",
       "type": "candidate",
       "section": "State of Hamilton",
       "title": "Secretary of State",
@@ -361,7 +361,7 @@
     },
     {
       "id": "state-senator-district-31",
-      "district_id": "district-1",
+      "districtId": "district-1",
       "type": "candidate",
       "section": "State of Hamilton",
       "title": "Senator, District 31",
@@ -377,7 +377,7 @@
     },
     {
       "id": "state-assembly-district-54",
-      "district_id": "district-1",
+      "districtId": "district-1",
       "type": "candidate",
       "section": "State of Hamilton",
       "title": "Assembly Member, District 54",
@@ -403,7 +403,7 @@
     },
     {
       "id": "county-commissioners",
-      "district_id": "district-2",
+      "districtId": "district-2",
       "type": "candidate",
       "section": "Franklin County",
       "title": "County Commissioners",
@@ -489,7 +489,7 @@
     },
     {
       "id": "county-registrar-of-wills",
-      "district_id": "district-1",
+      "districtId": "district-1",
       "type": "candidate",
       "section": "Franklin County",
       "title": "Registrar of Wills",
@@ -505,7 +505,7 @@
     },
     {
       "id": "city-mayor",
-      "district_id": "district-2",
+      "districtId": "district-2",
       "type": "candidate",
       "section": "City of Springfield",
       "title": "Mayor",
@@ -526,7 +526,7 @@
     },
     {
       "id": "city-council",
-      "district_id": "district-2",
+      "districtId": "district-2",
       "type": "candidate",
       "section": "City of Springfield",
       "title": "City Council",
@@ -567,7 +567,7 @@
     },
     {
       "id": "judicial-robert-demergue",
-      "district_id": "district-1",
+      "districtId": "district-1",
       "type": "yesno",
       "section": "Hamilton Court of Appeals",
       "title": "Retain Robert Demergue as Chief Justice?",
@@ -575,7 +575,7 @@
     },
     {
       "id": "judicial-elmer-hull",
-      "district_id": "district-2",
+      "districtId": "district-2",
       "type": "yesno",
       "section": "Hamilton Court of Appeals",
       "title": "Retain Elmer Hull as Associate Justice?",
@@ -583,7 +583,7 @@
     },
     {
       "id": "question-a",
-      "district_id": "district-1",
+      "districtId": "district-1",
       "type": "yesno",
       "section": "State of Hamilton",
       "shortTitle": "Question A",
@@ -592,7 +592,7 @@
     },
     {
       "id": "question-b",
-      "district_id": "district-1",
+      "districtId": "district-1",
       "type": "yesno",
       "section": "State of Hamilton",
       "shortTitle": "Question B",
@@ -601,7 +601,7 @@
     },
     {
       "id": "question-c",
-      "district_id": "district-2",
+      "districtId": "district-2",
       "type": "yesno",
       "section": "State of Hamilton",
       "shortTitle": "Question C",
@@ -610,7 +610,7 @@
     },
     {
       "id": "proposition-1",
-      "district_id": "district-1",
+      "districtId": "district-1",
       "type": "yesno",
       "section": "State of Hamilton",
       "shortTitle": "Proposition 1",
@@ -619,7 +619,7 @@
     },
     {
       "id": "measure-101",
-      "district_id": "district-2",
+      "districtId": "district-2",
       "type": "yesno",
       "section": "Franklin County",
       "shortTitle": "Measure 101",
@@ -628,7 +628,7 @@
     },
     {
       "id": "measure-102",
-      "district_id": "district-1",
+      "districtId": "district-1",
       "type": "yesno",
       "section": "Franklin County",
       "shortTitle": "Measure 102",

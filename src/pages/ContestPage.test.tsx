@@ -11,14 +11,14 @@ const firstContestTitle = electionSample.contests[0].title
 import ContestPage from './ContestPage'
 
 it(`renders ContestPage`, () => {
-  const { getByText } = render(
+  const { container, getByText } = render(
     <Route path="/contests/:contestNumber" component={ContestPage} />,
     {
       route: `/contests/0`,
     }
   )
-
   getByText(firstContestTitle)
+  expect(container).toMatchSnapshot()
 })
 
 it(`redirects to top-level page if no contest number match`, () => {

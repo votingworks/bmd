@@ -24,15 +24,10 @@ interface Props extends RouteComponentProps<ContestParams> {}
 
 const ContestPage = (props: Props) => {
   const { contestNumber } = props.match.params
-  const {
-    election,
-    updateVote,
-    votes,
-    contests: contestsOrNull,
-    resetBallot,
-  } = useContext(BallotContext)
+  const { election, updateVote, votes, contests, resetBallot } = useContext(
+    BallotContext
+  )
 
-  const contests = contestsOrNull!
   const { bmdConfig } = election!
   const { showHelpPage, showSettingsPage } = bmdConfig!
   const currentContestIndex = parseInt(contestNumber, 10)

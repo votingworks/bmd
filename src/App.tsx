@@ -15,7 +15,9 @@ import {
 } from './lib/gamepad'
 
 import {
-  CandidateContest,
+  ActivationData,
+  BallotStyle,
+  Contests,
   Election,
   ElectionDefaults,
   OptionalElection,
@@ -24,7 +26,6 @@ import {
   TextSizeSetting,
   UserSettings,
   VotesDict,
-  YesNoContest,
 } from './config/types'
 
 import electionDefaults from './data/electionDefaults.json'
@@ -41,59 +42,26 @@ import UploadConfig from './components/UploadConfig'
 import BallotContext from './contexts/ballotContext'
 
 interface State {
-  ballotKey: string
-  contests: Array<CandidateContest | YesNoContest>
-  precinct: string
-  ballotStyle: string
+  ballotStyleId: string
+  contests: Contests
   election: OptionalElection
+  precinctId: string
   userSettings: UserSettings
   votes: VotesDict
 }
 
-export const electionKey = 'votingWorksElection'
+export const electionKey = 'election'
+export const activationStorageKey = 'activation'
+export const votesStorageKey = 'votes'
 const removeElectionShortcuts = ['mod+k']
 
 const initialState = {
-  ballotKey: '',
-  ballotStyle: '',
+  ballotStyleId: '',
   contests: [],
   election: undefined,
-  precinct: '',
-  userSettings: {
-    textSize: GLOBALS.TEXT_SIZE as TextSizeSetting,
-  },
+  precinctId: '',
+  userSettings: { textSize: GLOBALS.TEXT_SIZE as TextSizeSetting },
   votes: {},
-}
-
-function filterContests(election: Election, ballotStyle: string) {
-  const { ballotStyles, contests, districts } = election!
-  const ballotStyleDetails = ballotStyles!.find(x => x.id === ballotStyle)!
-  if (!ballotStyleDetails) {
-    return contests
-  }
-
-  const relevantDistrictIds = districts
-    .filter(district => ballotStyleDetails.districts.includes(district.id))
-    .map(district => district.id)
-  const availableContests = contests.filter(contest =>
-    relevantDistrictIds.includes(contest.district_id)
-  )
-
-  return availableContests
-}
-
-function parseBallotKey(ballotKey: string) {
-  const ballotKeyComponents = ballotKey.split('.')
-  if (ballotKeyComponents.length !== 3 || ballotKeyComponents[0] !== 'VX') {
-    return { precinct: '', ballotStyle: '' }
-  }
-
-  const [precinct, ballotStyle] = ballotKeyComponents.slice(1)
-
-  return {
-    ballotStyle,
-    precinct,
-  }
 }
 
 class App extends React.Component<RouteComponentProps, State> {
@@ -110,8 +78,21 @@ class App extends React.Component<RouteComponentProps, State> {
         election: mergeWithDefaults(electionSample as Election),
       })
     } else {
+      const election = this.getElection()
+      const { ballotStyleId, precinctId } = this.getBalotActivation()
+      const ballotStyle =
+        ballotStyleId &&
+        election &&
+        election.ballotStyles.find(bs => bs.id === ballotStyleId)
+      const contests = ballotStyle
+        ? this.getContests(ballotStyle, election)
+        : initialState.contests
       this.setState({
-        election: this.getElection(),
+        ballotStyleId,
+        contests,
+        election,
+        precinctId,
+        votes: this.getVotes(),
       })
     }
     Mousetrap.bind(removeElectionShortcuts, this.reset)
@@ -136,19 +117,59 @@ class App extends React.Component<RouteComponentProps, State> {
     window.localStorage.setItem(electionKey, JSON.stringify(election))
   }
 
+  public getBalotActivation = () => {
+    const voterData = window.localStorage.getItem(activationStorageKey)
+    return voterData ? JSON.parse(voterData) : {}
+  }
+
+  public setBalotActivation = (data: {
+    ballotStyleId: string
+    precinctId: string
+  }) => {
+    const { ballotStyleId, precinctId } = data
+    window.localStorage.setItem(
+      activationStorageKey,
+      JSON.stringify({
+        ...this.getBalotActivation(),
+        ballotStyleId,
+        precinctId,
+      })
+    )
+  }
+
+  public getVotes = () => {
+    const votesData = window.localStorage.getItem(votesStorageKey)
+    return votesData ? JSON.parse(votesData) : {}
+  }
+
+  public resetVoterData = () => {
+    window.localStorage.removeItem(activationStorageKey)
+    window.localStorage.removeItem(votesStorageKey)
+  }
+
   public reset = /* istanbul ignore next */ () => {
     this.setState(initialState)
     window.localStorage.removeItem(electionKey)
+    this.resetVoterData()
     this.props.history.push('/')
   }
 
   public updateVote = (contestId: string, vote: OptionalVote) => {
-    this.setState(prevState => ({
-      votes: { ...prevState.votes, [contestId]: vote },
-    }))
+    this.setState(
+      prevState => ({
+        votes: { ...prevState.votes, [contestId]: vote },
+      }),
+      () => {
+        window.localStorage.setItem(
+          votesStorageKey,
+          JSON.stringify(this.state.votes)
+        )
+      }
+    )
   }
 
   public resetBallot = (path: string = '/') => {
+    this.resetVoterData()
     this.setState(
       {
         ...initialState,
@@ -160,15 +181,20 @@ class App extends React.Component<RouteComponentProps, State> {
     )
   }
 
-  public setBallotKey = (ballotKey: string) => {
-    const { precinct, ballotStyle } = parseBallotKey(ballotKey)
-    const contests = filterContests(this.state.election!, ballotStyle)
+  public getContests = (ballotStyle: BallotStyle, election?: Election) =>
+    (election || this.state.election!).contests.filter(c =>
+      ballotStyle.districts.includes(c.districtId)
+    )
 
+  public activateBallot = ({ ballotStyle, precinct }: ActivationData) => {
+    this.setBalotActivation({
+      ballotStyleId: ballotStyle.id,
+      precinctId: precinct.id,
+    })
     this.setState({
-      ballotKey,
-      ballotStyle,
-      contests,
-      precinct,
+      ballotStyleId: ballotStyle.id,
+      contests: this.getContests(ballotStyle),
+      precinctId: precinct.id,
     })
   }
 
@@ -207,12 +233,12 @@ class App extends React.Component<RouteComponentProps, State> {
         <Gamepad onButtonDown={handleGamepadButtonDown}>
           <BallotContext.Provider
             value={{
-              ballotStyle: this.state.ballotStyle,
+              activateBallot: this.activateBallot,
+              ballotStyleId: this.state.ballotStyleId,
               contests: this.state.contests,
               election,
-              precinct: this.state.precinct,
+              precinctId: this.state.precinctId,
               resetBallot: this.resetBallot,
-              setBallotKey: this.setBallotKey,
               setUserSettings: this.setUserSettings,
               updateVote: this.updateVote,
               userSettings: this.state.userSettings,

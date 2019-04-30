@@ -14,22 +14,6 @@ const contest1candidate0 = contest1.candidates[0]
 
 import ReviewPage from './ReviewPage'
 
-it(`if no contests, redirect to / and reset ballot`, () => {
-  const resetMock = () => <div>Reset Mock</div>
-  const { getByText } = render(
-    <>
-      <Route path="/review" component={ReviewPage} />
-      <Route exact path="/reset" render={resetMock} />
-    </>,
-    {
-      contests: [],
-      route: '/review',
-    }
-  )
-
-  expect(getByText('Reset Mock')).toBeTruthy()
-})
-
 it(`renders ReviewPage without votes`, () => {
   const { container } = render(
     <Route path="/review" component={ReviewPage} />,

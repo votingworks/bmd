@@ -7,12 +7,7 @@ import GLOBALS from '../src/config/globals'
 
 import electionSample from '../src/data/electionSample.json'
 
-import {
-  CandidateContest,
-  Election,
-  TextSizeSetting,
-  YesNoContest,
-} from '../src/config/types'
+import { Contests, Election, TextSizeSetting } from '../src/config/types'
 
 import { mergeWithDefaults } from '../src/App'
 import BallotContext from '../src/contexts/ballotContext'
@@ -20,16 +15,14 @@ import BallotContext from '../src/contexts/ballotContext'
 export function render(
   component: React.ReactNode,
   {
-    election = electionSample,
-    contests = electionSample.contests as Array<
-      CandidateContest | YesNoContest
-    >,
-    ballotStyle = '12D',
-    precinct = 'precinct-23',
     route = '/',
+    activateBallot = jest.fn(),
+    ballotStyleId = '',
+    contests = electionSample.contests as Contests,
+    election = electionSample,
     history = createMemoryHistory({ initialEntries: [route] }),
+    precinctId = '',
     resetBallot = jest.fn(),
-    setBallotKey = jest.fn(),
     setUserSettings = jest.fn(),
     updateVote = jest.fn(),
     userSettings = { textSize: GLOBALS.TEXT_SIZE as TextSizeSetting },
@@ -40,12 +33,12 @@ export function render(
     ...testRender(
       <BallotContext.Provider
         value={{
-          ballotStyle,
+          activateBallot,
+          ballotStyleId,
           contests,
           election: mergeWithDefaults(election as Election),
-          precinct,
+          precinctId,
           resetBallot,
-          setBallotKey,
           setUserSettings,
           updateVote,
           userSettings,
