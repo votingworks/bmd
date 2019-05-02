@@ -79,7 +79,7 @@ class App extends React.Component<RouteComponentProps, State> {
       })
     } else {
       const election = this.getElection()
-      const { ballotStyleId, precinctId } = this.getBalotActivation()
+      const { ballotStyleId, precinctId } = this.getBallotActivation()
       const ballotStyle =
         ballotStyleId &&
         election &&
@@ -117,7 +117,7 @@ class App extends React.Component<RouteComponentProps, State> {
     window.localStorage.setItem(electionKey, JSON.stringify(election))
   }
 
-  public getBalotActivation = () => {
+  public getBallotActivation = () => {
     const voterData = window.localStorage.getItem(activationStorageKey)
     return voterData ? JSON.parse(voterData) : {}
   }
@@ -126,20 +126,22 @@ class App extends React.Component<RouteComponentProps, State> {
     ballotStyleId: string
     precinctId: string
   }) => {
-    const { ballotStyleId, precinctId } = data
-    window.localStorage.setItem(
-      activationStorageKey,
-      JSON.stringify({
-        ...this.getBalotActivation(),
-        ballotStyleId,
-        precinctId,
-      })
-    )
+    /* istanbul ignore else */
+    if (process.env.NODE_ENV !== 'production') {
+      window.localStorage.setItem(activationStorageKey, JSON.stringify(data))
+    }
   }
 
   public getVotes = () => {
     const votesData = window.localStorage.getItem(votesStorageKey)
     return votesData ? JSON.parse(votesData) : {}
+  }
+
+  public setVotes = (votes: VotesDict) => {
+    /* istanbul ignore else */
+    if (process.env.NODE_ENV !== 'production') {
+      window.localStorage.setItem(votesStorageKey, JSON.stringify(votes))
+    }
   }
 
   public resetVoterData = () => {
@@ -160,10 +162,7 @@ class App extends React.Component<RouteComponentProps, State> {
         votes: { ...prevState.votes, [contestId]: vote },
       }),
       () => {
-        window.localStorage.setItem(
-          votesStorageKey,
-          JSON.stringify(this.state.votes)
-        )
+        this.setVotes(this.state.votes)
       }
     )
   }

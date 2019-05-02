@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react'
 import { RouteComponentProps } from 'react-router-dom'
 import styled from 'styled-components'
 
-import { ActivationData, Election } from '../config/types'
+import { ActivationData, Election, Precinct } from '../config/types'
 
 import BallotContext from '../contexts/ballotContext'
 
@@ -25,7 +25,7 @@ const StartPage = (props: RouteComponentProps) => {
     BallotContext
   )
   const election = contextElection as Election
-  const [ballotCode, setBallotCode] = useState('')
+  const [activationCode, setActivationCode] = useState('')
   const setBallot = (activationData: ActivationData) => {
     clearTimeout(resetBallotCode)
     activateBallot(activationData)
@@ -37,15 +37,15 @@ const StartPage = (props: RouteComponentProps) => {
     const ballotStyle = election.ballotStyles[0]
     setBallot({
       ballotStyle,
-      precinct: election.precincts[0],
+      precinct: election.precincts.find(
+        p => p.id === ballotStyle.precincts[0]
+      ) as Precinct,
     })
   }
-  const onSubmit = (event: React.FormEvent) => {
-    event.preventDefault()
-    const [brand, precinctId, ballotStyleId] = ballotCode.split('.')
+  const decodeActivationCode = () => {
+    const [brand, precinctId, ballotStyleId] = activationCode.split('.')
     const ballotStyle = election.ballotStyles.find(b => b.id === ballotStyleId)
     const precinct = election.precincts.find(p => p.id === precinctId)
-    // TODO: add invalid code state?
     /* istanbul ignore else */
     if (
       brand === 'VX' &&
@@ -53,19 +53,21 @@ const StartPage = (props: RouteComponentProps) => {
       !!ballotStyle &&
       ballotStyle.precincts.includes(precinct.id)
     ) {
-      setBallot({
-        ballotStyle,
-        precinct,
-      })
+      setBallot({ ballotStyle, precinct })
     }
+    // TODO: add invalid code state?
+  }
+  const onSubmit = (event: React.FormEvent) => {
+    event.preventDefault()
+    decodeActivationCode()
   }
   // TODO: Mock jest timers
   /* istanbul ignore next */
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     clearTimeout(resetBallotCode)
-    setBallotCode(event.target.value)
+    setActivationCode(event.target.value)
     resetBallotCode = window.setTimeout(() => {
-      setBallotCode('')
+      setActivationCode('')
     }, 1000)
   }
   // TODO: testing for onBlur causes stack overflow error
@@ -98,7 +100,7 @@ const StartPage = (props: RouteComponentProps) => {
               className="visually-hidden"
               onBlur={onBlur}
               onChange={onChange}
-              value={ballotCode}
+              value={activationCode}
               aria-hidden="true"
               autoComplete="off"
               autoCorrect="off"

@@ -15,11 +15,22 @@ beforeEach(() => {
   window.location.href = '/'
 })
 
-it(`Displays alternate ballot`, async () => {
+it(`Handles invalid activation code`, async () => {
   window.localStorage.setItem(electionKey, electionSampleAsString)
   const { getByText, getByTestId } = render(<App />)
 
+  fireEvent.change(getByTestId('activation-code'), {
+    // Enter activation code with non-existant precinct.
+    target: { value: 'VX.precinct-404.5R' },
+  })
+
+  // Still on Activation Screen
   getByText('Scan Your Activation Code')
+})
+
+it(`Displays alternate ballot`, async () => {
+  window.localStorage.setItem(electionKey, electionSampleAsString)
+  const { getByText, getByTestId } = render(<App />)
 
   fireEvent.change(getByTestId('activation-code'), {
     // Enter activation code with different ballot style.

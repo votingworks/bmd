@@ -23,13 +23,14 @@ const Ballot = () => {
     showHelpPage,
     showSettingsPage,
   } = election!.bmdConfig!
+  const ballotActivated = !!ballotStyleId && !!precinctId
 
   return (
     <Switch>
-      {!requireActivation || (ballotStyleId && precinctId) ? (
-        <Redirect exact path="/" to="/start" />
-      ) : (
+      {requireActivation && !ballotActivated ? (
         <Route exact path="/" component={ActivationPage} />
+      ) : (
+        <Redirect exact path="/" to="/start" />
       )}
       <Route exact path="/activate" component={ActivationPage} />
       <Route path="/cast" component={CastBallotPage} />
