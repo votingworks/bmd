@@ -10,6 +10,7 @@ import {
   CandidateVote,
   Contests,
   OptionalYesNoVote,
+  Party,
   Scrollable,
   ScrollDirections,
   ScrollShadows,
@@ -146,9 +147,11 @@ const NoSelection = (props: { title: string }) => (
 
 const CandidateContestResult = ({
   contest,
+  parties,
   vote = [],
 }: {
   contest: CandidateContest
+  parties: Party[]
   vote: CandidateVote
 }) => {
   const remainingChoices = contest.seats - vote.length
@@ -160,7 +163,9 @@ const CandidateContestResult = ({
         <Text
           key={candidate.id}
           aria-label={`${candidate.name}${
-            candidate.party ? `, ${candidate.party}` : ''
+            candidate.partyId
+              ? `, ${parties.find(p => p.id === candidate.partyId)!.name}`
+              : ''
           }${candidate.isWriteIn ? `, write-in` : ''}${
             array.length - 1 === index ? '.' : ','
           }`}
@@ -168,7 +173,8 @@ const CandidateContestResult = ({
           voteIcon
         >
           <strong>{candidate.name}</strong>{' '}
-          {candidate.party && `/ ${candidate.party}`}
+          {candidate.partyId &&
+            `/ ${parties.find(p => p.id === candidate.partyId)!.name}`}
           {candidate.isWriteIn && `(write-in)`}
         </Text>
       ))}
@@ -280,6 +286,7 @@ class ReviewPage extends React.Component<RouteComponentProps, State> {
       contests,
       election: {
         bmdConfig: { showHelpPage, showSettingsPage },
+        parties,
       },
       votes,
     } = this.context
@@ -326,6 +333,7 @@ class ReviewPage extends React.Component<RouteComponentProps, State> {
                       {contest.type === 'candidate' && (
                         <CandidateContestResult
                           contest={contest}
+                          parties={parties}
                           vote={votes[contest.id] as CandidateVote}
                         />
                       )}

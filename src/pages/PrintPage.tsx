@@ -9,6 +9,7 @@ import {
   CandidateVote,
   Contests,
   OptionalYesNoVote,
+  Party,
   YesNoContest,
   YesNoVote,
 } from '../config/types'
@@ -101,9 +102,11 @@ const NoSelection = () => (
 
 const CandidateContestResult = ({
   contest,
+  parties,
   vote = [],
 }: {
   contest: CandidateContest
+  parties: Party[]
   vote: CandidateVote
 }) => {
   const remainingChoices = contest.seats - vote.length
@@ -114,7 +117,8 @@ const CandidateContestResult = ({
       {vote.map((candidate: Candidate) => (
         <Text bold key={candidate.id} wordBreak>
           <strong>{candidate.name}</strong>{' '}
-          {candidate.party && `/ ${candidate.party}`}
+          {candidate.partyId &&
+            `/ ${parties.find(p => p.id === candidate.partyId)!.name}`}
           {candidate.isWriteIn && `(write-in)`}
         </Text>
       ))}
@@ -168,7 +172,7 @@ class SummaryPage extends React.Component<RouteComponentProps, State> {
     const {
       ballotStyleId,
       contests,
-      election: { seal, title, county, state, date, bmdConfig },
+      election: { seal, parties, title, county, state, date, bmdConfig },
       precinctId,
       votes,
     } = this.context
@@ -251,6 +255,7 @@ class SummaryPage extends React.Component<RouteComponentProps, State> {
                         {contest.type === 'candidate' && (
                           <CandidateContestResult
                             contest={contest}
+                            parties={parties}
                             vote={votes[contest.id] as CandidateVote}
                           />
                         )}

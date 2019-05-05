@@ -11,6 +11,7 @@ import {
   CandidateVote,
   InputEvent,
   OptionalCandidate,
+  Party,
   Scrollable,
   ScrollDirections,
   ScrollShadows,
@@ -205,6 +206,7 @@ const WriteInCandidateInput = styled.input.attrs({
 
 interface Props {
   contest: CandidateContestInterface
+  parties: Party[]
   vote: CandidateVote
   updateVote: UpdateVoteFunction
 }
@@ -397,7 +399,7 @@ class CandidateContest extends React.Component<Props, State> {
   }
 
   public render() {
-    const { contest, vote } = this.props
+    const { contest, parties, vote } = this.props
     const hasReachedMaxSelections = contest.seats === vote.length
     const {
       attemptedOvervoteCandidate,
@@ -468,12 +470,18 @@ class CandidateContest extends React.Component<Props, State> {
                           <Text
                             wordBreak
                             aria-label={`${candidate.name}, ${
-                              candidate.party
+                              candidate.partyId
+                                ? parties.find(p => p.id === candidate.partyId)!
+                                    .name
+                                : ''
                             }.`}
                           >
                             <strong>{candidate.name}</strong>
                             <br />
-                            {candidate.party}
+                            {candidate.partyId
+                              ? parties.find(p => p.id === candidate.partyId)!
+                                  .name
+                              : ''}
                           </Text>
                         </Prose>
                       </Choice>
