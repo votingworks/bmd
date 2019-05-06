@@ -39,6 +39,7 @@ export type ContestTypes = 'candidate' | 'yesno'
 export interface Contest {
   readonly id: string
   readonly districtId: string
+  readonly partyId?: string
   readonly section: string
   readonly title: string
   readonly type: ContestTypes

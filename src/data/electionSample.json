@@ -706,6 +706,10 @@
     {
       "id": "precinct-21",
       "name": "North Springfield"
+    },
+    {
+      "id": "20",
+      "name": "South Springfield"
     }
   ],
   "ballotStyles": [
@@ -722,7 +726,7 @@
     {
       "id": "7C",
       "partyId": "3",
-      "precincts": ["21"],
+      "precincts": ["20"],
       "districts": ["7"]
     }
   ],
