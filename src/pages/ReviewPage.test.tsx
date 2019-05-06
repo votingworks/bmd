@@ -14,6 +14,9 @@ const contest1candidate0 = contest1.candidates[0]
 
 import ReviewPage from './ReviewPage'
 
+// a regexp to test for DOM IDs that start with a digit, which is a no-no.
+const badDOMIdRegexp = new RegExp('id="[0-9]')
+
 it(`renders ReviewPage without votes`, () => {
   const { container } = render(
     <Route path="/review" component={ReviewPage} />,
@@ -35,5 +38,7 @@ it(`renders ReviewPage with votes`, () => {
       },
     }
   )
+
+  expect(badDOMIdRegexp.test(container.outerHTML)).toBeFalsy()
   expect(container.firstChild).toMatchSnapshot()
 })
