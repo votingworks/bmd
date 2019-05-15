@@ -92,6 +92,7 @@ export /* istanbul ignore next - triggering keystrokes issue - https://github.co
       handleArrowRight()
       break
     case ']':
+    case 'Enter':
       handleClick()
       break
     // no default
