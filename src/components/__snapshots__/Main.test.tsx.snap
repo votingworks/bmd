@@ -16,6 +16,10 @@ exports[`renders Main with child 1`] = `
   padding: 1rem 0.5rem 2rem;
 }
 
+.c0::-webkit-scrollbar {
+  display: none;
+}
+
 .c1 {
   margin: 0 0;
   width: 100%;
@@ -72,6 +76,10 @@ exports[`renders centered content 1`] = `
   padding: 1rem 0.5rem 2rem;
 }
 
+.c0::-webkit-scrollbar {
+  display: none;
+}
+
 .c1 {
   margin: auto auto;
   width: 100%;
@@ -126,6 +134,10 @@ exports[`renders not centered content 1`] = `
   flex-direction: column;
   overflow: auto;
   padding: 1rem 0.5rem 2rem;
+}
+
+.c0::-webkit-scrollbar {
+  display: none;
 }
 
 .c1 {

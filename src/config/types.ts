@@ -80,6 +80,7 @@ export interface Election {
   readonly ballotStyles: BallotStyle[]
   readonly county: County
   readonly demo: boolean
+  readonly voterBallotTracker: boolean
   readonly parties: Parties
   readonly precincts: Precinct[]
   readonly districts: District[]
@@ -110,7 +111,7 @@ export type VotesDict = Dictionary<Vote>
 export type UpdateVoteFunction = (contestId: string, vote: OptionalVote) => void
 export interface BallotContextInterface {
   contests: Contests
-  readonly election: Election | undefined
+  readonly election: OptionalElection // Optional only because ballot context needs a default value. This is manually set to Election in Ballot component.
   markVoterCardUsed: AsyncFunction<boolean>
   resetBallot: (path?: string) => void
   activateBallot: (activationData: ActivationData) => void

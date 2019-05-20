@@ -3,8 +3,15 @@ import { fireEvent, render } from 'react-testing-library'
 import fetchMock from 'fetch-mock'
 
 import waitForExpect from 'wait-for-expect'
+import electionSample from './data/electionSample.json'
 
-import App from './App'
+import App, { electionKey, mergeWithDefaults } from './App'
+
+import { Election } from './config/types'
+
+const electionSampleAsString = JSON.stringify(
+  mergeWithDefaults(electionSample as Election)
+)
 
 beforeEach(() => {
   window.localStorage.clear()
@@ -17,9 +24,29 @@ async function sleep(milliseconds: number) {
   })
 }
 
-it(`quick end-to-end flow with absent module-smartcards`, async () => {
-  // this is what happens in demo mode
-  fetchMock.get('/card/read', 500)
+const cardValueAbsent = {
+  present: false,
+  shortValue: '',
+}
+
+it(`basic end-to-end flow with voter ballot tracker`, async () => {
+  let cardFunctionsAsExpected = true
+  let currentCardValue = cardValueAbsent
+
+  fetchMock.get('/card/read', () => {
+    return JSON.stringify(currentCardValue)
+  })
+
+  fetchMock.get('/card/read_long', () => {
+    return JSON.stringify({ longValue: electionSampleAsString })
+  })
+
+  fetchMock.post('/card/write', (url, options) => {
+    if (cardFunctionsAsExpected) {
+      currentCardValue = { present: true, shortValue: options.body as string }
+    }
+    return ''
+  })
 
   const eventListenerCallbacksDictionary: any = {} // eslint-disable-line @typescript-eslint/no-explicit-any
   window.addEventListener = jest.fn((event, cb) => {
@@ -29,25 +56,27 @@ it(`quick end-to-end flow with absent module-smartcards`, async () => {
     eventListenerCallbacksDictionary.afterprint()
   })
 
+  window.localStorage.setItem(electionKey, electionSampleAsString)
   const { getByText, getByTestId, queryByText } = render(<App />)
+  fireEvent.change(getByTestId('activation-code'), {
+    target: {
+      value: 'VX.23.12',
+    },
+  })
 
-  fireEvent.click(getByText('Load Sample Election File'))
-
-  // wait long enough to get the /card/read to fail and flip the demo bit
-  await sleep(250)
-
-  getByText('Scan Your Activation Code')
-  fireEvent.click(getByTestId('qrContainer'))
+  // TODO: replace next line with "Enter" keyDown on activation code input
+  fireEvent.click(getByText('Submit'))
 
   // Go to First Contest
   fireEvent.click(getByText('Get Started'))
+
+  // Past first interstitial
   fireEvent.click(getByText('Start Voting'))
 
   // Go to Pre Review Screen
   while (!queryByText('Review Your Selections')) {
     fireEvent.click(getByText('Next'))
   }
-  getByText('Review Your Selections')
 
   // Go to Review Screen
   fireEvent.click(getByText('Review Selections'))
@@ -60,9 +89,20 @@ it(`quick end-to-end flow with absent module-smartcards`, async () => {
   // Test Print Ballot Modal
   fireEvent.click(getByText('Print Ballot'))
   fireEvent.click(getByText('Yes, print my ballot.'))
+
   await waitForExpect(() => {
     expect(window.print).toBeCalled()
   })
 
-  // no need for further testing in this use case (the next step depends on ballot tracker, which is tested elsewhere.)
+  await sleep(300)
+
+  // Review and Cast Instructions
+  getByText('Now printing your tracker...')
+
+  // expect two print jobs
+  expect(window.print).toHaveBeenCalledTimes(2)
+
+  await sleep(100)
+
+  getByText('Cast your printed ballot')
 })

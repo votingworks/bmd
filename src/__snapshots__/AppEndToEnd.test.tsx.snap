@@ -16,6 +16,10 @@ exports[`basic end-to-end flow 1`] = `
   padding: 1rem 0.5rem 2rem;
 }
 
+.c1::-webkit-scrollbar {
+  display: none;
+}
+
 .c2 {
   margin: auto auto;
   width: 100%;
@@ -195,7 +199,7 @@ exports[`basic end-to-end flow 1`] = `
 
 exports[`basic end-to-end flow 2`] = `
 <div
-  class="sc-ksYbfQ ghfjnw"
+  class="sc-tilXH AjoCn"
   tabindex="-1"
 >
   .c0 {
@@ -209,6 +213,10 @@ exports[`basic end-to-end flow 2`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+}
+
+.c0::-webkit-scrollbar {
+  display: none;
 }
 
 .c2 {
@@ -842,11 +850,11 @@ button.c8 {
 
 exports[`basic end-to-end flow 3`] = `
 <div
-  class="sc-ksYbfQ ghfjnw"
+  class="sc-tilXH AjoCn"
   tabindex="-1"
 >
   <main
-    class="sc-bdVaJa bkrzlo"
+    class="sc-bdVaJa gUaUsD"
   >
     <div
       class="sc-jzJRlG gxlhof"
@@ -1111,7 +1119,7 @@ exports[`basic end-to-end flow 3`] = `
 
 exports[`basic end-to-end flow 4`] = `
 <div
-  class="sc-ksYbfQ ghfjnw"
+  class="sc-tilXH AjoCn"
   tabindex="-1"
 >
   .c0 {
@@ -1125,6 +1133,10 @@ exports[`basic end-to-end flow 4`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+}
+
+.c0::-webkit-scrollbar {
+  display: none;
 }
 
 .c2 {
@@ -1523,11 +1535,11 @@ button.c10 {
 
 exports[`basic end-to-end flow 5`] = `
 <div
-  class="sc-ksYbfQ ghfjnw"
+  class="sc-tilXH AjoCn"
   tabindex="-1"
 >
   <main
-    class="sc-bdVaJa bkrzlo"
+    class="sc-bdVaJa gUaUsD"
   >
     <div
       class="sc-kEYyzF kMJybS"
@@ -1685,7 +1697,7 @@ exports[`basic end-to-end flow 5`] = `
 
 exports[`basic end-to-end flow 6`] = `
 <div
-  class="sc-ksYbfQ ghfjnw"
+  class="sc-tilXH AjoCn"
   tabindex="-1"
 >
   .c0 {
@@ -1701,6 +1713,10 @@ exports[`basic end-to-end flow 6`] = `
   flex-direction: column;
   overflow: auto;
   padding: 1rem 0.5rem 2rem;
+}
+
+.c0::-webkit-scrollbar {
+  display: none;
 }
 
 .c1 {
@@ -2280,7 +2296,7 @@ exports[`basic end-to-end flow 6`] = `
 
 exports[`basic end-to-end flow 7`] = `
 <div
-  class="sc-ksYbfQ ghfjnw"
+  class="sc-tilXH AjoCn"
   tabindex="-1"
 >
   .c0 {
@@ -2294,6 +2310,10 @@ exports[`basic end-to-end flow 7`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+}
+
+.c0::-webkit-scrollbar {
+  display: none;
 }
 
 .c2 {
@@ -3582,7 +3602,7 @@ button.c7 {
 
 exports[`basic end-to-end flow 8`] = `
 <div
-  class="sc-ksYbfQ ghfjnw"
+  class="sc-tilXH AjoCn"
   tabindex="-1"
 >
   .c0 {
@@ -3596,6 +3616,10 @@ exports[`basic end-to-end flow 8`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+}
+
+.c0::-webkit-scrollbar {
+  display: none;
 }
 
 .c2 {
@@ -4458,11 +4482,11 @@ button.c8 {
 
 exports[`basic end-to-end flow 9`] = `
 <div
-  class="sc-ksYbfQ ghfjnw"
+  class="sc-tilXH AjoCn"
   tabindex="-1"
 >
   <main
-    class="sc-bdVaJa bkrzlo"
+    class="sc-bdVaJa gUaUsD"
   >
     <div
       class="sc-jzJRlG gxlhof"
@@ -4970,7 +4994,7 @@ exports[`basic end-to-end flow 9`] = `
 
 exports[`basic end-to-end flow 10`] = `
 <div
-  class="sc-ksYbfQ ghfjnw"
+  class="sc-tilXH AjoCn"
   tabindex="-1"
 >
   .c0 {
@@ -4984,6 +5008,10 @@ exports[`basic end-to-end flow 10`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+}
+
+.c0::-webkit-scrollbar {
+  display: none;
 }
 
 .c2 {

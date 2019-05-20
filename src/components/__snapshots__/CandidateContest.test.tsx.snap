@@ -14,6 +14,10 @@ exports[`supports multi-seat contests allows a second candidate to be selected w
   flex-direction: column;
 }
 
+.c0::-webkit-scrollbar {
+  display: none;
+}
+
 .c2 {
   width: 100%;
   max-width: 66ch;
@@ -443,6 +447,10 @@ exports[`supports single-seat contest allows any candidate to be selected when n
   flex-direction: column;
 }
 
+.c0::-webkit-scrollbar {
+  display: none;
+}
+
 .c2 {
   width: 100%;
   max-width: 66ch;
@@ -806,6 +814,10 @@ exports[`supports single-seat contest doesn't allow other candidates to be selec
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+}
+
+.c0::-webkit-scrollbar {
+  display: none;
 }
 
 .c2 {
@@ -1235,6 +1247,10 @@ exports[`supports write-in candidates displays warning if write-in candidate nam
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+}
+
+.c0::-webkit-scrollbar {
+  display: none;
 }
 
 .c2 {

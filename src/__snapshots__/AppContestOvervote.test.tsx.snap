@@ -14,6 +14,10 @@ exports[`Overvote triggers modal 1`] = `
   flex-direction: column;
 }
 
+.c1::-webkit-scrollbar {
+  display: none;
+}
+
 .c3 {
   width: 100%;
   max-width: 66ch;
