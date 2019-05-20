@@ -64,8 +64,5 @@ it(`quick end-to-end flow with absent module-smartcards`, async () => {
     expect(window.print).toBeCalled()
   })
 
-  // Review and Cast Instructions
-  // wait a little bit because the page transition is behind a setTimeout
-  await sleep(100)
-  getByText('Cast your printed ballot')
+  // no need for further testing in this use case (the next step depends on ballot tracker, which is tested elsewhere.)
 })

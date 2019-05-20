@@ -15,6 +15,10 @@ exports[`Sets election config file 1`] = `
   overflow: auto;
 }
 
+.c1::-webkit-scrollbar {
+  display: none;
+}
+
 .c3 {
   margin: auto auto;
   width: 100%;

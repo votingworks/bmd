@@ -76,10 +76,19 @@ export interface County {
   readonly name: string
 }
 
+// eventually we'll have more tracker types
+export type BallotTrackerType = 'electionguard'
+export interface BallotTrackerConfig {
+  readonly trackerType: BallotTrackerType
+  readonly trackerSiteDisplay: string
+  readonly trackerUrlTemplate: string // e.g. "https://example.org/track?tracker=<tracker_id>"
+}
+
 export interface Election {
   readonly ballotStyles: BallotStyle[]
   readonly county: County
   readonly demo: boolean
+  readonly ballotTrackerConfig?: BallotTrackerConfig
   readonly parties: Parties
   readonly precincts: Precinct[]
   readonly districts: District[]
@@ -110,7 +119,7 @@ export type VotesDict = Dictionary<Vote>
 export type UpdateVoteFunction = (contestId: string, vote: OptionalVote) => void
 export interface BallotContextInterface {
   contests: Contests
-  readonly election: Election | undefined
+  readonly election: OptionalElection // Optional only because ballot context needs a default value. This is manually set to Election in Ballot component.
   markVoterCardUsed: AsyncFunction<boolean>
   resetBallot: (path?: string) => void
   activateBallot: (activationData: ActivationData) => void

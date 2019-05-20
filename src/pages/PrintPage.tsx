@@ -2,6 +2,7 @@ import React from 'react'
 import { RouteComponentProps } from 'react-router-dom'
 import styled from 'styled-components'
 import QRCode from '../components/QRCode'
+import Seal from '../components/Seal'
 import { findPartyById } from '../utils/find'
 import { randomBase64 } from '../utils/random'
 import encodeVotes from '../encodeVotes'
@@ -49,10 +50,6 @@ const Header = styled.div`
     margin: 0 1rem;
     max-width: 100%;
   }
-`
-
-const SealImage = styled.img`
-  max-width: 1in;
 `
 
 const QRCodeContainer = styled.div`
@@ -165,10 +162,19 @@ class SummaryPage extends React.Component<RouteComponentProps, State> {
     showConfirmModal: false,
   }
   public componentDidMount = () => {
-    window.addEventListener('afterprint', this.resetBallot)
+    window.addEventListener('afterprint', this.afterPrint)
   }
   public componentWillUnmount = () => {
-    window.removeEventListener('afterprint', this.resetBallot)
+    window.removeEventListener('afterprint', this.afterPrint)
+  }
+  public afterPrint = async () => {
+    if (this.context.election.ballotTrackerConfig) {
+      window.setTimeout(() => {
+        this.props.history.push('/tracker')
+      }, 0)
+    } else {
+      this.resetBallot()
+    }
   }
   public resetBallot = () => {
     // setTimeout to prevent a React infinite recursion issue
@@ -281,19 +287,7 @@ class SummaryPage extends React.Component<RouteComponentProps, State> {
         />
         <div aria-hidden="true" className="print-only">
           <Header>
-            {seal ? (
-              <div
-                className="seal"
-                // TODO: Sanitize the SVG content: https://github.com/votingworks/bmd/issues/99
-                dangerouslySetInnerHTML={{ __html: seal }} // eslint-disable-line react/no-danger
-              />
-            ) : sealURL ? (
-              <div className="seal">
-                <SealImage src={sealURL} alt="" />
-              </div>
-            ) : (
-              <React.Fragment />
-            )}
+            <Seal seal={seal} sealURL={sealURL} />
             <Prose className="ballot-header-content">
               <h2>Official Ballot</h2>
               <h3>{title}</h3>

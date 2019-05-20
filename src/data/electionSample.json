@@ -6,6 +6,11 @@
     "name": "Franklin County"
   },
   "date": "Tuesday, November 3, 2020",
+  "ballotTrackerConfig": {
+    "trackerType": "electionguard",
+    "trackerSiteDisplay": "electionguard.vote",
+    "trackerUrlTemplate": "https://electionguard.vote/track/<tracker_id>"
+  },
   "districts": [
     {
       "id": "district-1",

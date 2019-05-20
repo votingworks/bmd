@@ -8,6 +8,9 @@ import electionSample from './data/electionSample.json'
 import App, { mergeWithDefaults } from './App'
 import { CandidateContest, Election, YesNoContest } from './config/types'
 
+// turn off voterBallotTracker for these tests
+delete electionSample.ballotTrackerConfig
+
 const electionSampleAsString = JSON.stringify(
   mergeWithDefaults(electionSample as Election)
 )
