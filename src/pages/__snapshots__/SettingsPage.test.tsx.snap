@@ -16,6 +16,10 @@ exports[`renders SettingsPage 1`] = `
   padding: 1rem 0.5rem 2rem;
 }
 
+.c0::-webkit-scrollbar {
+  display: none;
+}
+
 .c1 {
   margin: 0 0;
   width: 100%;

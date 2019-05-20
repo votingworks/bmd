@@ -20,6 +20,9 @@ const Main = styled('main')<Props>`
     justify-content: flex-start;
     padding: 0;
   }
+  ::-webkit-scrollbar {
+    display: none;
+  }    
 `
 
 interface ChildProps {
@@ -42,6 +45,6 @@ export const MainChild = styled('div')<ChildProps>`
     margin: 0;
     max-width: 100%;
   }
-`
+  `
 
 export default Main

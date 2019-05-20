@@ -15,6 +15,10 @@ exports[`allows file to be uploaded via drag and drop 1`] = `
   overflow: auto;
 }
 
+.c0::-webkit-scrollbar {
+  display: none;
+}
+
 @media print {
   .c0 {
     -webkit-box-pack: start;
@@ -48,6 +52,10 @@ exports[`allows file to be uploaded via file input 1`] = `
   -ms-flex-direction: column;
   flex-direction: column;
   overflow: auto;
+}
+
+.c0::-webkit-scrollbar {
+  display: none;
 }
 
 @media print {

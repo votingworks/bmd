@@ -1,6 +1,8 @@
 import React, { useContext } from 'react'
 import { Redirect, Route, Switch } from 'react-router-dom'
 
+import { Election } from '../config/types'
+
 import BallotContext from '../contexts/ballotContext'
 
 import ActivationPage from '../pages/ActivationPage'
@@ -14,16 +16,21 @@ import ReviewPage from '../pages/ReviewPage'
 import SettingsPage from '../pages/SettingsPage'
 import StartPage from '../pages/StartPage'
 import InstructionsPage from '../pages/InstructionsPage'
+import TrackerPage from '../pages/TrackerPage'
 
 const Ballot = () => {
-  const { ballotStyleId, contests, election, precinctId } = useContext(
-    BallotContext
-  )
+  const {
+    ballotStyleId,
+    contests,
+    election: contextElection,
+    precinctId,
+  } = useContext(BallotContext)
+  const election = contextElection as Election
   const {
     requireActivation,
     showHelpPage,
     showSettingsPage,
-  } = election!.bmdConfig!
+  } = election.bmdConfig!
   const ballotActivated = !!ballotStyleId && !!precinctId
 
   return (
@@ -34,6 +41,11 @@ const Ballot = () => {
         <Redirect exact path="/" to="/start" />
       )}
       <Route exact path="/activate" component={ActivationPage} />
+      {election.voterBallotTracker ? (
+        <Route exact path="/tracker" component={TrackerPage} />
+      ) : (
+        <Redirect exact path="/tracker" to="/" />
+      )}
       <Route path="/cast" component={CastBallotPage} />
       <Route path="/start" exact component={StartPage} />
       <Route path="/instructions" exact component={InstructionsPage} />

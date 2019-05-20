@@ -6,6 +6,7 @@
     "name": "Franklin County"
   },
   "date": "Tuesday, November 3, 2020",
+  "voterBallotTracker": true,
   "districts": [
     {
       "id": "district-1",

@@ -14,6 +14,10 @@ exports[`supports yes/no contest allows voting for both yes and no 1`] = `
   flex-direction: column;
 }
 
+.c0::-webkit-scrollbar {
+  display: none;
+}
+
 .c2 {
   width: 100%;
   max-width: 66ch;
@@ -375,6 +379,10 @@ exports[`supports yes/no contest displays warning when attempting to change vote
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+}
+
+.c0::-webkit-scrollbar {
+  display: none;
 }
 
 .c2 {
