@@ -128,4 +128,11 @@ export interface BallotContextInterface {
   userSettings: UserSettings
 }
 
+export interface WizardStep {
+  label: string
+  stepNumber: number
+  isActive: boolean
+  isComplete: boolean
+}
+
 export default {}

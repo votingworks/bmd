@@ -7,6 +7,7 @@ import ActivationPage from '../pages/ActivationPage'
 import CastBallotPage from '../pages/CastBallotPage'
 import ContestPage from '../pages/ContestPage'
 import HelpPage from '../pages/HelpPage'
+import InterstitialPage from '../pages/InterstitialPage'
 import NotFoundPage from '../pages/NotFoundPage'
 import PreReviewPage from '../pages/PreReviewPage'
 import PrintPage from '../pages/PrintPage'
@@ -44,6 +45,7 @@ const Ballot = () => {
       <Route path="/pre-review" component={PreReviewPage} />
       <Route path="/review" component={ReviewPage} />
       <Route path="/print" component={PrintPage} />
+      <Route path="/interstitial/:step" component={InterstitialPage} />
       {showHelpPage && <Route path="/help" component={HelpPage} />}
       {showSettingsPage && <Route path="/settings" component={SettingsPage} />}
       <Route path="/:path" component={NotFoundPage} />
