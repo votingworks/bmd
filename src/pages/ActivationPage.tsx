@@ -21,7 +21,7 @@ const CodeBox = styled.div`
 
 let resetBallotCode: number
 
-const StartPage = (props: RouteComponentProps) => {
+const ActivationPage = (props: RouteComponentProps) => {
   const { election: contextElection, activateBallot } = useContext(
     BallotContext
   )
@@ -75,6 +75,11 @@ const StartPage = (props: RouteComponentProps) => {
     event.target.focus()
   }
 
+  if (election.demo) {
+    takeShortcut()
+    return <React.Fragment />
+  }
+
   return (
     <Main>
       <MainChild center>
@@ -124,4 +129,4 @@ const StartPage = (props: RouteComponentProps) => {
   )
 }
 
-export default StartPage
+export default ActivationPage
