@@ -3,7 +3,7 @@ import { RouteComponentProps } from 'react-router-dom'
 import styled from 'styled-components'
 import QRCode from '../components/QRCode'
 import Seal from '../components/Seal'
-import { encryptAndGetTracker } from '../endToEnd'
+import encryptAndGetTracker from '../endToEnd'
 
 import ButtonBar from '../components/ButtonBar'
 import Main, { MainChild } from '../components/Main'
@@ -139,10 +139,13 @@ class TrackerPage extends React.Component<RouteComponentProps, State> {
   public componentDidMount = async () => {
     window.addEventListener('afterprint', this.resetBallot)
     const {
-      election: { votes },
+      election: { votes, ballotTrackerConfig },
     } = this.context
 
-    const tracker = await encryptAndGetTracker(votes)
+    const tracker = await encryptAndGetTracker(
+      ballotTrackerConfig.trackerType,
+      votes
+    )
     this.setState({ tracker })
   }
 
@@ -168,8 +171,18 @@ class TrackerPage extends React.Component<RouteComponentProps, State> {
 
   public render() {
     const {
-      election: { seal, sealURL, title, county, state, date },
+      election: {
+        seal,
+        sealURL,
+        title,
+        county,
+        state,
+        date,
+        ballotTrackerConfig,
+      },
     } = this.context
+
+    const { trackerSiteDisplay, trackerUrlTemplate } = ballotTrackerConfig
 
     const { tracker } = this.state
 
@@ -180,6 +193,12 @@ class TrackerPage extends React.Component<RouteComponentProps, State> {
     const trackerChunks = tracker.split(' ')
     const boldTrackerChunk = trackerChunks.slice(0, 2).join(' ')
     const restTracker = trackerChunks.slice(2).join(' ')
+
+    const trackerSafeForEmbedding = tracker.replace(/ /g, '-')
+    const trackerUrl = trackerUrlTemplate.replace(
+      '<tracker_id>',
+      trackerSafeForEmbedding
+    )
 
     return (
       <React.Fragment>
@@ -215,6 +234,7 @@ class TrackerPage extends React.Component<RouteComponentProps, State> {
                       onLoad={this.stepImageLoaded}
                       alt="Step 1"
                       src="/tracker-step1.svg"
+                      data-testid="step1-img"
                     />
                     <br />
                     <strong>Step 1</strong>: Put your ballot in a ballot box or
@@ -225,6 +245,7 @@ class TrackerPage extends React.Component<RouteComponentProps, State> {
                       onLoad={this.stepImageLoaded}
                       alt="Step 2"
                       src="/tracker-step2.svg"
+                      data-testid="step2-img"
                     />
                     <br />
                     <strong>Step 2</strong>: After the polls close, go online to
@@ -235,6 +256,7 @@ class TrackerPage extends React.Component<RouteComponentProps, State> {
                       onLoad={this.stepImageLoaded}
                       alt="Step 3"
                       src="/tracker-step3.svg"
+                      data-testid="step3-img"
                     />
                     <br />
                     <strong>Step 3</strong>: Your tracker ID will show public
@@ -243,7 +265,7 @@ class TrackerPage extends React.Component<RouteComponentProps, State> {
                 </Steps>
                 <ThinDivider />
                 <Large>
-                  Visit <b>electionguard.vote</b> and either:
+                  Visit <b>{trackerSiteDisplay}</b> and either:
                 </Large>
                 <TrackerOptions>
                   <div>
@@ -263,12 +285,7 @@ class TrackerPage extends React.Component<RouteComponentProps, State> {
                     Scan this tracker ID code:
                     <br />
                     <QRCodeContainer>
-                      <QRCode
-                        value={`https://electionguard.vote/track/${tracker.replace(
-                          / /g,
-                          '-'
-                        )}`}
-                      />
+                      <QRCode value={trackerUrl} />
                     </QRCodeContainer>
                   </div>
                 </TrackerOptions>

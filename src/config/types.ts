@@ -76,11 +76,19 @@ export interface County {
   readonly name: string
 }
 
+// eventually we'll have more tracker types
+export type BallotTrackerType = 'electionguard'
+export interface BallotTrackerConfig {
+  readonly trackerType: BallotTrackerType
+  readonly trackerSiteDisplay: string
+  readonly trackerUrlTemplate: string // e.g. "https://example.org/track?tracker=<tracker_id>"
+}
+
 export interface Election {
   readonly ballotStyles: BallotStyle[]
   readonly county: County
   readonly demo: boolean
-  readonly voterBallotTracker: boolean
+  readonly ballotTrackerConfig?: BallotTrackerConfig
   readonly parties: Parties
   readonly precincts: Precinct[]
   readonly districts: District[]

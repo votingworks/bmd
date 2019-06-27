@@ -168,7 +168,7 @@ class SummaryPage extends React.Component<RouteComponentProps, State> {
     window.removeEventListener('afterprint', this.afterPrint)
   }
   public afterPrint = async () => {
-    if (this.context.election.voterBallotTracker) {
+    if (this.context.election.ballotTrackerConfig) {
       window.setTimeout(() => {
         this.props.history.push('/tracker')
       }, 0)

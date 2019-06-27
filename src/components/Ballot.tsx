@@ -41,7 +41,7 @@ const Ballot = () => {
         <Redirect exact path="/" to="/start" />
       )}
       <Route exact path="/activate" component={ActivationPage} />
-      {election.voterBallotTracker ? (
+      {election.ballotTrackerConfig ? (
         <Route exact path="/tracker" component={TrackerPage} />
       ) : (
         <Redirect exact path="/tracker" to="/" />

@@ -1,10 +1,15 @@
-import {VotesDict} from './config/types'
+import { VotesDict, BallotTrackerType } from './config/types'
 
 const hardWiredTracker =
   'Quill X8TP7 Home 4X815 Tree EB5Q2 Elephant M8MDP Cup 8D33U Balloon YN31A Frame PHK3X Link T98RV Dancer'
 
-export function encryptAndGetTracker(votes : VotesDict) : Promise<string> {
-  return new Promise((resolve, reject) => {
+export default function encryptAndGetTracker(
+  // eslint-disable-next-line
+  trackerType: BallotTrackerType,
+  // eslint-disable-next-line
+  votes: VotesDict
+): Promise<string> {
+  return new Promise(resolve => {
     window.setTimeout(() => {
       resolve(hardWiredTracker)
     }, 100)

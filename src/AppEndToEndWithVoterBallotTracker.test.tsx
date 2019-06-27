@@ -99,6 +99,11 @@ it(`basic end-to-end flow with voter ballot tracker`, async () => {
   // Review and Cast Instructions
   getByText('Now printing your tracker...')
 
+  // indicate all critical images are loaded
+  fireEvent.load(getByTestId('step1-img'))
+  fireEvent.load(getByTestId('step2-img'))
+  fireEvent.load(getByTestId('step3-img'))
+
   // expect two print jobs
   expect(window.print).toHaveBeenCalledTimes(2)
 
