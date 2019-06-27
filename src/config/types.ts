@@ -79,6 +79,7 @@ export interface County {
 export interface Election {
   readonly ballotStyles: BallotStyle[]
   readonly county: County
+  readonly demo: boolean
   readonly parties: Parties
   readonly precincts: Precinct[]
   readonly districts: District[]
