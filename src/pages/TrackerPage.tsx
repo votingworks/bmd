@@ -139,7 +139,8 @@ class TrackerPage extends React.Component<RouteComponentProps, State> {
   public componentDidMount = async () => {
     window.addEventListener('afterprint', this.resetBallot)
     const {
-      election: { votes, ballotTrackerConfig },
+      election: { ballotTrackerConfig },
+      votes,
     } = this.context
 
     const tracker = await encryptAndGetTracker(
