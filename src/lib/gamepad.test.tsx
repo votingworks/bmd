@@ -77,14 +77,14 @@ it(`gamepad controls work`, () => {
   handleGamepadButtonDown('DPadDown')
   expect(getActiveElement().value).toEqual(contest1candidate0.id)
   handleGamepadButtonDown('DPadLeft')
-  // B is same as down
-  handleGamepadButtonDown('B')
+  // A is same as down
+  handleGamepadButtonDown('A')
   expect(getActiveElement().value).toEqual(contest0candidate0.id)
 
-  // select and unselect
-  handleGamepadButtonDown('A')
+  // select and unselect, B is the same as select
+  handleGamepadButtonDown('B')
   expect(getActiveElement().checked).toBe(true)
-  handleGamepadButtonDown('A')
+  handleGamepadButtonDown('B')
   expect(getActiveElement().checked).toBe(false)
 
   // Confirm 'Okay' is only active element on page. Modal is "true" modal.
