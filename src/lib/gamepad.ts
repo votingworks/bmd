@@ -63,7 +63,7 @@ export function handleGamepadButtonDown(buttonName: string) {
     case 'DPadUp':
       handleArrowUp()
       break
-    case 'B':
+    case 'A':
     case 'DPadDown':
       handleArrowDown()
       break
@@ -73,7 +73,7 @@ export function handleGamepadButtonDown(buttonName: string) {
     case 'DPadRight':
       handleArrowRight()
       break
-    case 'A':
+    case 'B':
       handleClick()
       break
     // no default
