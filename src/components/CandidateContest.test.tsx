@@ -155,7 +155,7 @@ describe(`supports write-in candidates`, () => {
     )
     fireEvent.click(getByText('add write-in candidate').closest('button')!)
     expect(getByText('Write-In Candidate')).toBeTruthy()
-    Array.from('JACOB JOHANSON JINGLEHEIMMER SCHMIDTT').forEach(i => {
+    Array.from('jacob johanson jingleheimmer schmidtt').forEach(i => {
       const key = i === ' ' ? 'space' : i
       fireEvent.click(getByText(key).closest('button')!)
     })

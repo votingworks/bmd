@@ -50,9 +50,9 @@ it(`Write-In Candidate flow with single seat contest`, () => {
   // Add Write-In Candidate
   fireEvent.click(getByText('add write-in candidate').closest('button')!)
   expect(getByText('Write-In Candidate')).toBeTruthy()
-  fireEvent.click(getByText('B').closest('button')!)
-  fireEvent.click(getByText('O').closest('button')!)
-  fireEvent.click(getByText('B').closest('button')!)
+  fireEvent.click(getByText('b').closest('button')!)
+  fireEvent.click(getByText('o').closest('button')!)
+  fireEvent.click(getByText('b').closest('button')!)
   fireEvent.click(getByText('Accept'))
 
   // Remove Write-In Candidate
@@ -61,9 +61,9 @@ it(`Write-In Candidate flow with single seat contest`, () => {
 
   // Add Different Write-In Candidate
   fireEvent.click(getByText('add write-in candidate').closest('button')!)
-  fireEvent.click(getByText('S').closest('button')!)
-  fireEvent.click(getByText('A').closest('button')!)
-  fireEvent.click(getByText('L').closest('button')!)
+  fireEvent.click(getByText('s').closest('button')!)
+  fireEvent.click(getByText('a').closest('button')!)
+  fireEvent.click(getByText('l').closest('button')!)
   fireEvent.click(getByText('Accept'))
   expect(
     (getByText('SAL')

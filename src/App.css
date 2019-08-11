@@ -113,13 +113,16 @@ html {
 }
 .simple-keyboard.vs-simple-keyboard .hg-button {
   flex: 1;
+  text-transform: uppercase;
   white-space: nowrap;
 }
 .simple-keyboard.vs-simple-keyboard .hg-button-space {
   flex: 3;
+  text-transform: inherit;
 }
 .simple-keyboard.vs-simple-keyboard .hg-button-bksp {
   flex: 2;
+  text-transform: inherit;
 }
 .simple-keyboard.vs-simple-keyboard .hg-row:nth-child(2) {
   margin-right: 0;

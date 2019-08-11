@@ -320,6 +320,7 @@ class CandidateContest extends React.Component<Props, State> {
       .trim()
       .replace(/\t+/g, ' ')
       .replace(/\s+/g, ' ')
+      .toUpperCase()
 
   public addWriteInCandidate = () => {
     const { contest, vote } = this.props
@@ -348,7 +349,8 @@ class CandidateContest extends React.Component<Props, State> {
   }
 
   public onKeyboardInputChange = (writeInCandidateName: string) => {
-    this.setState({ writeInCandidateName })
+    const normalizedCandidateName = this.normalizeName(writeInCandidateName)
+    this.setState({ writeInCandidateName: normalizedCandidateName })
   }
 
   public updateContestChoicesScrollStates = () => {
@@ -644,9 +646,9 @@ class CandidateContest extends React.Component<Props, State> {
                   ref={this.keyboard}
                   layout={{
                     default: [
-                      'Q W E R T Y U I O P',
-                      'A S D F G H J K L -',
-                      'Z X C V B N M , .',
+                      'q w e r t y u i o p',
+                      'a s d f g h j k l -',
+                      'z x c v b n m , .',
                       '{space} {bksp}',
                     ],
                   }}
