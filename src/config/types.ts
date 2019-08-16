@@ -42,7 +42,6 @@ export type Contests = (CandidateContest | YesNoContest)[]
 // Election
 export interface BMDConfig {
   readonly requireActivation?: boolean
-  readonly showHelpPage?: boolean
   readonly showSettingsPage?: boolean
 }
 export interface ElectionDefaults {
@@ -142,6 +141,11 @@ export interface PollworkerCardData extends CardData {
 export interface ClerkCardData extends CardData {
   readonly t: 'clerk'
   readonly h: string
+}
+export interface CardAPI {
+  present: boolean
+  shortValue?: string
+  longValueExists?: boolean
 }
 
 // User Interface

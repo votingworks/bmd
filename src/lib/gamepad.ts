@@ -1,5 +1,8 @@
 import mod from '../utils/mod'
 
+export const getActiveElement = () =>
+  document.activeElement! as HTMLInputElement
+
 function getFocusableElements(): HTMLElement[] {
   const tabbableElements = Array.from(
     document.querySelectorAll(
@@ -13,8 +16,6 @@ function getFocusableElements(): HTMLElement[] {
     element => ariaHiddenTabbableElements.indexOf(element) === -1
   ) as HTMLElement[]
 }
-
-const getActiveElement = () => document.activeElement! as HTMLInputElement
 
 function handleArrowUp() {
   const focusable = getFocusableElements()
@@ -47,6 +48,7 @@ function handleArrowLeft() {
 
 function handleArrowRight() {
   const nextButton = document.getElementById('next') as HTMLButtonElement
+  /* istanbul ignore else */
   if (nextButton) {
     nextButton.click()
   }

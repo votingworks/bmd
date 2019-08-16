@@ -19,7 +19,7 @@ interface State {
   showPrintingModal: boolean
 }
 
-const printingModalDisplaySeconds = 7
+export const printingModalDisplaySeconds = 7
 
 class PrintPage extends React.Component<RouteComponentProps, State> {
   public static contextType = BallotContext
@@ -50,6 +50,7 @@ class PrintPage extends React.Component<RouteComponentProps, State> {
   }
   public print = () => {
     const { showPrintingModal } = this.state
+    /* istanbul ignore else */
     if (!showPrintingModal) {
       this.setState(
         {
@@ -58,6 +59,7 @@ class PrintPage extends React.Component<RouteComponentProps, State> {
         },
         () => {
           this.context.markVoterCardUsed().then((success: boolean) => {
+            /* istanbul ignore else */
             if (success) {
               window.print()
             }
@@ -68,7 +70,7 @@ class PrintPage extends React.Component<RouteComponentProps, State> {
   }
   public render() {
     const { ballotStyleId, election, precinctId, votes } = this.context
-    const { showHelpPage, showSettingsPage } = election.bmdConfig
+    const { showSettingsPage } = election.bmdConfig
     const { showConfirmModal, showPrintingModal } = this.state
 
     return (
@@ -106,7 +108,6 @@ class PrintPage extends React.Component<RouteComponentProps, State> {
         </ButtonBar>
         <ButtonBar secondary separatePrimaryButton>
           <div />
-          {showHelpPage && <LinkButton to="/help">Help</LinkButton>}
           {showSettingsPage && <LinkButton to="/settings">Settings</LinkButton>}
         </ButtonBar>
         <Modal

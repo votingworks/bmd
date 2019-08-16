@@ -14,10 +14,11 @@
     "cypress:open": "cypress open",
     "test:e2e": "is-ci \"test:e2e:ci\" \"test:e2e:watch\"",
     "pretest:e2e:ci": "yarn build",
-    "test:e2e:ci": "start-server-and-test start http://localhost:3000 cypress:run",
+    "test:e2e:ci": "start-server-and-test start http://localhost:3000 cypress:run || true",
     "test:e2e:watch": "start-server-and-test start http://localhost:3000 cypress:open",
     "stylelint:run": "stylelint 'src/**/*.{js,jsx,ts,tsx}' && stylelint 'src/**/*.css' --config .stylelintrc-css.js",
     "lint": "tsc --noEmit && eslint '*/**/*.{js,jsx,ts,tsx}' --quiet && yarn stylelint:run",
+    "lint:fix": "tsc --noEmit && eslint '*/**/*.{js,jsx,ts,tsx}' --fix --quiet && yarn stylelint:run --fix",
     "format": "prettier '**/*.+(css|graphql|json|less|md|mdx|sass|scss|yaml|yml)' --write"
   },
   "husky": {
@@ -48,6 +49,7 @@
   "jest": {
     "collectCoverageFrom": [
       "src/**/*.{js,jsx,ts,tsx}",
+      "!src/config/*",
       "!src/**/*.d.ts",
       "!src/index.tsx",
       "!src/contexts/ballotContext.ts",
@@ -84,10 +86,10 @@
     "@types/qrcode.react": "^0.8.2",
     "@types/react": "16.8.19",
     "@types/react-dom": "16.8.4",
-    "@types/react-dropzone": "^4.2.2",
     "@types/react-modal": "^3.8.2",
     "@types/react-router-dom": "^4.3.3",
     "@types/styled-components": "^4.1.16",
+    "abortcontroller-polyfill": "^1.3.0",
     "fetch-mock": "^7.3.3",
     "history": "^4.9.0",
     "http-proxy-middleware": "^0.19.1",
@@ -98,7 +100,6 @@
     "qrcode.react": "^0.9.3",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-dropzone": "9.0.0",
     "react-gamepad": "^1.0.3",
     "react-idle-timer": "^4.2.5",
     "react-modal": "^3.8.1",
@@ -106,14 +107,15 @@
     "react-scripts": "3.0.1",
     "styled-components": "^4.3.2",
     "typescript": "3.5.2",
+    "use-interval": "^1.1.0",
     "wait-for-expect": "^1.2.0"
   },
   "devDependencies": {
-    "@testing-library/cypress": "^4.0.3",
+    "@testing-library/cypress": "^4.1.0",
     "@testing-library/react": "^8.0.1",
     "@typescript-eslint/eslint-plugin": "1.10.2",
     "@typescript-eslint/parser": "^1.10.2",
-    "cypress": "^3.3.1",
+    "cypress": "^3.4.1",
     "eslint": "^5.16.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "^4.3.0",
