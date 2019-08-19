@@ -70,7 +70,7 @@ interface State {
 
 export const electionStorageKey = 'election'
 export const stateStorageKey = 'state'
-const activationStorageKey = 'activation'
+export const activationStorageKey = 'activation'
 const votesStorageKey = 'votes'
 const removeElectionShortcuts = ['mod+k']
 
