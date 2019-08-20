@@ -28,21 +28,19 @@
     }
   },
   "lint-staged": {
-    "linters": {
-      "*.+(js|jsx|ts|tsx)": [
-        "stylelint",
-        "eslint --quiet --fix",
-        "git add"
-      ],
-      "*.css": [
-        "stylelint --config .stylelintrc-css.js --fix",
-        "git add"
-      ],
-      "*.+(css|graphql|json|less|md|mdx|sass|scss|yaml|yml)": [
-        "prettier --write",
-        "git add"
-      ]
-    }
+    "*.+(js|jsx|ts|tsx)": [
+      "stylelint",
+      "eslint --quiet --fix",
+      "git add"
+    ],
+    "*.css": [
+      "stylelint --config .stylelintrc-css.js --fix",
+      "git add"
+    ],
+    "*.+(css|graphql|json|less|md|mdx|sass|scss|yaml|yml)": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -86,7 +84,7 @@
     "@types/pluralize": "^0.0.29",
     "@types/qrcode.react": "^0.8.2",
     "@types/react": "^16.9.2",
-    "@types/react-dom": "^16.8.5",
+    "@types/react-dom": "^16.9.0",
     "@types/react-modal": "^3.8.2",
     "@types/react-router-dom": "^4.3.4",
     "@types/styled-components": "^4.1.16",
@@ -105,7 +103,7 @@
     "react-idle-timer": "^4.2.8",
     "react-modal": "^3.9.1",
     "react-router-dom": "^5.0.1",
-    "react-scripts": "3.0.1",
+    "react-scripts": "3.1.1",
     "styled-components": "^4.3.2",
     "typescript": "3.5.3",
     "use-interval": "^1.1.0",
