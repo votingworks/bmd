@@ -42,10 +42,10 @@ module.exports = {
   plugins: [
     '@typescript-eslint',
     'jest',
-    'no-null',
     'react',
     'cypress',
     'jsx-a11y',
+    'no-null',
   ],
   settings: {
     react: {
