@@ -36,7 +36,10 @@ module.exports = {
       jsx: true,
     },
     ecmaVersion: 2018,
-    project: './tsconfig.json',
+    project: [
+      './tsconfig.json',
+      './cypress/tsconfig.json'
+    ],
     sourceType: 'module',
   },
   plugins: [
@@ -75,16 +78,15 @@ module.exports = {
     }],
     'no-null/no-null': 2, // TypeScript with strictNullChecks
     'react/destructuring-assignment': 'off',
-    'react/jsx-boolean-value': [2, 'never'],
+    'react/jsx-boolean-value': ['error', 'never'],
     'react/jsx-filename-extension': [
       1,
       {
-        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+        extensions: allExtensions,
       },
     ],
     strict: 0,
     '@typescript-eslint/explicit-function-return-type': 'off', // Want to use it, but it requires return types for all built-in React lifecycle methods.
     '@typescript-eslint/no-non-null-assertion': 'off',
-    '@typescript-eslint/no-null-keyword': 'on',
   },
 }
