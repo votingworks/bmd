@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "EXTEND_ESLINT=true react-scripts build",
     "test": "is-ci \"test:ci\" \"test:watch\"",
     "test:watch": "react-scripts test",
     "test:ci": "CI=true tsc && react-scripts test --maxWorkers 2 --env=jsdom --coverage && yarn test:e2e:ci",
