@@ -29,10 +29,10 @@ const generateTestDeckBallots = ({
     ? [precinctId]
     : election.precincts.map(p => p.id)
 
-  let ballots: Ballot[] = []
+  const ballots: Ballot[] = []
 
-  precincts.forEach(precinctId => {
-    const precinct = election.precincts.find(p => p.id === precinctId)!
+  precincts.forEach(pId => {
+    const precinct = election.precincts.find(p => p.id === pId)!
     const precinctBallotStyles = election.ballotStyles.filter(bs =>
       bs.precincts.includes(precinct.id)
     )
@@ -50,8 +50,8 @@ const generateTestDeckBallots = ({
         )
       )
 
-      for (let ballotNum = 0; ballotNum < numBallots; ballotNum++) {
-        let votes: VotesDict = {}
+      for (let ballotNum = 0; ballotNum < numBallots; ballotNum += 1) {
+        const votes: VotesDict = {}
         contests.forEach(contest => {
           /* istanbul ignore else */
           if (contest.type === 'yesno') {
@@ -67,7 +67,7 @@ const generateTestDeckBallots = ({
         })
         ballots.push({
           ballotStyleId: ballotStyle.id,
-          precinctId,
+          precinctId: pId,
           votes,
         })
       }

@@ -196,6 +196,7 @@ const PrintBallot = ({
   return (
     <Ballot aria-hidden="true" className="print-only">
       <Header>
+        {/* eslint-disable-next-line no-nested-ternary */}
         {seal ? (
           <div
             className="seal"

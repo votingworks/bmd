@@ -35,7 +35,7 @@ const IdlePage = () => {
         resetBallot()
       })
     }
-    countdown === 0 && reset()
+    if (countdown === 0) reset()
   }, [countdown, markVoterCardUsed, resetBallot])
 
   useInterval(() => {

@@ -39,7 +39,8 @@ function isJSON(value: unknown, passObject: boolean = false): boolean {
 export function isJSONStrict(str: unknown): boolean {
   if (isObject(str)) {
     return true
-  } else if (!isString(str)) {
+  }
+  if (!isString(str)) {
     return false
   }
 

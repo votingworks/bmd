@@ -29,8 +29,8 @@ it(`Refresh window and expect to be on same contest`, async () => {
   setStateInLocalStorage()
 
   let app = render(<App />)
-  let getByText = app.getByText
-  let unmount = app.unmount
+  let { getByText } = app
+  const { unmount } = app
 
   // Insert Voter Card
   currentCard = voterCard
@@ -57,7 +57,7 @@ it(`Refresh window and expect to be on same contest`, async () => {
   unmount()
 
   app = render(<App />)
-  getByText = app.getByText
+  ;({ getByText } = app)
 
   advanceTimers()
 

@@ -97,6 +97,7 @@ const ClerkScreen = ({
               </React.Fragment>
             )}
             <h1>Configuration</h1>
+            {/* eslint-disable-next-line no-nested-ternary */}
             {isFetchingElection ? (
               <p>Loading Election Definition from Clerk Card…</p>
             ) : election ? (

@@ -1,6 +1,5 @@
 import Mousetrap from 'mousetrap'
 import React from 'react'
-// @ts-ignore - @types/react-gamepad doesn't exist
 import Gamepad from 'react-gamepad'
 import { RouteComponentProps } from 'react-router-dom'
 
@@ -111,6 +110,7 @@ let checkCardInterval = 0
 
 class AppRoot extends React.Component<RouteComponentProps, State> {
   public state: State = initialState
+
   private machineIdAbortController = new AbortController()
 
   public processVoterCardData = (voterCardData: VoterCardData) => {
@@ -139,6 +139,8 @@ class AppRoot extends React.Component<RouteComponentProps, State> {
 
   public processCardData = (completeCardData: CompleteCardData) => {
     const { cardData, longValueExists } = completeCardData
+    // No default case because this switch is exhaustive.
+    // eslint-disable-next-line default-case
     switch (cardData.t) {
       case 'voter': {
         const voterCardData = cardData as VoterCardData
@@ -169,11 +171,12 @@ class AppRoot extends React.Component<RouteComponentProps, State> {
         break
       }
       case 'clerk': {
-        longValueExists &&
+        if (longValueExists) {
           this.setState({
             ...initialCardPresentState,
             isClerkCardPresent: true,
           })
+        }
         break
       }
     }
@@ -200,7 +203,7 @@ class AppRoot extends React.Component<RouteComponentProps, State> {
 
             const cardData = JSON.parse(card.shortValue) as CardData
             this.processCardData({
-              cardData: cardData,
+              cardData,
               longValueExists: card.longValueExists,
             })
           })
@@ -417,7 +420,7 @@ class AppRoot extends React.Component<RouteComponentProps, State> {
     )
   }
 
-  public resetBallot = (path: string = '/') => {
+  public resetBallot = (path = '/') => {
     this.resetVoterData()
     this.setState(
       {
@@ -525,7 +528,8 @@ class AppRoot extends React.Component<RouteComponentProps, State> {
           unconfigure={this.unconfigure}
         />
       )
-    } else if (election && isPollWorkerCardPresent) {
+    }
+    if (election && isPollWorkerCardPresent) {
       return (
         <PollWorkerScreen
           ballotsPrintedCount={ballotsPrintedCount}
@@ -536,12 +540,15 @@ class AppRoot extends React.Component<RouteComponentProps, State> {
           togglePollsOpen={this.togglePollsOpen}
         />
       )
-    } else if (election && !isPollsOpen) {
+    }
+    if (election && !isPollsOpen) {
       return <PollsClosedScreen election={election} isLiveMode={isLiveMode} />
-    } else if (election) {
+    }
+    if (election) {
       if (isRecentVoterPrint && isVoterCardInvalid) {
         return <CastBallotPage />
-      } else if (
+      }
+      if (
         !isVoterCardInvalid &&
         isVoterCardPresent &&
         ballotStyleId &&
@@ -570,18 +577,16 @@ class AppRoot extends React.Component<RouteComponentProps, State> {
             </BallotContext.Provider>
           </Gamepad>
         )
-      } else {
-        return (
-          <ActivationScreen
-            election={election}
-            isLiveMode={isLiveMode}
-            isVoterCardInvalid={isVoterCardInvalid}
-          />
-        )
       }
-    } else {
-      return <UnconfiguredScreen />
+      return (
+        <ActivationScreen
+          election={election}
+          isLiveMode={isLiveMode}
+          isVoterCardInvalid={isVoterCardInvalid}
+        />
+      )
     }
+    return <UnconfiguredScreen />
   }
 }
 

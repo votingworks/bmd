@@ -206,8 +206,8 @@ it(`basic end-to-end flow`, async () => {
   fireEvent.click(getByText('Start Voting'))
 
   // Advance through every contest
-  for (let i = 0; i < voterContests.length; i++) {
-    const title = voterContests[i].title
+  for (let i = 0; i < voterContests.length; i += 1) {
+    const { title } = voterContests[i]
 
     advanceTimers()
     getByText(title)

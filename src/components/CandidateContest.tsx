@@ -186,7 +186,9 @@ const initialState = {
 
 class CandidateContest extends React.Component<Props, State> {
   public static contextType = BallotContext
+
   public state: State = initialState
+
   private scrollContainer = React.createRef<HTMLDivElement>()
 
   public componentDidMount() {
@@ -313,7 +315,7 @@ class CandidateContest extends React.Component<Props, State> {
   public onKeyboardInput: PointerEventHandler = event => {
     const { key } = (event.target as HTMLElement).dataset
     this.setState(prevState => {
-      let writeInCandidateName = prevState.writeInCandidateName
+      let { writeInCandidateName } = prevState
       if (key === 'space') {
         writeInCandidateName += ' '
       } else if (key === '⌫ delete') {
@@ -357,8 +359,8 @@ class CandidateContest extends React.Component<Props, State> {
       .direction as ScrollDirections
     const scrollContainer = this.scrollContainer.current!
     const currentScrollTop = scrollContainer.scrollTop
-    const offsetHeight = scrollContainer.offsetHeight
-    const scrollHeight = scrollContainer.scrollHeight
+    const { offsetHeight } = scrollContainer
+    const { scrollHeight } = scrollContainer
     const idealScrollDistance = Math.round(offsetHeight * 0.75)
     const maxScrollableDownDistance =
       scrollHeight - offsetHeight - currentScrollTop

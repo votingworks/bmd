@@ -23,16 +23,20 @@ export const printingModalDisplaySeconds = 7
 
 class PrintPage extends React.Component<RouteComponentProps, State> {
   public static contextType = BallotContext
+
   public state: State = {
     showConfirmModal: false,
     showPrintingModal: false,
   }
+
   public componentDidMount = () => {
     window.addEventListener('afterprint', this.afterPrint)
   }
+
   public componentWillUnmount = () => {
     window.removeEventListener('afterprint', this.afterPrint)
   }
+
   public afterPrint = () => {
     // setTimeout to prevent a React infinite recursion issue
     window.setTimeout(() => {
@@ -42,12 +46,15 @@ class PrintPage extends React.Component<RouteComponentProps, State> {
       this.context.resetBallot()
     }, printingModalDisplaySeconds * 1000)
   }
+
   public hideConfirm = () => {
     this.setState({ showConfirmModal: false })
   }
+
   public showConfirm = () => {
     this.setState({ showConfirmModal: true })
   }
+
   public print = () => {
     const { showPrintingModal } = this.state
     /* istanbul ignore else */
@@ -68,6 +75,7 @@ class PrintPage extends React.Component<RouteComponentProps, State> {
       )
     }
   }
+
   public render() {
     const { ballotStyleId, election, precinctId, votes } = this.context
     const { showSettingsPage } = election.bmdConfig

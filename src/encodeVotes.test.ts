@@ -7,7 +7,7 @@ import electionSample from './data/electionSample.json'
 const election = electionSample as Election
 
 it(`encodes votes correctly`, () => {
-  let votes: VotesDict = {}
+  const votes: VotesDict = {}
 
   // this should yield all 0s
   election.contests.forEach(contest => {

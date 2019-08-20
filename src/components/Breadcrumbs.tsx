@@ -45,6 +45,7 @@ const StepCircle = styled.div<StepProps>`
   position: relative;
   border-radius: 50%;
   background: ${({ completed, current }) =>
+    // eslint-disable-next-line no-nested-ternary
     completed ? '#ffffff' : current ? '#35809c' : '#c7d7df'};
   width: 100%;
   height: 0;

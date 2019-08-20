@@ -28,6 +28,7 @@ const buttonStyles = css<Props>`
   cursor: ${({ disabled = false }) => (disabled ? undefined : 'pointer')};
   width: ${({ fullWidth = false }) => (fullWidth ? '100%' : undefined)};
   padding: ${({ big = false, small = false }) =>
+    // eslint-disable-next-line no-nested-ternary
     small ? '0.35rem 0.5rem' : big ? '1rem 1.75rem' : '0.75rem 1rem'};
   line-height: 1.25;
   color: ${({ disabled = false, danger = false, primary = false }) =>

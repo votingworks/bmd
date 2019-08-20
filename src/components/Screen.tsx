@@ -13,14 +13,17 @@ const StyledScreen = styled.div`
 
 class Screen extends React.Component<RouteComponentProps> {
   public screen = React.createRef<HTMLDivElement>()
+
   public componentDidMount() {
     this.focus()
   }
+
   public componentDidUpdate(prevProps: RouteComponentProps) {
     if (this.props.location.pathname !== prevProps.location.pathname) {
       this.focus()
     }
   }
+
   public focus = () => {
     // can't seem to find a better way than this, unfortunately.
     // the delay of 150 is to handle the case the Next button is selected
@@ -35,6 +38,7 @@ class Screen extends React.Component<RouteComponentProps> {
       elementToFocus.click()
     }, 150)
   }
+
   public render() {
     return (
       <StyledScreen ref={this.screen} tabIndex={-1}>

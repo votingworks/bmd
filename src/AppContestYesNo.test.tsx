@@ -46,8 +46,8 @@ it(`Single Seat Contest`, async () => {
 
   // Query by text which includes markup.
   const getByTextWithMarkup = (text: string) => {
+    const hasText = (node: HTMLElement) => node.textContent === text
     getByText((content, node) => {
-      const hasText = (node: HTMLElement) => node.textContent === text
       const childrenDontHaveText = Array.from(node.children).every(
         child => !hasText(child as HTMLElement)
       )

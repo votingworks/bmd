@@ -23,7 +23,7 @@ window.addEventListener = jest.fn((event, cb) => {
   eventListenerCallbacksDictionary[event] = cb
 })
 window.print = jest.fn(() => {
-  eventListenerCallbacksDictionary.afterprint &&
+  if (eventListenerCallbacksDictionary.afterprint)
     eventListenerCallbacksDictionary.afterprint()
 })
 // TODO: add callback for window.resize like above
