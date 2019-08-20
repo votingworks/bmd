@@ -171,6 +171,7 @@ class AppRoot extends React.Component<RouteComponentProps, State> {
         break
       }
       case 'clerk': {
+        /* istanbul ignore else */
         if (longValueExists) {
           this.setState({
             ...initialCardPresentState,
