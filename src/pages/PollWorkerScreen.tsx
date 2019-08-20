@@ -127,7 +127,8 @@ const PollWorkerScreen = ({
                 <div
                   className="seal"
                   // TODO: Sanitize the SVG content: https://github.com/votingworks/bmd/issues/99
-                  dangerouslySetInnerHTML={{ __html: seal }} // eslint-disable-line react/no-danger
+                  // eslint-disable-next-line react/no-danger
+                  dangerouslySetInnerHTML={{ __html: seal }}
                 />
               ) : (
                 <React.Fragment />
