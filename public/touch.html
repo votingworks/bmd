@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Gesture (e.g. scroll, pinch-zoom) and pointer events</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      html,
+      body {
+        background: #eee;
+        color: #333;
+        font: 1em/1 Arial, sans;
+        max-width: 50vw;
+        margin: auto;
+        text-align: center;
+      }
+
+      div {
+        background: #fff;
+        border: 1px #ccc solid;
+        color: #000;
+        margin: 0.5em 0;
+        padding: 2em;
+      }
+
+      button {
+        background: tan;
+        display: block;
+        width: 100%;
+        border: 1px #ccc solid;
+        color: #000;
+        margin: 0.5em 0;
+        padding: 2em;
+        touch-action: manipulation;
+      }
+    </style>
+  </head>
+
+  <body>
+    <p>
+      based on
+      <a
+        href="https://patrickhlauke.github.io/touch/gesture-touch/pointerevents.html"
+        >this</a
+      >
+      which was ported/adapted from
+      <a href="http://jsbin.com/ebolif/3/edit">this</a>
+    </p>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <button>&nbsp;</button>
+    <button>&nbsp;</button>
+    <button>&nbsp;</button>
+    <button>&nbsp;</button>
+    <script>
+      /*
+       Ported/adapted from http://jsbin.com/ebolif/3/edit - demonstration of Touch Events spec grey area (does touchmove fire during scroll / touchend fire at end of scroll?) as demonstrated in https://www.youtube.com/watch?v=h2djIdAFc5U#t=518
+    */
+
+      function toArray(arr) {
+        return Array.prototype.slice.call(arr)
+      }
+
+      toArray(document.querySelectorAll('div, button')).forEach(function(
+        div,
+        i,
+        arr
+      ) {
+        var move = 0
+        var timer = 0
+        var hue = (i / arr.length) * 360
+
+        div.addEventListener('pointerdown', function(event) {
+          clearTimeout(timer)
+          move = 0
+          div.innerHTML = 'pointerdown'
+          div.style.background = 'hsl(' + hue + ', 100%, 70%)'
+        })
+
+        div.addEventListener('pointermove', function(event) {
+          move += 1
+          div.innerHTML = ' pointermove (' + move + ')'
+        })
+
+        div.addEventListener('pointercancel', function(event) {
+          div.innerHTML += ' pointercancel'
+          div.style.background = 'hsl(' + hue + ', 100%, 85%)'
+          timer = setTimeout(function() {
+            div.innerHTML = '&nbsp;'
+            div.style.background = '#fff'
+          }, 1000)
+        })
+
+        div.addEventListener('pointerup', function(event) {
+          div.innerHTML += ' pointerup'
+          div.style.background = 'hsl(' + hue + ', 100%, 85%)'
+          timer = setTimeout(function() {
+            div.innerHTML = '&nbsp;'
+            div.style.background = '#fff'
+          }, 1000)
+        })
+      })
+    </script>
+  </body>
+</html>
