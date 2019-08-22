@@ -107,7 +107,7 @@
     "styled-components": "^4.3.2",
     "typescript": "3.5.3",
     "use-interval": "^1.1.0",
-    "wait-for-expect": "^1.2.0"
+    "wait-for-expect": "^2.0.0"
   },
   "devDependencies": {
     "@testing-library/cypress": "^4.1.1",
