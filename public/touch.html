@@ -77,15 +77,18 @@
           move = 0
           div.innerHTML = 'pointerdown'
           div.style.background = 'hsl(' + hue + ', 100%, 70%)'
+          console.log('pointerdown')
         })
 
         div.addEventListener('pointermove', function(event) {
           move += 1
           div.innerHTML = ' pointermove (' + move + ')'
+          console.log('pointermove (' + move + ')')
         })
 
         div.addEventListener('pointercancel', function(event) {
           div.innerHTML += ' pointercancel'
+          console.log('pointercancel')
           div.style.background = 'hsl(' + hue + ', 100%, 85%)'
           timer = setTimeout(function() {
             div.innerHTML = '&nbsp;'
@@ -95,6 +98,7 @@
 
         div.addEventListener('pointerup', function(event) {
           div.innerHTML += ' pointerup'
+          console.log('pointerup')
           div.style.background = 'hsl(' + hue + ', 100%, 85%)'
           timer = setTimeout(function() {
             div.innerHTML = '&nbsp;'
