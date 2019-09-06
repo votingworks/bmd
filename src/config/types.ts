@@ -90,6 +90,7 @@ export interface Election {
 export type OptionalElection = Election | undefined
 
 export interface ActivationData {
+  ballotCreatedAt: number
   ballotStyle: BallotStyle
   precinct: Precinct
 }
@@ -130,10 +131,14 @@ export interface CardData {
 }
 export interface VoterCardData extends CardData {
   readonly t: 'voter'
+  readonly c: number
   readonly bs: string
   readonly pr: string
   readonly uz?: number
   readonly bp?: number
+  readonly v?: VotesDict
+  readonly u?: number
+  readonly m?: string
 }
 export interface PollworkerCardData extends CardData {
   readonly t: 'pollworker'
@@ -147,6 +152,11 @@ export interface CardAPI {
   present: boolean
   shortValue?: string
   longValueExists?: boolean
+}
+
+// Machine ID API
+export interface MachineIdAPI {
+  machineId: string
 }
 
 // User Interface
