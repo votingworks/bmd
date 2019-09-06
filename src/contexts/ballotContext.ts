@@ -5,6 +5,7 @@ import { BallotContextInterface, TextSizeSetting } from '../config/types'
 
 const ballot: BallotContextInterface = {
   activateBallot: () => undefined,
+  appMode: 'mark',
   ballotStyleId: '',
   contests: [],
   election: undefined,

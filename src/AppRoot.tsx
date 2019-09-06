@@ -614,6 +614,7 @@ class AppRoot extends React.Component<RouteComponentProps, State> {
             <BallotContext.Provider
               value={{
                 activateBallot: this.activateBallot,
+                appMode,
                 ballotStyleId,
                 contests,
                 election,
