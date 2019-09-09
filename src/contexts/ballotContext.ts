@@ -1,11 +1,15 @@
 import { createContext } from 'react'
 import * as GLOBALS from '../config/globals'
 
-import { BallotContextInterface, TextSizeSetting } from '../config/types'
+import {
+  BallotContextInterface,
+  TextSizeSetting,
+  VxMarkOnly,
+} from '../config/types'
 
 const ballot: BallotContextInterface = {
   activateBallot: () => undefined,
-  appMode: 'mark',
+  appMode: VxMarkOnly,
   ballotStyleId: '',
   contests: [],
   election: undefined,

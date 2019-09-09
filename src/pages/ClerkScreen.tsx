@@ -2,9 +2,11 @@ import React, { useState } from 'react'
 
 import {
   AppMode,
-  InputEventFunction,
   OptionalElection,
   VoidFunction,
+  VxMarkOnly,
+  VxPrintOnly,
+  VxMarkPlusVxPrint,
 } from '../config/types'
 
 import TestBallotDeckScreen from './TestBallotDeckScreen'
@@ -23,7 +25,7 @@ interface Props {
   isLiveMode: boolean
   fetchElection: VoidFunction
   isFetchingElection: boolean
-  setAppMode: InputEventFunction
+  setAppMode: (appMode: AppMode) => void
   toggleLiveMode: VoidFunction
   unconfigure: VoidFunction
 }
@@ -61,10 +63,7 @@ const ClerkScreen = ({
       />
     )
   }
-  const isVxMark = appMode === 'mark'
-  // const isVxPrint = appMode === 'print'
-  // const isVxMarkAndPrint = appMode === 'mark+print'
-  const isTestDecksAvailable = isLiveMode || (!isLiveMode && isVxMark)
+  const isTestDecksAvailable = isLiveMode || (!isLiveMode && appMode.isVxMark)
   return (
     <React.Fragment>
       <Main>
@@ -77,26 +76,23 @@ const ClerkScreen = ({
                 <p>This device can operate as multiple apps.</p>
                 <SegmentedButton>
                   <Button
-                    onPress={setAppMode}
-                    primary={appMode === 'mark'}
-                    disabled={appMode === 'mark'}
-                    data-app-mode="mark"
+                    onPress={() => setAppMode(VxMarkOnly)}
+                    primary={appMode === VxMarkOnly}
+                    disabled={appMode === VxMarkOnly}
                   >
                     VxMark
                   </Button>
                   <Button
-                    onPress={setAppMode}
-                    primary={appMode === 'print'}
-                    disabled={appMode === 'print'}
-                    data-app-mode="print"
+                    onPress={() => setAppMode(VxPrintOnly)}
+                    primary={appMode === VxPrintOnly}
+                    disabled={appMode === VxPrintOnly}
                   >
                     VxPrint
                   </Button>
                   <Button
-                    onPress={setAppMode}
-                    primary={appMode === 'mark+print'}
-                    disabled={appMode === 'mark+print'}
-                    data-app-mode="mark+print"
+                    onPress={() => setAppMode(VxMarkPlusVxPrint)}
+                    primary={appMode === VxMarkPlusVxPrint}
+                    disabled={appMode === VxMarkPlusVxPrint}
                   >
                     VxMark+Print
                   </Button>
@@ -133,18 +129,18 @@ const ClerkScreen = ({
                       (Available in testing mode)
                     </Text>
                   )}
-                  {!isLiveMode && isVxMark && (
+                  {!isLiveMode && !appMode.isVxPrint && (
                     <Text as="small" muted>
                       (Available with VxPrint or VxMark+Print)
                     </Text>
                   )}
                 </p>
-                <Text as="h1" muted={isVxMark}>
+                <Text as="h1" muted={!appMode.isVxPrint}>
                   Stats
                 </Text>
-                <Text muted={isVxMark}>
+                <Text muted={!appMode.isVxPrint}>
                   Printed Ballots: <strong>{ballotsPrintedCount}</strong>{' '}
-                  {isVxMark && (
+                  {!appMode.isVxPrint && (
                     <small>(Available with VxPrint or VxMark+Print)</small>
                   )}
                 </Text>

@@ -20,7 +20,6 @@ import {
   Contests,
   Election,
   ElectionDefaults,
-  InputEvent,
   MachineIdAPI,
   OptionalElection,
   OptionalVote,
@@ -28,6 +27,8 @@ import {
   UserSettings,
   VoterCardData,
   VotesDict,
+  VxMarkOnly,
+  getAppMode,
 } from './config/types'
 
 import utcTimestamp from './utils/utcTimestamp'
@@ -105,7 +106,7 @@ const initialUserState: UserState = {
 const initialState: State = {
   ...initialUserState,
   ...initialCardPresentState,
-  appMode: 'mark',
+  appMode: VxMarkOnly,
   ballotsPrintedCount: 0,
   election: undefined,
   isLiveMode: false,
@@ -447,9 +448,21 @@ class AppRoot extends React.Component<RouteComponentProps, State> {
     )
   }
 
-  public getStoredState = () => {
-    const storedState = window.localStorage.getItem(stateStorageKey)
-    return storedState ? JSON.parse(storedState) : {}
+  public getStoredState = (): Partial<State> => {
+    const storedStateJSON = window.localStorage.getItem(stateStorageKey)
+    const storedState: Partial<State> = storedStateJSON
+      ? JSON.parse(storedStateJSON)
+      : {}
+
+    if (storedState.appMode) {
+      try {
+        storedState.appMode = getAppMode(storedState.appMode.name)
+      } catch {
+        delete storedState.appMode
+      }
+    }
+
+    return storedState
   }
 
   public updateVote = (contestId: string, vote: OptionalVote) => {
@@ -520,9 +533,7 @@ class AppRoot extends React.Component<RouteComponentProps, State> {
     document.documentElement.style.fontSize = `${GLOBALS.FONT_SIZES[textSize]}px`
   }
 
-  public setAppMode = (event: InputEvent) => {
-    const currentTarget = event.currentTarget as HTMLInputElement
-    const appMode = currentTarget.dataset.appMode as AppMode
+  public setAppMode = (appMode: AppMode) => {
     this.setState({ appMode }, this.setStoredState)
   }
 
