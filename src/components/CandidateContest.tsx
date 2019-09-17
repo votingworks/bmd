@@ -387,7 +387,6 @@ class CandidateContest extends React.Component<Props, State> {
       writeInCandidateName,
       writeInCandateModalIsOpen,
     } = this.state
-    const maxWriteInCandidateLength = 40
     return (
       <React.Fragment>
         <Main noPadding>
@@ -578,7 +577,7 @@ class CandidateContest extends React.Component<Props, State> {
                   <Text error>
                     <strong>Note:</strong> You have entered{' '}
                     {writeInCandidateName.length} of maximum{' '}
-                    {maxWriteInCandidateLength} characters.
+                    {GLOBALS.MAXIMUM_WRITE_IN_LENGTH} characters.
                   </Text>
                 )}
               </Prose>

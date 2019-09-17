@@ -18,6 +18,9 @@ are encoded as that data is shared by both the encoder and decoder.
 - **dynamic-width number**: a number `N` encoded in as few bits as possible
   based on a known maximum value. If the range of `N` is `0` to `M` and encoding
   `M` would take `B` bits, then `N` is encoded using `B` bits.
+- **write-in encoding**: a character encoding for write-in names that requires 5
+  bits per character. Here is the full character set:
+  `ABCDEFGHIJKLMNOPQRSTUVWXYZ '"-.,`.
 - **dynamic-width string**: a UTF-8 string with maximum length `M`, prefixed
   with a _dynamic-width number_ (max `M`) which is the length of the string in
   bytes.
@@ -136,21 +139,14 @@ Roll Call is one set bit for the one contest
 |
 | Write-in count is one bit since the max write-ins is 1
 | |
-| |          "M"      "I"      "C"      "K"      "E"      "Y"      " "      "M"
-v v       <---|---><---|---><---|---><---|---><---|---><---|---><---|---><---|--
-10100110 00100110 10100100 10100001 10100101 10100010 10101100 10010000 00100110
- ^ ^^^^^ ^
- | ||||| |
+| |        'M'  'I'   'C'   'K'  'E'   'Y'   ' '  'M'   'O'   'U'  'S'   'E'
+v v       <---><----><----><---><----><----><---><----><---> <---><----><--->
+10100110 0011000 10000001 0010100 01001100 01101001 10001110 10100100 10001000
+ ^ ^^^^^ ^                                                                   ^
+ | ||||| |                            Padding is one bit to round out the byte
  | Length of write-in name in six bits (max length 40)
  |
  Only candidate was not selected
-
-    "O"      "U"      "S"      "E"
-><---|---><---|---><---|---><---|--->
-10100111 10101010 10101001 10100010 10000000
-                                     ^^^^^^^
-                                        |
-                                        Padding is seven bits to round out the byte
 ```
 
 ### Two contests, "yes" in first and 3rd of 8 candidates in second, no write-ins
