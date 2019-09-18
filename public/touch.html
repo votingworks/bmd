@@ -59,6 +59,10 @@
        Ported/adapted from http://jsbin.com/ebolif/3/edit - demonstration of Touch Events spec grey area (does touchmove fire during scroll / touchend fire at end of scroll?) as demonstrated in https://www.youtube.com/watch?v=h2djIdAFc5U#t=518
     */
 
+      window.oncontextmenu = e => {
+        e.preventDefault()
+      }
+
       function toArray(arr) {
         return Array.prototype.slice.call(arr)
       }
