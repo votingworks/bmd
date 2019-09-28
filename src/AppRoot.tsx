@@ -329,12 +329,18 @@ class AppRoot extends React.Component<RouteComponentProps, State> {
           try {
             await this.saveLongValue(longValue)
           } catch (error) {
-            // eslint-disable-next-line no-empty
+            this.resetBallot()
+            this.stopLongValueWritePolling() // Assume backend is unavailable.
           }
           this.writingVoteToCard = false
         }
       }, GLOBALS.CARD_POLLING_INTERVAL)
     }
+  }
+
+  public stopLongValueWritePolling = () => {
+    window.clearInterval(this.cardWriteInterval)
+    this.cardWriteInterval = 0 // To indicate setInterval is not running.
   }
 
   public setPauseProcessingUntilNoCardPresent = (b: boolean) => {
