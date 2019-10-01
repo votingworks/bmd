@@ -139,6 +139,8 @@ class AppRoot extends React.Component<RouteComponentProps, State> {
   private cardWriteInterval = 0
   private writingVoteToCard = false
 
+  private markingVoterCardPrinted = false
+
   public processVoterCardData = (voterCardData: VoterCardData) => {
     const election = this.state.election!
     const ballotStyle = getBallotStyle({
@@ -366,6 +368,12 @@ class AppRoot extends React.Component<RouteComponentProps, State> {
   }
 
   public markVoterCardVoided: MarkVoterCardFunction = async () => {
+    if (this.markingVoterCardPrinted) {
+      return false
+    }
+
+    this.markingVoterCardPrinted = true
+
     this.stopShortValueReadPolling()
 
     await this.clearLongValue()
@@ -384,6 +392,8 @@ class AppRoot extends React.Component<RouteComponentProps, State> {
       updatedCard.present && JSON.parse(updatedCard.shortValue)
 
     this.startShortValueReadPolling()
+
+    this.markingVoterCardPrinted = false
 
     if (voidedVoterCardData.uz !== updatedShortValue.uz) {
       this.resetBallot()
