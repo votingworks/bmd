@@ -12616,10 +12616,10 @@ url@0.11.0, url@^0.11.0:
     punycode "1.3.2"
     querystring "0.2.0"
 
-use-interval@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/use-interval/-/use-interval-1.1.0.tgz#fffb7e10141b8fc36cd5f3055958b960c464092d"
-  integrity sha512-x6U0YaN5IknebySwYnaUy6UCEeG7AfmHkoccGxvI/3WM/8Jo25Pqr+6wr2YL4soMy8i6BSlVE+oVcVTScFBzjA==
+use-interval@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/use-interval/-/use-interval-1.2.0.tgz#7d5ffba71edd6a6edd391465adadda7df074fdb0"
+  integrity sha512-8uYPrCW2ApCwbV1DjeyenpXFu4Aa1+N2UqXdyV0QvPbIxE5uJmbmNFbThTcubj0YZ/Jkeu0qOMSCiHeo5cOqqg==
 
 use@^3.1.0:
   version "3.1.1"
