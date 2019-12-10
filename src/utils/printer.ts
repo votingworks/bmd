@@ -1,5 +1,5 @@
 export interface Printer {
-  print(): Promise<void>
+  print(deviceName?: string, paperSource?: string): Promise<void>
 }
 
 export class LocalPrinter implements Printer {

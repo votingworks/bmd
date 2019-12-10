@@ -2,20 +2,23 @@ import QRCodeReact from '@votingworks/qrcode.react'
 import React from 'react'
 import styled from 'styled-components'
 
-const ResponsiveSvgWrapper = styled.div`
+interface SVGProps {
+  size?: string
+}
+interface Props extends SVGProps {
+  value: string | Uint8Array
+}
+
+const ResponsiveSvgWrapper = styled('span')<SVGProps>`
   & > svg {
     display: block; /* svg is "inline" by default */
-    width: 100%; /* reset width */
+    width: ${({ size = '100%' }) => size}; /* reset width */
     height: auto; /* reset height */
   }
 `
 
-interface Props {
-  value: string | Uint8Array
-}
-
-const QRCode = ({ value }: Props) => (
-  <ResponsiveSvgWrapper>
+const QRCode = ({ size, value }: Props) => (
+  <ResponsiveSvgWrapper size={size}>
     <QRCodeReact renderAs="svg" value={value} level="H" />
   </ResponsiveSvgWrapper>
 )

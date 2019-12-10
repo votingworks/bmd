@@ -23,7 +23,7 @@ import {
 
 import withMarkup from '../test/helpers/withMarkup'
 
-import { printerMessageTimeoutSeconds } from './pages/PrintOnlyScreen'
+import { printingMessageTimeoutSeconds } from './pages/PrintOnlyScreen'
 import { MemoryStorage } from './utils/Storage'
 import { AppStorage } from './AppRoot'
 import { MemoryCard } from './utils/Card'
@@ -223,7 +223,7 @@ test('VxPrintOnly flow', async () => {
   getByText('Printing your official ballot')
 
   // After timeout, show Verify and Cast Instructions
-  await advanceTimersAndPromises(printerMessageTimeoutSeconds)
+  await advanceTimersAndPromises(printingMessageTimeoutSeconds)
   getByText('Verify and Cast Your Printed Ballot')
   expect(printer.print).toHaveBeenCalledTimes(3)
 
@@ -256,7 +256,7 @@ test('VxPrintOnly flow', async () => {
   getByText('Printing your official ballot')
 
   // After timeout, show Verify and Cast Instructions
-  await advanceTimersAndPromises(printerMessageTimeoutSeconds)
+  await advanceTimersAndPromises(printingMessageTimeoutSeconds)
   getByText('Verify and Cast Your Printed Ballot')
   expect(printer.print).toHaveBeenCalledTimes(4)
 
@@ -289,7 +289,7 @@ test('VxPrintOnly flow', async () => {
   getByText('Printing your official ballot')
 
   // After timeout, show Verify and Cast Instructions
-  await advanceTimersAndPromises(printerMessageTimeoutSeconds)
+  await advanceTimersAndPromises(printingMessageTimeoutSeconds)
   getByText('Verify and Cast Your Printed Ballot')
   expect(printer.print).toHaveBeenCalledTimes(5)
 
@@ -322,7 +322,7 @@ test('VxPrintOnly flow', async () => {
   expect(getAllByTextWithMarkup('[no selection]')).toHaveLength(20)
 
   // After timeout, show Verify and Cast Instructions
-  await advanceTimersAndPromises(printerMessageTimeoutSeconds)
+  await advanceTimersAndPromises(printingMessageTimeoutSeconds)
   getByText('Verify and Cast Your Printed Ballot')
   expect(printer.print).toHaveBeenCalledTimes(6)
 
