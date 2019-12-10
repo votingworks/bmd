@@ -18,6 +18,17 @@ import SettingsTextSize from '../components/SettingsTextSize'
 const SidebarSpacer = styled.div`
   height: 90px;
 `
+const StartInstructions = styled.div`
+  margin: 2rem auto 0;
+  border-radius: 0.25rem;
+  box-shadow: 0 0 4px #9c9c9c;
+  background: #ffffff;
+  max-width: 23rem;
+  padding: 1rem;
+  & small ul {
+    margin: 0;
+  }
+`
 
 type Props = RouteComponentProps<{}>
 
@@ -64,6 +75,23 @@ const StartPage = ({ history }: Props) => {
               </span>
             </p>
           </Prose>
+          <StartInstructions>
+            <Prose>
+              <small>
+                <ul>
+                  <li>To vote for a name on the ballot, select the name.</li>
+                  <li>
+                    To vote for a name which is not on the ballot, select “add
+                    write-in candidate” and then enter the name.
+                  </li>
+                  <li>
+                    If there is a mistake on your printed ballot, ask an
+                    election inspector for help.
+                  </li>
+                </ul>
+              </small>
+            </Prose>
+          </StartInstructions>
         </MainChild>
       </Main>
       <Sidebar
