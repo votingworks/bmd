@@ -133,7 +133,7 @@ it('Single Seat Contest with Write In', async () => {
   // Print Screen
   fireEvent.click(getByTextWithMarkup('I’m Ready to Print My Ballot'))
   advanceTimers()
-  expect(getByText('Official Ballot')).toBeTruthy()
+  expect(getByText('General Election Official Ballot')).toBeTruthy()
   expect(getByText('(write-in)')).toBeTruthy()
   getByText('Printing Official Ballot')
 

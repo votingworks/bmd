@@ -143,6 +143,16 @@ export interface CardPresentAPI {
 }
 export type CardAPI = CardAbsentAPI | CardPresentAPI
 
+// Machine ID API
+export interface MachineIdAPI {
+  machineId: string
+}
+
+export interface E2EAPI {
+  encryptedBallotMessage: string
+  tracker: string
+}
+
 // User Interface
 export type ScrollDirections = 'up' | 'down'
 export interface ScrollShadows {

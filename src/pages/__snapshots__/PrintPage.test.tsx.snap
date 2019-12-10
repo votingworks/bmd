@@ -1,127 +1,99 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders PrintPage with votes 1`] = `
-.c2 {
+.c6 {
   max-width: 66ch;
   line-height: 1.2;
 }
 
-.c2 h1 {
+.c6 h1 {
   margin: 2rem 0 1rem;
   line-height: 1.1;
   font-size: 1.5rem;
 }
 
-.c2 h2 {
+.c6 h2 {
   margin: 1.5rem 0 0.75rem;
   font-size: 1.25rem;
 }
 
-.c2 h3 {
+.c6 h3 {
   font-size: 1.17rem;
 }
 
-.c2 h4 {
+.c6 h4 {
   font-size: 1rem;
 }
 
-.c2 h5 {
+.c6 h5 {
   font-size: 0.9rem;
 }
 
-.c2 h3,
-.c2 h4,
-.c2 h5,
-.c2 p {
+.c6 h3,
+.c6 h4,
+.c6 h5,
+.c6 p {
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
 
-.c2 h1 + h2 {
+.c6 h1 + h2 {
   margin-top: -0.75rem;
 }
 
-.c2 h1 + p,
-.c2 h2 + p {
+.c6 h1 + p,
+.c6 h2 + p {
   margin-top: -0.75rem;
 }
 
-.c2 h3 + p,
-.c2 h4 + p,
-.c2 h5 + p {
+.c6 h3 + p,
+.c6 h4 + p,
+.c6 h5 + p {
   margin-top: -1rem;
 }
 
-.c2 > :first-child {
+.c6 > :first-child {
   margin-top: 0;
 }
 
-.c2 > :last-child {
+.c6 > :last-child {
   margin-bottom: 0;
 }
 
-.c2 dl {
+.c6 dl {
   margin: 1rem 0;
 }
 
-.c4 > svg {
+.c12 > svg {
   display: block;
-  width: 100%;
+  width: 1.1in;
   height: auto;
 }
 
-.c11 {
+.c2 {
   color: gray;
-  font-style: italic;
 }
 
-.c10 {
+.c17 {
   font-weight: 600;
   word-break: break-word;
 }
 
-.c5 {
+.c11 {
   white-space: nowrap;
 }
 
 .c0 {
+  position: relative;
   page-break-after: always;
 }
 
 .c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  border-bottom: 0.2rem solid #000000;
-}
-
-.c1 > .seal {
-  margin: 0.25rem 0;
-  width: 1in;
-}
-
-.c1 h2 {
-  margin-bottom: 0;
-}
-
-.c1 h3 {
-  margin-top: 0;
-}
-
-.c1 > .ballot-header-content {
-  -webkit-flex: 4;
-  -ms-flex: 4;
-  flex: 4;
-  margin: 0 1rem;
-  max-width: 100%;
+  margin: 0 auto 0.375in;
+  text-align: center;
+  white-space: nowrap;
+  font-size: 1.75rem;
+  font-weight: 600;
 }
 
 .c3 {
@@ -129,37 +101,28 @@ exports[`renders PrintPage with votes 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex: 3;
-  -ms-flex: 3;
-  flex: 3;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
-  -webkit-align-self: flex-end;
-  -ms-flex-item-align: end;
-  align-self: flex-end;
+  position: relative;
   border: 0.2rem solid #000000;
-  border-bottom: 0;
-  max-width: 50%;
-  padding: 0.25rem;
+  border-width: 0.2rem 0;
+  padding: 0.5rem 0;
 }
 
-.c3 > div:first-child {
-  margin-right: 0.25rem;
+.c3 > .seal {
   width: 1.1in;
 }
 
-.c3 > div:last-child {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
+.c3 h2 {
+  margin-bottom: 0;
 }
 
-.c3 > div:last-child > div {
+.c3 h3 {
+  margin-top: 0;
+}
+
+.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -170,39 +133,42 @@ exports[`renders PrintPage with votes 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  -webkit-align-self: stretch;
-  -ms-flex-item-align: stretch;
-  align-self: stretch;
-  font-size: 0.8rem;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin: 0 1rem 0 0.75rem;
+  max-width: 100%;
 }
 
-.c3 > div:last-child > div > div {
-  margin-bottom: 0.75rem;
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
-.c3 > div:last-child > div > div:last-child {
-  margin-bottom: 0;
-}
-
-.c3 > div:last-child > div strong {
-  font-size: 1rem;
-  word-break: break-word;
-}
-
-.c6 {
+.c13 {
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
 }
 
-.c7 {
+.c14 {
   -webkit-columns: 2;
   columns: 2;
   -webkit-column-gap: 2rem;
   column-gap: 2rem;
 }
 
-.c8 {
+.c15 {
   border-bottom: 0.01rem solid #000000;
   padding: 0.5rem 0;
   -webkit-break-inside: avoid;
@@ -210,82 +176,125 @@ exports[`renders PrintPage with votes 1`] = `
   page-break-inside: avoid;
 }
 
-.c9 {
+.c16 {
   max-width: 66ch;
   line-height: 1.2;
 }
 
-.c9 h1 {
+.c16 h1 {
   margin: 2rem 0 1rem;
   line-height: 1.1;
   font-size: 1.5rem;
 }
 
-.c9 h2 {
+.c16 h2 {
   margin: 1.5rem 0 0.75rem;
   font-size: 1.25rem;
 }
 
-.c9 h3 {
+.c16 h3 {
   font-size: 1.17rem;
 }
 
-.c9 h4 {
+.c16 h4 {
   font-size: 1rem;
 }
 
-.c9 h5 {
+.c16 h5 {
   font-size: 0.9rem;
 }
 
-.c9 h3,
-.c9 h4,
-.c9 h5,
-.c9 p {
+.c16 h3,
+.c16 h4,
+.c16 h5,
+.c16 p {
   margin-top: 0;
   margin-bottom: 0;
 }
 
-.c9 h1 + h2 {
+.c16 h1 + h2 {
   margin-top: -0.75rem;
 }
 
-.c9 h1 + p,
-.c9 h2 + p {
+.c16 h1 + p,
+.c16 h2 + p {
   margin-top: -0.75rem;
 }
 
-.c9 h3 + p,
-.c9 h4 + p,
-.c9 h5 + p {
+.c16 h3 + p,
+.c16 h4 + p,
+.c16 h5 + p {
   margin-top: 0;
 }
 
-.c9 > :first-child {
+.c16 > :first-child {
   margin-top: 0;
 }
 
-.c9 > :last-child {
+.c16 > :last-child {
   margin-bottom: 0;
 }
 
-.c9 dl {
+.c16 dl {
   margin: 1rem 0;
 }
 
-.c9 > h3 {
+.c16 > h3 {
   font-size: 0.875em;
   font-weight: 400;
 }
 
+.c18 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  -webkit-transform: translateY(3in) rotate(-45deg);
+  -ms-transform: translateY(3in) rotate(-45deg);
+  transform: translateY(3in) rotate(-45deg);
+  opacity: 0.075;
+  z-index: -1;
+  text-align: center;
+  color: #000000;
+  font-size: 2in;
+}
+
+.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.c8 {
+  margin-left: 1rem;
+}
+
+.c8:first-child {
+  margin-left: 0;
+}
+
+.c9 {
+  font-variant-caps: small-caps;
+}
+
+.c10 {
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
 @media (min-width:480px) {
-  .c2 {
+  .c6 {
     line-height: 1.3;
   }
 }
 
 @media print {
-  .c11 {
+  .c2 {
     color: black;
   }
 }
@@ -297,7 +306,7 @@ exports[`renders PrintPage with votes 1`] = `
 }
 
 @media (min-width:480px) {
-  .c9 {
+  .c16 {
     line-height: 1.3;
   }
 }
@@ -309,96 +318,137 @@ exports[`renders PrintPage with votes 1`] = `
   <div
     class="c1"
   >
+    <span>
+      This is your
+       
+      <span
+        class="c2"
+      >
+        TEST ballot
+      </span>
+      . Verify, then cast in ballot box.
+    </span>
+  </div>
+  <div
+    class="c3"
+  >
     <div
-      class="c2 ballot-header-content"
-    >
-      <h2>
-        Unofficial TEST Ballot
-      </h2>
-      <h3>
-        
-         
-        General Election
-      </h3>
-      <p>
-        November 3, 2020
-        <br />
-        Franklin County
-        , 
-        State of Hamilton
-      </p>
-    </div>
-    <div
-      class="c3"
+      class="c4"
     >
       <div
-        class="c4"
+        class="c5"
       >
-        <svg
-          height="128"
-          shape-rendering="crispEdges"
-          viewBox="0 0 37 37"
-          width="128"
+        <div
+          class="c6"
         >
-          <path
-            d="M0,0 h37v37H0z"
-            fill="#FFFFFF"
-          />
-          <path
-            d="M0 0h7v1H0zM8 0h2v1H8zM11 0h1v1H11zM14 0h2v1H14zM18 0h4v1H18zM23 0h2v1H23zM26 0h1v1H26zM30,0 h7v1H30zM0 1h1v1H0zM6 1h1v1H6zM8 1h4v1H8zM13 1h2v1H13zM18 1h1v1H18zM21 1h1v1H21zM23 1h2v1H23zM26 1h2v1H26zM30 1h1v1H30zM36,1 h1v1H36zM0 2h1v1H0zM2 2h3v1H2zM6 2h1v1H6zM11 2h1v1H11zM13 2h1v1H13zM16 2h5v1H16zM22 2h1v1H22zM24 2h1v1H24zM30 2h1v1H30zM32 2h3v1H32zM36,2 h1v1H36zM0 3h1v1H0zM2 3h3v1H2zM6 3h1v1H6zM8 3h1v1H8zM13 3h4v1H13zM19 3h1v1H19zM21 3h1v1H21zM27 3h2v1H27zM30 3h1v1H30zM32 3h3v1H32zM36,3 h1v1H36zM0 4h1v1H0zM2 4h3v1H2zM6 4h1v1H6zM8 4h2v1H8zM13 4h2v1H13zM16 4h1v1H16zM18 4h1v1H18zM20 4h1v1H20zM22 4h1v1H22zM27 4h1v1H27zM30 4h1v1H30zM32 4h3v1H32zM36,4 h1v1H36zM0 5h1v1H0zM6 5h1v1H6zM8 5h3v1H8zM12 5h4v1H12zM18 5h2v1H18zM21 5h4v1H21zM27 5h1v1H27zM30 5h1v1H30zM36,5 h1v1H36zM0 6h7v1H0zM8 6h1v1H8zM10 6h1v1H10zM12 6h1v1H12zM14 6h1v1H14zM16 6h1v1H16zM18 6h1v1H18zM20 6h1v1H20zM22 6h1v1H22zM24 6h1v1H24zM26 6h1v1H26zM28 6h1v1H28zM30,6 h7v1H30zM10 7h1v1H10zM12 7h4v1H12zM17 7h2v1H17zM20 7h1v1H20zM22 7h4v1H22zM28 7h1v1H28zM3 8h1v1H3zM6 8h1v1H6zM9 8h2v1H9zM12 8h2v1H12zM16 8h2v1H16zM19 8h2v1H19zM22 8h2v1H22zM26 8h1v1H26zM31 8h3v1H31zM35,8 h2v1H35zM1 9h5v1H1zM7 9h1v1H7zM9 9h1v1H9zM11 9h4v1H11zM18 9h1v1H18zM20 9h6v1H20zM27 9h1v1H27zM29 9h1v1H29zM32 9h2v1H32zM35 9h1v1H35zM0 10h1v1H0zM2 10h8v1H2zM11 10h2v1H11zM14 10h1v1H14zM16 10h2v1H16zM19 10h4v1H19zM24 10h3v1H24zM28 10h1v1H28zM30 10h2v1H30zM35,10 h2v1H35zM4 11h2v1H4zM9 11h1v1H9zM11 11h2v1H11zM15 11h1v1H15zM22 11h1v1H22zM25 11h1v1H25zM27 11h1v1H27zM29 11h1v1H29zM33 11h1v1H33zM36,11 h1v1H36zM2 12h7v1H2zM12 12h1v1H12zM14 12h2v1H14zM20 12h1v1H20zM23 12h1v1H23zM26 12h1v1H26zM30 12h1v1H30zM33 12h3v1H33zM0 13h1v1H0zM7 13h1v1H7zM13 13h2v1H13zM17 13h1v1H17zM19 13h4v1H19zM24 13h1v1H24zM26 13h1v1H26zM30 13h2v1H30zM34,13 h3v1H34zM1 14h1v1H1zM3 14h2v1H3zM6 14h2v1H6zM9 14h2v1H9zM13 14h2v1H13zM19 14h2v1H19zM25 14h2v1H25zM29 14h1v1H29zM31 14h2v1H31zM36,14 h1v1H36zM0 15h2v1H0zM7 15h3v1H7zM11 15h3v1H11zM16 15h1v1H16zM20 15h2v1H20zM23 15h1v1H23zM25 15h2v1H25zM28 15h2v1H28zM31 15h2v1H31zM35 15h1v1H35zM0 16h2v1H0zM3 16h5v1H3zM15 16h1v1H15zM17 16h1v1H17zM20 16h1v1H20zM24 16h1v1H24zM27 16h4v1H27zM33 16h1v1H33zM0 17h1v1H0zM5 17h1v1H5zM7 17h1v1H7zM9 17h1v1H9zM11 17h3v1H11zM16 17h1v1H16zM22 17h1v1H22zM24 17h3v1H24zM30 17h1v1H30zM32 17h4v1H32zM3 18h1v1H3zM6 18h1v1H6zM8 18h1v1H8zM11 18h1v1H11zM14 18h5v1H14zM20 18h1v1H20zM22 18h3v1H22zM26 18h1v1H26zM28 18h1v1H28zM30 18h3v1H30zM34,18 h3v1H34zM3 19h2v1H3zM7 19h1v1H7zM10 19h2v1H10zM13 19h1v1H13zM15 19h1v1H15zM17 19h1v1H17zM20 19h1v1H20zM22 19h2v1H22zM26 19h1v1H26zM32 19h1v1H32zM34 19h2v1H34zM0 20h5v1H0zM6 20h1v1H6zM10 20h3v1H10zM15 20h3v1H15zM20 20h1v1H20zM22 20h1v1H22zM25 20h3v1H25zM30 20h1v1H30zM36,20 h1v1H36zM0 21h2v1H0zM7 21h2v1H7zM10 21h3v1H10zM15 21h1v1H15zM17 21h3v1H17zM23 21h1v1H23zM25 21h2v1H25zM31 21h1v1H31zM33 21h3v1H33zM0 22h1v1H0zM2 22h1v1H2zM6 22h2v1H6zM9 22h1v1H9zM11 22h1v1H11zM14 22h3v1H14zM20 22h1v1H20zM24 22h3v1H24zM30 22h1v1H30zM32,22 h5v1H32zM3 23h3v1H3zM7 23h2v1H7zM11 23h2v1H11zM16 23h1v1H16zM19 23h1v1H19zM21 23h1v1H21zM24 23h2v1H24zM29 23h1v1H29zM31 23h3v1H31zM0 24h1v1H0zM2 24h5v1H2zM8 24h2v1H8zM11 24h2v1H11zM17 24h1v1H17zM19 24h2v1H19zM23 24h1v1H23zM26 24h1v1H26zM28 24h1v1H28zM30 24h1v1H30zM32 24h2v1H32zM36,24 h1v1H36zM3 25h2v1H3zM8 25h4v1H8zM14 25h1v1H14zM20 25h2v1H20zM23 25h1v1H23zM26 25h2v1H26zM33 25h1v1H33zM35,25 h2v1H35zM0 26h1v1H0zM2 26h1v1H2zM4 26h1v1H4zM6 26h3v1H6zM10 26h2v1H10zM13 26h1v1H13zM15 26h3v1H15zM21 26h1v1H21zM23 26h1v1H23zM25 26h4v1H25zM30 26h1v1H30zM34 26h1v1H34zM36,26 h1v1H36zM1 27h1v1H1zM11 27h1v1H11zM14 27h1v1H14zM17 27h1v1H17zM19 27h1v1H19zM23 27h1v1H23zM25 27h1v1H25zM28 27h1v1H28zM31 27h1v1H31zM33 27h1v1H33zM0 28h4v1H0zM5 28h5v1H5zM11 28h1v1H11zM14 28h2v1H14zM17 28h1v1H17zM21 28h2v1H21zM25 28h1v1H25zM27 28h6v1H27zM36,28 h1v1H36zM8 29h4v1H8zM13 29h1v1H13zM15 29h1v1H15zM17 29h4v1H17zM25 29h4v1H25zM32 29h3v1H32zM0 30h7v1H0zM9 30h3v1H9zM13 30h7v1H13zM21 30h3v1H21zM28 30h1v1H28zM30 30h1v1H30zM32 30h1v1H32zM34,30 h3v1H34zM0 31h1v1H0zM6 31h1v1H6zM9 31h1v1H9zM13 31h1v1H13zM21 31h3v1H21zM26 31h1v1H26zM28 31h1v1H28zM32 31h3v1H32zM36,31 h1v1H36zM0 32h1v1H0zM2 32h3v1H2zM6 32h1v1H6zM9 32h1v1H9zM12 32h4v1H12zM17 32h1v1H17zM19 32h2v1H19zM23 32h4v1H23zM28 32h5v1H28zM34,32 h3v1H34zM0 33h1v1H0zM2 33h3v1H2zM6 33h1v1H6zM8 33h7v1H8zM16 33h2v1H16zM21 33h1v1H21zM23 33h7v1H23zM31 33h1v1H31zM35,33 h2v1H35zM0 34h1v1H0zM2 34h3v1H2zM6 34h1v1H6zM10 34h1v1H10zM15 34h5v1H15zM22 34h3v1H22zM27 34h1v1H27zM30 34h1v1H30zM32 34h3v1H32zM36,34 h1v1H36zM0 35h1v1H0zM6 35h1v1H6zM9 35h4v1H9zM14 35h1v1H14zM18 35h7v1H18zM27 35h1v1H27zM29 35h1v1H29zM31 35h2v1H31zM0 36h7v1H0zM11 36h1v1H11zM13 36h1v1H13zM15 36h4v1H15zM21 36h8v1H21zM33,36 h4v1H33z"
-            fill="#000000"
-          />
-        </svg>
+          <h3>
+            
+             
+            General Election
+             
+            <span
+              class="c2"
+            >
+              TEST Ballot
+            </span>
+          </h3>
+          <p>
+            Franklin County
+            , 
+            State of Hamilton
+            <br />
+            November 3, 2020
+          </p>
+        </div>
       </div>
-      <div>
-        <div>
-          <div>
-            <div>
-              Precinct
-            </div>
-            <strong>
-              North Springfield
-            </strong>
+      <div
+        class="c7"
+      >
+        <div
+          class="c8"
+        >
+          <div
+            class="c9"
+          >
+            polling place
           </div>
-          <div>
-            <div>
-              Ballot Style
-            </div>
-            <strong>
-              5
-            </strong>
+          <div
+            class="c10"
+          >
+            North Springfield
           </div>
-          <div>
-            <div>
-              Ballot ID
-            </div>
-            <strong
-              class="c5"
+        </div>
+        <div
+          class="c8"
+        >
+          <div
+            class="c9"
+          >
+            ballot style
+          </div>
+          <div
+            class="c10"
+          >
+            5
+          </div>
+        </div>
+        <div
+          class="c8"
+        >
+          <div
+            class="c9"
+          >
+            ballot id
+          </div>
+          <div
+            class="c10"
+          >
+            <span
+              class="c11"
             >
               CHhgYxfN5GeqnK8KaVOt1w
-            </strong>
+            </span>
           </div>
         </div>
       </div>
     </div>
+    <span
+      class="c12"
+    >
+      <svg
+        height="128"
+        shape-rendering="crispEdges"
+        viewBox="0 0 37 37"
+        width="128"
+      >
+        <path
+          d="M0,0 h37v37H0z"
+          fill="#FFFFFF"
+        />
+        <path
+          d="M0 0h7v1H0zM8 0h2v1H8zM11 0h1v1H11zM14 0h2v1H14zM18 0h4v1H18zM23 0h2v1H23zM26 0h1v1H26zM30,0 h7v1H30zM0 1h1v1H0zM6 1h1v1H6zM8 1h4v1H8zM13 1h2v1H13zM18 1h1v1H18zM21 1h1v1H21zM23 1h2v1H23zM26 1h2v1H26zM30 1h1v1H30zM36,1 h1v1H36zM0 2h1v1H0zM2 2h3v1H2zM6 2h1v1H6zM11 2h1v1H11zM13 2h1v1H13zM16 2h5v1H16zM22 2h1v1H22zM24 2h1v1H24zM30 2h1v1H30zM32 2h3v1H32zM36,2 h1v1H36zM0 3h1v1H0zM2 3h3v1H2zM6 3h1v1H6zM8 3h1v1H8zM13 3h4v1H13zM19 3h1v1H19zM21 3h1v1H21zM27 3h2v1H27zM30 3h1v1H30zM32 3h3v1H32zM36,3 h1v1H36zM0 4h1v1H0zM2 4h3v1H2zM6 4h1v1H6zM8 4h2v1H8zM13 4h2v1H13zM16 4h1v1H16zM18 4h1v1H18zM20 4h1v1H20zM22 4h1v1H22zM27 4h1v1H27zM30 4h1v1H30zM32 4h3v1H32zM36,4 h1v1H36zM0 5h1v1H0zM6 5h1v1H6zM8 5h3v1H8zM12 5h4v1H12zM18 5h2v1H18zM21 5h4v1H21zM27 5h1v1H27zM30 5h1v1H30zM36,5 h1v1H36zM0 6h7v1H0zM8 6h1v1H8zM10 6h1v1H10zM12 6h1v1H12zM14 6h1v1H14zM16 6h1v1H16zM18 6h1v1H18zM20 6h1v1H20zM22 6h1v1H22zM24 6h1v1H24zM26 6h1v1H26zM28 6h1v1H28zM30,6 h7v1H30zM10 7h1v1H10zM12 7h4v1H12zM17 7h2v1H17zM20 7h1v1H20zM22 7h4v1H22zM28 7h1v1H28zM3 8h1v1H3zM6 8h1v1H6zM9 8h2v1H9zM12 8h2v1H12zM16 8h2v1H16zM19 8h2v1H19zM22 8h2v1H22zM26 8h1v1H26zM31 8h3v1H31zM35,8 h2v1H35zM1 9h5v1H1zM7 9h1v1H7zM9 9h1v1H9zM11 9h4v1H11zM18 9h1v1H18zM20 9h6v1H20zM27 9h1v1H27zM29 9h1v1H29zM32 9h2v1H32zM35 9h1v1H35zM0 10h1v1H0zM2 10h8v1H2zM11 10h2v1H11zM14 10h1v1H14zM16 10h2v1H16zM19 10h4v1H19zM24 10h3v1H24zM28 10h1v1H28zM30 10h2v1H30zM35,10 h2v1H35zM4 11h2v1H4zM9 11h1v1H9zM11 11h2v1H11zM15 11h1v1H15zM22 11h1v1H22zM25 11h1v1H25zM27 11h1v1H27zM29 11h1v1H29zM33 11h1v1H33zM36,11 h1v1H36zM2 12h7v1H2zM12 12h1v1H12zM14 12h2v1H14zM20 12h1v1H20zM23 12h1v1H23zM26 12h1v1H26zM30 12h1v1H30zM33 12h3v1H33zM0 13h1v1H0zM7 13h1v1H7zM13 13h2v1H13zM17 13h1v1H17zM19 13h4v1H19zM24 13h1v1H24zM26 13h1v1H26zM30 13h2v1H30zM34,13 h3v1H34zM1 14h1v1H1zM3 14h2v1H3zM6 14h2v1H6zM9 14h2v1H9zM13 14h2v1H13zM19 14h2v1H19zM25 14h2v1H25zM29 14h1v1H29zM31 14h2v1H31zM36,14 h1v1H36zM0 15h2v1H0zM7 15h3v1H7zM11 15h3v1H11zM16 15h1v1H16zM20 15h2v1H20zM23 15h1v1H23zM25 15h2v1H25zM28 15h2v1H28zM31 15h2v1H31zM35 15h1v1H35zM0 16h2v1H0zM3 16h5v1H3zM15 16h1v1H15zM17 16h1v1H17zM20 16h1v1H20zM24 16h1v1H24zM27 16h4v1H27zM33 16h1v1H33zM0 17h1v1H0zM5 17h1v1H5zM7 17h1v1H7zM9 17h1v1H9zM11 17h3v1H11zM16 17h1v1H16zM22 17h1v1H22zM24 17h3v1H24zM30 17h1v1H30zM32 17h4v1H32zM3 18h1v1H3zM6 18h1v1H6zM8 18h1v1H8zM11 18h1v1H11zM14 18h5v1H14zM20 18h1v1H20zM22 18h3v1H22zM26 18h1v1H26zM28 18h1v1H28zM30 18h3v1H30zM34,18 h3v1H34zM3 19h2v1H3zM7 19h1v1H7zM10 19h2v1H10zM13 19h1v1H13zM15 19h1v1H15zM17 19h1v1H17zM20 19h1v1H20zM22 19h2v1H22zM26 19h1v1H26zM32 19h1v1H32zM34 19h2v1H34zM0 20h5v1H0zM6 20h1v1H6zM10 20h3v1H10zM15 20h3v1H15zM20 20h1v1H20zM22 20h1v1H22zM25 20h3v1H25zM30 20h1v1H30zM36,20 h1v1H36zM0 21h2v1H0zM7 21h2v1H7zM10 21h3v1H10zM15 21h1v1H15zM17 21h3v1H17zM23 21h1v1H23zM25 21h2v1H25zM31 21h1v1H31zM33 21h3v1H33zM0 22h1v1H0zM2 22h1v1H2zM6 22h2v1H6zM9 22h1v1H9zM11 22h1v1H11zM14 22h3v1H14zM20 22h1v1H20zM24 22h3v1H24zM30 22h1v1H30zM32,22 h5v1H32zM3 23h3v1H3zM7 23h2v1H7zM11 23h2v1H11zM16 23h1v1H16zM19 23h1v1H19zM21 23h1v1H21zM24 23h2v1H24zM29 23h1v1H29zM31 23h3v1H31zM0 24h1v1H0zM2 24h5v1H2zM8 24h2v1H8zM11 24h2v1H11zM17 24h1v1H17zM19 24h2v1H19zM23 24h1v1H23zM26 24h1v1H26zM28 24h1v1H28zM30 24h1v1H30zM32 24h2v1H32zM36,24 h1v1H36zM3 25h2v1H3zM8 25h4v1H8zM14 25h1v1H14zM20 25h2v1H20zM23 25h1v1H23zM26 25h2v1H26zM33 25h1v1H33zM35,25 h2v1H35zM0 26h1v1H0zM2 26h1v1H2zM4 26h1v1H4zM6 26h3v1H6zM10 26h2v1H10zM13 26h1v1H13zM15 26h3v1H15zM21 26h1v1H21zM23 26h1v1H23zM25 26h4v1H25zM30 26h1v1H30zM34 26h1v1H34zM36,26 h1v1H36zM1 27h1v1H1zM11 27h1v1H11zM14 27h1v1H14zM17 27h1v1H17zM19 27h1v1H19zM23 27h1v1H23zM25 27h1v1H25zM28 27h1v1H28zM31 27h1v1H31zM33 27h1v1H33zM0 28h4v1H0zM5 28h5v1H5zM11 28h1v1H11zM14 28h2v1H14zM17 28h1v1H17zM21 28h2v1H21zM25 28h1v1H25zM27 28h6v1H27zM36,28 h1v1H36zM8 29h4v1H8zM13 29h1v1H13zM15 29h1v1H15zM17 29h4v1H17zM25 29h4v1H25zM32 29h3v1H32zM0 30h7v1H0zM9 30h3v1H9zM13 30h7v1H13zM21 30h3v1H21zM28 30h1v1H28zM30 30h1v1H30zM32 30h1v1H32zM34,30 h3v1H34zM0 31h1v1H0zM6 31h1v1H6zM9 31h1v1H9zM13 31h1v1H13zM21 31h3v1H21zM26 31h1v1H26zM28 31h1v1H28zM32 31h3v1H32zM36,31 h1v1H36zM0 32h1v1H0zM2 32h3v1H2zM6 32h1v1H6zM9 32h1v1H9zM12 32h4v1H12zM17 32h1v1H17zM19 32h2v1H19zM23 32h4v1H23zM28 32h5v1H28zM34,32 h3v1H34zM0 33h1v1H0zM2 33h3v1H2zM6 33h1v1H6zM8 33h7v1H8zM16 33h2v1H16zM21 33h1v1H21zM23 33h7v1H23zM31 33h1v1H31zM35,33 h2v1H35zM0 34h1v1H0zM2 34h3v1H2zM6 34h1v1H6zM10 34h1v1H10zM15 34h5v1H15zM22 34h3v1H22zM27 34h1v1H27zM30 34h1v1H30zM32 34h3v1H32zM36,34 h1v1H36zM0 35h1v1H0zM6 35h1v1H6zM9 35h4v1H9zM14 35h1v1H14zM18 35h7v1H18zM27 35h1v1H27zM29 35h1v1H29zM31 35h2v1H31zM0 36h7v1H0zM11 36h1v1H11zM13 36h1v1H13zM15 36h4v1H15zM21 36h8v1H21zM33,36 h4v1H33z"
+          fill="#000000"
+        />
+      </svg>
+    </span>
   </div>
   <div
-    class="c6"
+    class="c13"
   >
     <div
-      class="c7"
+      class="c14"
     >
       <div
-        class="c8"
+        class="c15"
       >
         <div
-          class="c9"
+          class="c16"
         >
           <h3>
             President and Vice-President
           </h3>
           <p
-            class="c10"
+            class="c17"
           >
             <strong>
               Joseph Barchi and Joseph Hallaren
@@ -409,32 +459,32 @@ exports[`renders PrintPage with votes 1`] = `
         </div>
       </div>
       <div
-        class="c8"
+        class="c15"
       >
         <div
-          class="c9"
+          class="c16"
         >
           <h3>
             Representative, District 6
           </h3>
           <p
-            class="c11"
+            class=""
           >
-            [no selection]
+            no selection
           </p>
         </div>
       </div>
       <div
-        class="c8"
+        class="c15"
       >
         <div
-          class="c9"
+          class="c16"
         >
           <h3>
             Lieutenant Governor
           </h3>
           <p
-            class="c10"
+            class="c17"
           >
             <strong>
               Chris Norberg
@@ -445,80 +495,80 @@ exports[`renders PrintPage with votes 1`] = `
         </div>
       </div>
       <div
-        class="c8"
+        class="c15"
       >
         <div
-          class="c9"
+          class="c16"
         >
           <h3>
             Senator, District 31
           </h3>
           <p
-            class="c11"
+            class=""
           >
-            [no selection]
+            no selection
           </p>
         </div>
       </div>
       <div
-        class="c8"
+        class="c15"
       >
         <div
-          class="c9"
+          class="c16"
         >
           <h3>
             Assembly Member, District 54
           </h3>
           <p
-            class="c11"
+            class=""
           >
-            [no selection]
+            no selection
           </p>
         </div>
       </div>
       <div
-        class="c8"
+        class="c15"
       >
         <div
-          class="c9"
+          class="c16"
         >
           <h3>
             Registrar of Wills
           </h3>
           <p
-            class="c11"
+            class=""
           >
-            [no selection]
+            no selection
           </p>
         </div>
       </div>
       <div
-        class="c8"
+        class="c15"
       >
         <div
-          class="c9"
+          class="c16"
         >
           <h3>
             Retain Robert Demergue as Chief Justice?
           </h3>
           <p
-            class="c11"
+            class=""
           >
-            [no selection]
+            no selection
           </p>
         </div>
       </div>
       <div
-        class="c8"
+        class="c15"
       >
         <div
-          class="c9"
+          class="c16"
         >
           <h3>
             Question A: Recovery of Property Damages
           </h3>
           <p
-            class="c10"
+            class="c17"
           >
             <strong>
               No
@@ -529,16 +579,16 @@ exports[`renders PrintPage with votes 1`] = `
         </div>
       </div>
       <div
-        class="c8"
+        class="c15"
       >
         <div
-          class="c9"
+          class="c16"
         >
           <h3>
             Question B: Separation of Powers
           </h3>
           <p
-            class="c10"
+            class="c17"
           >
             <strong>
               Yes
@@ -549,38 +599,43 @@ exports[`renders PrintPage with votes 1`] = `
         </div>
       </div>
       <div
-        class="c8"
+        class="c15"
       >
         <div
-          class="c9"
+          class="c16"
         >
           <h3>
             Proposition 1: Gambling in Franklin and Fromwit Counties
           </h3>
           <p
-            class="c11"
+            class=""
           >
-            [no selection]
+            no selection
           </p>
         </div>
       </div>
       <div
-        class="c8"
+        class="c15"
       >
         <div
-          class="c9"
+          class="c16"
         >
           <h3>
             Measure 102: Vehicle Abatement Program
           </h3>
           <p
-            class="c11"
+            class=""
           >
-            [no selection]
+            no selection
           </p>
         </div>
       </div>
     </div>
+  </div>
+  <div
+    class="c18"
+  >
+    TEST BALLOT
   </div>
 </div>
 `;
@@ -826,122 +881,94 @@ exports[`renders PrintPage without votes 1`] = `
 `;
 
 exports[`renders PrintPage without votes and inline seal 1`] = `
-.c2 {
+.c6 {
   max-width: 66ch;
   line-height: 1.2;
 }
 
-.c2 h1 {
+.c6 h1 {
   margin: 2rem 0 1rem;
   line-height: 1.1;
   font-size: 1.5rem;
 }
 
-.c2 h2 {
+.c6 h2 {
   margin: 1.5rem 0 0.75rem;
   font-size: 1.25rem;
 }
 
-.c2 h3 {
+.c6 h3 {
   font-size: 1.17rem;
 }
 
-.c2 h4 {
+.c6 h4 {
   font-size: 1rem;
 }
 
-.c2 h5 {
+.c6 h5 {
   font-size: 0.9rem;
 }
 
-.c2 h3,
-.c2 h4,
-.c2 h5,
-.c2 p {
+.c6 h3,
+.c6 h4,
+.c6 h5,
+.c6 p {
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
 
-.c2 h1 + h2 {
+.c6 h1 + h2 {
   margin-top: -0.75rem;
 }
 
-.c2 h1 + p,
-.c2 h2 + p {
+.c6 h1 + p,
+.c6 h2 + p {
   margin-top: -0.75rem;
 }
 
-.c2 h3 + p,
-.c2 h4 + p,
-.c2 h5 + p {
+.c6 h3 + p,
+.c6 h4 + p,
+.c6 h5 + p {
   margin-top: -1rem;
 }
 
-.c2 > :first-child {
+.c6 > :first-child {
   margin-top: 0;
 }
 
-.c2 > :last-child {
+.c6 > :last-child {
   margin-bottom: 0;
 }
 
-.c2 dl {
+.c6 dl {
   margin: 1rem 0;
 }
 
-.c4 > svg {
+.c12 > svg {
   display: block;
-  width: 100%;
+  width: 1.1in;
   height: auto;
 }
 
-.c10 {
+.c2 {
   color: gray;
-  font-style: italic;
 }
 
-.c5 {
+.c11 {
   white-space: nowrap;
 }
 
 .c0 {
+  position: relative;
   page-break-after: always;
 }
 
 .c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  border-bottom: 0.2rem solid #000000;
-}
-
-.c1 > .seal {
-  margin: 0.25rem 0;
-  width: 1in;
-}
-
-.c1 h2 {
-  margin-bottom: 0;
-}
-
-.c1 h3 {
-  margin-top: 0;
-}
-
-.c1 > .ballot-header-content {
-  -webkit-flex: 4;
-  -ms-flex: 4;
-  flex: 4;
-  margin: 0 1rem;
-  max-width: 100%;
+  margin: 0 auto 0.375in;
+  text-align: center;
+  white-space: nowrap;
+  font-size: 1.75rem;
+  font-weight: 600;
 }
 
 .c3 {
@@ -949,37 +976,28 @@ exports[`renders PrintPage without votes and inline seal 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex: 3;
-  -ms-flex: 3;
-  flex: 3;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
-  -webkit-align-self: flex-end;
-  -ms-flex-item-align: end;
-  align-self: flex-end;
+  position: relative;
   border: 0.2rem solid #000000;
-  border-bottom: 0;
-  max-width: 50%;
-  padding: 0.25rem;
+  border-width: 0.2rem 0;
+  padding: 0.5rem 0;
 }
 
-.c3 > div:first-child {
-  margin-right: 0.25rem;
+.c3 > .seal {
   width: 1.1in;
 }
 
-.c3 > div:last-child {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
+.c3 h2 {
+  margin-bottom: 0;
 }
 
-.c3 > div:last-child > div {
+.c3 h3 {
+  margin-top: 0;
+}
+
+.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -990,39 +1008,42 @@ exports[`renders PrintPage without votes and inline seal 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  -webkit-align-self: stretch;
-  -ms-flex-item-align: stretch;
-  align-self: stretch;
-  font-size: 0.8rem;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin: 0 1rem 0 0.75rem;
+  max-width: 100%;
 }
 
-.c3 > div:last-child > div > div {
-  margin-bottom: 0.75rem;
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
-.c3 > div:last-child > div > div:last-child {
-  margin-bottom: 0;
-}
-
-.c3 > div:last-child > div strong {
-  font-size: 1rem;
-  word-break: break-word;
-}
-
-.c6 {
+.c13 {
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
 }
 
-.c7 {
+.c14 {
   -webkit-columns: 2;
   columns: 2;
   -webkit-column-gap: 2rem;
   column-gap: 2rem;
 }
 
-.c8 {
+.c15 {
   border-bottom: 0.01rem solid #000000;
   padding: 0.5rem 0;
   -webkit-break-inside: avoid;
@@ -1030,82 +1051,125 @@ exports[`renders PrintPage without votes and inline seal 1`] = `
   page-break-inside: avoid;
 }
 
-.c9 {
+.c16 {
   max-width: 66ch;
   line-height: 1.2;
 }
 
-.c9 h1 {
+.c16 h1 {
   margin: 2rem 0 1rem;
   line-height: 1.1;
   font-size: 1.5rem;
 }
 
-.c9 h2 {
+.c16 h2 {
   margin: 1.5rem 0 0.75rem;
   font-size: 1.25rem;
 }
 
-.c9 h3 {
+.c16 h3 {
   font-size: 1.17rem;
 }
 
-.c9 h4 {
+.c16 h4 {
   font-size: 1rem;
 }
 
-.c9 h5 {
+.c16 h5 {
   font-size: 0.9rem;
 }
 
-.c9 h3,
-.c9 h4,
-.c9 h5,
-.c9 p {
+.c16 h3,
+.c16 h4,
+.c16 h5,
+.c16 p {
   margin-top: 0;
   margin-bottom: 0;
 }
 
-.c9 h1 + h2 {
+.c16 h1 + h2 {
   margin-top: -0.75rem;
 }
 
-.c9 h1 + p,
-.c9 h2 + p {
+.c16 h1 + p,
+.c16 h2 + p {
   margin-top: -0.75rem;
 }
 
-.c9 h3 + p,
-.c9 h4 + p,
-.c9 h5 + p {
+.c16 h3 + p,
+.c16 h4 + p,
+.c16 h5 + p {
   margin-top: 0;
 }
 
-.c9 > :first-child {
+.c16 > :first-child {
   margin-top: 0;
 }
 
-.c9 > :last-child {
+.c16 > :last-child {
   margin-bottom: 0;
 }
 
-.c9 dl {
+.c16 dl {
   margin: 1rem 0;
 }
 
-.c9 > h3 {
+.c16 > h3 {
   font-size: 0.875em;
   font-weight: 400;
 }
 
+.c17 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  -webkit-transform: translateY(3in) rotate(-45deg);
+  -ms-transform: translateY(3in) rotate(-45deg);
+  transform: translateY(3in) rotate(-45deg);
+  opacity: 0.075;
+  z-index: -1;
+  text-align: center;
+  color: #000000;
+  font-size: 2in;
+}
+
+.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.c8 {
+  margin-left: 1rem;
+}
+
+.c8:first-child {
+  margin-left: 0;
+}
+
+.c9 {
+  font-variant-caps: small-caps;
+}
+
+.c10 {
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
 @media (min-width:480px) {
-  .c2 {
+  .c6 {
     line-height: 1.3;
   }
 }
 
 @media print {
-  .c10 {
+  .c2 {
     color: black;
   }
 }
@@ -1117,7 +1181,7 @@ exports[`renders PrintPage without votes and inline seal 1`] = `
 }
 
 @media (min-width:480px) {
-  .c9 {
+  .c16 {
     line-height: 1.3;
   }
 }
@@ -1128,6 +1192,20 @@ exports[`renders PrintPage without votes and inline seal 1`] = `
 >
   <div
     class="c1"
+  >
+    <span>
+      This is your
+       
+      <span
+        class="c2"
+      >
+        TEST ballot
+      </span>
+      . Verify, then cast in ballot box.
+    </span>
+  </div>
+  <div
+    class="c3"
   >
     <div
       class="seal"
@@ -1297,382 +1375,386 @@ exports[`renders PrintPage without votes and inline seal 1`] = `
       </svg>
     </div>
     <div
-      class="c2 ballot-header-content"
-    >
-      <h2>
-        Unofficial TEST Ballot
-      </h2>
-      <h3>
-        
-         
-        General Election
-      </h3>
-      <p>
-        November 3, 2020
-        <br />
-        Franklin County
-        , 
-        State of Hamilton
-      </p>
-    </div>
-    <div
-      class="c3"
+      class="c4"
     >
       <div
-        class="c4"
+        class="c5"
       >
-        <svg
-          height="128"
-          shape-rendering="crispEdges"
-          viewBox="0 0 33 33"
-          width="128"
+        <div
+          class="c6"
         >
-          <path
-            d="M0,0 h33v33H0z"
-            fill="#FFFFFF"
-          />
-          <path
-            d="M0 0h7v1H0zM9 0h1v1H9zM11 0h1v1H11zM14 0h2v1H14zM17 0h2v1H17zM22 0h3v1H22zM26,0 h7v1H26zM0 1h1v1H0zM6 1h1v1H6zM18 1h1v1H18zM23 1h1v1H23zM26 1h1v1H26zM32,1 h1v1H32zM0 2h1v1H0zM2 2h3v1H2zM6 2h1v1H6zM9 2h3v1H9zM13 2h6v1H13zM22 2h2v1H22zM26 2h1v1H26zM28 2h3v1H28zM32,2 h1v1H32zM0 3h1v1H0zM2 3h3v1H2zM6 3h1v1H6zM10 3h1v1H10zM12 3h7v1H12zM20 3h1v1H20zM22 3h1v1H22zM26 3h1v1H26zM28 3h3v1H28zM32,3 h1v1H32zM0 4h1v1H0zM2 4h3v1H2zM6 4h1v1H6zM8 4h1v1H8zM10 4h2v1H10zM13 4h1v1H13zM16 4h6v1H16zM23 4h1v1H23zM26 4h1v1H26zM28 4h3v1H28zM32,4 h1v1H32zM0 5h1v1H0zM6 5h1v1H6zM9 5h4v1H9zM14 5h1v1H14zM16 5h4v1H16zM22 5h1v1H22zM26 5h1v1H26zM32,5 h1v1H32zM0 6h7v1H0zM8 6h1v1H8zM10 6h1v1H10zM12 6h1v1H12zM14 6h1v1H14zM16 6h1v1H16zM18 6h1v1H18zM20 6h1v1H20zM22 6h1v1H22zM24 6h1v1H24zM26,6 h7v1H26zM8 7h2v1H8zM11 7h1v1H11zM14 7h1v1H14zM16 7h2v1H16zM19 7h2v1H19zM23 7h1v1H23zM2 8h2v1H2zM6 8h3v1H6zM11 8h3v1H11zM15 8h2v1H15zM18 8h3v1H18zM24 8h3v1H24zM28 8h1v1H28zM0 9h6v1H0zM8 9h2v1H8zM12 9h1v1H12zM14 9h1v1H14zM16 9h1v1H16zM18 9h4v1H18zM23 9h2v1H23zM27 9h1v1H27zM29 9h2v1H29zM0 10h2v1H0zM3 10h4v1H3zM8 10h1v1H8zM10 10h1v1H10zM12 10h1v1H12zM14 10h1v1H14zM18 10h2v1H18zM23 10h2v1H23zM27 10h1v1H27zM31,10 h2v1H31zM2 11h1v1H2zM4 11h1v1H4zM7 11h1v1H7zM15 11h1v1H15zM17 11h2v1H17zM20 11h1v1H20zM22 11h2v1H22zM25 11h1v1H25zM28 11h2v1H28zM31,11 h2v1H31zM0 12h1v1H0zM2 12h8v1H2zM11 12h1v1H11zM15 12h2v1H15zM20 12h2v1H20zM23 12h1v1H23zM25 12h1v1H25zM28 12h1v1H28zM30 12h2v1H30zM0 13h2v1H0zM4 13h2v1H4zM8 13h3v1H8zM12 13h3v1H12zM18 13h3v1H18zM24 13h1v1H24zM31,13 h2v1H31zM0 14h2v1H0zM3 14h1v1H3zM6 14h2v1H6zM10 14h1v1H10zM13 14h1v1H13zM15 14h1v1H15zM17 14h2v1H17zM21 14h2v1H21zM24 14h2v1H24zM28 14h1v1H28zM30 14h1v1H30zM1 15h1v1H1zM4 15h1v1H4zM7 15h2v1H7zM11 15h3v1H11zM15 15h2v1H15zM18 15h1v1H18zM21 15h1v1H21zM24 15h2v1H24zM29 15h3v1H29zM1 16h1v1H1zM3 16h2v1H3zM6 16h1v1H6zM9 16h2v1H9zM13 16h4v1H13zM19 16h3v1H19zM25 16h5v1H25zM32,16 h1v1H32zM0 17h1v1H0zM2 17h2v1H2zM5 17h1v1H5zM9 17h1v1H9zM11 17h1v1H11zM14 17h1v1H14zM17 17h1v1H17zM19 17h1v1H19zM25 17h5v1H25zM1 18h3v1H1zM6 18h3v1H6zM10 18h3v1H10zM14 18h1v1H14zM22 18h1v1H22zM31 18h1v1H31zM0 19h3v1H0zM4 19h1v1H4zM7 19h2v1H7zM10 19h1v1H10zM12 19h4v1H12zM17 19h1v1H17zM19 19h1v1H19zM23 19h5v1H23zM31,19 h2v1H31zM0 20h2v1H0zM4 20h1v1H4zM6 20h2v1H6zM9 20h1v1H9zM11 20h1v1H11zM16 20h1v1H16zM20 20h1v1H20zM29 20h1v1H29zM31 20h1v1H31zM0 21h1v1H0zM3 21h1v1H3zM5 21h1v1H5zM7 21h2v1H7zM10 21h2v1H10zM13 21h3v1H13zM18 21h3v1H18zM24 21h3v1H24zM30,21 h3v1H30zM3 22h5v1H3zM10 22h2v1H10zM14 22h1v1H14zM18 22h1v1H18zM20 22h2v1H20zM23 22h2v1H23zM26 22h1v1H26zM30 22h1v1H30zM32,22 h1v1H32zM1 23h1v1H1zM7 23h1v1H7zM12 23h2v1H12zM15 23h1v1H15zM18 23h1v1H18zM23 23h2v1H23zM29 23h1v1H29zM31,23 h2v1H31zM0 24h1v1H0zM4 24h4v1H4zM9 24h1v1H9zM12 24h2v1H12zM17 24h4v1H17zM22 24h1v1H22zM24 24h5v1H24zM30,24 h3v1H30zM8 25h3v1H8zM12 25h4v1H12zM19 25h1v1H19zM21 25h1v1H21zM23 25h2v1H23zM28 25h1v1H28zM31,25 h2v1H31zM0 26h7v1H0zM8 26h3v1H8zM13 26h1v1H13zM15 26h5v1H15zM21 26h1v1H21zM24 26h1v1H24zM26 26h1v1H26zM28 26h4v1H28zM0 27h1v1H0zM6 27h1v1H6zM9 27h3v1H9zM13 27h8v1H13zM23 27h2v1H23zM28 27h4v1H28zM0 28h1v1H0zM2 28h3v1H2zM6 28h1v1H6zM11 28h1v1H11zM13 28h2v1H13zM18 28h3v1H18zM22 28h9v1H22zM32,28 h1v1H32zM0 29h1v1H0zM2 29h3v1H2zM6 29h1v1H6zM8 29h1v1H8zM10 29h1v1H10zM14 29h2v1H14zM17 29h4v1H17zM22 29h1v1H22zM24 29h2v1H24zM28,29 h5v1H28zM0 30h1v1H0zM2 30h3v1H2zM6 30h1v1H6zM8 30h2v1H8zM11 30h3v1H11zM18 30h3v1H18zM23 30h1v1H23zM25 30h3v1H25zM29 30h1v1H29zM0 31h1v1H0zM6 31h1v1H6zM9 31h1v1H9zM11 31h1v1H11zM13 31h1v1H13zM15 31h1v1H15zM20 31h1v1H20zM22 31h1v1H22zM25 31h2v1H25zM32,31 h1v1H32zM0 32h7v1H0zM11 32h1v1H11zM13 32h2v1H13zM16 32h1v1H16zM18 32h2v1H18zM21 32h3v1H21zM26 32h1v1H26zM29 32h2v1H29z"
-            fill="#000000"
-          />
-        </svg>
+          <h3>
+            
+             
+            General Election
+             
+            <span
+              class="c2"
+            >
+              TEST Ballot
+            </span>
+          </h3>
+          <p>
+            Franklin County
+            , 
+            State of Hamilton
+            <br />
+            November 3, 2020
+          </p>
+        </div>
       </div>
-      <div>
-        <div>
-          <div>
-            <div>
-              Precinct
-            </div>
-            <strong>
-              North Springfield
-            </strong>
+      <div
+        class="c7"
+      >
+        <div
+          class="c8"
+        >
+          <div
+            class="c9"
+          >
+            polling place
           </div>
-          <div>
-            <div>
-              Ballot Style
-            </div>
-            <strong>
-              5
-            </strong>
+          <div
+            class="c10"
+          >
+            North Springfield
           </div>
-          <div>
-            <div>
-              Ballot ID
-            </div>
-            <strong
-              class="c5"
+        </div>
+        <div
+          class="c8"
+        >
+          <div
+            class="c9"
+          >
+            ballot style
+          </div>
+          <div
+            class="c10"
+          >
+            5
+          </div>
+        </div>
+        <div
+          class="c8"
+        >
+          <div
+            class="c9"
+          >
+            ballot id
+          </div>
+          <div
+            class="c10"
+          >
+            <span
+              class="c11"
             >
               CHhgYxfN5GeqnK8KaVOt1w
-            </strong>
+            </span>
           </div>
         </div>
       </div>
     </div>
+    <span
+      class="c12"
+    >
+      <svg
+        height="128"
+        shape-rendering="crispEdges"
+        viewBox="0 0 33 33"
+        width="128"
+      >
+        <path
+          d="M0,0 h33v33H0z"
+          fill="#FFFFFF"
+        />
+        <path
+          d="M0 0h7v1H0zM9 0h1v1H9zM11 0h1v1H11zM14 0h2v1H14zM17 0h2v1H17zM22 0h3v1H22zM26,0 h7v1H26zM0 1h1v1H0zM6 1h1v1H6zM18 1h1v1H18zM23 1h1v1H23zM26 1h1v1H26zM32,1 h1v1H32zM0 2h1v1H0zM2 2h3v1H2zM6 2h1v1H6zM9 2h3v1H9zM13 2h6v1H13zM22 2h2v1H22zM26 2h1v1H26zM28 2h3v1H28zM32,2 h1v1H32zM0 3h1v1H0zM2 3h3v1H2zM6 3h1v1H6zM10 3h1v1H10zM12 3h7v1H12zM20 3h1v1H20zM22 3h1v1H22zM26 3h1v1H26zM28 3h3v1H28zM32,3 h1v1H32zM0 4h1v1H0zM2 4h3v1H2zM6 4h1v1H6zM8 4h1v1H8zM10 4h2v1H10zM13 4h1v1H13zM16 4h6v1H16zM23 4h1v1H23zM26 4h1v1H26zM28 4h3v1H28zM32,4 h1v1H32zM0 5h1v1H0zM6 5h1v1H6zM9 5h4v1H9zM14 5h1v1H14zM16 5h4v1H16zM22 5h1v1H22zM26 5h1v1H26zM32,5 h1v1H32zM0 6h7v1H0zM8 6h1v1H8zM10 6h1v1H10zM12 6h1v1H12zM14 6h1v1H14zM16 6h1v1H16zM18 6h1v1H18zM20 6h1v1H20zM22 6h1v1H22zM24 6h1v1H24zM26,6 h7v1H26zM8 7h2v1H8zM11 7h1v1H11zM14 7h1v1H14zM16 7h2v1H16zM19 7h2v1H19zM23 7h1v1H23zM2 8h2v1H2zM6 8h3v1H6zM11 8h3v1H11zM15 8h2v1H15zM18 8h3v1H18zM24 8h3v1H24zM28 8h1v1H28zM0 9h6v1H0zM8 9h2v1H8zM12 9h1v1H12zM14 9h1v1H14zM16 9h1v1H16zM18 9h4v1H18zM23 9h2v1H23zM27 9h1v1H27zM29 9h2v1H29zM0 10h2v1H0zM3 10h4v1H3zM8 10h1v1H8zM10 10h1v1H10zM12 10h1v1H12zM14 10h1v1H14zM18 10h2v1H18zM23 10h2v1H23zM27 10h1v1H27zM31,10 h2v1H31zM2 11h1v1H2zM4 11h1v1H4zM7 11h1v1H7zM15 11h1v1H15zM17 11h2v1H17zM20 11h1v1H20zM22 11h2v1H22zM25 11h1v1H25zM28 11h2v1H28zM31,11 h2v1H31zM0 12h1v1H0zM2 12h8v1H2zM11 12h1v1H11zM15 12h2v1H15zM20 12h2v1H20zM23 12h1v1H23zM25 12h1v1H25zM28 12h1v1H28zM30 12h2v1H30zM0 13h2v1H0zM4 13h2v1H4zM8 13h3v1H8zM12 13h3v1H12zM18 13h3v1H18zM24 13h1v1H24zM31,13 h2v1H31zM0 14h2v1H0zM3 14h1v1H3zM6 14h2v1H6zM10 14h1v1H10zM13 14h1v1H13zM15 14h1v1H15zM17 14h2v1H17zM21 14h2v1H21zM24 14h2v1H24zM28 14h1v1H28zM30 14h1v1H30zM1 15h1v1H1zM4 15h1v1H4zM7 15h2v1H7zM11 15h3v1H11zM15 15h2v1H15zM18 15h1v1H18zM21 15h1v1H21zM24 15h2v1H24zM29 15h3v1H29zM1 16h1v1H1zM3 16h2v1H3zM6 16h1v1H6zM9 16h2v1H9zM13 16h4v1H13zM19 16h3v1H19zM25 16h5v1H25zM32,16 h1v1H32zM0 17h1v1H0zM2 17h2v1H2zM5 17h1v1H5zM9 17h1v1H9zM11 17h1v1H11zM14 17h1v1H14zM17 17h1v1H17zM19 17h1v1H19zM25 17h5v1H25zM1 18h3v1H1zM6 18h3v1H6zM10 18h3v1H10zM14 18h1v1H14zM22 18h1v1H22zM31 18h1v1H31zM0 19h3v1H0zM4 19h1v1H4zM7 19h2v1H7zM10 19h1v1H10zM12 19h4v1H12zM17 19h1v1H17zM19 19h1v1H19zM23 19h5v1H23zM31,19 h2v1H31zM0 20h2v1H0zM4 20h1v1H4zM6 20h2v1H6zM9 20h1v1H9zM11 20h1v1H11zM16 20h1v1H16zM20 20h1v1H20zM29 20h1v1H29zM31 20h1v1H31zM0 21h1v1H0zM3 21h1v1H3zM5 21h1v1H5zM7 21h2v1H7zM10 21h2v1H10zM13 21h3v1H13zM18 21h3v1H18zM24 21h3v1H24zM30,21 h3v1H30zM3 22h5v1H3zM10 22h2v1H10zM14 22h1v1H14zM18 22h1v1H18zM20 22h2v1H20zM23 22h2v1H23zM26 22h1v1H26zM30 22h1v1H30zM32,22 h1v1H32zM1 23h1v1H1zM7 23h1v1H7zM12 23h2v1H12zM15 23h1v1H15zM18 23h1v1H18zM23 23h2v1H23zM29 23h1v1H29zM31,23 h2v1H31zM0 24h1v1H0zM4 24h4v1H4zM9 24h1v1H9zM12 24h2v1H12zM17 24h4v1H17zM22 24h1v1H22zM24 24h5v1H24zM30,24 h3v1H30zM8 25h3v1H8zM12 25h4v1H12zM19 25h1v1H19zM21 25h1v1H21zM23 25h2v1H23zM28 25h1v1H28zM31,25 h2v1H31zM0 26h7v1H0zM8 26h3v1H8zM13 26h1v1H13zM15 26h5v1H15zM21 26h1v1H21zM24 26h1v1H24zM26 26h1v1H26zM28 26h4v1H28zM0 27h1v1H0zM6 27h1v1H6zM9 27h3v1H9zM13 27h8v1H13zM23 27h2v1H23zM28 27h4v1H28zM0 28h1v1H0zM2 28h3v1H2zM6 28h1v1H6zM11 28h1v1H11zM13 28h2v1H13zM18 28h3v1H18zM22 28h9v1H22zM32,28 h1v1H32zM0 29h1v1H0zM2 29h3v1H2zM6 29h1v1H6zM8 29h1v1H8zM10 29h1v1H10zM14 29h2v1H14zM17 29h4v1H17zM22 29h1v1H22zM24 29h2v1H24zM28,29 h5v1H28zM0 30h1v1H0zM2 30h3v1H2zM6 30h1v1H6zM8 30h2v1H8zM11 30h3v1H11zM18 30h3v1H18zM23 30h1v1H23zM25 30h3v1H25zM29 30h1v1H29zM0 31h1v1H0zM6 31h1v1H6zM9 31h1v1H9zM11 31h1v1H11zM13 31h1v1H13zM15 31h1v1H15zM20 31h1v1H20zM22 31h1v1H22zM25 31h2v1H25zM32,31 h1v1H32zM0 32h7v1H0zM11 32h1v1H11zM13 32h2v1H13zM16 32h1v1H16zM18 32h2v1H18zM21 32h3v1H21zM26 32h1v1H26zM29 32h2v1H29z"
+          fill="#000000"
+        />
+      </svg>
+    </span>
   </div>
   <div
-    class="c6"
+    class="c13"
   >
     <div
-      class="c7"
+      class="c14"
     >
       <div
-        class="c8"
+        class="c15"
       >
         <div
-          class="c9"
+          class="c16"
         >
           <h3>
             President and Vice-President
           </h3>
           <p
-            class="c10"
+            class=""
           >
-            [no selection]
+            no selection
           </p>
         </div>
       </div>
       <div
-        class="c8"
+        class="c15"
       >
         <div
-          class="c9"
+          class="c16"
         >
           <h3>
             Representative, District 6
           </h3>
           <p
-            class="c10"
+            class=""
           >
-            [no selection]
+            no selection
           </p>
         </div>
       </div>
       <div
-        class="c8"
+        class="c15"
       >
         <div
-          class="c9"
+          class="c16"
         >
           <h3>
             Lieutenant Governor
           </h3>
           <p
-            class="c10"
+            class=""
           >
-            [no selection]
+            no selection
           </p>
         </div>
       </div>
       <div
-        class="c8"
+        class="c15"
       >
         <div
-          class="c9"
+          class="c16"
         >
           <h3>
             Senator, District 31
           </h3>
           <p
-            class="c10"
+            class=""
           >
-            [no selection]
+            no selection
           </p>
         </div>
       </div>
       <div
-        class="c8"
+        class="c15"
       >
         <div
-          class="c9"
+          class="c16"
         >
           <h3>
             Assembly Member, District 54
           </h3>
           <p
-            class="c10"
+            class=""
           >
-            [no selection]
+            no selection
           </p>
         </div>
       </div>
       <div
-        class="c8"
+        class="c15"
       >
         <div
-          class="c9"
+          class="c16"
         >
           <h3>
             Registrar of Wills
           </h3>
           <p
-            class="c10"
+            class=""
           >
-            [no selection]
+            no selection
           </p>
         </div>
       </div>
       <div
-        class="c8"
+        class="c15"
       >
         <div
-          class="c9"
+          class="c16"
         >
           <h3>
             Retain Robert Demergue as Chief Justice?
           </h3>
           <p
-            class="c10"
+            class=""
           >
-            [no selection]
+            no selection
           </p>
         </div>
       </div>
       <div
-        class="c8"
+        class="c15"
       >
         <div
-          class="c9"
+          class="c16"
         >
           <h3>
             Question A: Recovery of Property Damages
           </h3>
           <p
-            class="c10"
+            class=""
           >
-            [no selection]
+            no selection
           </p>
         </div>
       </div>
       <div
-        class="c8"
+        class="c15"
       >
         <div
-          class="c9"
+          class="c16"
         >
           <h3>
             Question B: Separation of Powers
           </h3>
           <p
-            class="c10"
+            class=""
           >
-            [no selection]
+            no selection
           </p>
         </div>
       </div>
       <div
-        class="c8"
+        class="c15"
       >
         <div
-          class="c9"
+          class="c16"
         >
           <h3>
             Proposition 1: Gambling in Franklin and Fromwit Counties
           </h3>
           <p
-            class="c10"
+            class=""
           >
-            [no selection]
+            no selection
           </p>
         </div>
       </div>
       <div
-        class="c8"
+        class="c15"
       >
         <div
-          class="c9"
+          class="c16"
         >
           <h3>
             Measure 102: Vehicle Abatement Program
           </h3>
           <p
-            class="c10"
+            class=""
           >
-            [no selection]
+            no selection
           </p>
         </div>
       </div>
     </div>
   </div>
+  <div
+    class="c17"
+  >
+    TEST BALLOT
+  </div>
 </div>
 `;
 
 exports[`renders PrintPage without votes and no seal 1`] = `
-.c2 {
+.c6 {
   max-width: 66ch;
   line-height: 1.2;
 }
 
-.c2 h1 {
+.c6 h1 {
   margin: 2rem 0 1rem;
   line-height: 1.1;
   font-size: 1.5rem;
 }
 
-.c2 h2 {
+.c6 h2 {
   margin: 1.5rem 0 0.75rem;
   font-size: 1.25rem;
 }
 
-.c2 h3 {
+.c6 h3 {
   font-size: 1.17rem;
 }
 
-.c2 h4 {
+.c6 h4 {
   font-size: 1rem;
 }
 
-.c2 h5 {
+.c6 h5 {
   font-size: 0.9rem;
 }
 
-.c2 h3,
-.c2 h4,
-.c2 h5,
-.c2 p {
+.c6 h3,
+.c6 h4,
+.c6 h5,
+.c6 p {
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
 
-.c2 h1 + h2 {
+.c6 h1 + h2 {
   margin-top: -0.75rem;
 }
 
-.c2 h1 + p,
-.c2 h2 + p {
+.c6 h1 + p,
+.c6 h2 + p {
   margin-top: -0.75rem;
 }
 
-.c2 h3 + p,
-.c2 h4 + p,
-.c2 h5 + p {
+.c6 h3 + p,
+.c6 h4 + p,
+.c6 h5 + p {
   margin-top: -1rem;
 }
 
-.c2 > :first-child {
+.c6 > :first-child {
   margin-top: 0;
 }
 
-.c2 > :last-child {
+.c6 > :last-child {
   margin-bottom: 0;
 }
 
-.c2 dl {
+.c6 dl {
   margin: 1rem 0;
 }
 
-.c4 > svg {
+.c12 > svg {
   display: block;
-  width: 100%;
+  width: 1.1in;
   height: auto;
 }
 
-.c10 {
+.c2 {
   color: gray;
-  font-style: italic;
 }
 
-.c5 {
+.c11 {
   white-space: nowrap;
 }
 
 .c0 {
+  position: relative;
   page-break-after: always;
 }
 
 .c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  border-bottom: 0.2rem solid #000000;
-}
-
-.c1 > .seal {
-  margin: 0.25rem 0;
-  width: 1in;
-}
-
-.c1 h2 {
-  margin-bottom: 0;
-}
-
-.c1 h3 {
-  margin-top: 0;
-}
-
-.c1 > .ballot-header-content {
-  -webkit-flex: 4;
-  -ms-flex: 4;
-  flex: 4;
-  margin: 0 1rem;
-  max-width: 100%;
+  margin: 0 auto 0.375in;
+  text-align: center;
+  white-space: nowrap;
+  font-size: 1.75rem;
+  font-weight: 600;
 }
 
 .c3 {
@@ -1680,37 +1762,28 @@ exports[`renders PrintPage without votes and no seal 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex: 3;
-  -ms-flex: 3;
-  flex: 3;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
-  -webkit-align-self: flex-end;
-  -ms-flex-item-align: end;
-  align-self: flex-end;
+  position: relative;
   border: 0.2rem solid #000000;
-  border-bottom: 0;
-  max-width: 50%;
-  padding: 0.25rem;
+  border-width: 0.2rem 0;
+  padding: 0.5rem 0;
 }
 
-.c3 > div:first-child {
-  margin-right: 0.25rem;
+.c3 > .seal {
   width: 1.1in;
 }
 
-.c3 > div:last-child {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
+.c3 h2 {
+  margin-bottom: 0;
 }
 
-.c3 > div:last-child > div {
+.c3 h3 {
+  margin-top: 0;
+}
+
+.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1721,39 +1794,42 @@ exports[`renders PrintPage without votes and no seal 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  -webkit-align-self: stretch;
-  -ms-flex-item-align: stretch;
-  align-self: stretch;
-  font-size: 0.8rem;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin: 0 1rem 0 0.75rem;
+  max-width: 100%;
 }
 
-.c3 > div:last-child > div > div {
-  margin-bottom: 0.75rem;
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
-.c3 > div:last-child > div > div:last-child {
-  margin-bottom: 0;
-}
-
-.c3 > div:last-child > div strong {
-  font-size: 1rem;
-  word-break: break-word;
-}
-
-.c6 {
+.c13 {
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
 }
 
-.c7 {
+.c14 {
   -webkit-columns: 2;
   columns: 2;
   -webkit-column-gap: 2rem;
   column-gap: 2rem;
 }
 
-.c8 {
+.c15 {
   border-bottom: 0.01rem solid #000000;
   padding: 0.5rem 0;
   -webkit-break-inside: avoid;
@@ -1761,82 +1837,125 @@ exports[`renders PrintPage without votes and no seal 1`] = `
   page-break-inside: avoid;
 }
 
-.c9 {
+.c16 {
   max-width: 66ch;
   line-height: 1.2;
 }
 
-.c9 h1 {
+.c16 h1 {
   margin: 2rem 0 1rem;
   line-height: 1.1;
   font-size: 1.5rem;
 }
 
-.c9 h2 {
+.c16 h2 {
   margin: 1.5rem 0 0.75rem;
   font-size: 1.25rem;
 }
 
-.c9 h3 {
+.c16 h3 {
   font-size: 1.17rem;
 }
 
-.c9 h4 {
+.c16 h4 {
   font-size: 1rem;
 }
 
-.c9 h5 {
+.c16 h5 {
   font-size: 0.9rem;
 }
 
-.c9 h3,
-.c9 h4,
-.c9 h5,
-.c9 p {
+.c16 h3,
+.c16 h4,
+.c16 h5,
+.c16 p {
   margin-top: 0;
   margin-bottom: 0;
 }
 
-.c9 h1 + h2 {
+.c16 h1 + h2 {
   margin-top: -0.75rem;
 }
 
-.c9 h1 + p,
-.c9 h2 + p {
+.c16 h1 + p,
+.c16 h2 + p {
   margin-top: -0.75rem;
 }
 
-.c9 h3 + p,
-.c9 h4 + p,
-.c9 h5 + p {
+.c16 h3 + p,
+.c16 h4 + p,
+.c16 h5 + p {
   margin-top: 0;
 }
 
-.c9 > :first-child {
+.c16 > :first-child {
   margin-top: 0;
 }
 
-.c9 > :last-child {
+.c16 > :last-child {
   margin-bottom: 0;
 }
 
-.c9 dl {
+.c16 dl {
   margin: 1rem 0;
 }
 
-.c9 > h3 {
+.c16 > h3 {
   font-size: 0.875em;
   font-weight: 400;
 }
 
+.c17 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  -webkit-transform: translateY(3in) rotate(-45deg);
+  -ms-transform: translateY(3in) rotate(-45deg);
+  transform: translateY(3in) rotate(-45deg);
+  opacity: 0.075;
+  z-index: -1;
+  text-align: center;
+  color: #000000;
+  font-size: 2in;
+}
+
+.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.c8 {
+  margin-left: 1rem;
+}
+
+.c8:first-child {
+  margin-left: 0;
+}
+
+.c9 {
+  font-variant-caps: small-caps;
+}
+
+.c10 {
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
 @media (min-width:480px) {
-  .c2 {
+  .c6 {
     line-height: 1.3;
   }
 }
 
 @media print {
-  .c10 {
+  .c2 {
     color: black;
   }
 }
@@ -1848,7 +1967,7 @@ exports[`renders PrintPage without votes and no seal 1`] = `
 }
 
 @media (min-width:480px) {
-  .c9 {
+  .c16 {
     line-height: 1.3;
   }
 }
@@ -1860,262 +1979,308 @@ exports[`renders PrintPage without votes and no seal 1`] = `
   <div
     class="c1"
   >
+    <span>
+      This is your
+       
+      <span
+        class="c2"
+      >
+        TEST ballot
+      </span>
+      . Verify, then cast in ballot box.
+    </span>
+  </div>
+  <div
+    class="c3"
+  >
     <div
-      class="c2 ballot-header-content"
-    >
-      <h2>
-        Unofficial TEST Ballot
-      </h2>
-      <h3>
-        
-         
-        General Election
-      </h3>
-      <p>
-        November 3, 2020
-        <br />
-        Franklin County
-        , 
-        State of Hamilton
-      </p>
-    </div>
-    <div
-      class="c3"
+      class="c4"
     >
       <div
-        class="c4"
+        class="c5"
       >
-        <svg
-          height="128"
-          shape-rendering="crispEdges"
-          viewBox="0 0 33 33"
-          width="128"
+        <div
+          class="c6"
         >
-          <path
-            d="M0,0 h33v33H0z"
-            fill="#FFFFFF"
-          />
-          <path
-            d="M0 0h7v1H0zM9 0h1v1H9zM11 0h1v1H11zM14 0h2v1H14zM17 0h2v1H17zM22 0h3v1H22zM26,0 h7v1H26zM0 1h1v1H0zM6 1h1v1H6zM18 1h1v1H18zM23 1h1v1H23zM26 1h1v1H26zM32,1 h1v1H32zM0 2h1v1H0zM2 2h3v1H2zM6 2h1v1H6zM9 2h3v1H9zM13 2h6v1H13zM22 2h2v1H22zM26 2h1v1H26zM28 2h3v1H28zM32,2 h1v1H32zM0 3h1v1H0zM2 3h3v1H2zM6 3h1v1H6zM10 3h1v1H10zM12 3h7v1H12zM20 3h1v1H20zM22 3h1v1H22zM26 3h1v1H26zM28 3h3v1H28zM32,3 h1v1H32zM0 4h1v1H0zM2 4h3v1H2zM6 4h1v1H6zM8 4h1v1H8zM10 4h2v1H10zM13 4h1v1H13zM16 4h6v1H16zM23 4h1v1H23zM26 4h1v1H26zM28 4h3v1H28zM32,4 h1v1H32zM0 5h1v1H0zM6 5h1v1H6zM9 5h4v1H9zM14 5h1v1H14zM16 5h4v1H16zM22 5h1v1H22zM26 5h1v1H26zM32,5 h1v1H32zM0 6h7v1H0zM8 6h1v1H8zM10 6h1v1H10zM12 6h1v1H12zM14 6h1v1H14zM16 6h1v1H16zM18 6h1v1H18zM20 6h1v1H20zM22 6h1v1H22zM24 6h1v1H24zM26,6 h7v1H26zM8 7h2v1H8zM11 7h1v1H11zM14 7h1v1H14zM16 7h2v1H16zM19 7h2v1H19zM23 7h1v1H23zM2 8h2v1H2zM6 8h3v1H6zM11 8h3v1H11zM15 8h2v1H15zM18 8h3v1H18zM24 8h3v1H24zM28 8h1v1H28zM0 9h6v1H0zM8 9h2v1H8zM12 9h1v1H12zM14 9h1v1H14zM16 9h1v1H16zM18 9h4v1H18zM23 9h2v1H23zM27 9h1v1H27zM29 9h2v1H29zM0 10h2v1H0zM3 10h4v1H3zM8 10h1v1H8zM10 10h1v1H10zM12 10h1v1H12zM14 10h1v1H14zM18 10h2v1H18zM23 10h2v1H23zM27 10h1v1H27zM31,10 h2v1H31zM2 11h1v1H2zM4 11h1v1H4zM7 11h1v1H7zM15 11h1v1H15zM17 11h2v1H17zM20 11h1v1H20zM22 11h2v1H22zM25 11h1v1H25zM28 11h2v1H28zM31,11 h2v1H31zM0 12h1v1H0zM2 12h8v1H2zM11 12h1v1H11zM15 12h2v1H15zM20 12h2v1H20zM23 12h1v1H23zM25 12h1v1H25zM28 12h1v1H28zM30 12h2v1H30zM0 13h2v1H0zM4 13h2v1H4zM8 13h3v1H8zM12 13h3v1H12zM18 13h3v1H18zM24 13h1v1H24zM31,13 h2v1H31zM0 14h2v1H0zM3 14h1v1H3zM6 14h2v1H6zM10 14h1v1H10zM13 14h1v1H13zM15 14h1v1H15zM17 14h2v1H17zM21 14h2v1H21zM24 14h2v1H24zM28 14h1v1H28zM30 14h1v1H30zM1 15h1v1H1zM4 15h1v1H4zM7 15h2v1H7zM11 15h3v1H11zM15 15h2v1H15zM18 15h1v1H18zM21 15h1v1H21zM24 15h2v1H24zM29 15h3v1H29zM1 16h1v1H1zM3 16h2v1H3zM6 16h1v1H6zM9 16h2v1H9zM13 16h4v1H13zM19 16h3v1H19zM25 16h5v1H25zM32,16 h1v1H32zM0 17h1v1H0zM2 17h2v1H2zM5 17h1v1H5zM9 17h1v1H9zM11 17h1v1H11zM14 17h1v1H14zM17 17h1v1H17zM19 17h1v1H19zM25 17h5v1H25zM1 18h3v1H1zM6 18h3v1H6zM10 18h3v1H10zM14 18h1v1H14zM22 18h1v1H22zM31 18h1v1H31zM0 19h3v1H0zM4 19h1v1H4zM7 19h2v1H7zM10 19h1v1H10zM12 19h4v1H12zM17 19h1v1H17zM19 19h1v1H19zM23 19h5v1H23zM31,19 h2v1H31zM0 20h2v1H0zM4 20h1v1H4zM6 20h2v1H6zM9 20h1v1H9zM11 20h1v1H11zM16 20h1v1H16zM20 20h1v1H20zM29 20h1v1H29zM31 20h1v1H31zM0 21h1v1H0zM3 21h1v1H3zM5 21h1v1H5zM7 21h2v1H7zM10 21h2v1H10zM13 21h3v1H13zM18 21h3v1H18zM24 21h3v1H24zM30,21 h3v1H30zM3 22h5v1H3zM10 22h2v1H10zM14 22h1v1H14zM18 22h1v1H18zM20 22h2v1H20zM23 22h2v1H23zM26 22h1v1H26zM30 22h1v1H30zM32,22 h1v1H32zM1 23h1v1H1zM7 23h1v1H7zM12 23h2v1H12zM15 23h1v1H15zM18 23h1v1H18zM23 23h2v1H23zM29 23h1v1H29zM31,23 h2v1H31zM0 24h1v1H0zM4 24h4v1H4zM9 24h1v1H9zM12 24h2v1H12zM17 24h4v1H17zM22 24h1v1H22zM24 24h5v1H24zM30,24 h3v1H30zM8 25h3v1H8zM12 25h4v1H12zM19 25h1v1H19zM21 25h1v1H21zM23 25h2v1H23zM28 25h1v1H28zM31,25 h2v1H31zM0 26h7v1H0zM8 26h3v1H8zM13 26h1v1H13zM15 26h5v1H15zM21 26h1v1H21zM24 26h1v1H24zM26 26h1v1H26zM28 26h4v1H28zM0 27h1v1H0zM6 27h1v1H6zM9 27h3v1H9zM13 27h8v1H13zM23 27h2v1H23zM28 27h4v1H28zM0 28h1v1H0zM2 28h3v1H2zM6 28h1v1H6zM11 28h1v1H11zM13 28h2v1H13zM18 28h3v1H18zM22 28h9v1H22zM32,28 h1v1H32zM0 29h1v1H0zM2 29h3v1H2zM6 29h1v1H6zM8 29h1v1H8zM10 29h1v1H10zM14 29h2v1H14zM17 29h4v1H17zM22 29h1v1H22zM24 29h2v1H24zM28,29 h5v1H28zM0 30h1v1H0zM2 30h3v1H2zM6 30h1v1H6zM8 30h2v1H8zM11 30h3v1H11zM18 30h3v1H18zM23 30h1v1H23zM25 30h3v1H25zM29 30h1v1H29zM0 31h1v1H0zM6 31h1v1H6zM9 31h1v1H9zM11 31h1v1H11zM13 31h1v1H13zM15 31h1v1H15zM20 31h1v1H20zM22 31h1v1H22zM25 31h2v1H25zM32,31 h1v1H32zM0 32h7v1H0zM11 32h1v1H11zM13 32h2v1H13zM16 32h1v1H16zM18 32h2v1H18zM21 32h3v1H21zM26 32h1v1H26zM29 32h2v1H29z"
-            fill="#000000"
-          />
-        </svg>
+          <h3>
+            
+             
+            General Election
+             
+            <span
+              class="c2"
+            >
+              TEST Ballot
+            </span>
+          </h3>
+          <p>
+            Franklin County
+            , 
+            State of Hamilton
+            <br />
+            November 3, 2020
+          </p>
+        </div>
       </div>
-      <div>
-        <div>
-          <div>
-            <div>
-              Precinct
-            </div>
-            <strong>
-              North Springfield
-            </strong>
+      <div
+        class="c7"
+      >
+        <div
+          class="c8"
+        >
+          <div
+            class="c9"
+          >
+            polling place
           </div>
-          <div>
-            <div>
-              Ballot Style
-            </div>
-            <strong>
-              5
-            </strong>
+          <div
+            class="c10"
+          >
+            North Springfield
           </div>
-          <div>
-            <div>
-              Ballot ID
-            </div>
-            <strong
-              class="c5"
+        </div>
+        <div
+          class="c8"
+        >
+          <div
+            class="c9"
+          >
+            ballot style
+          </div>
+          <div
+            class="c10"
+          >
+            5
+          </div>
+        </div>
+        <div
+          class="c8"
+        >
+          <div
+            class="c9"
+          >
+            ballot id
+          </div>
+          <div
+            class="c10"
+          >
+            <span
+              class="c11"
             >
               CHhgYxfN5GeqnK8KaVOt1w
-            </strong>
+            </span>
           </div>
         </div>
       </div>
     </div>
+    <span
+      class="c12"
+    >
+      <svg
+        height="128"
+        shape-rendering="crispEdges"
+        viewBox="0 0 33 33"
+        width="128"
+      >
+        <path
+          d="M0,0 h33v33H0z"
+          fill="#FFFFFF"
+        />
+        <path
+          d="M0 0h7v1H0zM9 0h1v1H9zM11 0h1v1H11zM14 0h2v1H14zM17 0h2v1H17zM22 0h3v1H22zM26,0 h7v1H26zM0 1h1v1H0zM6 1h1v1H6zM18 1h1v1H18zM23 1h1v1H23zM26 1h1v1H26zM32,1 h1v1H32zM0 2h1v1H0zM2 2h3v1H2zM6 2h1v1H6zM9 2h3v1H9zM13 2h6v1H13zM22 2h2v1H22zM26 2h1v1H26zM28 2h3v1H28zM32,2 h1v1H32zM0 3h1v1H0zM2 3h3v1H2zM6 3h1v1H6zM10 3h1v1H10zM12 3h7v1H12zM20 3h1v1H20zM22 3h1v1H22zM26 3h1v1H26zM28 3h3v1H28zM32,3 h1v1H32zM0 4h1v1H0zM2 4h3v1H2zM6 4h1v1H6zM8 4h1v1H8zM10 4h2v1H10zM13 4h1v1H13zM16 4h6v1H16zM23 4h1v1H23zM26 4h1v1H26zM28 4h3v1H28zM32,4 h1v1H32zM0 5h1v1H0zM6 5h1v1H6zM9 5h4v1H9zM14 5h1v1H14zM16 5h4v1H16zM22 5h1v1H22zM26 5h1v1H26zM32,5 h1v1H32zM0 6h7v1H0zM8 6h1v1H8zM10 6h1v1H10zM12 6h1v1H12zM14 6h1v1H14zM16 6h1v1H16zM18 6h1v1H18zM20 6h1v1H20zM22 6h1v1H22zM24 6h1v1H24zM26,6 h7v1H26zM8 7h2v1H8zM11 7h1v1H11zM14 7h1v1H14zM16 7h2v1H16zM19 7h2v1H19zM23 7h1v1H23zM2 8h2v1H2zM6 8h3v1H6zM11 8h3v1H11zM15 8h2v1H15zM18 8h3v1H18zM24 8h3v1H24zM28 8h1v1H28zM0 9h6v1H0zM8 9h2v1H8zM12 9h1v1H12zM14 9h1v1H14zM16 9h1v1H16zM18 9h4v1H18zM23 9h2v1H23zM27 9h1v1H27zM29 9h2v1H29zM0 10h2v1H0zM3 10h4v1H3zM8 10h1v1H8zM10 10h1v1H10zM12 10h1v1H12zM14 10h1v1H14zM18 10h2v1H18zM23 10h2v1H23zM27 10h1v1H27zM31,10 h2v1H31zM2 11h1v1H2zM4 11h1v1H4zM7 11h1v1H7zM15 11h1v1H15zM17 11h2v1H17zM20 11h1v1H20zM22 11h2v1H22zM25 11h1v1H25zM28 11h2v1H28zM31,11 h2v1H31zM0 12h1v1H0zM2 12h8v1H2zM11 12h1v1H11zM15 12h2v1H15zM20 12h2v1H20zM23 12h1v1H23zM25 12h1v1H25zM28 12h1v1H28zM30 12h2v1H30zM0 13h2v1H0zM4 13h2v1H4zM8 13h3v1H8zM12 13h3v1H12zM18 13h3v1H18zM24 13h1v1H24zM31,13 h2v1H31zM0 14h2v1H0zM3 14h1v1H3zM6 14h2v1H6zM10 14h1v1H10zM13 14h1v1H13zM15 14h1v1H15zM17 14h2v1H17zM21 14h2v1H21zM24 14h2v1H24zM28 14h1v1H28zM30 14h1v1H30zM1 15h1v1H1zM4 15h1v1H4zM7 15h2v1H7zM11 15h3v1H11zM15 15h2v1H15zM18 15h1v1H18zM21 15h1v1H21zM24 15h2v1H24zM29 15h3v1H29zM1 16h1v1H1zM3 16h2v1H3zM6 16h1v1H6zM9 16h2v1H9zM13 16h4v1H13zM19 16h3v1H19zM25 16h5v1H25zM32,16 h1v1H32zM0 17h1v1H0zM2 17h2v1H2zM5 17h1v1H5zM9 17h1v1H9zM11 17h1v1H11zM14 17h1v1H14zM17 17h1v1H17zM19 17h1v1H19zM25 17h5v1H25zM1 18h3v1H1zM6 18h3v1H6zM10 18h3v1H10zM14 18h1v1H14zM22 18h1v1H22zM31 18h1v1H31zM0 19h3v1H0zM4 19h1v1H4zM7 19h2v1H7zM10 19h1v1H10zM12 19h4v1H12zM17 19h1v1H17zM19 19h1v1H19zM23 19h5v1H23zM31,19 h2v1H31zM0 20h2v1H0zM4 20h1v1H4zM6 20h2v1H6zM9 20h1v1H9zM11 20h1v1H11zM16 20h1v1H16zM20 20h1v1H20zM29 20h1v1H29zM31 20h1v1H31zM0 21h1v1H0zM3 21h1v1H3zM5 21h1v1H5zM7 21h2v1H7zM10 21h2v1H10zM13 21h3v1H13zM18 21h3v1H18zM24 21h3v1H24zM30,21 h3v1H30zM3 22h5v1H3zM10 22h2v1H10zM14 22h1v1H14zM18 22h1v1H18zM20 22h2v1H20zM23 22h2v1H23zM26 22h1v1H26zM30 22h1v1H30zM32,22 h1v1H32zM1 23h1v1H1zM7 23h1v1H7zM12 23h2v1H12zM15 23h1v1H15zM18 23h1v1H18zM23 23h2v1H23zM29 23h1v1H29zM31,23 h2v1H31zM0 24h1v1H0zM4 24h4v1H4zM9 24h1v1H9zM12 24h2v1H12zM17 24h4v1H17zM22 24h1v1H22zM24 24h5v1H24zM30,24 h3v1H30zM8 25h3v1H8zM12 25h4v1H12zM19 25h1v1H19zM21 25h1v1H21zM23 25h2v1H23zM28 25h1v1H28zM31,25 h2v1H31zM0 26h7v1H0zM8 26h3v1H8zM13 26h1v1H13zM15 26h5v1H15zM21 26h1v1H21zM24 26h1v1H24zM26 26h1v1H26zM28 26h4v1H28zM0 27h1v1H0zM6 27h1v1H6zM9 27h3v1H9zM13 27h8v1H13zM23 27h2v1H23zM28 27h4v1H28zM0 28h1v1H0zM2 28h3v1H2zM6 28h1v1H6zM11 28h1v1H11zM13 28h2v1H13zM18 28h3v1H18zM22 28h9v1H22zM32,28 h1v1H32zM0 29h1v1H0zM2 29h3v1H2zM6 29h1v1H6zM8 29h1v1H8zM10 29h1v1H10zM14 29h2v1H14zM17 29h4v1H17zM22 29h1v1H22zM24 29h2v1H24zM28,29 h5v1H28zM0 30h1v1H0zM2 30h3v1H2zM6 30h1v1H6zM8 30h2v1H8zM11 30h3v1H11zM18 30h3v1H18zM23 30h1v1H23zM25 30h3v1H25zM29 30h1v1H29zM0 31h1v1H0zM6 31h1v1H6zM9 31h1v1H9zM11 31h1v1H11zM13 31h1v1H13zM15 31h1v1H15zM20 31h1v1H20zM22 31h1v1H22zM25 31h2v1H25zM32,31 h1v1H32zM0 32h7v1H0zM11 32h1v1H11zM13 32h2v1H13zM16 32h1v1H16zM18 32h2v1H18zM21 32h3v1H21zM26 32h1v1H26zM29 32h2v1H29z"
+          fill="#000000"
+        />
+      </svg>
+    </span>
   </div>
   <div
-    class="c6"
+    class="c13"
   >
     <div
-      class="c7"
+      class="c14"
     >
       <div
-        class="c8"
+        class="c15"
       >
         <div
-          class="c9"
+          class="c16"
         >
           <h3>
             President and Vice-President
           </h3>
           <p
-            class="c10"
+            class=""
           >
-            [no selection]
+            no selection
           </p>
         </div>
       </div>
       <div
-        class="c8"
+        class="c15"
       >
         <div
-          class="c9"
+          class="c16"
         >
           <h3>
             Representative, District 6
           </h3>
           <p
-            class="c10"
+            class=""
           >
-            [no selection]
+            no selection
           </p>
         </div>
       </div>
       <div
-        class="c8"
+        class="c15"
       >
         <div
-          class="c9"
+          class="c16"
         >
           <h3>
             Lieutenant Governor
           </h3>
           <p
-            class="c10"
+            class=""
           >
-            [no selection]
+            no selection
           </p>
         </div>
       </div>
       <div
-        class="c8"
+        class="c15"
       >
         <div
-          class="c9"
+          class="c16"
         >
           <h3>
             Senator, District 31
           </h3>
           <p
-            class="c10"
+            class=""
           >
-            [no selection]
+            no selection
           </p>
         </div>
       </div>
       <div
-        class="c8"
+        class="c15"
       >
         <div
-          class="c9"
+          class="c16"
         >
           <h3>
             Assembly Member, District 54
           </h3>
           <p
-            class="c10"
+            class=""
           >
-            [no selection]
+            no selection
           </p>
         </div>
       </div>
       <div
-        class="c8"
+        class="c15"
       >
         <div
-          class="c9"
+          class="c16"
         >
           <h3>
             Registrar of Wills
           </h3>
           <p
-            class="c10"
+            class=""
           >
-            [no selection]
+            no selection
           </p>
         </div>
       </div>
       <div
-        class="c8"
+        class="c15"
       >
         <div
-          class="c9"
+          class="c16"
         >
           <h3>
             Retain Robert Demergue as Chief Justice?
           </h3>
           <p
-            class="c10"
+            class=""
           >
-            [no selection]
+            no selection
           </p>
         </div>
       </div>
       <div
-        class="c8"
+        class="c15"
       >
         <div
-          class="c9"
+          class="c16"
         >
           <h3>
             Question A: Recovery of Property Damages
           </h3>
           <p
-            class="c10"
+            class=""
           >
-            [no selection]
+            no selection
           </p>
         </div>
       </div>
       <div
-        class="c8"
+        class="c15"
       >
         <div
-          class="c9"
+          class="c16"
         >
           <h3>
             Question B: Separation of Powers
           </h3>
           <p
-            class="c10"
+            class=""
           >
-            [no selection]
+            no selection
           </p>
         </div>
       </div>
       <div
-        class="c8"
+        class="c15"
       >
         <div
-          class="c9"
+          class="c16"
         >
           <h3>
             Proposition 1: Gambling in Franklin and Fromwit Counties
           </h3>
           <p
-            class="c10"
+            class=""
           >
-            [no selection]
+            no selection
           </p>
         </div>
       </div>
       <div
-        class="c8"
+        class="c15"
       >
         <div
-          class="c9"
+          class="c16"
         >
           <h3>
             Measure 102: Vehicle Abatement Program
           </h3>
           <p
-            class="c10"
+            class=""
           >
-            [no selection]
+            no selection
           </p>
         </div>
       </div>
     </div>
+  </div>
+  <div
+    class="c17"
+  >
+    TEST BALLOT
   </div>
 </div>
 `;
