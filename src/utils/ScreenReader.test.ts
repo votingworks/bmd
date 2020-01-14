@@ -331,7 +331,7 @@ describe('SpeechSynthesisTextToSpeech', () => {
     const tts = new SpeechSynthesisTextToSpeech()
 
     expect(speechSynthesis.cancel).not.toHaveBeenCalled()
-    tts.stop()
+    tts.cancel()
     expect(speechSynthesis.cancel).toHaveBeenCalledTimes(1)
   })
 

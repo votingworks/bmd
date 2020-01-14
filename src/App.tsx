@@ -16,8 +16,7 @@ import {
 } from './utils/ScreenReader'
 import { WebServiceCard } from './utils/Card'
 import { LocalStorage } from './utils/Storage'
-import { getUSEnglishVoice } from './utils/voices'
-import memoize from './utils/memoize'
+import { chooseUSEnglishVoice } from './utils/voices'
 
 window.oncontextmenu = (e: MouseEvent): void => {
   e.preventDefault()
@@ -34,7 +33,7 @@ export interface Props {
 
 const App = ({
   tts = {
-    enabled: new SpeechSynthesisTextToSpeech(memoize(getUSEnglishVoice)),
+    enabled: new SpeechSynthesisTextToSpeech(chooseUSEnglishVoice),
     disabled: new NullTextToSpeech(),
   },
   card = new WebServiceCard(),

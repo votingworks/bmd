@@ -1,5 +1,8 @@
+import { Finder } from '../config/types'
+
 export interface SpeakOptions {
   now?: boolean
+  voice?: SpeechSynthesisVoice
 }
 
 export interface TextToSpeech {
@@ -9,9 +12,9 @@ export interface TextToSpeech {
   speak(text: string, options?: SpeakOptions): Promise<void>
 
   /**
-   * Stops any speaking that is currently happening.
+   * Cancels any current or pending speech.
    */
-  stop(): void
+  cancel(): void
 }
 
 /**
@@ -90,7 +93,7 @@ export class AriaScreenReader implements ScreenReader {
    * Call this when a page load occurs. Resolves when speaking is done.
    */
   public async onPageLoad(): Promise<void> {
-    this.tts.stop()
+    this.tts.cancel()
   }
 
   /**
@@ -245,15 +248,11 @@ export class AriaScreenReader implements ScreenReader {
   }
 }
 
-export interface VoiceSelector {
-  (): SpeechSynthesisVoice | undefined
-}
-
 export class SpeechSynthesisTextToSpeech implements TextToSpeech {
-  private getVoice?: VoiceSelector
+  private chooseVoice?: Finder<SpeechSynthesisVoice>
 
-  public constructor(getVoice?: VoiceSelector) {
-    this.getVoice = getVoice
+  public constructor(chooseVoice?: Finder<SpeechSynthesisVoice>) {
+    this.chooseVoice = chooseVoice
 
     // Prime the speech synthesis engine. This call will likely return an empty
     // array, but future ones should work properly.
@@ -265,12 +264,12 @@ export class SpeechSynthesisTextToSpeech implements TextToSpeech {
    */
   public async speak(
     text: string,
-    { now = false }: SpeakOptions = {}
+    { now = false, voice }: SpeakOptions = {}
   ): Promise<void> {
     return new Promise(resolve => {
       const utterance = new SpeechSynthesisUtterance(text)
-      const { getVoice } = this
-      const voice = getVoice?.()
+      const { chooseVoice } = this
+      voice = voice ?? chooseVoice?.(speechSynthesis.getVoices())
 
       utterance.onend = () => resolve()
 
@@ -287,10 +286,59 @@ export class SpeechSynthesisTextToSpeech implements TextToSpeech {
   }
 
   /**
-   * Stops any speaking that is currently happening.
+   * Cancels any current or pending speech.
    */
-  public stop(): void {
+  public cancel(): void {
     speechSynthesis.cancel()
+  }
+}
+
+export interface KioskTts {
+  speak(text: string, options?: SpeakOptions): Promise<void>
+  cancel(): Promise<void>
+  getVoices(): Promise<SpeechSynthesisVoice[]>
+}
+
+export class KioskBrowserTextToSpeech implements TextToSpeech {
+  private kioskTts: KioskTts
+  private chooseVoice?: Finder<SpeechSynthesisVoice>
+  private chosenVoice?: SpeechSynthesisVoice
+
+  public constructor(
+    kioskTts: KioskTts,
+    chooseVoice?: Finder<SpeechSynthesisVoice>
+  ) {
+    this.kioskTts = kioskTts
+    this.chooseVoice = chooseVoice
+  }
+
+  /**
+   * Directly triggers speech of text. Resolves when speaking is done.
+   */
+  public async speak(text: string, options?: SpeakOptions): Promise<void> {
+    await this.kioskTts.speak(text, {
+      ...options,
+      voice: options?.voice ?? (await this.getChosenVoice()),
+    })
+  }
+
+  /**
+   * Gets the cached chosen voice if set, otherwise gets the list and chooses
+   * one. We only want to do this operation once if possible.
+   */
+  private async getChosenVoice(): Promise<SpeechSynthesisVoice | undefined> {
+    if (!this.chosenVoice) {
+      const { chooseVoice } = this
+      this.chosenVoice = chooseVoice?.(await this.kioskTts.getVoices())
+    }
+    return this.chosenVoice
+  }
+
+  /**
+   * Cancels any current or pending speech.
+   */
+  public cancel(): void {
+    this.kioskTts.cancel()
   }
 }
 
@@ -300,7 +348,7 @@ export class NullTextToSpeech implements TextToSpeech {
     // nothing to do
   }
 
-  public async stop(): Promise<void> {
+  public async cancel(): Promise<void> {
     // nothing to do
   }
 }

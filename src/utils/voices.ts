@@ -1,11 +1,11 @@
-import { VoiceSelector } from './ScreenReader'
+import { Finder } from '../config/types'
 
 /**
  * Get a voice suitable for use with `speechSynthesis` APIs to be spoken to US
  * English speakers.
  */
 // eslint-disable-next-line import/prefer-default-export
-export const getUSEnglishVoice: VoiceSelector = () => {
+export const chooseUSEnglishVoice: Finder<SpeechSynthesisVoice> = () => {
   // Only use local voices.
   const voices = speechSynthesis.getVoices().filter(voice => voice.localService)
 

@@ -6,6 +6,6 @@ import { TextToSpeech } from '../../src/utils/ScreenReader'
 export default function fakeTTS(): jest.Mocked<TextToSpeech> {
   return {
     speak: jest.fn(),
-    stop: jest.fn(),
+    cancel: jest.fn(),
   }
 }
