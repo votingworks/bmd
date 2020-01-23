@@ -50,7 +50,7 @@ const PrintOnlyScreen = ({
   const printerTimer = useRef(0)
   const [okToPrint, setOkToPrint] = useState(true)
   const [isPrinted, updateIsPrinted] = useState(false)
-  const [trackerString, setTrackerString] = useState('')
+  const [trackerString, setTrackerString] = useState<string | undefined>('')
   const isCardVotesEmpty = isEmptyObject(votes)
 
   const isReadyToPrint =
@@ -181,7 +181,9 @@ const PrintOnlyScreen = ({
             precinctId={precinctId}
             votes={votes}
           />
-          <Tracker election={election} tracker={trackerString} />
+          {trackerString && (
+            <Tracker election={election} tracker={trackerString} />
+          )}
         </React.Fragment>
       )}
     </React.Fragment>
