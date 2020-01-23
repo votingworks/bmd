@@ -1,15 +1,22 @@
 import { VotesDict } from '@votingworks/ballot-encoder'
 
-const hardWiredTracker =
-  'Quill X8TP7 Home 4X815 Tree EB5Q2 Elephant M8MDP Cup 8D33U Balloon YN31A Frame PHK3X Link T98RV Dancer'
+import { E2EAPI } from './config/types'
+import fetchJSON from './utils/fetchJSON'
 
-export default function encryptAndGetTracker(
+export default async function encryptAndGetTracker(
   // eslint-disable-next-line
-    votes: VotesDict
-): Promise<string> {
-  return new Promise(resolve => {
-    window.setTimeout(() => {
-      resolve(hardWiredTracker)
-    }, 100)
-  })
+  votes: VotesDict
+) {
+  try {
+    const { tracker } = await fetchJSON<E2EAPI>(
+      '/electionguard/EncryptBallot',
+      {
+        method: 'post',
+        body: JSON.stringify(votes),
+      }
+    )
+    return tracker
+  } catch (error) {
+    return
+  }
 }
