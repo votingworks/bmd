@@ -30,24 +30,31 @@ import Prose from './Prose'
 import Text, { NoWrap } from './Text'
 
 const Ballot = styled.div`
+  position: relative;
   page-break-after: always;
   @media screen {
     display: none;
   }
 `
-
-const SealImage = styled.img`
-  max-width: 1in;
+const PreHeader = styled.div`
+  margin: 0 auto 0.375in;
+  text-align: center;
+  white-space: nowrap;
+  font-size: 1.75rem;
+  font-weight: 600;
 `
-
+const SealImage = styled.img`
+  max-width: 1.1in;
+`
 const Header = styled.div`
   display: flex;
   flex-direction: row;
-  align-items: center;
-  border-bottom: 0.2rem solid #000000;
+  position: relative;
+  border: 0.2rem solid #000000;
+  border-width: 0.2rem 0;
+  padding: 0.5rem 0;
   & > .seal {
-    margin: 0.25rem 0;
-    width: 1in;
+    width: 1.1in;
   }
   & h2 {
     margin-bottom: 0;
@@ -55,46 +62,29 @@ const Header = styled.div`
   & h3 {
     margin-top: 0;
   }
-  & > .ballot-header-content {
-    flex: 4;
-    margin: 0 1rem;
-    max-width: 100%;
-  }
 `
-const QRCodeContainer = styled.div`
+const HeaderContent = styled.div`
   display: flex;
-  flex: 3;
-  flex-direction: row;
-  align-self: flex-end;
-  border: 0.2rem solid #000000;
-  border-bottom: 0;
-  max-width: 50%;
-  padding: 0.25rem;
-  & > div:first-child {
-    margin-right: 0.25rem;
-    width: 1.1in;
-  }
-  & > div:last-child {
-    display: flex;
-    flex: 1;
-    & > div {
-      display: flex;
-      flex: 1;
-      flex-direction: column;
-      align-self: stretch;
-      font-size: 0.8rem;
-      & > div {
-        margin-bottom: 0.75rem;
-      }
-      & > div:last-child {
-        margin-bottom: 0;
-      }
-      & strong {
-        font-size: 1rem;
-        word-break: break-word;
-      }
-    }
-  }
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0 1rem 0 0.75rem;
+  max-width: 100%;
+`
+const HeaderData = styled.div`
+  display: flex;
+  flex: 1;
+  align-items: center;
+`
+const WriteInMarker = styled.div`
+  position: absolute;
+  top: -1.2rem;
+  right: 0;
+  background: #000000;
+  padding: 0.2rem 0.8rem;
+  color: #ffffff;
+  font-size: 0.8rem;
+  font-weight: 600;
 `
 const Content = styled.div`
   flex: 1;
@@ -115,11 +105,38 @@ const ContestProse = styled(Prose)`
     font-weight: 400;
   }
 `
-const NoSelection = () => (
-  <Text italic muted>
-    [no selection]
-  </Text>
-)
+const NoSelection = () => <Text>no selection</Text>
+
+const TestBallotBanner = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  transform: translateY(3in) rotate(-45deg);
+  opacity: 0.075;
+  z-index: -1;
+  text-align: center;
+  color: #000000;
+  font-size: 2in;
+`
+
+const HeaderMetaData = styled.div`
+  display: flex;
+  justify-content: space-between;
+`
+const MetaDataItem = styled.div`
+  margin-left: 1rem;
+  &:first-child {
+    margin-left: 0;
+  }
+`
+const MetaDataLabel = styled.div`
+  font-variant-caps: small-caps;
+`
+const MetaDataValue = styled.div`
+  font-size: 0.8rem;
+  font-weight: 600;
+`
 
 const CandidateContestResult = ({
   contest,
@@ -200,9 +217,25 @@ const PrintBallot = ({
     isTestBallot: !isLiveMode,
     ballotType: BallotType.Standard,
   })
+  const hasWriteIns: boolean = Object.values(votes)
+    .flat()
+    .some(v => v.isWriteIn)
 
   return (
     <Ballot aria-hidden>
+      <PreHeader>
+        {isLiveMode ? (
+          'This is your official ballot. Verify, then cast in ballot box.'
+        ) : (
+          <span>
+            This is your{' '}
+            <Text as="span" muted>
+              TEST ballot
+            </Text>
+            . Verify, then cast in ballot box.
+          </span>
+        )}
+      </PreHeader>
       <Header>
         {seal ? (
           <div
@@ -217,36 +250,45 @@ const PrintBallot = ({
         ) : (
           <React.Fragment />
         )}
-        <Prose className="ballot-header-content">
-          <h2>{isLiveMode ? 'Official Ballot' : 'Unofficial TEST Ballot'}</h2>
-          <h3>
-            {partyPrimaryAdjective} {title}
-          </h3>
-          <p>
-            {date}
-            <br />
-            {county.name}, {state}
-          </p>
-        </Prose>
-        <QRCodeContainer>
-          <QRCode value={encodedBallot} />
-          <div>
-            <div>
-              <div>
-                <div>Precinct</div>
-                <strong>{precinct.name}</strong>
-              </div>
-              <div>
-                <div>Ballot Style</div>
-                <strong>{ballotStyleId}</strong>
-              </div>
-              <div>
-                <div>Ballot ID</div>
-                <NoWrap as="strong">{ballotId}</NoWrap>
-              </div>
-            </div>
-          </div>
-        </QRCodeContainer>
+        <HeaderContent>
+          <HeaderData>
+            <Prose>
+              <h3>
+                {partyPrimaryAdjective} {title}{' '}
+                {isLiveMode ? (
+                  'Official Ballot'
+                ) : (
+                  <Text as="span" muted>
+                    TEST Ballot
+                  </Text>
+                )}
+              </h3>
+              <p>
+                {county.name}, {state}
+                <br />
+                {date}
+              </p>
+            </Prose>
+          </HeaderData>
+          <HeaderMetaData>
+            <MetaDataItem>
+              <MetaDataLabel>polling place</MetaDataLabel>
+              <MetaDataValue>{precinct.name}</MetaDataValue>
+            </MetaDataItem>
+            <MetaDataItem>
+              <MetaDataLabel>ballot style</MetaDataLabel>
+              <MetaDataValue>{ballotStyleId}</MetaDataValue>
+            </MetaDataItem>
+            <MetaDataItem>
+              <MetaDataLabel>ballot id</MetaDataLabel>
+              <MetaDataValue>
+                <NoWrap>{ballotId}</NoWrap>
+              </MetaDataValue>
+            </MetaDataItem>
+          </HeaderMetaData>
+        </HeaderContent>
+        <QRCode size="1.1in" value={encodedBallot} />
+        {hasWriteIns && <WriteInMarker>ballot has write-ins</WriteInMarker>}
       </Header>
       <Content>
         <BallotSelections>
@@ -272,6 +314,7 @@ const PrintBallot = ({
           ))}
         </BallotSelections>
       </Content>
+      {!isLiveMode && <TestBallotBanner>TEST BALLOT</TestBallotBanner>}
     </Ballot>
   )
 }
