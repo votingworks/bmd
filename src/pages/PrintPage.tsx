@@ -1,11 +1,21 @@
-import React, { useCallback, useContext, useEffect, useRef } from 'react'
+import React, {
+  useCallback,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from 'react'
+
+import BallotContext from '../contexts/ballotContext'
 import Loading from '../components/Loading'
 import Main, { MainChild } from '../components/Main'
 import PrintedBallot from '../components/PrintedBallot'
 import Prose from '../components/Prose'
 import Screen from '../components/Screen'
-import BallotContext from '../contexts/ballotContext'
 import isEmptyObject from '../utils/isEmptyObject'
+
+import getBallotTrackingCode from '../endToEnd'
+import ElectionGuardBallotTrackingCode from '../components/ElectionGuardBallotTrackingCode'
 
 export const printerMessageTimeoutSeconds = 5
 
@@ -22,8 +32,12 @@ const PrintPage = () => {
     votes,
   } = useContext(BallotContext)
   const printerTimer = useRef(0)
+  const [trackerString, setTrackerString] = useState('')
 
   const printBallot = useCallback(async () => {
+    const ballotTrackingCode = await getBallotTrackingCode(votes)
+    setTrackerString(ballotTrackingCode)
+
     const isUsed = await markVoterCardPrinted()
     /* istanbul ignore else */
     if (isUsed) {
@@ -65,6 +79,12 @@ const PrintPage = () => {
         precinctId={precinctId}
         votes={votes}
       />
+      {trackerString && (
+        <ElectionGuardBallotTrackingCode
+          election={election}
+          tracker={trackerString}
+        />
+      )}
     </React.Fragment>
   )
 }
