@@ -331,7 +331,7 @@ exports[`renders PrintPage with votes 1`] = `
     <div
       class="c3"
     >
-      <div
+      <span
         class="c4"
       >
         <svg
@@ -349,7 +349,7 @@ exports[`renders PrintPage with votes 1`] = `
             fill="#000000"
           />
         </svg>
-      </div>
+      </span>
       <div>
         <div>
           <div>
@@ -1318,7 +1318,7 @@ exports[`renders PrintPage without votes and inline seal 1`] = `
     <div
       class="c3"
     >
-      <div
+      <span
         class="c4"
       >
         <svg
@@ -1336,7 +1336,7 @@ exports[`renders PrintPage without votes and inline seal 1`] = `
             fill="#000000"
           />
         </svg>
-      </div>
+      </span>
       <div>
         <div>
           <div>
@@ -1882,7 +1882,7 @@ exports[`renders PrintPage without votes and no seal 1`] = `
     <div
       class="c3"
     >
-      <div
+      <span
         class="c4"
       >
         <svg
@@ -1900,7 +1900,7 @@ exports[`renders PrintPage without votes and no seal 1`] = `
             fill="#000000"
           />
         </svg>
-      </div>
+      </span>
       <div>
         <div>
           <div>
