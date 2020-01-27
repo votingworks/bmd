@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { VotesDict, Election } from '@votingworks/ballot-encoder'
 
 import Loading from '../components/Loading'
-import Tracker from '../components/Tracker'
+import ElectionGuardBallotTrackingCode from '../components/ElectionGuardBallotTrackingCode'
 import Main, { MainChild } from '../components/Main'
 import PrintedBallot from '../components/PrintedBallot'
 import Prose from '../components/Prose'
@@ -13,7 +13,7 @@ import { MarkVoterCardFunction, PartialUserSettings } from '../config/types'
 import { Printer } from '../utils/printer'
 import isEmptyObject from '../utils/isEmptyObject'
 
-import encryptAndGetTracker from '../endToEnd'
+import getBallotTrackingCode from '../endToEnd'
 
 const Graphic = styled.img`
   margin: 0 auto -1rem;
@@ -50,7 +50,7 @@ const PrintOnlyScreen = ({
   const printerTimer = useRef(0)
   const [okToPrint, setOkToPrint] = useState(true)
   const [isPrinted, updateIsPrinted] = useState(false)
-  const [trackerString, setTrackerString] = useState<string | undefined>('')
+  const [trackerString, setTrackerString] = useState('')
   const isCardVotesEmpty = isEmptyObject(votes)
 
   const isReadyToPrint =
@@ -62,9 +62,8 @@ const PrintOnlyScreen = ({
     !isPrinted
 
   const printBallot = useCallback(async () => {
-    // get the tracker first
-    const tracker = await encryptAndGetTracker(votes)
-    setTrackerString(tracker)
+    const ballotTrackingCode = await getBallotTrackingCode(votes)
+    setTrackerString(ballotTrackingCode)
 
     const isUsed = await markVoterCardPrinted()
 
@@ -182,7 +181,10 @@ const PrintOnlyScreen = ({
             votes={votes}
           />
           {trackerString && (
-            <Tracker election={election} tracker={trackerString} />
+            <ElectionGuardBallotTrackingCode
+              election={election}
+              tracker={trackerString}
+            />
           )}
         </React.Fragment>
       )}
