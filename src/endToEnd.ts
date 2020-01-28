@@ -1,20 +1,24 @@
-import { VotesDict } from '@votingworks/ballot-encoder'
+import { CompletedBallot } from '@votingworks/ballot-encoder'
 
 import { E2EAPI } from './config/types'
 import fetchJSON from './utils/fetchJSON'
 
-export default async function encryptBallot(
-  // eslint-disable-next-line
-  votes: VotesDict
-) {
+export default async function encryptBallot(ballot: CompletedBallot) {
   try {
     const { tracker } = await fetchJSON<E2EAPI>(
       '/electionguard/EncryptBallot',
       {
         method: 'post',
-        body: JSON.stringify(votes),
+        body: JSON.stringify({
+          ballot: ballot,
+          currentBallotCount: 0,
+        }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
       }
     )
+
     return tracker
   } catch (error) {
     return ''

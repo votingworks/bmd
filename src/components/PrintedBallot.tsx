@@ -16,7 +16,6 @@ import {
 
 import * as GLOBALS from '../config/globals'
 
-import { randomBase64 } from '../utils/random'
 import { findPartyById } from '../utils/find'
 import {
   getBallotStyle,
@@ -190,6 +189,7 @@ interface Props {
   isLiveMode: boolean
   precinctId: string
   votes: VotesDict
+  ballotId: string
 }
 
 const PrintBallot = ({
@@ -198,8 +198,8 @@ const PrintBallot = ({
   isLiveMode,
   precinctId,
   votes,
+  ballotId,
 }: Props) => {
-  const ballotId = randomBase64()
   const { county, date, seal, sealURL, state, parties, title } = election
   const partyPrimaryAdjective = getPartyPrimaryAdjectiveFromBallotStyle({
     ballotStyleId,

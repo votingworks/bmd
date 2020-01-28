@@ -16,6 +16,7 @@ import PrintedBallot from '../components/PrintedBallot'
 import Prose from '../components/Prose'
 import Sidebar from '../components/Sidebar'
 import Screen from '../components/Screen'
+import { randomBase64 } from '../utils/random'
 
 interface Ballot {
   ballotId?: string
@@ -207,6 +208,7 @@ const TestBallotDeckScreen = ({
           <PrintedBallot
             // eslint-disable-next-line react/no-array-index-key
             key={`ballot-${i}`}
+            ballotId={randomBase64()}
             ballotStyleId={ballot.ballotStyleId}
             election={election}
             isLiveMode={isLiveMode}

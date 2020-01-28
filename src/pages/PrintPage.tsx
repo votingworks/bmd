@@ -14,6 +14,8 @@ import PrintedBallot from '../components/PrintedBallot'
 import Prose from '../components/Prose'
 import Screen from '../components/Screen'
 import isEmptyObject from '../utils/isEmptyObject'
+import { randomBase64 } from '../utils/random'
+import { getBallotStyle, getPrecinctById } from '../utils/election'
 
 import encryptBallot from '../endToEnd'
 import ElectionGuardBallotTrackingCode from '../components/ElectionGuardBallotTrackingCode'
@@ -40,8 +42,23 @@ const PrintPage = () => {
   const printerTimer = useRef(0)
   const [trackerString, setTrackerString] = useState('')
 
+  // a temporary hack to have a stable ballotId while @beau works
+  // on separating the printing into two jobs
+  const [ballotId, setBallotId] = useState('')
+  if (!ballotId) {
+    setBallotId(randomBase64())
+  }
+
   const printBallot = useCallback(async () => {
-    const ballotTrackingCode = await encryptBallot(votes)
+    const ballotTrackingCode = await encryptBallot({
+      election,
+      ballotStyle: getBallotStyle({ ballotStyleId, election }),
+      precinct: getPrecinctById({ precinctId, election })!,
+      ballotId,
+      votes,
+      isTestBallot: !isLiveMode,
+      ballotType: 0,
+    })
     setTrackerString(ballotTrackingCode)
 
     const isUsed = await markVoterCardPrinted()
@@ -49,11 +66,23 @@ const PrintPage = () => {
     if (isUsed) {
       await printer.print()
       updateTally()
+      setBallotId('')
       printerTimer.current = window.setTimeout(() => {
         resetBallot()
       }, printerMessageTimeoutSeconds * 1000)
     }
-  }, [markVoterCardPrinted, printer, resetBallot, updateTally])
+  }, [
+    markVoterCardPrinted,
+    printer,
+    resetBallot,
+    updateTally,
+    ballotId,
+    ballotStyleId,
+    election,
+    isLiveMode,
+    precinctId,
+    votes,
+  ])
 
   useEffect(() => {
     if (!isEmptyObject(votes)) {
@@ -90,6 +119,7 @@ const PrintPage = () => {
         </Main>
       </Screen>
       <PrintedBallot
+        ballotId={ballotId}
         ballotStyleId={ballotStyleId}
         election={election!}
         isLiveMode={isLiveMode}

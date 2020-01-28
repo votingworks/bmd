@@ -12,6 +12,8 @@ import { DEFAULT_FONT_SIZE, LARGE_DISPLAY_FONT_SIZE } from '../config/globals'
 import { MarkVoterCardFunction, PartialUserSettings } from '../config/types'
 import { Printer } from '../utils/printer'
 import isEmptyObject from '../utils/isEmptyObject'
+import { randomBase64 } from '../utils/random'
+import { getBallotStyle, getPrecinctById } from '../utils/election'
 
 import encryptBallot from '../endToEnd'
 
@@ -51,6 +53,14 @@ const PrintOnlyScreen = ({
   const [okToPrint, setOkToPrint] = useState(true)
   const [isPrinted, updateIsPrinted] = useState(false)
   const [trackerString, setTrackerString] = useState('')
+
+  // a temporary hack to have a stable ballotId while @beau works
+  // on separating the printing into two jobs
+  const [ballotId, setBallotId] = useState('')
+  if (!ballotId) {
+    setBallotId(randomBase64())
+  }
+
   const isCardVotesEmpty = isEmptyObject(votes)
 
   const isReadyToPrint =
@@ -62,7 +72,15 @@ const PrintOnlyScreen = ({
     !isPrinted
 
   const printBallot = useCallback(async () => {
-    const ballotTrackingCode = await encryptBallot(votes)
+    const ballotTrackingCode = await encryptBallot({
+      election,
+      ballotStyle: getBallotStyle({ ballotStyleId, election }),
+      precinct: getPrecinctById({ precinctId, election })!,
+      ballotId,
+      votes,
+      isTestBallot: !isLiveMode,
+      ballotType: 0,
+    })
     setTrackerString(ballotTrackingCode)
 
     const isUsed = await markVoterCardPrinted()
@@ -71,11 +89,22 @@ const PrintOnlyScreen = ({
     if (isUsed) {
       await printer.print()
       updateTally()
+      setBallotId('')
       printerTimer.current = window.setTimeout(() => {
         updateIsPrinted(true)
       }, printerMessageTimeoutSeconds * 1000)
     }
-  }, [markVoterCardPrinted, printer, updateTally])
+  }, [
+    markVoterCardPrinted,
+    printer,
+    updateTally,
+    ballotId,
+    ballotStyleId,
+    election,
+    isLiveMode,
+    precinctId,
+    votes,
+  ])
 
   useEffect(() => {
     if (isReadyToPrint && okToPrint) {
@@ -178,6 +207,7 @@ const PrintOnlyScreen = ({
       {isReadyToPrint && (
         <React.Fragment>
           <PrintedBallot
+            ballotId={ballotId}
             ballotStyleId={ballotStyleId}
             election={election}
             isLiveMode={isLiveMode}
