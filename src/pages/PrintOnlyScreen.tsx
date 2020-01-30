@@ -13,7 +13,7 @@ import { MarkVoterCardFunction, PartialUserSettings } from '../config/types'
 import { Printer } from '../utils/printer'
 import isEmptyObject from '../utils/isEmptyObject'
 
-import getBallotTrackingCode from '../endToEnd'
+import encryptBallot from '../endToEnd'
 
 const Graphic = styled.img`
   margin: 0 auto -1rem;
@@ -62,7 +62,7 @@ const PrintOnlyScreen = ({
     !isPrinted
 
   const printBallot = useCallback(async () => {
-    const ballotTrackingCode = await getBallotTrackingCode(votes)
+    const ballotTrackingCode = await encryptBallot(votes)
     setTrackerString(ballotTrackingCode)
 
     const isUsed = await markVoterCardPrinted()
