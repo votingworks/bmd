@@ -142,7 +142,11 @@ const PrintOnlyScreen = ({
             />
           </p>
           <h1>
-            <Loading>Printing your official ballot</Loading>
+            <Loading>
+              {trackerString
+                ? 'Printing your official ballot and tracking code'
+                : 'Printing your official ballot'}
+            </Loading>
           </h1>
         </React.Fragment>
       )
