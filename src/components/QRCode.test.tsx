@@ -3,14 +3,14 @@ import { render } from '@testing-library/react'
 
 import QRCode from './QRCode'
 
-describe('renders QR Code', () => {
+describe('renders QR Code with size', () => {
   it('renders basic QR Code', async () => {
     const { container } = render(
       <QRCode size="1in" value="http://voting.works" />
     )
     expect(container.firstChild).toMatchSnapshot()
   })
-  it('renders QR Code with size', async () => {
+  it('renders QR Code', async () => {
     const { container } = render(<QRCode value="VX.21.5" />)
     expect(container.firstChild).toMatchSnapshot()
     expect(container.querySelector('path[fill="#000000"]')!)
