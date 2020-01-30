@@ -5,6 +5,7 @@ import React, {
   useRef,
   useState,
 } from 'react'
+import styled from 'styled-components'
 
 import BallotContext from '../contexts/ballotContext'
 import Loading from '../components/Loading'
@@ -18,6 +19,11 @@ import encryptBallot from '../endToEnd'
 import ElectionGuardBallotTrackingCode from '../components/ElectionGuardBallotTrackingCode'
 
 export const printerMessageTimeoutSeconds = 5
+
+const Graphic = styled.img`
+  margin: 0 auto -1rem;
+  height: 30vw;
+`
 
 const PrintPage = () => {
   const {
@@ -65,8 +71,19 @@ const PrintPage = () => {
         <Main>
           <MainChild centerVertical maxWidth={false}>
             <Prose textCenter id="audiofocus">
+              <p>
+                <Graphic
+                  src="/images/printing-ballot.svg"
+                  alt="Printing Ballot"
+                  aria-hidden
+                />
+              </p>
               <h1 aria-label="Printing Official Ballot.">
-                <Loading>Printing Official Ballot</Loading>
+                <Loading>
+                  {trackerString
+                    ? 'Printing your official ballot and tracking code'
+                    : 'Printing your official ballot'}
+                </Loading>
               </h1>
             </Prose>
           </MainChild>
