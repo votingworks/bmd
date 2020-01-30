@@ -3,7 +3,7 @@ import { VotesDict } from '@votingworks/ballot-encoder'
 import { E2EAPI } from './config/types'
 import fetchJSON from './utils/fetchJSON'
 
-export default async function getBallotTrackingCode(
+export default async function encryptBallot(
   // eslint-disable-next-line
   votes: VotesDict
 ) {
