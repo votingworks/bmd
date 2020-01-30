@@ -14,7 +14,7 @@ import Prose from '../components/Prose'
 import Screen from '../components/Screen'
 import isEmptyObject from '../utils/isEmptyObject'
 
-import getBallotTrackingCode from '../endToEnd'
+import encryptBallot from '../endToEnd'
 import ElectionGuardBallotTrackingCode from '../components/ElectionGuardBallotTrackingCode'
 
 export const printerMessageTimeoutSeconds = 5
@@ -35,7 +35,7 @@ const PrintPage = () => {
   const [trackerString, setTrackerString] = useState('')
 
   const printBallot = useCallback(async () => {
-    const ballotTrackingCode = await getBallotTrackingCode(votes)
+    const ballotTrackingCode = await encryptBallot(votes)
     setTrackerString(ballotTrackingCode)
 
     const isUsed = await markVoterCardPrinted()
