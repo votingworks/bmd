@@ -7,6 +7,8 @@ import React, {
 } from 'react'
 import styled from 'styled-components'
 
+import { BallotType } from '@votingworks/ballot-encoder'
+
 import BallotContext from '../contexts/ballotContext'
 import Loading from '../components/Loading'
 import Main, { MainChild } from '../components/Main'
@@ -15,8 +17,9 @@ import Prose from '../components/Prose'
 import Screen from '../components/Screen'
 import isEmptyObject from '../utils/isEmptyObject'
 import { randomBase64 } from '../utils/random'
+import { getBallotStyle, getPrecinctById } from '../utils/election'
 
-import encryptBallot from '../endToEnd'
+import encryptBallotWithElectionGuard from '../endToEnd'
 import ElectionGuardBallotTrackingCode from '../components/ElectionGuardBallotTrackingCode'
 
 export const printingMessageTimeoutSeconds = 4
@@ -40,9 +43,18 @@ const PrintPage = () => {
   } = useContext(BallotContext)
   const printerTimer = useRef(0)
   const [trackerString, setTrackerString] = useState('')
+  const [ballotId, setBallotId] = useState('')
 
   const printBallot = useCallback(async () => {
-    const ballotTrackingCode = await encryptBallot(votes)
+    const ballotTrackingCode = await encryptBallotWithElectionGuard({
+      election,
+      ballotStyle: getBallotStyle({ ballotStyleId, election }),
+      precinct: getPrecinctById({ precinctId, election })!,
+      ballotId,
+      votes,
+      isTestBallot: !isLiveMode,
+      ballotType: BallotType.Standard,
+    })
     setTrackerString(ballotTrackingCode)
 
     const isUsed = await markVoterCardPrinted()
@@ -58,6 +70,7 @@ const PrintPage = () => {
 
   useEffect(() => {
     if (!isEmptyObject(votes)) {
+      setBallotId(randomBase64())
       printBallot()
     }
   }, [votes, printBallot])
