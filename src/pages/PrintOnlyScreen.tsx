@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
 
-import { VotesDict, Election } from '@votingworks/ballot-encoder'
+import { VotesDict, Election, BallotType } from '@votingworks/ballot-encoder'
 
 import Loading from '../components/Loading'
 import ElectionGuardBallotTrackingCode from '../components/ElectionGuardBallotTrackingCode'
@@ -14,6 +14,7 @@ import { MarkVoterCardFunction, PartialUserSettings } from '../config/types'
 import { Printer } from '../utils/printer'
 import isEmptyObject from '../utils/isEmptyObject'
 import { randomBase64 } from '../utils/random'
+import { getBallotStyle, getPrecinctById } from '../utils/election'
 
 import encryptBallotWithElectionGuard from '../endToEnd'
 
@@ -75,7 +76,16 @@ const PrintOnlyScreen = ({
   }
 
   const generateTrackingCode = async () => {
-    const ballotTrackingCode = await encryptBallotWithElectionGuard(votes)
+    const ballotTrackingCode = await encryptBallotWithElectionGuard({
+      election,
+      ballotStyle: getBallotStyle({ ballotStyleId, election }),
+      precinct: getPrecinctById({ precinctId, election })!,
+      ballotId,
+      votes,
+      isTestBallot: !isLiveMode,
+      ballotType: BallotType.Standard,
+    })
+
     // TODO: handle failure to get ballot tracking code
     setTrackerString(ballotTrackingCode)
   }
