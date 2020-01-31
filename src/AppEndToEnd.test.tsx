@@ -3,7 +3,7 @@ import { fireEvent, render, wait, within } from '@testing-library/react'
 import { advanceBy } from 'jest-date-mock'
 
 import { electionSample } from '@votingworks/ballot-encoder'
-import { printerMessageTimeoutSeconds } from './pages/PrintPage'
+import { printingMessageTimeoutSeconds } from './pages/PrintPage'
 
 import App from './App'
 
@@ -242,7 +242,7 @@ it('VxMark+Print end-to-end flow', async () => {
   getByText('Printing Official Ballot')
 
   // After timeout, show Verify and Cast Instructions
-  await advanceTimersAndPromises(printerMessageTimeoutSeconds)
+  await advanceTimersAndPromises(printingMessageTimeoutSeconds)
   getByText('You’re Almost Done…')
   expect(printer.print).toHaveBeenCalledTimes(2)
 
