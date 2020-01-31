@@ -14,11 +14,12 @@ import PrintedBallot from '../components/PrintedBallot'
 import Prose from '../components/Prose'
 import Screen from '../components/Screen'
 import isEmptyObject from '../utils/isEmptyObject'
+import { randomBase64 } from '../utils/random'
 
 import encryptBallot from '../endToEnd'
 import ElectionGuardBallotTrackingCode from '../components/ElectionGuardBallotTrackingCode'
 
-export const printerMessageTimeoutSeconds = 5
+export const printingMessageTimeoutSeconds = 4
 
 const Graphic = styled.img`
   margin: 0 auto -1rem;
@@ -51,7 +52,7 @@ const PrintPage = () => {
       updateTally()
       printerTimer.current = window.setTimeout(() => {
         resetBallot()
-      }, printerMessageTimeoutSeconds * 1000)
+      }, printingMessageTimeoutSeconds * 1000)
     }
   }, [markVoterCardPrinted, printer, resetBallot, updateTally])
 
@@ -90,6 +91,7 @@ const PrintPage = () => {
         </Main>
       </Screen>
       <PrintedBallot
+        ballotId={randomBase64()}
         ballotStyleId={ballotStyleId}
         election={election!}
         isLiveMode={isLiveMode}
