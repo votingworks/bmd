@@ -12,7 +12,7 @@ export default async function encryptBallotWithElectionGuard(
       {
         method: 'post',
         body: JSON.stringify({
-          ballot: ballot,
+          ballot,
           currentBallotCount: 0,
         }),
         headers: {
