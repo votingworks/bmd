@@ -18,6 +18,17 @@ import { getBallotStyle, getPrecinctById } from '../utils/election'
 
 import encryptBallotWithElectionGuard from '../endToEnd'
 
+enum PrintingState {
+  StartPrinting = 1,
+  PrintBallot,
+  PrintTracker,
+  DonePrinting,
+  CardEmpty,
+  CardAbsent,
+  ErrorTracker,
+  ErrorCard,
+}
+
 const Graphic = styled.img`
   margin: 0 auto -1rem;
   height: 40vw;
@@ -55,24 +66,24 @@ const PrintOnlyScreen = ({
   const printBallotTimer = useRef(0)
   const printBallotTrackingCodeTimer = useRef(0)
 
-  const [printingState, setPrintingState] = useState('')
-
+  const [printingState, setPrintingState] = useState<PrintingState>(
+    PrintingState.CardAbsent
+  )
   const [trackerString, setTrackerString] = useState('')
+  const [cardMarkedUsed, setCardMarkedUsed] = useState(false)
   const [ballotId, setBallotId] = useState('')
 
-  const markCardUsedAndPrintBallotAndTally = async () => {
+  const markCardUsed = async () => {
     const isUsed = await markVoterCardPrinted()
-    // TODO: handle card write failure
-    /* istanbul ignore else */
-    if (isUsed) {
-      await printer.print()
-      updateTally()
+    setCardMarkedUsed(isUsed)
+    if (!isUsed) {
+      setPrintingState(PrintingState.ErrorCard)
     }
-    return
   }
 
   const printBallot = async () => {
-    await markCardUsedAndPrintBallotAndTally()
+    await printer.print()
+    updateTally()
   }
 
   const generateTrackingCode = async () => {
@@ -86,54 +97,89 @@ const PrintOnlyScreen = ({
       ballotType: BallotType.Standard,
     })
 
-    // TODO: handle failure to get ballot tracking code
-    setTrackerString(ballotTrackingCode)
+    if (ballotTrackingCode) {
+      setTrackerString(ballotTrackingCode)
+    } else {
+      setPrintingState(PrintingState.ErrorTracker)
+    }
   }
 
   const printTrackingCode = async () => {
     await printer.print()
   }
 
+  // the most important thing to know about this state machine is that
+  // it triggers when any of printingState, trackerString, or cardMarkedUsed is updated.
   useEffect(() => {
     ;(async () => {
       switch (printingState) {
-        case 'PRINT_BALLOT':
-          await printBallot()
-          if (useElectionGuard) {
-            // no delay in next state because that state takes a while
-            setPrintingState('GENERATE_TRACKER')
-          } else {
-            printBallotTimer.current = window.setTimeout(() => {
-              setPrintingState('PRINT_DONE')
-            }, printingMessageTimeoutSeconds * 1000)
+        case PrintingState.StartPrinting:
+          if (cardMarkedUsed) {
+            setCardMarkedUsed(false)
+            break
           }
+
+          if (useElectionGuard && trackerString) {
+            setTrackerString('')
+            break
+          }
+
+          setPrintingState(PrintingState.PrintBallot)
+
+          if (useElectionGuard) {
+            // don't await, just kick off both jobs
+            generateTrackingCode()
+            markCardUsed()
+          }
+
           break
-        case 'GENERATE_TRACKER':
-          await generateTrackingCode()
-          setPrintingState('PRINT_TRACKER')
+        case PrintingState.PrintBallot:
+          if (!cardMarkedUsed) {
+            break
+          }
+
+          if (useElectionGuard && !trackerString) {
+            break
+          }
+
+          // the card is now marked used and we have a tracker
+          await printBallot()
+          setPrintingState(
+            useElectionGuard
+              ? PrintingState.PrintTracker
+              : PrintingState.DonePrinting
+          )
           break
-        case 'PRINT_TRACKER':
+        case PrintingState.PrintTracker:
           await printTrackingCode()
           printBallotTrackingCodeTimer.current = window.setTimeout(() => {
-            setPrintingState('PRINT_DONE')
+            setPrintingState(PrintingState.DonePrinting)
           }, printingMessageTimeoutSeconds * 1000)
           break
-        case 'PRINT_DONE':
+        case PrintingState.DonePrinting:
+        case PrintingState.ErrorTracker:
+        case PrintingState.ErrorCard:
+          if (trackerString) {
+            setTrackerString('')
+          }
+          if (cardMarkedUsed) {
+            setCardMarkedUsed(false)
+          }
           break
       }
     })()
-  }, [printingState, useElectionGuard])
+  }, [printingState, trackerString, cardMarkedUsed])
 
   useEffect(() => {
     if (isVoterCardPresent) {
       if (isEmptyObject(votes)) {
-        setPrintingState('NO_VOTES')
+        setPrintingState(PrintingState.CardEmpty)
       } else {
         setBallotId(randomBase64())
-        setPrintingState('PRINT_BALLOT')
+        setPrintingState(PrintingState.StartPrinting)
       }
     } else {
-      setPrintingState('NO_CARD')
+      setPrintingState(PrintingState.CardAbsent)
     }
   }, [isVoterCardPresent, votes])
 
@@ -147,14 +193,14 @@ const PrintOnlyScreen = ({
   }, [setUserSettings])
 
   const renderContent = () => {
-    if (printingState === 'NO_VOTES') {
+    if (printingState === PrintingState.CardEmpty) {
       return (
         <React.Fragment>
           <h1>Empty Card</h1>
           <p>This card does not contain any votes.</p>
         </React.Fragment>
       )
-    } else if (printingState === 'PRINT_DONE') {
+    } else if (printingState === PrintingState.DonePrinting) {
       return (
         <React.Fragment>
           <p>
@@ -171,10 +217,7 @@ const PrintOnlyScreen = ({
           </p>
         </React.Fragment>
       )
-    } else if (
-      printingState === 'PRINT_BALLOT' ||
-      printingState === 'GENERATE_TRACKER'
-    ) {
+    } else if (printingState === PrintingState.PrintBallot) {
       return (
         <React.Fragment>
           <p>
@@ -189,7 +232,7 @@ const PrintOnlyScreen = ({
           </h1>
         </React.Fragment>
       )
-    } else if (printingState === 'PRINT_TRACKER') {
+    } else if (printingState === PrintingState.PrintTracker) {
       return (
         <React.Fragment>
           <p>
@@ -204,7 +247,7 @@ const PrintOnlyScreen = ({
           </h1>
         </React.Fragment>
       )
-    } else if (printingState === 'NO_CARD') {
+    } else if (printingState === PrintingState.CardAbsent) {
       return (
         <React.Fragment>
           <p>
@@ -216,6 +259,20 @@ const PrintOnlyScreen = ({
           </p>
           <h1>Insert Card</h1>
           <p>Insert Card to print your official ballot.</p>
+        </React.Fragment>
+      )
+    } else if (printingState === PrintingState.ErrorTracker) {
+      return (
+        <React.Fragment>
+          <h1>An Error Occurred</h1>
+          <p>No ballot tracking code was generated.</p>
+        </React.Fragment>
+      )
+    } else if (printingState === PrintingState.ErrorCard) {
+      return (
+        <React.Fragment>
+          <h1>An Error Occurred</h1>
+          <p>The card could not be erased. Please try again.</p>
         </React.Fragment>
       )
     }
@@ -230,7 +287,7 @@ const PrintOnlyScreen = ({
           </MainChild>
         </Main>
       </Screen>
-      {printingState === 'PRINT_BALLOT' && (
+      {printingState === PrintingState.PrintBallot && (
         <PrintedBallot
           ballotId={ballotId}
           ballotStyleId={ballotStyleId}
@@ -240,7 +297,7 @@ const PrintOnlyScreen = ({
           votes={votes}
         />
       )}
-      {printingState === 'PRINT_TRACKER' && (
+      {printingState === PrintingState.PrintTracker && (
         <ElectionGuardBallotTrackingCode
           election={election}
           tracker={trackerString}
