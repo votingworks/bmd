@@ -72,6 +72,8 @@ import {
   isCardReader,
 } from './utils/Hardware'
 
+import { deleteElectionGuardBallots } from './endToEnd'
+
 interface CardState {
   isClerkCardPresent: boolean
   isPollWorkerCardPresent: boolean
@@ -839,6 +841,9 @@ class AppRoot extends React.Component<Props, State> {
   }
 
   public resetTally = () => {
+    // reset electionguard ballots
+    deleteElectionGuardBallots()
+
     this.setState(
       ({ election }) => ({
         ballotsPrintedCount: this.initialState.ballotsPrintedCount,
