@@ -66,13 +66,14 @@ const ElectionGuardBallotTrackingCode = ({
   const { title, county, state, date } = election
 
   const trackingDisplayUrl = 'https://fulton.electionguard.vote'
-  const trackingTemplateUrl = 'https://trackmyvote.org/t/<tracker_id>'
+  const trackingTemplateUrl =
+    'https://fulton.electionguard.vote/track/<tracker_id>'
 
   const trackingCodeChunks = tracker.split(' ')
   const trackingChallenge = trackingCodeChunks.slice(0, 2).join(' ')
   const trackingResponse = trackingCodeChunks.slice(2).join(' ')
 
-  const trackerSafeForEmbedding = tracker.replace(/ /g, '-')
+  const trackerSafeForEmbedding = trackingChallenge.replace(/ /g, '-')
   const trackerUrl = trackingTemplateUrl.replace(
     '<tracker_id>',
     trackerSafeForEmbedding
