@@ -1,7 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
-import { useMachine } from '@xstate/react'
-import { Machine } from 'xstate'
 
 import { VotesDict, Election } from '@votingworks/ballot-encoder'
 
@@ -39,42 +37,6 @@ interface Props {
 
 export const printingMessageTimeoutSeconds = 4
 
-const printStateMachine = Machine({
-  id: 'ballotPrinter',
-  initial: 'noCard',
-  states: {
-    noCard: {
-      on: {
-        PRINT_BALLOT: 'printingBallot',
-        NO_VOTES: 'noVotesOnCard',
-      },
-    },
-    noVotesOnCard: {
-      on: {
-        REMOVE_CARD: 'noCard',
-      },
-    },
-    printingBallot: {
-      on: {
-        REMOVE_CARD: 'noCard',
-        PRINT_TRACKING_CODE: 'printingBallotTrackingCode',
-        PRINTING_COMPLETE: 'printingComplete',
-      },
-    },
-    printingBallotTrackingCode: {
-      on: {
-        REMOVE_CARD: 'noCard',
-        PRINTING_COMPLETE: 'printingComplete',
-      },
-    },
-    printingComplete: {
-      on: {
-        REMOVE_CARD: 'noCard',
-      },
-    },
-  },
-})
-
 const PrintOnlyScreen = ({
   ballotStyleId,
   election,
@@ -92,7 +54,7 @@ const PrintOnlyScreen = ({
   const printBallotTimer = useRef(0)
   const printBallotTrackingCodeTimer = useRef(0)
 
-  const [stateMachine, sendStateMachineEvent] = useMachine(printStateMachine)
+  const [printingState, setPrintingState] = useState('')
 
   const [trackerString, setTrackerString] = useState('')
   const [ballotId, setBallotId] = useState('')
@@ -110,42 +72,60 @@ const PrintOnlyScreen = ({
 
   const printBallot = async () => {
     await markCardUsedAndPrintBallotAndTally()
-    printBallotTimer.current = window.setTimeout(() => {
-      sendStateMachineEvent('PRINTING_COMPLETE')
-    }, printingMessageTimeoutSeconds * 1000)
   }
 
-  const printBallotAndTrackingCode = async () => {
+  const generateTrackingCode = async () => {
     const ballotTrackingCode = await encryptBallotWithElectionGuard(votes)
     // TODO: handle failure to get ballot tracking code
     setTrackerString(ballotTrackingCode)
-    await markCardUsedAndPrintBallotAndTally()
-    printBallotTimer.current = window.setTimeout(async () => {
-      sendStateMachineEvent('PRINT_TRACKING_CODE')
-      await printer.print()
-      printBallotTrackingCodeTimer.current = window.setTimeout(() => {
-        sendStateMachineEvent('PRINTING_COMPLETE')
-      }, printingMessageTimeoutSeconds * 1000)
-    }, printingMessageTimeoutSeconds * 1000)
   }
+
+  const printTrackingCode = async () => {
+    await printer.print()
+  }
+
+  useEffect(() => {
+    ;(async () => {
+      switch (printingState) {
+        case 'PRINT_BALLOT':
+          await printBallot()
+          if (useElectionGuard) {
+            // no delay in next state because that state takes a while
+            setPrintingState('GENERATE_TRACKER')
+          } else {
+            printBallotTimer.current = window.setTimeout(() => {
+              setPrintingState('PRINT_DONE')
+            }, printingMessageTimeoutSeconds * 1000)
+          }
+          break
+        case 'GENERATE_TRACKER':
+          await generateTrackingCode()
+          setPrintingState('PRINT_TRACKER')
+          break
+        case 'PRINT_TRACKER':
+          await printTrackingCode()
+          printBallotTrackingCodeTimer.current = window.setTimeout(() => {
+            setPrintingState('PRINT_DONE')
+          }, printingMessageTimeoutSeconds * 1000)
+          break
+        case 'PRINT_DONE':
+          break
+      }
+    })()
+  }, [printingState, useElectionGuard])
 
   useEffect(() => {
     if (isVoterCardPresent) {
       if (isEmptyObject(votes)) {
-        sendStateMachineEvent('NO_VOTES')
+        setPrintingState('NO_VOTES')
       } else {
-        sendStateMachineEvent('PRINT_BALLOT')
         setBallotId(randomBase64())
-        if (useElectionGuard) {
-          printBallotAndTrackingCode()
-        } else {
-          printBallot()
-        }
+        setPrintingState('PRINT_BALLOT')
       }
     } else {
-      sendStateMachineEvent('REMOVE_CARD')
+      setPrintingState('NO_CARD')
     }
-  }, [isVoterCardPresent])
+  }, [isVoterCardPresent, votes])
 
   useEffect(() => {
     setUserSettings({ textSize: LARGE_DISPLAY_FONT_SIZE })
@@ -157,20 +137,20 @@ const PrintOnlyScreen = ({
   }, [setUserSettings])
 
   const renderContent = () => {
-    if (stateMachine.value === 'noVotesOnCard') {
+    if (printingState === 'NO_VOTES') {
       return (
         <React.Fragment>
           <h1>Empty Card</h1>
           <p>This card does not contain any votes.</p>
         </React.Fragment>
       )
-    } else if (stateMachine.value === 'printingComplete') {
+    } else if (printingState === 'PRINT_DONE') {
       return (
         <React.Fragment>
           <p>
             <Graphic
               src="/images/verify-and-cast.svg"
-              alt="Printing Ballot"
+              alt="Verify and Cast"
               aria-hidden
             />
           </p>
@@ -181,7 +161,10 @@ const PrintOnlyScreen = ({
           </p>
         </React.Fragment>
       )
-    } else if (stateMachine.value === 'printingBallot') {
+    } else if (
+      printingState === 'PRINT_BALLOT' ||
+      printingState === 'GENERATE_TRACKER'
+    ) {
       return (
         <React.Fragment>
           <p>
@@ -196,13 +179,13 @@ const PrintOnlyScreen = ({
           </h1>
         </React.Fragment>
       )
-    } else if (stateMachine.value === 'printingBallotTrackingCode') {
+    } else if (printingState === 'PRINT_TRACKER') {
       return (
         <React.Fragment>
           <p>
             <Graphic
               src="/images/printing-ballot.svg"
-              alt="Printing Ballot"
+              alt="Printing Tracking Code"
               aria-hidden
             />
           </p>
@@ -211,7 +194,7 @@ const PrintOnlyScreen = ({
           </h1>
         </React.Fragment>
       )
-    } else if (stateMachine.value === 'noCard') {
+    } else if (printingState === 'NO_CARD') {
       return (
         <React.Fragment>
           <p>
@@ -237,7 +220,7 @@ const PrintOnlyScreen = ({
           </MainChild>
         </Main>
       </Screen>
-      {stateMachine.value === 'printingBallot' && (
+      {printingState === 'PRINT_BALLOT' && (
         <PrintedBallot
           ballotId={ballotId}
           ballotStyleId={ballotStyleId}
@@ -247,7 +230,7 @@ const PrintOnlyScreen = ({
           votes={votes}
         />
       )}
-      {stateMachine.value === 'printingBallotTrackingCode' && (
+      {printingState === 'PRINT_TRACKER' && (
         <ElectionGuardBallotTrackingCode
           election={election}
           tracker={trackerString}
