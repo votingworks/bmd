@@ -26,3 +26,25 @@ export default async function encryptBallotWithElectionGuard(
     return ''
   }
 }
+
+export async function deleteElectionGuardBallots() {
+  try {
+    const now = new Date()
+    const filename =
+      'encrypted-ballots_' +
+      now.getFullYear() +
+      '_' +
+      (now.getMonth() + 1) +
+      '_' +
+      now.getDate()
+
+    fetch('/electionguard/BallotFile?fileName=' + filename, {
+      method: 'DELETE',
+      headers: {
+        Accept: 'application/json',
+      },
+    })
+  } catch (error) {
+    return
+  }
+}
