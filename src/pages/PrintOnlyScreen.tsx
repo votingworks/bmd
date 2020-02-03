@@ -48,6 +48,7 @@ interface Props {
 }
 
 export const printingMessageTimeoutSeconds = 4
+export const ballotTrackingCodeTimeoutSeconds = 6
 
 const PrintOnlyScreen = ({
   ballotStyleId,
@@ -63,8 +64,8 @@ const PrintOnlyScreen = ({
 }: Props) => {
   // TODO: move to election definition before merging to master
   const useElectionGuard = true
-  const printBallotTimer = useRef(0)
   const printBallotTrackingCodeTimer = useRef(0)
+  const ballotTrackingCodeTimeout = useRef(0)
 
   const [printingState, setPrintingState] = useState<PrintingState>(
     PrintingState.CardAbsent
@@ -99,8 +100,6 @@ const PrintOnlyScreen = ({
 
     if (ballotTrackingCode) {
       setTrackerString(ballotTrackingCode)
-    } else {
-      setPrintingState(PrintingState.ErrorTracker)
     }
   }
 
@@ -138,9 +137,7 @@ const PrintOnlyScreen = ({
             break
           }
 
-          if (useElectionGuard && !trackerString) {
-            break
-          }
+          // allow printing of ballot even if tracker isn't here yet.
 
           // the card is now marked used and we have a tracker
           await printBallot()
@@ -151,6 +148,16 @@ const PrintOnlyScreen = ({
           )
           break
         case PrintingState.PrintTracker:
+          if (!ballotTrackingCodeTimeout.current) {
+            ballotTrackingCodeTimeout.current = window.setTimeout(() => {
+              setPrintingState(PrintingState.ErrorTracker)
+            }, ballotTrackingCodeTimeoutSeconds * 1000)
+          }
+
+          if (!trackerString) {
+            break
+          }
+
           await printTrackingCode()
           printBallotTrackingCodeTimer.current = window.setTimeout(() => {
             setPrintingState(PrintingState.DonePrinting)
@@ -159,6 +166,9 @@ const PrintOnlyScreen = ({
         case PrintingState.DonePrinting:
         case PrintingState.ErrorTracker:
         case PrintingState.ErrorCard:
+          clearTimeout(ballotTrackingCodeTimeout.current)
+          ballotTrackingCodeTimeout.current = 0
+
           if (trackerString) {
             setTrackerString('')
           }
@@ -187,7 +197,6 @@ const PrintOnlyScreen = ({
     setUserSettings({ textSize: LARGE_DISPLAY_FONT_SIZE })
     return () => {
       setUserSettings({ textSize: DEFAULT_FONT_SIZE })
-      clearTimeout(printBallotTimer.current)
       clearTimeout(printBallotTrackingCodeTimer.current)
     }
   }, [setUserSettings])
@@ -264,7 +273,7 @@ const PrintOnlyScreen = ({
     } else if (printingState === PrintingState.ErrorTracker) {
       return (
         <React.Fragment>
-          <h1>An Error Occurred</h1>
+          <h1>An error occurred</h1>
           <p>No ballot tracking code was generated.</p>
         </React.Fragment>
       )
