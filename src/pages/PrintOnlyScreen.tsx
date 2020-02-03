@@ -82,7 +82,7 @@ const PrintOnlyScreen = ({
   }
 
   const printBallot = async () => {
-    await printer.print()
+    await printer.print('', 'Tray3')
     updateTally()
   }
 
@@ -105,7 +105,7 @@ const PrintOnlyScreen = ({
   }
 
   const printTrackingCode = async () => {
-    await printer.print()
+    await printer.print('', 'Tray2')
   }
 
   // the most important thing to know about this state machine is that
