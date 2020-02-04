@@ -63,7 +63,7 @@ interface Props {
 }
 
 export const printingMessageTimeoutSeconds = 4
-export const ballotTrackingCodeTimeoutSeconds = 7
+export const ballotTrackingCodeTimeoutSeconds = 20
 
 const PrintOnlyScreen = ({
   ballotStyleId,
