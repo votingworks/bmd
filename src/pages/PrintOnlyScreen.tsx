@@ -48,7 +48,7 @@ interface Props {
 }
 
 export const printingMessageTimeoutSeconds = 4
-export const ballotTrackingCodeTimeoutSeconds = 6
+export const ballotTrackingCodeTimeoutSeconds = 7
 
 const PrintOnlyScreen = ({
   ballotStyleId,
@@ -82,12 +82,27 @@ const PrintOnlyScreen = ({
     }
   }
 
+  const startBallotTrackingCodeTimeout = () => {
+    if (!ballotTrackingCodeTimeout.current) {
+      ballotTrackingCodeTimeout.current = window.setTimeout(() => {
+        setPrintingState(PrintingState.ErrorTracker)
+      }, ballotTrackingCodeTimeoutSeconds * 1000)
+    }
+  }
+
+  const stopBallotTrackingCodeTimeout = () => {
+    clearTimeout(ballotTrackingCodeTimeout.current)
+    ballotTrackingCodeTimeout.current = 0
+  }
+
   const printBallot = async () => {
     await printer.print('', 'Tray3')
     updateTally()
   }
 
   const generateTrackingCode = async () => {
+    startBallotTrackingCodeTimeout()
+
     const ballotTrackingCode = await encryptBallotWithElectionGuard({
       election,
       ballotStyle: getBallotStyle({ ballotStyleId, election }),
@@ -100,6 +115,7 @@ const PrintOnlyScreen = ({
 
     if (ballotTrackingCode) {
       setTrackerString(ballotTrackingCode)
+      stopBallotTrackingCodeTimeout()
     }
   }
 
@@ -139,7 +155,6 @@ const PrintOnlyScreen = ({
 
           // allow printing of ballot even if tracker isn't here yet.
 
-          // the card is now marked used and we have a tracker
           await printBallot()
           setPrintingState(
             useElectionGuard
@@ -148,12 +163,6 @@ const PrintOnlyScreen = ({
           )
           break
         case PrintingState.PrintTracker:
-          if (!ballotTrackingCodeTimeout.current) {
-            ballotTrackingCodeTimeout.current = window.setTimeout(() => {
-              setPrintingState(PrintingState.ErrorTracker)
-            }, ballotTrackingCodeTimeoutSeconds * 1000)
-          }
-
           if (!trackerString) {
             break
           }
@@ -166,9 +175,7 @@ const PrintOnlyScreen = ({
         case PrintingState.DonePrinting:
         case PrintingState.ErrorTracker:
         case PrintingState.ErrorCard:
-          clearTimeout(ballotTrackingCodeTimeout.current)
-          ballotTrackingCodeTimeout.current = 0
-
+          stopBallotTrackingCodeTimeout()
           if (trackerString) {
             setTrackerString('')
           }
