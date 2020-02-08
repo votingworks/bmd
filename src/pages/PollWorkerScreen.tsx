@@ -66,7 +66,7 @@ const PollWorkerScreen = ({
     let isPrinting = false
     async function printReport() {
       if (!isPrinting && isPrintingReport) {
-        await printer.print()
+        await printer.print('', 'Tray2')
         window.setTimeout(() => {
           togglePollsOpen()
           setIsPrintingReport(false)
