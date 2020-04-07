@@ -37,7 +37,8 @@ const Prose = styled('div')<Props>`
   & h3,
   & h4,
   & h5,
-  & p {
+  & p,
+  & hr {
     margin-top: ${({ compact }) => (compact ? '0' : '1rem')};
     margin-bottom: ${({ compact }) => (compact ? '0' : '1rem')};
   }
@@ -61,6 +62,10 @@ const Prose = styled('div')<Props>`
   }
   & dl {
     margin: 1rem 0;
+  }
+  & hr {
+    border: 0;
+    border-top: 0.1rem solid #000000;
   }
 `
 

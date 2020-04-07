@@ -92,6 +92,7 @@
     "http-proxy-middleware": "^1.0.3",
     "lodash.camelcase": "^4.3.0",
     "normalize.css": "^8.0.1",
+    "pagedjs": "^0.1.40",
     "pluralize": "^8.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",

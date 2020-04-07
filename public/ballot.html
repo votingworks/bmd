@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, user-scalable=no" />
+    <meta name="theme-color" content="#000000" />
+    <title>VotingWorks Ballot</title>
+    <style>
+      @page {
+        margin: 1in;
+        size: letter portrait;
+        @bottom-left {
+          content: counter(page);
+        }
+      }
+
+      section {
+        break-before: page;
+      }
+      p {
+        color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <h2>
+        Hello World 1
+      </h2>
+    </section>
+    <section>
+      <h2>
+        Hello World 2
+      </h2>
+    </section>
+    <section>
+      <h2>
+        Hello World 3
+      </h2>
+    </section>
+    <script src="https://unpkg.com/pagedjs/dist/paged.polyfill.js"></script>
+  </body>
+</html>

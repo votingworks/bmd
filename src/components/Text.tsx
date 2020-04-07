@@ -11,7 +11,9 @@ interface Props {
   italic?: boolean
   muted?: boolean
   narrow?: boolean
+  normal?: boolean
   noWrap?: boolean
+  right?: boolean
   small?: boolean
   warning?: boolean
   warningIcon?: boolean
@@ -44,7 +46,8 @@ const Text = styled('p')<Props>`
   margin-right: ${({ narrow }) => (narrow ? 'auto' : undefined)};
   margin-left: ${({ narrow }) => (narrow ? 'auto' : undefined)};
   max-width: ${({ narrow }) => (narrow ? '33ch' : undefined)};
-  text-align: ${({ center }) => (center ? 'center' : undefined)};
+  text-align: ${({ center, right }) =>
+    (center && 'center') || (right && 'right') || undefined};
   white-space: ${({ noWrap }) => (noWrap ? 'nowrap' : undefined)};
   color: ${({ error, muted, warning }) =>
     (error && 'red') ??
@@ -59,8 +62,8 @@ const Text = styled('p')<Props>`
       undefined};
   }
   font-size: ${({ small }) => (small ? '0.8rem' : undefined)};
-  font-weight: ${({ bold, light }) =>
-    (bold && '600') ?? (light && '300') ?? undefined};
+  font-weight: ${({ bold, light, normal }) =>
+    (bold && '600') ?? (light && '300') ?? (normal && '400') ?? undefined};
   font-style: ${({ italic }) => (italic ? 'italic' : undefined)};
   word-break: ${({ wordBreak }) => (wordBreak ? 'break-word' : undefined)};
   /* stylelint-disable-next-line value-keyword-case, order/properties-order */

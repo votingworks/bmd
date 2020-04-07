@@ -268,7 +268,7 @@ class AppRoot extends React.Component<Props, State> {
       case 'voter': {
         const voterCardData = cardData as VoterCardData
         const voterCardCreatedAt = voterCardData.c
-        const isVoterCardVoided = Boolean(voterCardData.uz)
+        const isVoterCardVoided = false //Boolean(voterCardData.uz)
         const ballotPrintedTime = voterCardData.bp
           ? Number(voterCardData.bp)
           : 0
@@ -301,10 +301,11 @@ class AppRoot extends React.Component<Props, State> {
 
         this.setState(
           prevState => {
-            const isVoterCardExpired = this.isVoterCardExpired(
-              prevState.voterCardCreatedAt,
-              voterCardCreatedAt
-            )
+            const isVoterCardExpired = false
+            // const isVoterCardExpired = this.isVoterCardExpired(
+            //   prevState.voterCardCreatedAt,
+            //   voterCardCreatedAt
+            // )
             return {
               ...this.initialCardPresentState,
               shortValue,

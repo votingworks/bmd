@@ -10,13 +10,18 @@ const ResponsiveSvgWrapper = styled.div`
   }
 `
 
-interface Props {
+interface QRCodeProps {
   value: string | Uint8Array
+  size?: number
+  bgColor?: string
+  fgColor?: string
+  level?: 'L' | 'M' | 'Q' | 'H'
+  renderAs?: 'svg' | 'canvas'
 }
 
-const QRCode = ({ value }: Props) => (
+const QRCode = ({ level = 'H', renderAs = 'svg', value }: QRCodeProps) => (
   <ResponsiveSvgWrapper>
-    <QRCodeReact renderAs="svg" value={value} level="H" />
+    <QRCodeReact renderAs={renderAs} value={value} level={level} />
   </ResponsiveSvgWrapper>
 )
 
