@@ -11,6 +11,8 @@ const Container = styled.span`
   border-bottom: 0.1rem solid #000000;
 `
 
-const WriteInLine = ({ label }: Props) => <Container>{label}</Container>
+const WriteInLine = ({ label }: Props) => (
+  <Container data-write-in-line>{label}</Container>
+)
 
 export default WriteInLine

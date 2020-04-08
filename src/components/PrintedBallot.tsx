@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useLayoutEffect, useRef } from 'react'
 import styled from 'styled-components'
 import {
   encodeBallot,
@@ -31,6 +31,7 @@ import {
 import QRCode from './QRCode'
 import Prose from './Prose'
 import Text, { NoWrap } from './Text'
+import getPrintedBallotPageLayout from '../utils/getPrintedBallotPageLayout'
 
 const Ballot = styled.div`
   display: flex;
@@ -188,10 +189,12 @@ const CandidateContestChoices = ({
   return (
     <React.Fragment>
       {contest.candidates.map(candidate => (
-        <Text key={candidate.id} bold>
+        <Text key={candidate.id} bold data-candidate>
           <BubbleMark checked={vote.some(v => v.id === candidate.id)}>
             <span>
-              <strong>{candidate.name}</strong>
+              <strong data-candidate-name={candidate.name}>
+                {candidate.name}
+              </strong>
               {candidate.partyId && (
                 <React.Fragment>
                   <br />
@@ -213,7 +216,7 @@ const CandidateContestChoices = ({
       ))}
       {contest.allowWriteIns &&
         remainingChoices.map(k => (
-          <Text key={k} bold noWrap>
+          <Text key={k} bold noWrap data-write-in>
             <BubbleMark>
               <strong>write-in:</strong>
               <WriteInLine />
@@ -273,9 +276,24 @@ const PrintBallot = ({
     isTestBallot: !isLiveMode,
     ballotType: BallotType.Standard,
   })
+  // eslint-disable-next-line no-restricted-syntax
+  const ballotRef = useRef<HTMLDivElement>(null)
+
+  useLayoutEffect(() => {
+    if (ballotRef.current) {
+      // eslint-disable-next-line no-console
+      console.log(
+        `Printed ballot page layout: ${JSON.stringify(
+          getPrintedBallotPageLayout(ballotRef.current),
+          undefined,
+          2
+        )}`
+      )
+    }
+  })
 
   return (
-    <Ballot aria-hidden>
+    <Ballot aria-hidden data-ballot ref={ballotRef}>
       <Content>
         {/* <PageHeader>
           <Prose maxWidth={false}>
@@ -345,7 +363,11 @@ const PrintBallot = ({
           {(contests as Contests).map(
             (contest, i) =>
               i < 999 && (
-                <Contest key={contest.id}>
+                <Contest
+                  key={contest.id}
+                  data-contest
+                  data-contest-title={contest.title}
+                >
                   <Prose>
                     <h3>
                       <ContestSection>{contest.section}</ContestSection>

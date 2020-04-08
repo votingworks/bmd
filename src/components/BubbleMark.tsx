@@ -36,7 +36,7 @@ const Content = styled.span`
 
 export const BubbleMark = ({ checked = false, children }: Props) => (
   <Container>
-    <Bubble checked={checked} />
+    <Bubble checked={checked} data-mark />
     <Content>{children}</Content>
   </Container>
 )
