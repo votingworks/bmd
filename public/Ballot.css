@@ -1,0 +1,30 @@
+.pagedjs_pagebox .pagedjs_margin-bottom-center {
+  align-items: flex-start;
+}
+.ballot-footer {
+  position: running(ballotFooter);
+}
+.ballot-footer-page-number::before {
+  content: counter(page);
+}
+.ballot-footer-pages-number::before {
+  content: counter(pages);
+}
+
+@media print {
+  @page {
+    size: letter portrait;
+    margin: 0.25in 0.25in 0.75in 0.4in;
+
+    @bottom-center {
+      content: element(ballotFooter);
+    }
+  }
+}
+
+@media screen {
+  .pagedjs_page {
+    outline: 1px solid green;
+    margin: 0.25in auto;
+  }
+}

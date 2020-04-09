@@ -1,5 +1,6 @@
-import React, { useLayoutEffect, useRef } from 'react'
+import React, { useState, useLayoutEffect, useRef, useEffect } from 'react'
 import styled from 'styled-components'
+import { Previewer, registerHandlers, Handler } from 'pagedjs'
 import {
   encodeBallot,
   BallotType,
@@ -33,6 +34,18 @@ import Prose from './Prose'
 import Text, { NoWrap } from './Text'
 import getPrintedBallotPageLayout from '../utils/getPrintedBallotPageLayout'
 
+// class CustomHandler extends Handler {
+//   // eslint-disable-next-line @typescript-eslint/no-explicit-any
+//   beforeParsed(content: any) {
+//     console.log('beforeParsed content', { content })
+//   }
+//   // eslint-disable-next-line @typescript-eslint/no-explicit-any
+//   afterParsed(content: any) {
+//     console.log('afterParsed content', { content })
+//   }
+// }
+// registerHandlers(CustomHandler)
+
 const Ballot = styled.div`
   display: flex;
   flex-direction: column;
@@ -51,27 +64,27 @@ const SealImage = styled.img`
   max-width: 1in;
 `
 
-const HeaderOld = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  border-bottom: 0.2rem solid #000000;
-  & > .seal {
-    margin: 0.25rem 0;
-    width: 1in;
-  }
-  & h2 {
-    margin-bottom: 0;
-  }
-  & h3 {
-    margin-top: 0;
-  }
-  & > .ballot-header-content {
-    flex: 4;
-    margin: 0 1rem;
-    max-width: 100%;
-  }
-`
+// const HeaderOld = styled.div`
+//   display: flex;
+//   flex-direction: row;
+//   align-items: center;
+//   border-bottom: 0.2rem solid #000000;
+//   & > .seal {
+//     margin: 0.25rem 0;
+//     width: 1in;
+//   }
+//   & h2 {
+//     margin-bottom: 0;
+//   }
+//   & h3 {
+//     margin-top: 0;
+//   }
+//   & > .ballot-header-content {
+//     flex: 4;
+//     margin: 0 1rem;
+//     max-width: 100%;
+//   }
+// `
 const Content = styled.div`
   flex: 1;
 `
@@ -276,174 +289,207 @@ const PrintBallot = ({
     isTestBallot: !isLiveMode,
     ballotType: BallotType.Standard,
   })
-  // eslint-disable-next-line no-restricted-syntax
-  const ballotRef = useRef<HTMLDivElement>(null)
+  const [ballotRendered, setBallotRendered] = useState(false)
 
   useLayoutEffect(() => {
-    if (ballotRef.current) {
-      // eslint-disable-next-line no-console
-      console.log(
-        `Printed ballot page layout: ${JSON.stringify(
-          getPrintedBallotPageLayout(ballotRef.current),
-          undefined,
-          2
-        )}`
-      )
+    if (!ballotRendered) {
+      const previewer = new Previewer()
+      previewer
+        .preview(
+          document.querySelector('#screen-ballot')!.innerHTML,
+          ['/ballot.css'],
+          document.querySelector('#print-ballot')
+        )
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        .then((flow: { total: any }) => {
+          console.log('preview rendered, total pages', flow.total, { flow })
+        })
+      setBallotRendered(true)
+      return () => {
+        console.log('removing pagedjs ballot')
+        document.querySelector('#print-ballot')!.innerHTML = ''
+      }
     }
   })
 
+  // eslint-disable-next-line no-restricted-syntax
+  const ballotRef = useRef<HTMLDivElement>(null)
+
+  // useLayoutEffect(() => {
+  //   if (ballotRef.current) {
+  //     // eslint-disable-next-line no-console
+  //     console.log(
+  //       `Printed ballot page layout: ${JSON.stringify(
+  //         getPrintedBallotPageLayout(ballotRef.current),
+  //         undefined,
+  //         2
+  //       )}`
+  //     )
+  //   }
+  // })
+
   return (
-    <Ballot aria-hidden data-ballot ref={ballotRef}>
-      <Content>
-        {/* <PageHeader>
+    <React.Fragment>
+      <Ballot id="screen-ballot" aria-hidden data-ballot ref={ballotRef}>
+        <div className="ballot-footer">
+          <PageFooter>
+            <PageFooterMain>
+              <Prose maxWidth={false} compact>
+                <Text as="h2" normal>
+                  <sup>Precinct:</sup> <strong>{precinct.name}</strong>{' '}
+                  <sup>Style:</sup> <strong>{ballotStyle.id}</strong>
+                </Text>
+                <Text as="h2" normal>
+                  <strong>
+                    Page <span className="ballot-footer-page-number" />
+                  </strong>{' '}
+                  of <span className="ballot-footer-pages-number" />
+                </Text>
+              </Prose>
+              <Prose maxWidth={false} compact>
+                <Text>
+                  {isLiveMode ? 'Official Ballot' : 'Unofficial TEST Ballot'}{' '}
+                  for
+                  {partyPrimaryAdjective} {title}
+                </Text>
+                <Text>
+                  {county.name}, {state}
+                </Text>
+                <Text>{date}</Text>
+              </Prose>
+            </PageFooterMain>
+            <PageFooterQRCode>
+              <QRCode
+                level="L"
+                value={`ballotStyleId:${ballotStyle.id},pageNumber:1`}
+              />
+            </PageFooterQRCode>
+          </PageFooter>
+        </div>
+
+        <Content>
+          {/* <PageHeader>
           <Prose maxWidth={false}>
             <Text right>
               Ballot Style: {ballotStyle.id} — <strong>Page 1</strong> of 3
             </Text>
           </Prose>
         </PageHeader> */}
-        <BallotColumns>
-          <IntroColumn>
-            <BallotHeader>
-              {seal ? (
-                <div
-                  className="seal"
-                  // TODO: Sanitize the SVG content: https://github.com/votingworks/bmd/issues/99
-                  dangerouslySetInnerHTML={{ __html: seal }} // eslint-disable-line react/no-danger
-                />
-              ) : sealURL ? (
-                <div className="seal">
-                  <SealImage src={sealURL} alt="" />
-                </div>
-              ) : (
-                <React.Fragment />
-              )}
-              <Prose>
-                <h2>
-                  {isLiveMode ? 'Official Ballot' : 'Unofficial TEST Ballot'}
-                </h2>
-                <h3>
-                  {partyPrimaryAdjective} {title}
-                </h3>
-                <p>
-                  {state}
-                  <br />
-                  {county.name}
-                  <br />
-                  {date}
-                </p>
-              </Prose>
-            </BallotHeader>
-            <Instructions>
-              <Prose>
-                <h3>Instructions</h3>
-                <p>
-                  To vote, use a black pen to completely fill in the oval to the
-                  left of your choice.
-                  <Illustration />
-                </p>
-                <p>
-                  To vote for a person not on the ballot, completely fill in the
-                  oval to the left of <strong>write-in</strong> and then write
-                  the person’s name on the line provided.
-                  <Illustration />
-                </p>
-                <p>
-                  ⚠ You may request a replacement ballot to correct any errors
-                  or mistakes. If there are marks on the ballot other than
-                  filled ovals, your votes may not be counted.
-                </p>
-              </Prose>
-            </Instructions>
-          </IntroColumn>
-          {/* {sections.map(section => <Section>
+          <BallotColumns>
+            <IntroColumn>
+              <BallotHeader>
+                {seal ? (
+                  <div
+                    className="seal"
+                    // TODO: Sanitize the SVG content: https://github.com/votingworks/bmd/issues/99
+                    dangerouslySetInnerHTML={{ __html: seal }} // eslint-disable-line react/no-danger
+                  />
+                ) : sealURL ? (
+                  <div className="seal">
+                    <SealImage src={sealURL} alt="" />
+                  </div>
+                ) : (
+                  <React.Fragment />
+                )}
+                <Prose>
+                  <h2>
+                    {isLiveMode ? 'Official Ballot' : 'Unofficial TEST Ballot'}
+                  </h2>
+                  <h3>
+                    {partyPrimaryAdjective} {title}
+                  </h3>
+                  <p>
+                    {state}
+                    <br />
+                    {county.name}
+                    <br />
+                    {date}
+                  </p>
+                </Prose>
+              </BallotHeader>
+              <Instructions>
+                <Prose>
+                  <h3>Instructions</h3>
+                  <p>
+                    To vote, use a black pen to completely fill in the oval to
+                    the left of your choice.
+                    <Illustration />
+                  </p>
+                  <p>
+                    To vote for a person not on the ballot, completely fill in
+                    the oval to the left of <strong>write-in</strong> and then
+                    write the person’s name on the line provided.
+                    <Illustration />
+                  </p>
+                  <p>
+                    ⚠ To correct any errors or mistakes, please request a
+                    replacement ballot. Any marks other than filled ovals may
+                    cause your votes not to be counted.
+                  </p>
+                </Prose>
+              </Instructions>
+            </IntroColumn>
+            {/* {sections.map(section => <Section>
           <h1>{section}</h1>
 
           </Section>)} */}
-          {(contests as Contests).map(
-            (contest, i) =>
-              i < 999 && (
-                <Contest
-                  key={contest.id}
-                  data-contest
-                  data-contest-title={contest.title}
-                >
-                  <Prose>
-                    <h3>
-                      <ContestSection>{contest.section}</ContestSection>
-                      {contest.title}
-                    </h3>
-                    {contest.type === 'candidate' && (
-                      <React.Fragment>
-                        <p>
-                          {contest.seats === 1
-                            ? 'Vote for 1.'
-                            : `Vote for not more than ${contest.seats}.`}
-                        </p>
-                        <CandidateContestChoices
-                          contest={contest}
-                          parties={parties}
-                          vote={votes[contest.id] as CandidateVote}
-                        />
-                      </React.Fragment>
-                    )}
-                    {contest.type === 'yesno' && (
-                      <React.Fragment>
-                        <p>
-                          Vote <strong>Yes</strong> or <strong>No</strong>.
-                        </p>
-                        <YesNoContestChoices
-                          contest={contest}
-                          vote={votes[contest.id] as YesNoVote}
-                        />
-                      </React.Fragment>
-                    )}
-                  </Prose>
-                </Contest>
-              )
-          )}
-          <ColumnFooter>
-            <Prose>
-              {/* <p>Continue voting on the next page. →</p> */}
-              <h3>Thank you for voting.</h3>
-              <p>
-                Review your ballot before casting it. You may request a
-                replacement ballot to correct any errors or mistakes.
-              </p>
-            </Prose>
-          </ColumnFooter>
-        </BallotColumns>
-      </Content>
-      <PageFooter>
-        <PageFooterMain>
-          <Prose maxWidth={false} compact>
-            <Text as="h2" normal>
-              <sup>Precinct:</sup> <strong>{precinct.name}</strong>{' '}
-              <sup>Style:</sup> <strong>{ballotStyle.id}</strong>
-            </Text>
-            <Text as="h2" normal>
-              <strong>Page 1</strong> of 3
-            </Text>
-          </Prose>
-          <Prose maxWidth={false} compact>
-            <Text>
-              {isLiveMode ? 'Official Ballot' : 'Unofficial TEST Ballot'} for
-              {partyPrimaryAdjective} {title}
-            </Text>
-            <Text>
-              {county.name}, {state}
-            </Text>
-            <Text>{date}</Text>
-          </Prose>
-        </PageFooterMain>
-        <PageFooterQRCode>
-          <QRCode
-            level="L"
-            value={`ballotStyleId:${ballotStyle.id},pageNumber:1`}
-          />
-        </PageFooterQRCode>
-      </PageFooter>
-    </Ballot>
+            {(contests as Contests).map(
+              (contest, i) =>
+                i < 999 && (
+                  <Contest
+                    key={contest.id}
+                    data-contest
+                    data-contest-title={contest.title}
+                  >
+                    <Prose>
+                      <h3>
+                        <ContestSection>{contest.section}</ContestSection>
+                        {contest.title}
+                      </h3>
+                      {contest.type === 'candidate' && (
+                        <React.Fragment>
+                          <p>
+                            {contest.seats === 1
+                              ? 'Vote for 1.'
+                              : `⚠ Vote for not more than ${contest.seats}.`}
+                          </p>
+                          <CandidateContestChoices
+                            contest={contest}
+                            parties={parties}
+                            vote={votes[contest.id] as CandidateVote}
+                          />
+                        </React.Fragment>
+                      )}
+                      {contest.type === 'yesno' && (
+                        <React.Fragment>
+                          <p>
+                            Vote <strong>Yes</strong> or <strong>No</strong>.
+                          </p>
+                          <YesNoContestChoices
+                            contest={contest}
+                            vote={votes[contest.id] as YesNoVote}
+                          />
+                        </React.Fragment>
+                      )}
+                    </Prose>
+                  </Contest>
+                )
+            )}
+            <ColumnFooter>
+              <Prose>
+                {/* <p>Continue voting on the next page. →</p> */}
+                <h3>Thank you for voting.</h3>
+                <p>
+                  Review your ballot before casting it. You may request a
+                  replacement ballot to correct any errors or mistakes.
+                </p>
+              </Prose>
+            </ColumnFooter>
+          </BallotColumns>
+        </Content>
+      </Ballot>
+      <div id="print-ballot" />
+    </React.Fragment>
   )
 }
 
