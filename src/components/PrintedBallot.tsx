@@ -1,4 +1,4 @@
-import React, { useState, useLayoutEffect, useRef, useEffect } from 'react'
+import React, { useState, useLayoutEffect, useRef } from 'react'
 import styled from 'styled-components'
 import { Previewer, registerHandlers, Handler } from 'pagedjs'
 import {
@@ -156,17 +156,8 @@ const Instructions = styled.div`
   border: 0.1rem solid #000000;
   border-width: 0.1rem 0;
   padding: 1rem 0;
-`
-const Illustration = styled.span`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0.2rem 0 0;
-  background: #dddddd;
-  min-height: 6rem;
-  padding: 2rem;
-  &::before {
-    content: 'illustration tbd';
+  img {
+    margin-top: 0.3rem;
   }
 `
 const Contest = styled.div`
@@ -297,7 +288,7 @@ const PrintBallot = ({
       previewer
         .preview(
           document.querySelector('#screen-ballot')!.innerHTML,
-          ['/ballot.css'],
+          ['/ballot/ballot.css'],
           document.querySelector('#print-ballot')
         )
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -361,7 +352,13 @@ const PrintBallot = ({
             <PageFooterQRCode>
               <QRCode
                 level="L"
-                value={`ballotStyleId:${ballotStyle.id},pageNumber:1`}
+                value={`{"precinct":${precinct.id},"ballotStyleId":${ballotStyle.id},"pageNumber":1}`}
+              />
+            </PageFooterQRCode>
+            <PageFooterQRCode>
+              <QRCode
+                level="L"
+                value={`{"precinct":${precinct.id},"ballotStyleId":${ballotStyle.id},"pageNumber":2}`}
               />
             </PageFooterQRCode>
           </PageFooter>
@@ -413,16 +410,16 @@ const PrintBallot = ({
                   <p>
                     To vote, use a black pen to completely fill in the oval to
                     the left of your choice.
-                    <Illustration />
+                    <img src="/ballot/instructions-fill-oval.svg" alt="" />
                   </p>
                   <p>
                     To vote for a person not on the ballot, completely fill in
-                    the oval to the left of <strong>write-in</strong> and then
-                    write the person’s name on the line provided.
-                    <Illustration />
+                    the oval to the left of “write-in” and then write the
+                    person’s name on the line provided.
+                    <img src="/ballot/instructions-write-in.svg" alt="" />
                   </p>
                   <p>
-                    ⚠ To correct any errors or mistakes, please request a
+                    To correct any errors or mistakes, please request a
                     replacement ballot. Any marks other than filled ovals may
                     cause your votes not to be counted.
                   </p>
@@ -465,6 +462,7 @@ const PrintBallot = ({
                           <p>
                             Vote <strong>Yes</strong> or <strong>No</strong>.
                           </p>
+                          <p>{contest.description}</p>
                           <YesNoContestChoices
                             contest={contest}
                             vote={votes[contest.id] as YesNoVote}
