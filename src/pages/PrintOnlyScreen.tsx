@@ -212,6 +212,7 @@ const PrintOnlyScreen = ({
           ballotStyleId={ballotStyleId}
           election={election}
           isLiveMode={isLiveMode}
+          isTemplate
           precinctId={precinctId}
           votes={votes!} // votes exists because isReadyToPrint implies votes!=undefined , but tsc unable to reason about it
         />

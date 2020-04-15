@@ -62,6 +62,7 @@ const PrintPage = () => {
         ballotStyleId={ballotStyleId}
         election={election!}
         isLiveMode={isLiveMode}
+        isTemplate
         precinctId={precinctId}
         votes={votes}
       />

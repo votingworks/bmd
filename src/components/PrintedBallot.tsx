@@ -13,6 +13,8 @@ import {
   Contests,
   Parties,
   Election,
+  Precinct,
+  BallotStyle,
 } from '@votingworks/ballot-encoder'
 
 import * as GLOBALS from '../config/globals'
@@ -179,6 +181,30 @@ const ContestSection = styled.div`
   font-weight: 600;
 `
 
+const ballotMetadata = ({
+  isLiveMode,
+  isTemplate,
+  precinctId,
+  ballotStyleId,
+  pageNumber,
+  pageCount,
+}: {
+  isLiveMode: boolean
+  isTemplate: boolean
+  precinctId: Precinct['id']
+  ballotStyleId: BallotStyle['id']
+  pageNumber: number
+  pageCount: number
+}): string => {
+  const params = new URLSearchParams([
+    ['t', `${!isLiveMode ? 't' : '_'}${isTemplate ? 't' : '_'}`],
+    ['pr', precinctId],
+    ['bs', ballotStyleId],
+    ['p', `${pageNumber}-${pageCount}`],
+  ])
+  return new URL(`https://vx.vote/?${params}`).toString()
+}
+
 const CandidateContestChoices = ({
   contest,
   parties,
@@ -250,6 +276,7 @@ interface Props {
   ballotStyleId: string
   election: Election
   isLiveMode: boolean
+  isTemplate?: boolean
   precinctId: string
   votes: VotesDict
 }
@@ -258,6 +285,7 @@ const PrintBallot = ({
   ballotStyleId,
   election,
   isLiveMode,
+  isTemplate = false,
   precinctId,
   votes,
 }: Props) => {
@@ -352,13 +380,27 @@ const PrintBallot = ({
             <PageFooterQRCode>
               <QRCode
                 level="L"
-                value={`{"precinct":${precinct.id},"ballotStyleId":${ballotStyle.id},"pageNumber":1}`}
+                value={ballotMetadata({
+                  isLiveMode,
+                  isTemplate,
+                  precinctId,
+                  ballotStyleId,
+                  pageNumber: 1,
+                  pageCount: 2,
+                })}
               />
             </PageFooterQRCode>
             <PageFooterQRCode>
               <QRCode
                 level="L"
-                value={`{"precinct":${precinct.id},"ballotStyleId":${ballotStyle.id},"pageNumber":2}`}
+                value={ballotMetadata({
+                  isLiveMode,
+                  isTemplate,
+                  precinctId,
+                  ballotStyleId,
+                  pageNumber: 2,
+                  pageCount: 2,
+                })}
               />
             </PageFooterQRCode>
           </PageFooter>
