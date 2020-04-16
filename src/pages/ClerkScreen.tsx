@@ -4,6 +4,7 @@ import { OptionalElection } from '@votingworks/ballot-encoder'
 import { AppMode, EventTargetFunction, VoidFunction } from '../config/types'
 
 import TestBallotDeckScreen from './TestBallotDeckScreen'
+import PaperBallotDeckScreen from './PaperBallotDeckScreen'
 
 import Button, { SegmentedButton } from '../components/Button'
 import Main, { MainChild } from '../components/Main'
@@ -48,6 +49,11 @@ const ClerkScreen = ({
   const [isTestDeck, setIsTestDeck] = useState(false)
   const showTestDeck = () => setIsTestDeck(true)
   const hideTestDeck = () => setIsTestDeck(false)
+
+  const [isPaperDeck, setIsPaperDeck] = useState(false)
+  const showPaperDeck = () => setIsPaperDeck(true)
+  const hidePaperDeck = () => setIsPaperDeck(false)
+
   if (isTestDeck && election) {
     return (
       <TestBallotDeckScreen
@@ -55,6 +61,18 @@ const ClerkScreen = ({
         appPrecinctId={appPrecinctId}
         election={election}
         hideTestDeck={hideTestDeck}
+        isLiveMode={false} // always false for Test Mode
+      />
+    )
+  }
+
+  if (isPaperDeck && election) {
+    return (
+      <PaperBallotDeckScreen
+        appName={appMode.name}
+        appPrecinctId={appPrecinctId}
+        election={election}
+        hidePaperDeck={hidePaperDeck}
         isLiveMode={false} // always false for Test Mode
       />
     )
@@ -134,6 +152,12 @@ const ClerkScreen = ({
                       Printed and Tallied Ballots:{' '}
                       <strong>{ballotsPrintedCount}</strong>{' '}
                     </Text>
+                    <Text as="h1">HMPB</Text>
+                    <p>
+                      <Button small onPress={showPaperDeck}>
+                        View hand-marked paper templates and ballots
+                      </Button>
+                    </p>
                   </React.Fragment>
                 )}
               </React.Fragment>
