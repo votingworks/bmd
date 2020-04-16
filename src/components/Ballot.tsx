@@ -5,6 +5,7 @@ import IdleTimer from 'react-idle-timer'
 import ContestPage from '../pages/ContestPage'
 import IdlePage from '../pages/IdlePage'
 import NotFoundPage from '../pages/NotFoundPage'
+import PrintHMPBScreen from '../pages/PrintHMPBScreen'
 import PrintPage from '../pages/PrintPage'
 import ReviewPage from '../pages/ReviewPage'
 import SaveCardScreen from '../pages/SaveCardScreen'
@@ -45,6 +46,7 @@ const Ballot = () => {
           <Route path="/save" component={SaveCardScreen} />
           <Route path="/remove" component={RemoveCardScreen} />
           <Route path="/print" component={PrintPage} />
+          <Route path="/hmpb" component={PrintHMPBScreen} />
           <Route path="/cast" component={CastBallotPage} />
           <Route path="/:path" component={NotFoundPage} />
         </Switch>

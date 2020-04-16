@@ -1,10 +1,6 @@
 import React, { PointerEventHandler, useState } from 'react'
 import pluralize from 'pluralize'
-import {
-  VotesDict,
-  CandidateContest,
-  Election,
-} from '@votingworks/ballot-encoder'
+import { VotesDict, Election } from '@votingworks/ballot-encoder'
 
 import { AppModeNames } from '../config/types'
 
@@ -12,12 +8,12 @@ import Button from '../components/Button'
 import ButtonList from '../components/ButtonList'
 import ElectionInfo from '../components/ElectionInfo'
 import Main, { MainChild } from '../components/Main'
-import PrintedBallot from '../components/PrintedBallot'
+import HandMarkedPaperBallot from '../components/HandMarkedPaperBallot'
 import Prose from '../components/Prose'
 import Sidebar from '../components/Sidebar'
 import Screen from '../components/Screen'
 
-interface Ballot {
+interface PaperBallot {
   ballotId?: string
   precinctId: string
   ballotStyleId: string
@@ -37,48 +33,19 @@ const generateTestDeckBallots = ({
     ? [precinctId]
     : election.precincts.map(p => p.id)
 
-  const ballots: Ballot[] = []
+  const ballots: PaperBallot[] = []
 
   precincts.forEach(precinctId => {
     const precinct = election.precincts.find(p => p.id === precinctId)!
     const precinctBallotStyles = election.ballotStyles.filter(bs =>
       bs.precincts.includes(precinct.id)
     )
-
     precinctBallotStyles.forEach(ballotStyle => {
-      const contests = election.contests.filter(
-        c =>
-          ballotStyle.districts.includes(c.districtId) &&
-          ballotStyle.partyId === c.partyId
-      )
-
-      const numBallots = Math.max(
-        ...contests.map(c =>
-          c.type === 'yesno' ? 2 : (c as CandidateContest).candidates.length
-        )
-      )
-
-      for (let ballotNum = 0; ballotNum < numBallots; ballotNum++) {
-        const votes: VotesDict = {}
-        contests.forEach(contest => {
-          /* istanbul ignore else */
-          if (contest.type === 'yesno') {
-            votes[contest.id] = ballotNum % 2 === 0 ? 'yes' : 'no'
-          } else if (
-            contest.type === 'candidate' &&
-            contest.candidates.length > 0 // safety check
-          ) {
-            votes[contest.id] = [
-              contest.candidates[ballotNum % contest.candidates.length],
-            ]
-          }
-        })
-        ballots.push({
-          ballotStyleId: ballotStyle.id,
-          precinctId,
-          votes,
-        })
-      }
+      ballots.push({
+        ballotStyleId: ballotStyle.id,
+        precinctId,
+        votes: {},
+      })
     })
   })
 
@@ -100,14 +67,14 @@ interface Props {
 
 const initialPrecinct: Precinct = { id: '', name: '' }
 
-const PaperBallotDeckScreen = ({
+const HandMarkedPaperBallotDeckScreen = ({
   appName,
   appPrecinctId,
   election,
   hidePaperDeck,
   isLiveMode,
 }: Props) => {
-  const [ballots, setBallots] = useState<Ballot[]>([])
+  const [ballots, setBallots] = useState<PaperBallot[]>([])
   const [precinct, setPrecinct] = useState<Precinct>(initialPrecinct)
 
   const selectPrecinct: PointerEventHandler = event => {
@@ -132,7 +99,7 @@ const PaperBallotDeckScreen = ({
           <MainChild maxWidth={false}>
             {ballots.length ? (
               <Prose className="no-print">
-                <h1>Paper Ballots</h1>
+                <h1>Hand-Marked Paper Ballots</h1>
                 <p>
                   Deck containing{' '}
                   <strong>{pluralize('ballot', ballots.length, true)}</strong>{' '}
@@ -140,7 +107,7 @@ const PaperBallotDeckScreen = ({
                 </p>
                 <p>
                   <Button big primary onPress={(window.kiosk ?? window).print}>
-                    Print {ballots.length} ballots
+                    Print {pluralize('ballot', ballots.length, true)}
                   </Button>
                 </p>
                 <p>
@@ -152,18 +119,20 @@ const PaperBallotDeckScreen = ({
             ) : (
               <React.Fragment>
                 <Prose>
-                  <h1>Paper Ballots</h1>
-                  <p>Select desired precinct.</p>
+                  <h1>Hand-Marked Paper Ballots</h1>
+                  <p>Select precinct to filter ballot styles by precinct.</p>
                 </Prose>
                 <p>
                   <Button
                     data-id=""
-                    data-name="All Precincts"
+                    data-name="All Ballot Styles"
                     fullWidth
                     key="all-precincts"
                     onPress={selectPrecinct}
                   >
-                    <strong>All Precincts</strong>
+                    <strong>
+                      All Ballot Styles ({election.ballotStyles.length})
+                    </strong>
                   </Button>
                 </p>
                 <ButtonList data-testid="precincts">
@@ -202,9 +171,18 @@ const PaperBallotDeckScreen = ({
           </Button>
         </Sidebar>
       </Screen>
-      {ballots.length &&
+      {!!ballots.length &&
         ballots.map((ballot, i) => (
-          <PrintedBallot
+          // <div
+          //   // eslint-disable-next-line react/no-array-index-key
+          //   key={`ballot-${i}`}
+          // >
+          //   {JSON.stringify({
+          //     ballotStyleId: ballot.ballotStyleId,
+          //     precinctId: ballot.precinctId,
+          //   })}
+          // </div>
+          <HandMarkedPaperBallot
             // eslint-disable-next-line react/no-array-index-key
             key={`ballot-${i}`}
             ballotStyleId={ballot.ballotStyleId}
@@ -218,4 +196,4 @@ const PaperBallotDeckScreen = ({
   )
 }
 
-export default PaperBallotDeckScreen
+export default HandMarkedPaperBallotDeckScreen

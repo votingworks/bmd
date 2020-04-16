@@ -4,7 +4,7 @@ import { OptionalElection } from '@votingworks/ballot-encoder'
 import { AppMode, EventTargetFunction, VoidFunction } from '../config/types'
 
 import TestBallotDeckScreen from './TestBallotDeckScreen'
-import PaperBallotDeckScreen from './PaperBallotDeckScreen'
+import HandMarkedPaperBallotDeckScreen from './HandMarkedPaperBallotDeckScreen'
 
 import Button, { SegmentedButton } from '../components/Button'
 import Main, { MainChild } from '../components/Main'
@@ -68,7 +68,7 @@ const ClerkScreen = ({
 
   if (isPaperDeck && election) {
     return (
-      <PaperBallotDeckScreen
+      <HandMarkedPaperBallotDeckScreen
         appName={appMode.name}
         appPrecinctId={appPrecinctId}
         election={election}
@@ -152,10 +152,10 @@ const ClerkScreen = ({
                       Printed and Tallied Ballots:{' '}
                       <strong>{ballotsPrintedCount}</strong>{' '}
                     </Text>
-                    <Text as="h1">HMPB</Text>
+                    <Text as="h1">Hand-Marked Paper Ballots</Text>
                     <p>
                       <Button small onPress={showPaperDeck}>
-                        View hand-marked paper templates and ballots
+                        View Hand-marked paper Ballots
                       </Button>
                     </p>
                   </React.Fragment>

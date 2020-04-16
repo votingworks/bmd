@@ -140,7 +140,7 @@ const TestBallotDeckScreen = ({
                 </p>
                 <p>
                   <Button big primary onPress={(window.kiosk ?? window).print}>
-                    Print {ballots.length} ballots
+                    Print {pluralize('ballot', ballots.length, true)}
                   </Button>
                 </p>
                 <p>
@@ -202,7 +202,7 @@ const TestBallotDeckScreen = ({
           </Button>
         </Sidebar>
       </Screen>
-      {ballots.length &&
+      {!!ballots.length &&
         ballots.map((ballot, i) => (
           <PrintedBallot
             // eslint-disable-next-line react/no-array-index-key

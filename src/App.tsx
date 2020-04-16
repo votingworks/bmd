@@ -43,6 +43,7 @@ const App = ({
   hardware = getHardware(),
   machineConfig = machineConfigProvider,
 }: Props) => {
+  screenReader.disable()
   screenReader.mute()
 
   /* istanbul ignore next - need to figure out how to test this */
