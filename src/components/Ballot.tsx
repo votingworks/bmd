@@ -26,6 +26,7 @@ const Ballot = () => {
 
   const onIdle = () => {
     // setIsIdle(true)
+    setIsIdle(true)
   }
 
   return (

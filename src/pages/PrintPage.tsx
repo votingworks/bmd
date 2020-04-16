@@ -23,23 +23,23 @@ const PrintPage = () => {
   } = useContext(BallotContext)
   const printerTimer = useRef(0)
 
-  // const printBallot = useCallback(async () => {
-  //   const isUsed = await markVoterCardPrinted()
-  //   /* istanbul ignore else */
-  //   if (isUsed) {
-  //     await printer.print()
-  //     updateTally()
-  //     printerTimer.current = window.setTimeout(() => {
-  //       resetBallot()
-  //     }, printerMessageTimeoutSeconds * 1000)
-  //   }
-  // }, [markVoterCardPrinted, printer, resetBallot, updateTally])
+  const printBallot = useCallback(async () => {
+    const isUsed = await markVoterCardPrinted()
+    /* istanbul ignore else */
+    if (isUsed) {
+      await printer.print()
+      updateTally()
+      printerTimer.current = window.setTimeout(() => {
+        resetBallot()
+      }, printerMessageTimeoutSeconds * 1000)
+    }
+  }, [markVoterCardPrinted, printer, resetBallot, updateTally])
 
-  // useEffect(() => {
-  //   if (!isEmptyObject(votes)) {
-  //     printBallot()
-  //   }
-  // }, [votes, printBallot])
+  useEffect(() => {
+    if (!isEmptyObject(votes)) {
+      printBallot()
+    }
+  }, [votes, printBallot])
 
   useEffect(() => {
     return () => clearTimeout(printerTimer.current)
@@ -47,7 +47,7 @@ const PrintPage = () => {
 
   return (
     <React.Fragment>
-      {/* <Screen>
+      <Screen>
         <Main>
           <MainChild centerVertical maxWidth={false}>
             <Prose textCenter id="audiofocus">
@@ -57,12 +57,11 @@ const PrintPage = () => {
             </Prose>
           </MainChild>
         </Main>
-      </Screen> */}
+      </Screen>
       <PrintedBallot
         ballotStyleId={ballotStyleId}
         election={election!}
         isLiveMode={isLiveMode}
-        isTemplate
         precinctId={precinctId}
         votes={votes}
       />

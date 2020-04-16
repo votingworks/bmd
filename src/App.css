@@ -5,7 +5,7 @@
 html {
   box-sizing: border-box;
   line-height: 1;
-  /* user-select: none; */
+  user-select: none;
 }
 *,
 *::before,
@@ -45,7 +45,7 @@ img {
 }
 
 /* Foundational */
-/* html,
+html,
 body,
 #root {
   height: 100%;
@@ -59,7 +59,7 @@ body,
     height: auto;
     overflow: visible;
   }
-} */
+}
 
 /* Typography */
 html {
@@ -71,8 +71,8 @@ html {
   font-size: 24px; /* Magic number, must synced with JavaScript global defaults */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-size: 14px !important; /* stylelint-disable-line declaration-no-important */
-  background: #ffffff;
+  /* font-size: 14px !important; */ /* stylelint-disable-line declaration-no-important */
+  /* background: #ffffff; */
 }
 @media print {
   html {
@@ -121,6 +121,7 @@ html body .cvox_indicator_container {
 
 /* Adjust printed ballot paper settings */
 @page {
-  margin: 0.25in 0.25in 0.25in 0.4in;
+  margin: 0.375in;
+  /* margin: 0.25in 0.25in 0.25in 0.4in; */
   size: letter portrait;
 }
