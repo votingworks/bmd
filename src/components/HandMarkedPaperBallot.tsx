@@ -1,9 +1,7 @@
 import React, { useState, useLayoutEffect, useRef } from 'react'
 import styled from 'styled-components'
-import { Previewer, registerHandlers, Handler } from 'pagedjs'
+import { Previewer } from 'pagedjs'
 import {
-  encodeBallot,
-  BallotType,
   CandidateVote,
   YesNoVote,
   OptionalYesNoVote,
@@ -19,10 +17,9 @@ import {
 
 import * as GLOBALS from '../config/globals'
 
-import { Bubble, BubbleMark } from './BubbleMark'
+import { BubbleMark } from './BubbleMark'
 import WriteInLine from './WriteInLine'
 
-import { randomBase64 } from '../utils/random'
 import { findPartyById } from '../utils/find'
 import {
   getBallotStyle,
@@ -33,18 +30,16 @@ import {
 
 import QRCode from './QRCode'
 import Prose from './Prose'
-import Text, { NoWrap } from './Text'
-import getPrintedBallotPageLayout from '../utils/getPrintedBallotPageLayout'
+import Text from './Text'
 
 const Ballot = styled.div`
-  display: none;
   /* display: flex; */
+  display: none;
   flex-direction: column;
-  page-break-after: always;
   width: 8.5in;
   min-height: 11in;
+  page-break-after: always;
   @media screen {
-    /* display: none; */
     margin: 0.25in auto;
     outline: 1px solid rgb(255, 0, 255);
     padding: 0.25in 0.25in 0.25in 0.4in;
@@ -55,33 +50,9 @@ const SealImage = styled.img`
   max-width: 1in;
 `
 
-// const HeaderOld = styled.div`
-//   display: flex;
-//   flex-direction: row;
-//   align-items: center;
-//   border-bottom: 0.2rem solid #000000;
-//   & > .seal {
-//     margin: 0.25rem 0;
-//     width: 1in;
-//   }
-//   & h2 {
-//     margin-bottom: 0;
-//   }
-//   & h3 {
-//     margin-top: 0;
-//   }
-//   & > .ballot-header-content {
-//     flex: 4;
-//     margin: 0 1rem;
-//     max-width: 100%;
-//   }
-// `
 const Content = styled.div`
   flex: 1;
 `
-// const PageHeader = styled.div`
-//   margin-bottom: 0.5rem;
-// `
 const PageFooter = styled.div`
   display: flex;
   justify-content: flex-end;
@@ -122,8 +93,6 @@ const BallotColumns = styled.div`
   column-gap: 1rem;
 `
 const IntroColumn = styled.div`
-  /* position: relative;
-  top: -1.5rem; */
   break-after: column;
   break-inside: avoid;
   page-break-inside: avoid;
@@ -159,10 +128,7 @@ const Contest = styled.div`
   break-inside: avoid;
   page-break-inside: avoid;
 `
-const ColumnFooter = styled.div`
-  /* margin-top: 2rem; */
-  /* border: 0.1rem solid #000000; */
-`
+const ColumnFooter = styled.div``
 
 const ContestSection = styled.div`
   text-transform: uppercase;
@@ -278,7 +244,6 @@ const HandMarkedPaperBallot = ({
   precinctId,
   votes,
 }: Props) => {
-  const ballotId = randomBase64()
   const { county, date, seal, sealURL, state, parties, title } = election
   const partyPrimaryAdjective = getPartyPrimaryAdjectiveFromBallotStyle({
     ballotStyleId,
@@ -288,33 +253,24 @@ const HandMarkedPaperBallot = ({
   const contests = getContests({ ballotStyle, election })
   // const sections = [...new Set(contests.map(c => c.section))]
   const precinct = getPrecinctById({ election, precinctId })!
-  const encodedBallot = encodeBallot({
-    election,
-    precinct,
-    ballotId,
-    ballotStyle,
-    votes,
-    isTestBallot: !isLiveMode,
-    ballotType: BallotType.Standard,
-  })
   const [ballotRendered, setBallotRendered] = useState(false)
 
+  // TODO: The following PagedJS callback needs to be moved to the parent wrapper to run once per page, not per ballot.
   useLayoutEffect(() => {
     if (!ballotRendered) {
       const previewer = new Previewer()
-      previewer
-        .preview(
-          document.querySelector('#screen-ballot')!.innerHTML,
-          ['/ballot/ballot.css'],
-          document.querySelector('#print-ballot')
-        )
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        .then((flow: { total: any }) => {
-          console.log('preview rendered, total pages', flow.total, { flow })
-        })
+      previewer.preview(
+        document.querySelector('#screen-ballot')!.innerHTML,
+        ['/ballot/ballot.css'],
+        document.querySelector('#print-ballot')
+      )
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      // .then((flow: { total: any }) => {
+      //   console.log('preview rendered, total pages', flow.total, { flow })
+      // })
       setBallotRendered(true)
       return () => {
-        console.log('removing pagedjs ballot')
+        // console.log('removing pagedjs ballot')
         document.querySelector('#print-ballot')!.innerHTML = ''
       }
     }
@@ -322,19 +278,6 @@ const HandMarkedPaperBallot = ({
 
   // eslint-disable-next-line no-restricted-syntax
   const ballotRef = useRef<HTMLDivElement>(null)
-
-  // useLayoutEffect(() => {
-  //   if (ballotRef.current) {
-  //     // eslint-disable-next-line no-console
-  //     console.log(
-  //       `Printed ballot page layout: ${JSON.stringify(
-  //         getPrintedBallotPageLayout(ballotRef.current),
-  //         undefined,
-  //         2
-  //       )}`
-  //     )
-  //   }
-  // })
 
   return (
     <React.Fragment>
@@ -396,13 +339,6 @@ const HandMarkedPaperBallot = ({
         </div>
 
         <Content>
-          {/* <PageHeader>
-          <Prose maxWidth={false}>
-            <Text right>
-              Ballot Style: {ballotStyle.id} — <strong>Page 1</strong> of 3
-            </Text>
-          </Prose>
-        </PageHeader> */}
           <BallotColumns>
             <IntroColumn>
               <BallotHeader>
@@ -458,9 +394,8 @@ const HandMarkedPaperBallot = ({
               </Instructions>
             </IntroColumn>
             {/* {sections.map(section => <Section>
-          <h1>{section}</h1>
-
-          </Section>)} */}
+              <h1>{section}</h1>
+            </Section>)} */}
             {(contests as Contests).map(
               (contest, i) =>
                 i < 999 && (

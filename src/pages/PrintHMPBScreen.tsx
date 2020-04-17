@@ -1,11 +1,16 @@
-import React, { useCallback, useContext, useEffect, useRef } from 'react'
-import Loading from '../components/Loading'
-import Main, { MainChild } from '../components/Main'
+import React, {
+  // useCallback,
+  useContext,
+  useEffect,
+  useRef,
+} from 'react'
+// import Loading from '../components/Loading'
+// import Main, { MainChild } from '../components/Main'
 import HandMarkedPaperBallot from '../components/HandMarkedPaperBallot'
-import Prose from '../components/Prose'
-import Screen from '../components/Screen'
+// import Prose from '../components/Prose'
+// import Screen from '../components/Screen'
 import BallotContext from '../contexts/ballotContext'
-import isEmptyObject from '../utils/isEmptyObject'
+// import isEmptyObject from '../utils/isEmptyObject'
 
 export const printerMessageTimeoutSeconds = 5
 
@@ -14,11 +19,11 @@ const PrintPage = () => {
     ballotStyleId,
     election,
     isLiveMode,
-    markVoterCardPrinted,
+    // markVoterCardPrinted,
     precinctId,
-    printer,
-    resetBallot,
-    updateTally,
+    // printer,
+    // resetBallot,
+    // updateTally,
     votes,
   } = useContext(BallotContext)
   const printerTimer = useRef(0)
