@@ -1,8 +1,8 @@
 import React, {
   // useCallback,
   useContext,
-  useEffect,
-  useRef,
+  // useEffect,
+  // useRef,
 } from 'react'
 // import Loading from '../components/Loading'
 // import Main, { MainChild } from '../components/Main'
@@ -26,7 +26,7 @@ const PrintPage = () => {
     // updateTally,
     votes,
   } = useContext(BallotContext)
-  const printerTimer = useRef(0)
+  // const printerTimer = useRef(0)
 
   // const printBallot = useCallback(async () => {
   //   const isUsed = await markVoterCardPrinted()
@@ -46,9 +46,9 @@ const PrintPage = () => {
   //   }
   // }, [votes, printBallot])
 
-  useEffect(() => {
-    return () => clearTimeout(printerTimer.current)
-  }, [])
+  // useEffect(() => {
+  //   return () => clearTimeout(printerTimer.current)
+  // }, [])
 
   return (
     <React.Fragment>

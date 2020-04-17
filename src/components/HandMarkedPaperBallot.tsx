@@ -274,7 +274,7 @@ const HandMarkedPaperBallot = ({
         document.querySelector('#print-ballot')!.innerHTML = ''
       }
     }
-  })
+  }, [setBallotRendered, ballotRendered])
 
   // eslint-disable-next-line no-restricted-syntax
   const ballotRef = useRef<HTMLDivElement>(null)
