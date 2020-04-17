@@ -71,8 +71,6 @@ html {
   font-size: 24px; /* Magic number, must synced with JavaScript global defaults */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-size: 14px !important; /* stylelint-disable-line declaration-no-important */
-  /* background: #ffffff; */
 }
 @media print {
   html {

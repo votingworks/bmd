@@ -11,11 +11,11 @@ interface Props extends StyledProps {
 
 export const Bubble = styled.span<StyledProps>`
   display: inline-block;
-  border: 2px solid #000000;
+  border: 1pt solid #000000;
   border-radius: 100%;
   background: ${({ checked }) => (checked ? '#000000' : undefined)};
-  width: 1.5rem;
-  height: 1rem;
+  width: 1.5em;
+  height: 1em;
   vertical-align: bottom;
 `
 
@@ -23,8 +23,8 @@ const Container = styled.span`
   display: flex;
   align-items: flex-start;
   & > span:first-child {
-    margin-top: 0.15rem;
-    margin-right: 0.3rem;
+    margin-top: 0.1em;
+    margin-right: 0.3em;
   }
 `
 

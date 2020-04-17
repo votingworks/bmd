@@ -8,7 +8,7 @@ interface Props {
 const Container = styled.span`
   display: block;
   flex: 1;
-  border-bottom: 0.1rem solid #000000;
+  border-bottom: 1pt solid #000000;
 `
 
 const WriteInLine = ({ label }: Props) => (

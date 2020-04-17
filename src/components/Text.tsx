@@ -24,13 +24,13 @@ interface Props {
 const iconStyles = css<Props>`
   &::before {
     display: inline-block;
-    margin-top: -0.3rem;
-    margin-right: 0.25rem;
+    margin-top: -0.3em;
+    margin-right: 0.25em;
     border-radius: ${({ warningIcon }) => warningIcon && '50%'};
     background: ${({ warningIcon, voteIcon }) =>
       (warningIcon && 'darkorange') ?? (voteIcon && '#028099')};
-    width: 1rem;
-    height: 1rem;
+    width: 1em;
+    height: 1em;
     vertical-align: middle;
     text-align: center;
     line-height: 1.1;
@@ -61,7 +61,7 @@ const Text = styled('p')<Props>`
       (muted && 'black') ??
       undefined};
   }
-  font-size: ${({ small }) => (small ? '0.8rem' : undefined)};
+  font-size: ${({ small }) => (small ? '0.8em' : undefined)};
   font-weight: ${({ bold, light, normal }) =>
     (bold && '600') ?? (light && '300') ?? (normal && '400') ?? undefined};
   font-style: ${({ italic }) => (italic ? 'italic' : undefined)};

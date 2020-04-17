@@ -38,6 +38,7 @@ const Ballot = styled.div`
   flex-direction: column;
   width: 8.5in;
   min-height: 11in;
+  font-size: 14px;
   page-break-after: always;
   @media screen {
     margin: 0.25in auto;
@@ -69,19 +70,19 @@ const PageFooterMain = styled.div`
     flex-direction: row;
     justify-content: space-between;
     &:first-child {
-      padding-top: 0.02rem;
+      padding-top: 0.02em;
     }
   }
   h2 {
     margin: 0;
-    font-size: 1.285rem; /* 18pt */
+    font-size: 1.285em; /* 18px */
   }
   sup {
-    top: -0.325rem;
-    font-size: 0.8rem;
+    top: -0.325em;
+    font-size: 0.8em;
   }
   strong + sup {
-    margin-left: 0.5rem;
+    margin-left: 0.5em;
   }
 `
 const PageFooterQRCode = styled.div`
@@ -90,7 +91,7 @@ const PageFooterQRCode = styled.div`
 `
 const BallotColumns = styled.div`
   columns: 3;
-  column-gap: 1rem;
+  column-gap: 1em;
 `
 const IntroColumn = styled.div`
   break-after: column;
@@ -98,7 +99,7 @@ const IntroColumn = styled.div`
   page-break-inside: avoid;
 `
 const BallotHeader = styled.div`
-  margin-bottom: 2rem;
+  margin-bottom: 2em;
   & h2 {
     margin-bottom: 0;
   }
@@ -107,24 +108,24 @@ const BallotHeader = styled.div`
   }
   & > .seal {
     float: right;
-    margin: 0 0 0.25rem 0.25rem;
+    margin: 0 0 0.25em 0.25em;
     width: 1in;
   }
 `
 const Instructions = styled.div`
-  margin-bottom: 1rem;
-  border: 0.1rem solid #000000;
-  border-width: 0.1rem 0;
-  padding: 1rem 0;
+  margin-bottom: 1em;
+  border: 0.1em solid #000000;
+  border-width: 0.1em 0;
+  padding: 1em 0;
   img {
-    margin-top: 0.3rem;
+    margin-top: 0.3em;
   }
 `
 const Contest = styled.div`
-  margin-bottom: 1rem;
-  border: 0.05rem solid #000000;
-  border-top-width: 0.2rem;
-  padding: 0.5rem 1rem 1rem;
+  margin-bottom: 1em;
+  border: 0.05em solid #000000;
+  border-top-width: 0.2em;
+  padding: 0.5em 1em 1em;
   break-inside: avoid;
   page-break-inside: avoid;
 `
@@ -132,7 +133,7 @@ const ColumnFooter = styled.div``
 
 const ContestSection = styled.div`
   text-transform: uppercase;
-  font-size: 0.85rem;
+  font-size: 0.85em;
   font-weight: 600;
 `
 
