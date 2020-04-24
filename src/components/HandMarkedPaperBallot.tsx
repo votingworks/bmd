@@ -86,7 +86,7 @@ const PageFooterMain = styled.div`
   }
 `
 const PageFooterQRCode = styled.div`
-  margin-left: 0.125in;
+  margin-left: 0.225in;
   width: 0.475in;
 `
 const BallotColumns = styled.div`
