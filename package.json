@@ -99,7 +99,7 @@
     "react-idle-timer": "^4.2.12",
     "react-modal": "^3.11.2",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.0",
+    "react-scripts": "3.4.2",
     "rxjs": "^6.5.5",
     "styled-components": "^4.4.1",
     "typescript": "^3.8.3",
