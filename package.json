@@ -131,7 +131,7 @@
     "lint-staged": "^10.2.4",
     "prettier": "^2.1.1",
     "start-server-and-test": "^1.11.0",
-    "stylelint": "^13.3.3",
+    "stylelint": "^13.7.2",
     "stylelint-config-palantir": "^4.0.1",
     "stylelint-config-prettier": "^8.0.1",
     "stylelint-config-styled-components": "^0.1.1",
