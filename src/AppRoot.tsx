@@ -992,6 +992,11 @@ class AppRoot extends React.Component<Props, State> {
         return <ExpiredCardScreen setUserSettings={this.setUserSettings} />
       }
       if (isPollsOpen && appMode.isVxPrint && !appMode.isVxMark) {
+        if (isVoterCardPresent && precinctId) {
+          if (appPrecinctId !== precinctId) {
+            return <WrongPrecinctScreen />
+          }
+        }
         return (
           <PrintOnlyScreen
             ballotStyleId={ballotStyleId}
